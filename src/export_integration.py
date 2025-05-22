@@ -1,186 +1,183 @@
+"""
+Export and Integration Manager
+
+This module provides functionality for exporting analysis results in various formats
+and integrating with external systems.
+"""
+
 import os
+import logging
 import json
-import random
-from datetime import datetime
+import time
+from typing import Dict, Any, Optional
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class ExportIntegration:
     """
-    Class for handling content export and CMS integration functionality.
+    Export and integration manager.
+    
+    This class provides methods for exporting analysis results in various formats
+    and integrating with external systems.
     """
     
-    def __init__(self):
-        """Initialize the ExportIntegration with default settings."""
-        self.export_formats = [
-            {
-                "id": "pdf",
-                "name": "PDF Document",
-                "description": "Export as a professionally formatted PDF document",
-                "extension": "PDF"
-            },
-            {
-                "id": "docx",
-                "name": "Word Document",
-                "description": "Export as an editable Microsoft Word document",
-                "extension": "DOCX"
-            },
-            {
-                "id": "html",
-                "name": "HTML Document",
-                "description": "Export as an HTML document ready for web publishing",
-                "extension": "HTML"
-            },
-            {
-                "id": "md",
-                "name": "Markdown",
-                "description": "Export as a Markdown file for easy editing",
-                "extension": "MD"
-            },
-            {
-                "id": "csv",
-                "name": "CSV Spreadsheet",
-                "description": "Export data as a CSV spreadsheet",
-                "extension": "CSV"
-            },
-            {
-                "id": "json",
-                "name": "JSON Data",
-                "description": "Export raw data in JSON format",
-                "extension": "JSON"
-            }
-        ]
-        
-        self.cms_platforms = [
-            {
-                "id": "wordpress",
-                "name": "WordPress",
-                "description": "Publish directly to your WordPress site",
-                "icon": "wordpress-icon.svg"
-            },
-            {
-                "id": "webflow",
-                "name": "Webflow",
-                "description": "Export to your Webflow CMS",
-                "icon": "webflow-icon.svg"
-            },
-            {
-                "id": "contentful",
-                "name": "Contentful",
-                "description": "Publish to your Contentful workspace",
-                "icon": "contentful-icon.svg"
-            },
-            {
-                "id": "shopify",
-                "name": "Shopify",
-                "description": "Export to your Shopify blog",
-                "icon": "shopify-icon.svg"
-            },
-            {
-                "id": "hubspot",
-                "name": "HubSpot",
-                "description": "Publish to your HubSpot CMS",
-                "icon": "hubspot-icon.svg"
-            }
-        ]
-    
-    def get_export_formats(self):
-        """Get available export formats."""
-        return self.export_formats
-    
-    def get_cms_platforms(self):
-        """Get available CMS platforms."""
-        return self.cms_platforms
-    
-    def export_content(self, content_type, format_id, content_data):
+    def __init__(self, export_dir: Optional[str] = None):
         """
-        Export content in the specified format.
+        Initialize the export and integration manager.
         
         Args:
-            content_type (str): Type of content to export (e.g., 'content_blueprint', 'keyword_data')
-            format_id (str): Format identifier (e.g., 'pdf', 'docx', 'csv')
-            content_data (dict): Content data to export
+            export_dir: Directory to save exported files (defaults to /tmp/exports)
+        """
+        self.export_dir = export_dir or "/tmp/exports"
+        
+        # Create export directory if it doesn't exist
+        os.makedirs(self.export_dir, exist_ok=True)
+    
+    def export_data(self, data: Dict[str, Any], format: str = "pdf") -> str:
+        """
+        Export data in the specified format.
+        
+        Args:
+            data: Data to export
+            format: Export format (pdf, csv, json)
             
         Returns:
-            dict: Export result with success status and file path or error message
+            Path to exported file
+        """
+        logger.info(f"Exporting data in {format} format")
+        
+        # Generate filename
+        timestamp = int(time.time())
+        filename = f"export_{timestamp}.{format}"
+        filepath = os.path.join(self.export_dir, filename)
+        
+        # Export based on format
+        if format.lower() == "pdf":
+            return self._export_as_pdf(data, filepath)
+        elif format.lower() == "csv":
+            return self._export_as_csv(data, filepath)
+        elif format.lower() == "json":
+            return self._export_as_json(data, filepath)
+        else:
+            raise ValueError(f"Unsupported export format: {format}")
+    
+    def _export_as_pdf(self, data: Dict[str, Any], filepath: str) -> str:
+        """
+        Export data as PDF.
+        
+        Args:
+            data: Data to export
+            filepath: Path to save PDF file
+            
+        Returns:
+            Path to exported PDF file
         """
         try:
-            # Validate format
-            valid_format = any(fmt["id"] == format_id for fmt in self.export_formats)
-            if not valid_format:
-                return {"success": False, "error": f"Invalid export format: {format_id}"}
+            # In a real implementation, this would use a PDF generation library
+            # For now, we'll create a simple text file with .pdf extension
+            with open(filepath, "w") as f:
+                f.write("PDF EXPORT\n\n")
+                f.write(json.dumps(data, indent=2))
             
-            # In a real implementation, this would generate actual files
-            # For now, we'll simulate successful export
-            
-            # Generate a filename based on content type and format
-            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-            filename = f"{content_type}_{timestamp}.{format_id}"
-            file_path = os.path.join("/tmp", filename)
-            
-            # Simulate file creation
-            with open(file_path, "w") as f:
-                if format_id == "json":
-                    json.dump(content_data, f, indent=2)
-                else:
-                    f.write(str(content_data))
-            
-            return {
-                "success": True,
-                "file_path": file_path,
-                "format": format_id,
-                "content_type": content_type,
-                "timestamp": datetime.now().isoformat()
-            }
-            
+            logger.info(f"Exported data as PDF to {filepath}")
+            return filepath
         except Exception as e:
-            return {"success": False, "error": str(e)}
+            logger.error(f"Error exporting as PDF: {str(e)}")
+            raise
     
-    def publish_to_cms(self, content_type, platform_id, content_data, credentials):
+    def _export_as_csv(self, data: Dict[str, Any], filepath: str) -> str:
         """
-        Publish content to a CMS platform.
+        Export data as CSV.
         
         Args:
-            content_type (str): Type of content to publish
-            platform_id (str): CMS platform identifier
-            content_data (dict): Content data to publish
-            credentials (dict): CMS platform credentials
+            data: Data to export
+            filepath: Path to save CSV file
             
         Returns:
-            dict: Publishing result with success status and details or error message
+            Path to exported CSV file
         """
         try:
-            # Validate platform
-            valid_platform = any(platform["id"] == platform_id for platform in self.cms_platforms)
-            if not valid_platform:
-                return {"success": False, "error": f"Invalid CMS platform: {platform_id}"}
+            # In a real implementation, this would use a CSV generation library
+            # For now, we'll create a simple CSV-like text file
+            with open(filepath, "w") as f:
+                f.write("key,value\n")
+                self._write_dict_as_csv(data, f)
             
-            # Validate credentials (basic check)
-            required_fields = ["username", "password"] if platform_id != "contentful" else ["api_key"]
-            missing_fields = [field for field in required_fields if field not in credentials]
+            logger.info(f"Exported data as CSV to {filepath}")
+            return filepath
+        except Exception as e:
+            logger.error(f"Error exporting as CSV: {str(e)}")
+            raise
+    
+    def _write_dict_as_csv(self, data: Dict[str, Any], file, prefix: str = ""):
+        """
+        Write dictionary as CSV rows.
+        
+        Args:
+            data: Dictionary to write
+            file: File object to write to
+            prefix: Prefix for nested keys
+        """
+        for key, value in data.items():
+            full_key = f"{prefix}.{key}" if prefix else key
             
-            if missing_fields:
-                return {"success": False, "error": f"Missing required credentials: {', '.join(missing_fields)}"}
-            
-            # In a real implementation, this would connect to the CMS API
-            # For now, we'll simulate successful publishing with 90% success rate
-            if random.random() < 0.9:
-                return {
-                    "success": True,
-                    "platform": platform_id,
-                    "content_type": content_type,
-                    "url": f"https://example.com/{platform_id}/{content_type}_{random.randint(1000, 9999)}",
-                    "timestamp": datetime.now().isoformat()
-                }
+            if isinstance(value, dict):
+                self._write_dict_as_csv(value, file, full_key)
+            elif isinstance(value, list):
+                for i, item in enumerate(value):
+                    if isinstance(item, dict):
+                        self._write_dict_as_csv(item, file, f"{full_key}[{i}]")
+                    else:
+                        # Fix: Avoid using backslash in f-string expression
+                        escaped_item = str(item).replace('"', '""')
+                        file.write(f'{full_key}[{i}],"{escaped_item}"\n')
             else:
-                # Simulate occasional API errors
-                error_messages = {
-                    "wordpress": "Failed to connect to WordPress API. Please check credentials and try again.",
-                    "webflow": "Webflow API rate limit exceeded. Please try again later.",
-                    "contentful": "Invalid Contentful space ID or access token.",
-                    "shopify": "Shopify API authentication failed. Please verify API credentials.",
-                    "hubspot": "HubSpot API error: Content format not supported."
-                }
-                
-                return {"success": False, "error": error_messages.get(platform_id, "API connection failed")}
+                # Fix: Avoid using backslash in f-string expression
+                escaped_value = str(value).replace('"', '""')
+                file.write(f'{full_key},"{escaped_value}"\n')
+    
+    def _export_as_json(self, data: Dict[str, Any], filepath: str) -> str:
+        """
+        Export data as JSON.
+        
+        Args:
+            data: Data to export
+            filepath: Path to save JSON file
             
+        Returns:
+            Path to exported JSON file
+        """
+        try:
+            with open(filepath, "w") as f:
+                json.dump(data, f, indent=2)
+            
+            logger.info(f"Exported data as JSON to {filepath}")
+            return filepath
         except Exception as e:
-            return {"success": False, "error": str(e)}
+            logger.error(f"Error exporting as JSON: {str(e)}")
+            raise
+    
+    def integrate_with_cms(self, data: Dict[str, Any], cms_type: str, credentials: Dict[str, str]) -> Dict[str, Any]:
+        """
+        Integrate data with a content management system.
+        
+        Args:
+            data: Data to integrate
+            cms_type: CMS type (wordpress, drupal, etc.)
+            credentials: CMS credentials
+            
+        Returns:
+            Integration result
+        """
+        logger.info(f"Integrating data with {cms_type}")
+        
+        # In a real implementation, this would use CMS-specific APIs
+        # For now, we'll return a mock result
+        return {
+            "status": "success",
+            "cms_type": cms_type,
+            "integration_id": f"int_{int(time.time())}",
+            "url": f"https://example.com/{cms_type}/content/{int(time.time())}"
+        }
