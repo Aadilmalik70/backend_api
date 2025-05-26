@@ -33,14 +33,21 @@ class SerpAPIClient:
         # Try to initialize the client if API key is provided
         if api_key:
             try:
-                # Import SerpAPI library
-                from serpapi import GoogleSearch
-                
-                # Initialize client
-                self.client = GoogleSearch
-                logger.info("SerpAPI client initialized successfully")
+                # Try new serpapi package first
+                try:
+                    import serpapi
+                    self.client = serpapi
+                    self.use_new_api = True
+                    logger.info("SerpAPI client initialized successfully (new API)")
+                except ImportError:
+                    # Fall back to old google-search-results package
+                    from serpapi import GoogleSearch
+                    self.client = GoogleSearch
+                    self.use_new_api = False
+                    logger.info("SerpAPI client initialized successfully (legacy API)")
             except Exception as e:
                 logger.error(f"Error initializing SerpAPI client: {str(e)}")
+                logger.error("Please install either 'pip install serpapi' or 'pip install google-search-results'")
                 self.client = None
         else:
             logger.info("SerpAPI client initialized successfully")
@@ -73,9 +80,14 @@ class SerpAPIClient:
                 "api_key": self.api_key
             }
             
-            # Execute search
-            search = self.client(params)
-            results = search.get_dict()
+            # Execute search based on API version
+            if hasattr(self, 'use_new_api') and self.use_new_api:
+                # New API
+                results = self.client.search(params)
+            else:
+                # Legacy API
+                search = self.client(params)
+                results = search.get_dict()
             
             # Extract relevant data
             organic_results = results.get("organic_results", [])

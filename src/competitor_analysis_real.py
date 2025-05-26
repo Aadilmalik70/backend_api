@@ -9,9 +9,9 @@ import logging
 import re
 from typing import Dict, Any, List, Optional
 
-from .utils.serpapi_client import SerpAPIClient
-from .utils.browser_content_scraper import BrowserContentScraper
-from .utils.gemini_nlp_client import GeminiNLPClient
+from utils.serpapi_client import SerpAPIClient
+from utils.browser_content_scraper import BrowserContentScraper
+from utils.gemini_nlp_client import GeminiNLPClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

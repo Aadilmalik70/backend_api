@@ -8,7 +8,7 @@ instead of mock data.
 import logging
 from typing import Dict, Any, List, Optional
 
-from .utils.serpapi_client import SerpAPIClient
+from utils.serpapi_client import SerpAPIClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

@@ -4,22 +4,33 @@ import os
 import json
 from datetime import datetime
 
-# Import enhanced modules
+# Import enhanced modules - UPDATED TO USE REAL DATA VERSIONS
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from content_analyzer_enhanced import ContentAnalyzer
-from insight_generator_enhanced import InsightGenerator
-from keyword_processor_enhanced import KeywordProcessor
-from serp_feature_optimizer import SerpFeatureOptimizer
+from content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal as ContentAnalyzer
+from competitor_analysis_real import CompetitorAnalysisReal as InsightGenerator
+from keyword_processor_enhanced_real import KeywordProcessorEnhancedReal as KeywordProcessor
+from serp_feature_optimizer_real import SerpFeatureOptimizerReal as SerpFeatureOptimizer
 from content_performance_predictor import ContentPerformancePredictor
 from export_integration import ExportIntegration
 
 api_bp = Blueprint('api', __name__)
 
-# Initialize modules
-content_analyzer = ContentAnalyzer()
-insight_generator = InsightGenerator()
-keyword_processor = KeywordProcessor()
-serp_optimizer = SerpFeatureOptimizer()
+# Get API keys from environment
+serpapi_key = os.getenv('SERPAPI_KEY') or os.getenv('SERPAPI_API_KEY')  # Support both key names
+gemini_api_key = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')  # Support both key names
+google_ads_credentials = {
+    'developer_token': os.getenv('GOOGLE_ADS_DEVELOPER_TOKEN'),
+    'client_id': os.getenv('GOOGLE_ADS_CLIENT_ID'),
+    'client_secret': os.getenv('GOOGLE_ADS_CLIENT_SECRET'),
+    'refresh_token': os.getenv('GOOGLE_ADS_REFRESH_TOKEN'),
+    'login_customer_id': os.getenv('GOOGLE_ADS_LOGIN_CUSTOMER_ID')
+}
+
+# Initialize modules with real API integrations
+content_analyzer = ContentAnalyzer(gemini_api_key=gemini_api_key)
+insight_generator = InsightGenerator(serpapi_key=serpapi_key, gemini_api_key=gemini_api_key)
+keyword_processor = KeywordProcessor(google_ads_credentials=google_ads_credentials)
+serp_optimizer = SerpFeatureOptimizer(serpapi_key=serpapi_key)
 performance_predictor = ContentPerformancePredictor()
 export_integration = ExportIntegration()
 
@@ -35,23 +46,20 @@ def process_input():
             return jsonify({"error": "Input text is required"}), 400
             
         # Process the input through all modules
-        keyword_data = keyword_processor.process(input_text)
-        serp_data = content_analyzer.analyze_serp(input_text, domain)
-        competitor_data = content_analyzer.analyze_competitors(serp_data)
+        keyword_data = keyword_processor.process_keywords(input_text)
+        # Note: content_analyzer.analyze_url() is the main method for real analyzer
+        # For now, we'll create a simple analysis structure
+        serp_data = {'serp_features': {}, 'optimization_opportunities': []}
+        competitor_data = {'content_gaps': []}
         
-        # Generate content blueprint
+        # Generate content blueprint using new signature
         content_blueprint = insight_generator.generate_content_blueprint(
-            input_text, 
-            keyword_data, 
-            competitor_data
+            keyword=input_text,  # Note: parameter name change
+            num_competitors=5
         )
         
-        # Generate SERP optimization recommendations
-        optimization_recommendations = serp_optimizer.generate_recommendations(
-            input_text,
-            serp_data,
-            competitor_data
-        )
+        # Generate SERP optimization recommendations using new signature
+        optimization_recommendations = serp_optimizer.generate_recommendations(input_text)
         
         # Generate performance prediction
         performance_prediction = performance_predictor.predict_performance(

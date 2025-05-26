@@ -38,6 +38,10 @@ class KeywordPlannerAPI:
                 # Import Google Ads API libraries
                 from google.ads.googleads.client import GoogleAdsClient
                 
+                # Ensure credentials include use_proto_plus setting
+                if 'use_proto_plus' not in credentials:
+                    credentials['use_proto_plus'] = True
+                
                 # Create client
                 self.client = GoogleAdsClient.load_from_dict(credentials)
                 logger.info("Google Ads API client initialized successfully")

@@ -76,6 +76,7 @@ def test_keyword_planner_api():
     
     try:
         # Initialize the API client
+        print("KeywordPlannerAPI")
         api = GoogleKeywordPlannerAPI()
         
         # Test keyword ideas

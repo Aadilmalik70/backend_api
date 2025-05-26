@@ -10,7 +10,7 @@ import re
 import random
 from typing import Dict, Any, List, Optional
 
-from .utils.keyword_planner_api import KeywordPlannerAPI
+from utils.keyword_planner_api import KeywordPlannerAPI
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

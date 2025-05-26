@@ -12,7 +12,7 @@ from typing import Dict, Any, List
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class InsightGeneratorEnhanced:
+class InsightGenerator:
     """
     Enhanced insight generator that provides comprehensive content blueprints
     and strategic recommendations based on keyword and competitor data.

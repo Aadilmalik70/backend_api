@@ -10,8 +10,8 @@ import re
 from typing import Dict, Any, List, Optional
 from urllib.parse import urlparse
 
-from .utils.browser_content_scraper import BrowserContentScraper
-from .utils.gemini_nlp_client import GeminiNLPClient
+from utils.browser_content_scraper import BrowserContentScraper
+from utils.gemini_nlp_client import GeminiNLPClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

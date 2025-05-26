@@ -159,6 +159,92 @@ class ExportIntegration:
             logger.error(f"Error exporting as JSON: {str(e)}")
             raise
     
+    def get_export_formats(self) -> list:
+        """
+        Get available export formats.
+        
+        Returns:
+            List of available export formats
+        """
+        return [
+            {
+                "id": "pdf",
+                "name": "PDF Document",
+                "description": "Export as a professionally formatted PDF document",
+                "extension": "PDF"
+            },
+            {
+                "id": "docx",
+                "name": "Word Document",
+                "description": "Export as an editable Microsoft Word document",
+                "extension": "DOCX"
+            },
+            {
+                "id": "html",
+                "name": "HTML Document",
+                "description": "Export as an HTML document ready for web publishing",
+                "extension": "HTML"
+            },
+            {
+                "id": "md",
+                "name": "Markdown",
+                "description": "Export as a Markdown file for easy editing",
+                "extension": "MD"
+            },
+            {
+                "id": "csv",
+                "name": "CSV Spreadsheet",
+                "description": "Export data as a CSV spreadsheet",
+                "extension": "CSV"
+            },
+            {
+                "id": "json",
+                "name": "JSON Data",
+                "description": "Export raw data in JSON format",
+                "extension": "JSON"
+            }
+        ]
+    
+    def get_cms_platforms(self) -> list:
+        """
+        Get available CMS platforms for integration.
+        
+        Returns:
+            List of available CMS platforms
+        """
+        return [
+            {
+                "id": "wordpress",
+                "name": "WordPress",
+                "description": "Publish directly to your WordPress site",
+                "icon": "wordpress-icon.svg"
+            },
+            {
+                "id": "webflow",
+                "name": "Webflow",
+                "description": "Export to your Webflow CMS",
+                "icon": "webflow-icon.svg"
+            },
+            {
+                "id": "contentful",
+                "name": "Contentful",
+                "description": "Publish to your Contentful workspace",
+                "icon": "contentful-icon.svg"
+            },
+            {
+                "id": "shopify",
+                "name": "Shopify",
+                "description": "Export to your Shopify blog",
+                "icon": "shopify-icon.svg"
+            },
+            {
+                "id": "hubspot",
+                "name": "HubSpot",
+                "description": "Publish to your HubSpot CMS",
+                "icon": "hubspot-icon.svg"
+            }
+        ]
+    
     def integrate_with_cms(self, data: Dict[str, Any], cms_type: str, credentials: Dict[str, str]) -> Dict[str, Any]:
         """
         Integrate data with a content management system.

@@ -9,7 +9,7 @@ import os
 import json
 import logging
 from dotenv import load_dotenv
-from src.utils.keyword_planner_api import GoogleKeywordPlannerAPI
+from src.utils.keyword_planner_api import KeywordPlannerAPI
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -38,7 +38,7 @@ def test_keyword_planner_api():
     
     try:
         # Initialize the API client with environment variables
-        api = GoogleKeywordPlannerAPI()
+        api = KeywordPlannerAPI()
         
         # Test keyword ideas
         test_keywords = ["content marketing", "SEO strategy"]

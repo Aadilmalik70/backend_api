@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))  # DON'T CHANGE T
 
 from flask import Flask, jsonify
 from flask_cors import CORS
-from routes.api import api_bp
+from src.routes.api import api_bp
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})  # Enable CORS for all API routes
