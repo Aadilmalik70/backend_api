@@ -248,16 +248,31 @@ class GeminiNLPClient:
             
             # Create a structured prompt for analysis
             analysis_prompt = f"""
-            Analyze the following text and provide a structured response with these components:
-            1. Entities: Extract key entities (people, organizations, concepts, etc.)
-            2. Sentiment: Determine overall sentiment (positive, negative, neutral)
-            3. Categories: Classify the text into relevant categories
-            4. Language: Identify the language
-            
-            Text to analyze:
+            Your task is to analyze the provided text and return a structured JSON response.
+            Do not include any conversational text, introductions, explanations, or markdown formatting around the JSON output.
+            The response should be only the JSON object itself.
+
+            Analyze the following text:
+            ---
             {text}
+            ---
+
+            The JSON response must include these components:
+            1. entities: An array of extracted key entities (people, organizations, concepts, etc.). Each entity object should have "name", "type", and "salience".
+            2. sentiment: An object determining the overall sentiment (positive, negative, neutral), with "score" and "magnitude" fields.
+            3. categories: An array classifying the text into relevant categories. Each category object should have "name" and "confidence".
+            4. language: A string identifying the language (e.g., "en").
+
+            Format your response strictly as a single JSON object with these exact keys: "entities", "sentiment", "categories", "language".
+            Example of the expected JSON structure:
+            {{
+              "entities": [{{"name": "example entity", "type": "EVENT", "salience": 0.9}}],
+              "sentiment": {{"score": 0.5, "magnitude": 0.8}},
+              "categories": [{{"name": "/Technology/Internet", "confidence": 0.7}}],
+              "language": "en"
+            }}
             
-            Format your response as JSON with these keys: entities (array), sentiment (object with score and magnitude), categories (array), language (string).
+            Again, provide *only* the JSON object as your response.
             """
             
             response = model.generate_content(analysis_prompt)
@@ -269,18 +284,77 @@ class GeminiNLPClient:
                 response_text = str(response)
             
             # Try to parse JSON from response
-            try:
-                # Extract JSON from response (it might be wrapped in markdown code blocks)
-                import re
-                json_match = re.search(r'```json\s*(.*?)\s*```', response_text, re.DOTALL)
-                if json_match:
-                    json_str = json_match.group(1)
-                else:
-                    json_str = response_text
-                
-                # Parse JSON
-                result = json.loads(json_str)
-                
+            parsed_result = None
+            json_str_for_parsing = None # To store the string that was attempted for parsing, for logging
+
+            # Attempt 1: Markdown
+            # Ensure re is imported (it's at the top of the file, so no need for local import)
+            json_match = re.search(r'```json\s*(.*?)\s*```', response_text, re.DOTALL)
+            if json_match:
+                json_str_for_parsing = json_match.group(1).strip()
+                try:
+                    parsed_result = json.loads(json_str_for_parsing)
+                    logger.info("Successfully parsed JSON from markdown block (Attempt 1).")
+                except json.JSONDecodeError as e:
+                    logger.warning(f"Attempt 1 (markdown) failed: JSONDecodeError - {str(e)} on content snippet: '{json_str_for_parsing[:100]}...'")
+                    parsed_result = None # Ensure it's None if parsing fails
+
+            # Attempt 2: First '{' to last '}'
+            if parsed_result is None:
+                try:
+                    first_brace = response_text.find('{')
+                    last_brace = response_text.rfind('}')
+                    if first_brace != -1 and last_brace != -1 and last_brace > first_brace:
+                        json_str_for_parsing = response_text[first_brace : last_brace + 1]
+                        parsed_result = json.loads(json_str_for_parsing)
+                        logger.info("Successfully parsed JSON from first '{' to last '}' (Attempt 2).")
+                    else:
+                        # This case might not need logging if no braces found, or a less severe log.
+                        # logger.warning("Attempt 2 (first-last brace) failed: Could not find valid start/end braces or they were inverted.")
+                        pass # Not necessarily an error if no braces, just means this method won't work
+                except json.JSONDecodeError as e:
+                    logger.warning(f"Attempt 2 (first-last brace) failed: JSONDecodeError - {str(e)} on content snippet: '{json_str_for_parsing[:100]}...'")
+                    parsed_result = None
+
+            # Attempt 3: From known key '"entities":'
+            if parsed_result is None:
+                json_str_for_parsing = None # Reset for this attempt's logging
+                try:
+                    known_key_start = response_text.find('"entities":')
+                    if known_key_start != -1:
+                        json_start_brace = response_text.rfind('{', 0, known_key_start)
+                        if json_start_brace != -1:
+                            potential_json_str = response_text[json_start_brace:]
+                            open_braces = 0
+                            json_end_brace = -1
+                            # Iterate to find the matching closing brace for json_start_brace
+                            for i, char in enumerate(potential_json_str):
+                                if char == '{':
+                                    open_braces += 1
+                                elif char == '}':
+                                    open_braces -= 1
+                                    if open_braces == 0:
+                                        json_end_brace = i
+                                        break
+                            
+                            if json_end_brace != -1:
+                                json_str_for_parsing = potential_json_str[:json_end_brace + 1]
+                                parsed_result = json.loads(json_str_for_parsing)
+                                logger.info("Successfully parsed JSON from known key substring with balanced braces (Attempt 3).")
+                            else:
+                                logger.warning("Attempt 3 (known key) failed: Could not find a balanced JSON object from the potential start.")
+                        else:
+                            logger.warning("Attempt 3 (known key) failed: Could not find an opening brace '{' before the known key.")
+                    else:
+                        # logger.warning("Attempt 3 (known key) failed: Known key '\"entities\":' not found in response.")
+                        pass # Not an error if key isn't there, just means this method won't work
+                except json.JSONDecodeError as e:
+                    logger.warning(f"Attempt 3 (known key) failed: JSONDecodeError - {str(e)} on content snippet: '{json_str_for_parsing[:100] if json_str_for_parsing else 'N/A'}...'")
+                    parsed_result = None
+            
+            # After all attempts:
+            if parsed_result:
+                result = parsed_result
                 # Ensure required keys exist
                 if "entities" not in result:
                     result["entities"] = []
@@ -290,20 +364,21 @@ class GeminiNLPClient:
                     result["categories"] = []
                 if "language" not in result:
                     result["language"] = "en"
-                
                 return result
-                
-            except Exception as e:
-                logger.error(f"Raw Gemini API response was: {response_text}")
-                logger.error(f"Failed to parse Gemini API response as JSON. Error: {str(e)}. Falling back to fallback analysis.")
-                return self._analyze_text_fallback(text)
-            
-        except Exception as e:
-            response_text_available = 'response_text' in locals() or 'response_text' in globals()
-            if response_text_available and response_text:
-                 logger.error(f"Error analyzing text. Raw Gemini API response was: {response_text}. Error: {str(e)}")
             else:
-                 logger.error(f"Error analyzing text: {str(e)}")
+                # Log the failure to parse and fall back
+                logger.error(f"All attempts to parse JSON from Gemini response failed. Raw response snippet: {response_text[:200]}...")
+                logger.error(f"Raw Gemini API response was: {response_text}") # Log the full response for detailed debugging if needed
+                logger.error(f"Failed to parse Gemini API response as JSON. Falling back to fallback analysis.") # More general error
+                return self._analyze_text_fallback(text)
+
+        except Exception as e: # This is the outer try-except for the API call itself
+            # Check if response_text was defined (i.e., API call was made and returned something)
+            response_text_available = 'response_text' in locals() or 'response_text' in globals()
+            if response_text_available and response_text: # response_text might be defined but empty
+                 logger.error(f"Error during Gemini API call or response processing. Raw Gemini API response was: {response_text}. Error: {str(e)}", exc_info=True)
+            else:
+                 logger.error(f"Error during Gemini API call or response processing: {str(e)}", exc_info=True)
             return self._analyze_text_fallback(text)
     
     def _analyze_text_fallback(self, text: str) -> Dict[str, Any]:
