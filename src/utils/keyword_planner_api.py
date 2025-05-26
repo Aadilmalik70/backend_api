@@ -303,5 +303,6 @@ class KeywordPlannerAPI:
                         "2023-04": random.randint(300, 800),
                     }
                 }
+                }
         
         return mock_data

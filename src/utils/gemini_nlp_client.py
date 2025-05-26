@@ -68,7 +68,8 @@ class GeminiNLPClient:
         
         try:
             # Generate content using Gemini API
-            model = self.client.GenerativeModel('gemini-pro')
+            logging.info("Using Gemini model: gemini-2.0-flash (free tier)")
+            model = self.client.GenerativeModel('gemini-2.0-flash')
             response = model.generate_content(prompt)
             
             # Extract text from response
@@ -244,7 +245,8 @@ class GeminiNLPClient:
         
         try:
             # Analyze text using Gemini API
-            model = self.client.GenerativeModel('gemini-pro')
+            logging.info("Using Gemini model: gemini-2.0-flash (free tier)")
+            model = self.client.GenerativeModel('gemini-2.0-flash')
             
             # Create a structured prompt for analysis
             analysis_prompt = f"""
