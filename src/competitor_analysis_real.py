@@ -390,15 +390,19 @@ class CompetitorAnalysisReal:
         
         # Extract insights
         insights = competitor_analysis.get("insights", {})
-        common_entities = insights.get("common_entities", [])
+        common_entities = insights.get("common_entities", []) # This will be an empty list if not found
         content_structure = insights.get("content_structure", {})
         
         # Generate content outline with Gemini
+        common_topics_string = ", ".join([entity['entity'] for entity in common_entities[:8]])
+        if not common_topics_string:
+            common_topics_string = "general best practices and common knowledge for this topic"
+
         outline_prompt = f"""
         Create a comprehensive content outline for an article about "{keyword}".
         
-        Consider these common topics from competitor analysis:
-        {', '.join([entity['entity'] for entity in common_entities[:8]])}
+        Consider these common topics from competitor analysis (or general best practices if specific topics are unavailable):
+        {common_topics_string}
         
         The outline should include:
         1. A compelling title
@@ -412,36 +416,58 @@ class CompetitorAnalysisReal:
         outline_response = self.nlp_client.generate_content(outline_prompt)
         
         # Generate recommendations with Gemini
+        avg_length = insights.get('content_length', {}).get('average', 0)
+        avg_paras = content_structure.get('average_paragraphs', 0)
+        avg_images = content_structure.get('average_images', 0)
+        avg_lists = content_structure.get('average_lists', 0)
+        sentiment_trend = insights.get('sentiment_trend', {}).get('interpretation', 'Neutral')
+
+        recommendations_prompt_considerations = []
+        if avg_length > 0:
+            recommendations_prompt_considerations.append(f"- Average content length: {avg_length} words")
+        else:
+            recommendations_prompt_considerations.append("- Competitor content length data is unavailable. Focus on creating comprehensive content.")
+        
+        if avg_paras > 0:
+            recommendations_prompt_considerations.append(f"- Average paragraphs: {avg_paras}")
+        if avg_images > 0:
+            recommendations_prompt_considerations.append(f"- Average images: {avg_images}")
+        if avg_lists > 0:
+            recommendations_prompt_considerations.append(f"- Average lists: {avg_lists}")
+        
+        recommendations_prompt_considerations.append(f"- Sentiment trend: {sentiment_trend}")
+
         recommendations_prompt = f"""
         Based on competitor analysis for the keyword "{keyword}", provide 5-7 specific content recommendations.
         
         Consider:
-        - Average content length: {insights.get('content_length', {}).get('average', 0)} words
-        - Average paragraphs: {content_structure.get('average_paragraphs', 0)}
-        - Average images: {content_structure.get('average_images', 0)}
-        - Average lists: {content_structure.get('average_lists', 0)}
-        - Sentiment trend: {insights.get('sentiment_trend', {}).get('interpretation', 'Neutral')}
+        {chr(10).join(recommendations_prompt_considerations)}
         
         Format the response as a list of specific, actionable recommendations.
+        If specific competitor data is limited, provide general best practice recommendations.
         """
         
         recommendations_response = self.nlp_client.generate_content(recommendations_prompt)
         
         # Parse recommendations into a list
         recommendations = []
-        for line in recommendations_response.split('\n'):
-            line = line.strip()
-            if line and (line.startswith('-') or line.startswith('*') or (len(line) > 2 and line[0].isdigit() and line[1] == '.')):
-                recommendations.append(line.lstrip('- *0123456789.').strip())
+        if recommendations_response and "fallback content" not in recommendations_response.lower() and "error" not in recommendations_response.lower():
+            for line in recommendations_response.split('\n'):
+                line = line.strip()
+                if line and (line.startswith('-') or line.startswith('*') or (len(line) > 2 and line[0].isdigit() and line[1] == '.')):
+                    recommendations.append(line.lstrip('- *0123456789.').strip())
         
-        # If parsing failed, create a default list
+        # If parsing failed or response indicates an issue, create a default list
         if not recommendations:
+            default_length_target = "1500-2000 words" if avg_length == 0 else f"{int(avg_length)} words"
             recommendations = [
-                "Include at least 5 high-quality images",
-                f"Target a content length of {int(insights.get('content_length', {}).get('average', 1500))} words",
-                "Use bulleted lists to improve readability",
-                "Include internal and external links for credibility",
-                "Structure content with clear headings and subheadings"
+                "Due to limited specific competitor data, these are general SEO and content best practices:",
+                "Include at least 3-5 high-quality images relevant to the topic.",
+                f"Aim for a comprehensive content length (e.g., {default_length_target}).",
+                "Use bulleted lists, numbered lists, and clear formatting (bolding, short paragraphs) to improve readability.",
+                "Include relevant internal links to related content on your site and external links to authoritative sources.",
+                "Structure content logically with clear headings (H2, H3) and subheadings. Ensure the main keyword is used naturally within headings and content.",
+                "Craft a compelling meta description and title tag that includes the target keyword."
             ]
         
         # Parse outline into structured format
@@ -484,8 +510,8 @@ class CompetitorAnalysisReal:
             },
             "recommendations": recommendations,
             "competitor_insights": {
-                "content_length": insights.get("content_length", {}),
-                "common_topics": [entity["entity"] for entity in common_entities[:5]],
+                "content_length": insights.get("content_length", {"average": 0, "min": 0, "max": 0}), # Ensure default structure
+                "common_topics": [entity["entity"] for entity in common_entities[:5]] if common_entities else [],
                 "sentiment_trend": insights.get("sentiment_trend", {}).get("interpretation", "Neutral")
             }
         }

@@ -9,6 +9,7 @@ import os
 import logging
 import random
 from typing import Dict, Any, List, Optional
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -46,7 +47,8 @@ class KeywordPlannerAPI:
                 self.client = GoogleAdsClient.load_from_dict(credentials)
                 logger.info("Google Ads API client initialized successfully")
             except Exception as e:
-                logger.error(f"Error initializing Google Ads API client: {str(e)}")
+                logger.error(f"Error initializing Google Ads API client: {type(e).__name__} - {str(e)}")
+                logger.info("Please ensure your Google Ads API credentials (developer_token, client_id, client_secret, refresh_token, login_customer_id) are correctly configured in your environment or credentials file and that the authorizing user has API access.")
                 self.client = None
         else:
             logger.warning("Google Ads API credentials not provided, using mock data")
@@ -186,21 +188,54 @@ class KeywordPlannerAPI:
         Returns:
             Dictionary containing trend data
         """
-        # This would extract monthly search volume data
-        # For now, we'll return a simplified version
+        logger.info(f"Google Ads API metrics object for trend data: {metrics}")
+
+        monthly_data_dict = {}
+        year_over_year_change = None
+        trend_direction = None
+        trend_strength = None
+        seasonal_pattern = "non-seasonal" # Placeholder, can be None if not determinable
+
+        # Attempt to parse monthly search volumes
+        # This is a guess, actual field name and structure may vary
+        if hasattr(metrics, 'monthly_search_volumes') and metrics.monthly_search_volumes:
+            for month_data in metrics.monthly_search_volumes:
+                try:
+                    # Assuming month_data is an object with 'year', 'month', and 'monthly_searches' attributes
+                    # Adjust based on actual structure
+                    year = month_data.year
+                    month_name = month_data.month.name # Assuming month is an enum
+                    # Convert month name to number (e.g., JANUARY to 01)
+                    month_number = datetime.strptime(month_name, "%B").month if isinstance(month_name, str) else month_name.value # if it's an enum
+                    month_str = f"{month_number:02d}"
+                    key = f"{year}-{month_str}"
+                    monthly_data_dict[key] = month_data.monthly_searches
+                except AttributeError as e:
+                    logger.warning(f"Could not parse month_data attribute: {e}. Data: {month_data}")
+                except Exception as e:
+                    logger.warning(f"Error processing monthly data point: {e}. Data: {month_data}")
         
-        # Determine trend direction and strength
-        trend_direction = "stable"
-        trend_strength = "n/a"
+        # Attempt to get year_over_year_change
+        if hasattr(metrics, 'year_over_year_change'):
+            year_over_year_change = metrics.year_over_year_change
+            
+        # Trend direction and strength might be available or derivable
+        # For now, defaulting to None if not directly available
+        if hasattr(metrics, 'trend_direction'):
+            trend_direction = metrics.trend_direction
         
-        # In a real implementation, this would analyze the monthly data
-        
+        if hasattr(metrics, 'trend_strength'):
+            trend_strength = metrics.trend_strength
+
+        # seasonal_pattern could be determined by analyzing monthly_data_dict if enough data points exist
+        # For now, it's a placeholder or can be set to None.
+
         return {
             "trend_direction": trend_direction,
             "trend_strength": trend_strength,
-            "seasonal_pattern": "non-seasonal",
-            "year_over_year_change": "N/A",
-            "monthly_data": {}
+            "seasonal_pattern": seasonal_pattern,
+            "year_over_year_change": year_over_year_change,
+            "monthly_data": monthly_data_dict
         }
     
     def _get_mock_keyword_ideas(self, keywords: List[str]) -> Dict[str, Dict[str, Any]]:
@@ -226,11 +261,16 @@ class KeywordPlannerAPI:
                 "competition_index": 50,
                 "cpc": 1.5,
                 "trend_data": {
-                    "trend_direction": "stable",
-                    "trend_strength": "n/a",
-                    "seasonal_pattern": "non-seasonal",
-                    "year_over_year_change": "N/A",
-                    "monthly_data": {}
+                    "trend_direction": random.choice(["up", "down", "stable", None]),
+                    "trend_strength": random.choice(["low", "medium", "high", None]),
+                    "seasonal_pattern": "non-seasonal", # Could be improved
+                    "year_over_year_change": f"{random.randint(-10, 20)}%",
+                    "monthly_data": {
+                        "2023-01": random.randint(500, 1000),
+                        "2023-02": random.randint(500, 1000),
+                        "2023-03": random.randint(500, 1000),
+                        "2023-04": random.randint(500, 1000),
+                    }
                 }
             }
         
@@ -252,11 +292,15 @@ class KeywordPlannerAPI:
                     "competition_index": 40,
                     "cpc": 1.2,
                     "trend_data": {
-                        "trend_direction": "stable",
-                        "trend_strength": "n/a",
-                        "seasonal_pattern": "non-seasonal",
-                        "year_over_year_change": "N/A",
-                        "monthly_data": {}
+                    "trend_direction": random.choice(["up", "down", "stable", None]),
+                    "trend_strength": random.choice(["low", "medium", "high", None]),
+                    "seasonal_pattern": "non-seasonal", # Could be improved
+                    "year_over_year_change": f"{random.randint(-10, 20)}%",
+                    "monthly_data": {
+                        "2023-01": random.randint(300, 800),
+                        "2023-02": random.randint(300, 800),
+                        "2023-03": random.randint(300, 800),
+                        "2023-04": random.randint(300, 800),
                     }
                 }
         

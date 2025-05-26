@@ -294,11 +294,16 @@ class GeminiNLPClient:
                 return result
                 
             except Exception as e:
-                logger.error(f"Error parsing Gemini API response: {str(e)}")
+                logger.error(f"Raw Gemini API response was: {response_text}")
+                logger.error(f"Failed to parse Gemini API response as JSON. Error: {str(e)}. Falling back to fallback analysis.")
                 return self._analyze_text_fallback(text)
             
         except Exception as e:
-            logger.error(f"Error analyzing text: {str(e)}")
+            response_text_available = 'response_text' in locals() or 'response_text' in globals()
+            if response_text_available and response_text:
+                 logger.error(f"Error analyzing text. Raw Gemini API response was: {response_text}. Error: {str(e)}")
+            else:
+                 logger.error(f"Error analyzing text: {str(e)}")
             return self._analyze_text_fallback(text)
     
     def _analyze_text_fallback(self, text: str) -> Dict[str, Any]:
