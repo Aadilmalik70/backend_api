@@ -11,7 +11,7 @@ import random
 from typing import Dict, Any, List, Optional
 
 from utils.keyword_planner_api import KeywordPlannerAPI
-
+from utils.serpapi_keyword_analyzer import SerpAPIKeywordAnalyzer
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -31,7 +31,7 @@ class KeywordProcessorEnhancedReal:
         Args:
             google_ads_credentials: Google Ads API credentials for real data integration
         """
-        self.keyword_planner = KeywordPlannerAPI(credentials=google_ads_credentials)
+        self.keyword_planner = SerpAPIKeywordAnalyzer()
         
         # Define difficulty factors (weights)
         self.difficulty_factors = {
@@ -265,3 +265,6 @@ class KeywordProcessorEnhancedReal:
             }
         
         return trend_analysis
+
+
+    

@@ -55,7 +55,7 @@ def process_input():
         # Generate content blueprint using new signature
         content_blueprint = insight_generator.generate_content_blueprint(
             keyword=input_text,  # Note: parameter name change
-            num_competitors=5
+            num_competitors=20
         )
         
         # Generate SERP optimization recommendations using new signature
@@ -123,7 +123,7 @@ def export_content():
             return jsonify({"error": "Content type, format, and content data are required"}), 400
             
         # Export the content
-        result = export_integration.export_content(content_type, format_id, content_data)
+        result = export_integration.export_data( format=format_id,data=content_data)
         
         return jsonify(result)
         

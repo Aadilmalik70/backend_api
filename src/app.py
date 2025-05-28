@@ -309,7 +309,7 @@ async def research():
         # --- Step 3: Analyze competitor content ---
         competitor_data = {} # Initialize with empty dict
         urls_to_analyze = serp_data.get('top_urls', []) # Use URLs from SERP data
-        content_analysis_max_urls = 5 # Max URLs for content analysis (can be configured)
+        content_analysis_max_urls = 20 # Max URLs for content analysis (can be configured)
 
         if urls_to_analyze and content_analysis_possible:
             try:

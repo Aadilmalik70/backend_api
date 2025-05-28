@@ -37,7 +37,7 @@ class CompetitorAnalysisReal:
         self.content_scraper = BrowserContentScraper()
         self.nlp_client = GeminiNLPClient(api_key=gemini_api_key)
     
-    def analyze_competitors(self, keyword: str, limit: int = 5, num_competitors: int = None) -> Dict[str, Any]:
+    def analyze_competitors(self, keyword: str, limit: int = 20, num_competitors: int = None) -> Dict[str, Any]:
         """
         Analyze competitors for a keyword.
         
@@ -372,7 +372,7 @@ class CompetitorAnalysisReal:
             "topic_clusters": topic_clusters
         }
     
-    def generate_content_blueprint(self, keyword: str, num_competitors: int = 5) -> Dict[str, Any]:
+    def generate_content_blueprint(self, keyword: str, num_competitors: int = 20) -> Dict[str, Any]:
         """
         Generate content blueprint based on competitor analysis.
         
