@@ -283,93 +283,101 @@ class CompetitorAnalysisReal:
     
     def _generate_insights(self, competitor_analysis: List[Dict[str, Any]], keyword: str) -> Dict[str, Any]:
         """
-        Generate insights from competitor analysis.
+        REAL IMPLEMENTATION REQUIRED:
+        - Use actual scraped content lengths from competitor_analysis
+        - Extract real entities from actual competitor content
+        - Calculate real sentiment scores from actual text
+        - Identify genuine content gaps, not assumptions
+        """
         
-        Args:
-            competitor_analysis: List of competitor analyses
-            keyword: Target keyword
+        # MUST: Validate that competitor_analysis contains real scraped data
+        if not competitor_analysis:
+            logger.error("No real competitor data available for analysis")
+            return self._get_empty_insights_with_reason("No competitor data scraped")
+        
+        # MUST: Extract real content metrics from scraped data
+        real_content_lengths = []
+        real_entities = []
+        real_sentiment_scores = []
+        
+        for competitor in competitor_analysis:
+            # Validate this is real scraped data, not mock
+            content_length = competitor.get("content_length", 0)
+            if content_length > 0:  # Only count real content
+                real_content_lengths.append(content_length)
             
-        Returns:
-            Dictionary containing insights
-        """
-        # Extract content lengths
-        content_lengths = [c.get("content_length", 0) for c in competitor_analysis]
-        avg_content_length = sum(content_lengths) / max(1, len(content_lengths))
-        
-        # Extract content structure metrics
-        structure_metrics = {}
-        for competitor in competitor_analysis:
-            structure = competitor.get("content_structure", {})
-            for key, value in structure.items():
-                if isinstance(value, (int, float)):
-                    if key not in structure_metrics:
-                        structure_metrics[key] = []
-                    structure_metrics[key].append(value)
-        
-        # Calculate average structure metrics
-        avg_structure = {}
-        for key, values in structure_metrics.items():
-            avg_structure[key] = sum(values) / max(1, len(values))
-        
-        # Extract entities
-        all_entities = []
-        for competitor in competitor_analysis:
+            # Extract real entities from actual scraped content
             entities = competitor.get("entities", [])
-            all_entities.extend(entities)
-        
-        # Count entity occurrences
-        entity_counts = {}
-        for entity in all_entities:
-            name = entity.get("name", "").lower()
-            if name:
-                entity_counts[name] = entity_counts.get(name, 0) + 1
-        
-        # Get common entities
-        common_entities = []
-        for entity, count in sorted(entity_counts.items(), key=lambda x: x[1], reverse=True)[:10]:
-            common_entities.append({"entity": entity, "count": count})
-        
-        # Extract sentiment scores
-        sentiment_scores = []
-        for competitor in competitor_analysis:
+            if entities and isinstance(entities, list):
+                real_entities.extend([e.get("name", "") for e in entities if e.get("name")])
+            
+            # Extract real sentiment from actual analysis
             sentiment = competitor.get("sentiment", {})
-            score = sentiment.get("score", 0)
-            sentiment_scores.append(score)
+            if sentiment and isinstance(sentiment, dict):
+                score = sentiment.get("score", 0)
+                if isinstance(score, (int, float)):
+                    real_sentiment_scores.append(score)
         
-        # Calculate average sentiment
-        avg_sentiment = sum(sentiment_scores) / max(1, len(sentiment_scores))
+        # MUST: Use real data for calculations
+        if real_content_lengths:
+            content_insights = {
+                "average": sum(real_content_lengths) / len(real_content_lengths),
+                "min": min(real_content_lengths),
+                "max": max(real_content_lengths),
+                "count": len(real_content_lengths)
+            }
+        else:
+            content_insights = {"error": "No real content data available"}
         
-        # Generate topic clusters with Gemini
-        topic_prompt = f"""
-        Based on the following common entities found in competitor content for the keyword "{keyword}":
-        {', '.join([entity['entity'] for entity in common_entities])}
+        # MUST: Extract real common topics from actual entities
+        from collections import Counter
+        if real_entities:
+            entity_counter = Counter([entity.lower().strip() for entity in real_entities if entity.strip()])
+            # Only include entities mentioned by multiple competitors (real commonality)
+            common_topics = [entity for entity, count in entity_counter.most_common(20) if count >= 2]
+        else:
+            common_topics = []
         
-        Generate 5 topic clusters that would be relevant for content about this keyword.
-        For each cluster, provide a cluster name and 3-5 related subtopics.
-        Format the response as a simple list of topic clusters.
-        """
-        
-        topic_clusters = self.nlp_client.generate_content(topic_prompt)
+        # MUST: Calculate real sentiment trend
+        if real_sentiment_scores:
+            avg_sentiment = sum(real_sentiment_scores) / len(real_sentiment_scores)
+            sentiment_trend = "Positive" if avg_sentiment > 0.1 else ("Negative" if avg_sentiment < -0.1 else "Neutral")
+        else:
+            sentiment_trend = "Unknown - No sentiment data"
         
         return {
-            "content_length": {
-                "average": round(avg_content_length, 2),
-                "min": min(content_lengths) if content_lengths else 0,
-                "max": max(content_lengths) if content_lengths else 0
-            },
-            "content_structure": {
-                "average_paragraphs": round(avg_structure.get("paragraph_count", 0), 2),
-                "average_images": round(avg_structure.get("image_count", 0), 2),
-                "average_lists": round(avg_structure.get("list_count", 0), 2),
-                "average_internal_links": round(avg_structure.get("internal_link_count", 0), 2),
-                "average_external_links": round(avg_structure.get("external_link_count", 0), 2)
-            },
-            "common_entities": common_entities,
-            "sentiment_trend": {
-                "average_score": round(avg_sentiment, 2),
-                "interpretation": "Positive" if avg_sentiment > 0.1 else ("Negative" if avg_sentiment < -0.1 else "Neutral")
-            },
-            "topic_clusters": topic_clusters
+            "content_length": content_insights,
+            "common_topics": common_topics,
+            "sentiment_trend": sentiment_trend,
+            "data_quality": {
+                "competitors_analyzed": len(competitor_analysis),
+                "content_samples": len(real_content_lengths),
+                "entities_extracted": len(real_entities),
+                "sentiment_samples": len(real_sentiment_scores)
+            }
+        }
+    
+    def _get_empty_insights_with_reason(self, reason: str) -> Dict[str, Any]:
+        """
+        Return empty insights structure with error reason.
+        
+        Args:
+            reason: Reason why insights are empty
+            
+        Returns:
+            Dictionary with empty insights and error reason
+        """
+        return {
+            "content_length": {"error": reason},
+            "common_topics": [],
+            "sentiment_trend": "Unknown - " + reason,
+            "data_quality": {
+                "competitors_analyzed": 0,
+                "content_samples": 0,
+                "entities_extracted": 0,
+                "sentiment_samples": 0,
+                "error": reason
+            }
         }
     
     def generate_content_blueprint(self, keyword: str, num_competitors: int = 20) -> Dict[str, Any]:
@@ -394,7 +402,7 @@ class CompetitorAnalysisReal:
         content_structure = insights.get("content_structure", {})
         
         # Generate content outline with Gemini
-        common_topics_string = ", ".join([entity['entity'] for entity in common_entities[:8]])
+        common_topics_string = ", ".join(common_entities[:8])  # common_entities is now a list of strings
         if not common_topics_string:
             common_topics_string = "general best practices and common knowledge for this topic"
 
@@ -417,23 +425,14 @@ class CompetitorAnalysisReal:
         
         # Generate recommendations with Gemini
         avg_length = insights.get('content_length', {}).get('average', 0)
-        avg_paras = content_structure.get('average_paragraphs', 0)
-        avg_images = content_structure.get('average_images', 0)
-        avg_lists = content_structure.get('average_lists', 0)
-        sentiment_trend = insights.get('sentiment_trend', {}).get('interpretation', 'Neutral')
+        # Note: content_structure is not available in insights from _generate_insights anymore
+        sentiment_trend = insights.get('sentiment_trend', 'Neutral')  # This is now a string, not dict
 
         recommendations_prompt_considerations = []
         if avg_length > 0:
             recommendations_prompt_considerations.append(f"- Average content length: {avg_length} words")
         else:
             recommendations_prompt_considerations.append("- Competitor content length data is unavailable. Focus on creating comprehensive content.")
-        
-        if avg_paras > 0:
-            recommendations_prompt_considerations.append(f"- Average paragraphs: {avg_paras}")
-        if avg_images > 0:
-            recommendations_prompt_considerations.append(f"- Average images: {avg_images}")
-        if avg_lists > 0:
-            recommendations_prompt_considerations.append(f"- Average lists: {avg_lists}")
         
         recommendations_prompt_considerations.append(f"- Sentiment trend: {sentiment_trend}")
 
@@ -511,8 +510,8 @@ class CompetitorAnalysisReal:
             "recommendations": recommendations,
             "competitor_insights": {
                 "content_length": insights.get("content_length", {"average": 0, "min": 0, "max": 0}), # Ensure default structure
-                "common_topics": [entity["entity"] for entity in common_entities[:5]] if common_entities else [],
-                "sentiment_trend": insights.get("sentiment_trend", {}).get("interpretation", "Neutral")
+                "common_topics": common_entities[:5],  # common_entities is already a list of strings
+                "sentiment_trend": insights.get("sentiment_trend", "Neutral")  # Fixed: sentiment_trend is now a string, not dict
             }
         }
         
