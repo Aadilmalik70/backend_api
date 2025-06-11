@@ -69,7 +69,7 @@ class KeywordProcessorEnhancedReal:
         keyword_metrics = self.keyword_planner.get_keyword_metrics(seed_keywords)
         logger.info(f"Retrieved metrics for {len(keyword_metrics)} keywords")
         
-        # Generate related keywords
+        # Generate related keywords (limit to reduce API calls)
         related_keywords_dict = self.keyword_planner.get_keyword_ideas(seed_keywords)
         logger.info(f"Generated {len(related_keywords_dict)} related keywords")
         

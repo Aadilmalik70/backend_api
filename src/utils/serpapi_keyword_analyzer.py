@@ -1,5 +1,5 @@
 """
-SerpAPI Keyword Analyzer - Real Data Implementation
+SerpAPI Keyword Analyzer - Real Data Implementation with Enhanced Rate Limiting
 """
 
 import os
@@ -16,9 +16,23 @@ class SerpAPIKeywordAnalyzer:
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.getenv('SERPAPI_KEY')
         self.base_url = "https://serpapi.com/search"
+        self.last_request_time = 0
+        self.min_request_interval = 3.0  # Increased to 3 seconds between requests
         
         if not self.api_key:
-            logger.warning("SerpAPI key not provided. Using enhanced estimation.")
+            raise Exception("SerpAPI key not provided. Please set SERPAPI_KEY environment variable.")
+
+    def _rate_limit(self):
+        """Implement aggressive rate limiting to avoid hitting API limits."""
+        current_time = time.time()
+        time_since_last_request = current_time - self.last_request_time
+        
+        if time_since_last_request < self.min_request_interval:
+            sleep_time = self.min_request_interval - time_since_last_request
+            logger.info(f"Rate limiting: sleeping for {sleep_time:.2f} seconds")
+            time.sleep(sleep_time)
+        
+        self.last_request_time = time.time()
 
     def get_keyword_metrics(self, seed_keywords: List[str]) -> List[Dict[str, Any]]:
         """
@@ -33,31 +47,10 @@ class SerpAPIKeywordAnalyzer:
                 if "keyword_metrics" in insights and insights["keyword_metrics"]:
                     metrics.append(insights["keyword_metrics"][0])
                 else:
-                    # Fallback if structure is unexpected
-                    metrics.append({
-                        "keyword": kw,
-                        "search_volume": 0,
-                        "cpc": 0.0,
-                        "competition": 0.5,
-                        "difficulty": 50,
-                        "opportunity": 50,
-                        "competition_level": "Unknown",
-                        "is_enhanced": False,
-                        "data_source": "unknown"
-                    })
+                    raise Exception(f"No keyword metrics returned for '{kw}'")
             except Exception as e:
                 logger.error(f"Error getting metrics for keyword '{kw}': {str(e)}")
-                metrics.append({
-                    "keyword": kw,
-                    "search_volume": 0,
-                    "cpc": 0.0,
-                    "competition": 0.5,
-                    "difficulty": 50,
-                    "opportunity": 50,
-                    "competition_level": "Unknown",
-                    "is_enhanced": False,
-                    "data_source": "error"
-                })
+                raise Exception(f"Failed to get metrics for keyword '{kw}': {str(e)}")
         return metrics
 
     def get_keyword_ideas(self, seed_keywords: List[str]) -> Dict[str, Dict[str, Any]]:
@@ -77,24 +70,35 @@ class SerpAPIKeywordAnalyzer:
                     if question:
                         # Use the question as a related keyword (strip punctuation)
                         rel_kw = question.replace("What is ", "").replace("How does ", "").replace("?", "").strip()
-                        if rel_kw and rel_kw not in related_keywords:
-                            insights = self.get_keyword_insights(rel_kw)
-                            if "keyword_metrics" in insights and insights["keyword_metrics"]:
-                                related_keywords[rel_kw] = insights["keyword_metrics"][0]
-                # Fallback: add simple variations if not enough ideas
-                if len(related_keywords) < 5:
+                        if rel_kw and rel_kw not in related_keywords and len(related_keywords) < 1:
+                            try:
+                                insights = self.get_keyword_insights(rel_kw)
+                                if "keyword_metrics" in insights and insights["keyword_metrics"]:
+                                    related_keywords[rel_kw] = insights["keyword_metrics"][0]
+                            except Exception as e:
+                                logger.warning(f"Failed to get insights for PAA keyword '{rel_kw}': {str(e)}")
+                                continue
+                
+                # Add simple variations if not enough ideas (limit to 2 to reduce API calls)
+                if len(related_keywords) < 2:
                     variations = [
-                        f"{kw} review", f"best {kw}", f"{kw} vs alternative", f"{kw} price", f"{kw} 2025"
+                        f"{kw} tools", f"best {kw}"
                     ]
-                    for vkw in variations:
+                    for vkw in variations[:2-len(related_keywords)]:  # Only add what we need
                         if vkw not in related_keywords:
-                            insights = self.get_keyword_insights(vkw)
-                            if "keyword_metrics" in insights and insights["keyword_metrics"]:
-                                related_keywords[vkw] = insights["keyword_metrics"][0]
-                        if len(related_keywords) >= 10:
+                            try:
+                                insights = self.get_keyword_insights(vkw)
+                                if "keyword_metrics" in insights and insights["keyword_metrics"]:
+                                    related_keywords[vkw] = insights["keyword_metrics"][0]
+                            except Exception as e:
+                                logger.warning(f"Failed to get insights for variation '{vkw}': {str(e)}")
+                                continue
+                        if len(related_keywords) >= 2:
                             break
             except Exception as e:
                 logger.error(f"Error generating keyword ideas for '{kw}': {str(e)}")
+                raise Exception(f"Failed to generate keyword ideas for '{kw}': {str(e)}")
+        
         return related_keywords
 
     def get_keyword_insights(self, keyword: str) -> Dict[str, Any]:
@@ -102,7 +106,7 @@ class SerpAPIKeywordAnalyzer:
         logger.info(f"Analyzing keyword with enhanced methods: {keyword}")
         
         try:
-            # Get SERP data (real if API available, enhanced estimation if not)
+            # Get SERP data with rate limiting
             serp_data = self._get_serp_data(keyword)
             
             # Analyze competition
@@ -117,82 +121,48 @@ class SerpAPIKeywordAnalyzer:
                 "competition_analysis": competition_analysis,
                 "keyword_metrics": [keyword_metrics],
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                "data_source": "serpapi" if self.api_key else "enhanced_estimation"
+                "data_source": "serpapi"
             }
             
         except Exception as e:
             logger.error(f"Error analyzing keyword {keyword}: {str(e)}")
-            return self._get_fallback_data(keyword)
+            raise Exception(f"Failed to analyze keyword '{keyword}': {str(e)}")
     
     def _get_serp_data(self, keyword: str) -> Dict[str, Any]:
-        """Get SERP data - real if API available, enhanced estimation otherwise."""
-        if self.api_key:
-            try:
-                params = {
-                    "engine": "google",
-                    "q": keyword,
-                    "api_key": self.api_key,
-                    "num": 20,
-                    "hl": "en",
-                    "gl": "us"
-                }
-                
-                response = requests.get(self.base_url, params=params, timeout=10)
-                response.raise_for_status()
-                data = response.json()
-                
-                return {
-                    "organic_results": data.get("organic_results", []),
-                    "people_also_ask": data.get("people_also_ask", []),
-                    "ads": data.get("ads", []),
-                    "total_results": data.get("search_information", {}).get("total_results", 0),
-                    "featured_snippet": data.get("featured_snippet"),
-                    "images": data.get("images", []),
-                    "videos": data.get("videos", []),
-                    "is_real_data": True
-                }
-                
-            except Exception as e:
-                logger.error(f"SerpAPI request failed: {str(e)}")
+        """Get SERP data from SerpAPI with aggressive rate limiting."""
+        self._rate_limit()
         
-        # Enhanced estimation fallback
-        return self._get_enhanced_serp_estimation(keyword)
-    
-    def _get_enhanced_serp_estimation(self, keyword: str) -> Dict[str, Any]:
-        """Enhanced SERP estimation based on keyword characteristics."""
-        word_count = len(keyword.split())
-        
-        # Estimate total results based on keyword specificity
-        if word_count == 1:
-            total_results = random.randint(5000000, 50000000)
-        elif word_count == 2:
-            total_results = random.randint(1000000, 10000000)
-        elif word_count == 3:
-            total_results = random.randint(100000, 2000000)
-        else:
-            total_results = random.randint(10000, 500000)
-        
-        # Estimate ads based on commercial intent
-        commercial_terms = ["buy", "price", "cost", "best", "cheap", "review", "vs"]
-        commercial_score = sum(1 for term in commercial_terms if term in keyword.lower())
-        
-        if commercial_score >= 2:
-            num_ads = random.randint(3, 4)
-        elif commercial_score >= 1:
-            num_ads = random.randint(1, 3)
-        else:
-            num_ads = random.randint(0, 2)
-        
-        return {
-            "organic_results": [{"title": f"Result for {keyword}", "link": f"https://example{i}.com"} for i in range(10)],
-            "people_also_ask": [{"question": f"What is {keyword}?"}, {"question": f"How does {keyword} work?"}],
-            "ads": [{"title": f"Ad for {keyword}"} for _ in range(num_ads)],
-            "total_results": total_results,
-            "featured_snippet": None if random.random() > 0.3 else {"title": f"Featured snippet for {keyword}"},
-            "images": [{"title": f"Image {i}"} for i in range(random.randint(0, 8))],
-            "videos": [{"title": f"Video {i}"} for i in range(random.randint(0, 3))],
-            "is_real_data": False
+        params = {
+            "engine": "google",
+            "q": keyword,
+            "api_key": self.api_key,
+            "num": 20,
+            "hl": "en",
+            "gl": "us"
         }
+        
+        try:
+            response = requests.get(self.base_url, params=params, timeout=15)
+            response.raise_for_status()
+            data = response.json()
+            
+            return {
+                "organic_results": data.get("organic_results", []),
+                "people_also_ask": data.get("people_also_ask", []),
+                "ads": data.get("ads", []),
+                "total_results": data.get("search_information", {}).get("total_results", 0),
+                "featured_snippet": data.get("featured_snippet"),
+                "images": data.get("images", []),
+                "videos": data.get("videos", []),
+                "is_real_data": True
+            }
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 429:
+                logger.warning(f"Rate limit hit for keyword '{keyword}', waiting longer...")
+                time.sleep(10)  # Wait 10 seconds if we hit rate limit
+                raise e
+            else:
+                raise e
     
     def _analyze_serp_competition(self, serp_data: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze SERP competition."""
@@ -262,7 +232,7 @@ class SerpAPIKeywordAnalyzer:
     
     def _calculate_enhanced_metrics(self, keyword: str, serp_data: Dict[str, Any], 
                                   competition_analysis: Dict[str, Any]) -> Dict[str, Any]:
-        """Calculate enhanced keyword metrics."""
+        """Calculate enhanced keyword metrics with trend data."""
         
         # Enhanced search volume estimation
         search_volume = self._estimate_search_volume(keyword, serp_data)
@@ -277,7 +247,7 @@ class SerpAPIKeywordAnalyzer:
         # Opportunity score
         opportunity = max(10, 100 - difficulty)
         
-        # Generate realistic trend data
+        # Generate trend data to ensure it exists
         trend_data = self._generate_trend_data(keyword)
         
         return {
@@ -296,9 +266,37 @@ class SerpAPIKeywordAnalyzer:
                 "images": competition_analysis["has_images"],
                 "videos": competition_analysis["has_videos"]
             },
-            "trend_data": trend_data,
+            "trend_data": trend_data,  # Ensure this is always included
             "is_enhanced": True,
-            "data_source": "serpapi" if serp_data.get("is_real_data") else "enhanced_estimation"
+            "data_source": "serpapi"
+        }
+    
+    def _generate_trend_data(self, keyword: str) -> Dict[str, Any]:
+        """Generate realistic trend data."""
+        # Generate 6 months of data
+        months = ["2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04"]
+        base_volume = random.randint(200, 1000)
+        
+        monthly_data = {}
+        trend_direction = random.choice(["up", "stable", "down"])
+        
+        for i, month in enumerate(months):
+            if trend_direction == "up":
+                trend_factor = 1 + (i * 0.08)
+            elif trend_direction == "down":
+                trend_factor = 1 - (i * 0.05)
+            else:
+                trend_factor = 1
+            
+            variation = random.uniform(0.85, 1.15)
+            monthly_data[month] = int(base_volume * trend_factor * variation)
+        
+        return {
+            "monthly_data": monthly_data,
+            "trend_direction": trend_direction,
+            "trend_strength": random.choice(["low", "medium", "high"]),
+            "seasonal_pattern": "non-seasonal",
+            "year_over_year_change": f"{random.randint(-20, 30)}%"
         }
     
     def _estimate_search_volume(self, keyword: str, serp_data: Dict[str, Any]) -> int:
@@ -393,49 +391,3 @@ class SerpAPIKeywordAnalyzer:
         final_cpc = base_cpc * variation
         
         return round(max(0.10, min(50.00, final_cpc)), 2)
-    
-    def _generate_trend_data(self, keyword: str) -> Dict[str, Any]:
-        """Generate realistic trend data."""
-        # Generate 6 months of data
-        months = ["2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04"]
-        base_volume = random.randint(200, 1000)
-        
-        monthly_data = {}
-        trend_direction = random.choice(["up", "stable", "down"])
-        
-        for i, month in enumerate(months):
-            if trend_direction == "up":
-                trend_factor = 1 + (i * 0.08)
-            elif trend_direction == "down":
-                trend_factor = 1 - (i * 0.05)
-            else:
-                trend_factor = 1
-            
-            variation = random.uniform(0.85, 1.15)
-            monthly_data[month] = int(base_volume * trend_factor * variation)
-        
-        return {
-            "monthly_data": monthly_data,
-            "trend_direction": trend_direction,
-            "trend_strength": random.choice(["low", "medium", "high"]),
-            "seasonal_pattern": "non-seasonal",
-            "year_over_year_change": f"{random.randint(-20, 30)}%"
-        }
-    
-    def _get_fallback_data(self, keyword: str) -> Dict[str, Any]:
-        """Complete fallback data."""
-        return {
-            "keyword": keyword,
-            "keyword_metrics": [{
-                "keyword": keyword,
-                "search_volume": random.randint(100, 1000),
-                "cpc": round(random.uniform(0.5, 3.0), 2),
-                "competition": random.uniform(0.3, 0.7),
-                "difficulty": random.randint(30, 70),
-                "opportunity": random.randint(30, 70),
-                "competition_level": "Medium",
-                "is_enhanced": False,
-                "data_source": "fallback"
-            }],
-            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-        }

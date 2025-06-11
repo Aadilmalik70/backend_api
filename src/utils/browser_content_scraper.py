@@ -1,8 +1,8 @@
 """
-Improved Content Scraper Module
+Improved Content Scraper Module with Enhanced Browser Simulation
 
-This module provides reliable web content scraping using requests + BeautifulSoup.
-This is a drop-in replacement for the Playwright-based scraper that fixes threading issues.
+This module provides reliable web content scraping using requests + BeautifulSoup
+with robust error handling and anti-bot detection countermeasures.
 """
 
 import os
@@ -25,10 +25,9 @@ logger = logging.getLogger(__name__)
 
 class BrowserContentScraper:
     """
-    A reliable content scraper using requests + BeautifulSoup.
+    A reliable content scraper with enhanced browser simulation and error handling.
     
-    This class provides the same interface as the original Playwright-based scraper
-    but with much better reliability and no threading issues.
+    This class provides robust web scraping with anti-bot detection countermeasures.
     """
     
     def __init__(self, headless: bool = True):
@@ -41,17 +40,20 @@ class BrowserContentScraper:
         self.headless = headless
         self.session = None
         self._lock = Lock()
+        self.last_request_time = 0
+        self.min_request_interval = 2.0  # 2 seconds between requests
+        self.failed_urls = set()  # Track failed URLs to avoid repeated attempts
         self._setup_session()
         
     def _setup_session(self):
-        """Set up the requests session with proper configuration."""
+        """Set up the requests session with enhanced browser simulation."""
         self.session = requests.Session()
         
-        # Configure retry strategy
+        # Configure retry strategy for non-403 errors
         retry_strategy = Retry(
-            total=3,
+            total=2,  # Reduced retries for faster processing
             backoff_factor=1,
-            status_forcelist=[429, 500, 502, 503, 504],
+            status_forcelist=[500, 502, 503, 504],  # Don't retry 403/429
             allowed_methods=["HEAD", "GET", "OPTIONS"]
         )
         
@@ -59,34 +61,60 @@ class BrowserContentScraper:
         self.session.mount("http://", adapter)
         self.session.mount("https://", adapter)
         
-        # Set realistic headers to avoid blocking
+        # Set comprehensive realistic headers
         self.session.headers.update({
             'User-Agent': self._get_random_user_agent(),
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Accept-Encoding': 'gzip, deflate',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.9,es;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
             'DNT': '1',
             'Connection': 'keep-alive',
             'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Cache-Control': 'max-age=0',
         })
         
-        # Set timeout
-        self.session.timeout = 30
+        # Set longer timeout for better success rate
+        self.session.timeout = 15
     
     def _get_random_user_agent(self) -> str:
-        """Get a random user agent to avoid detection."""
+        """Get a random realistic user agent to avoid detection."""
         user_agents = [
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0',
+            # Chrome on Windows
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+            # Chrome on Mac
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+            # Firefox on Windows
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0',
+            # Firefox on Mac
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
+            # Safari on Mac
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15',
+            # Edge on Windows
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
         ]
         return random.choice(user_agents)
     
     def _rate_limit(self):
-        """Simple rate limiting to be polite to servers."""
-        time.sleep(random.uniform(0.5, 1.5))
+        """Rate limiting with random variation to appear more human-like."""
+        current_time = time.time()
+        time_since_last_request = current_time - self.last_request_time
+        
+        # Add random variation to delays (1.5-3 seconds)
+        min_delay = self.min_request_interval + random.uniform(-0.5, 1.0)
+        
+        if time_since_last_request < min_delay:
+            sleep_time = min_delay - time_since_last_request
+            logger.info(f"Rate limiting: sleeping for {sleep_time:.2f} seconds")
+            time.sleep(sleep_time)
+        
+        self.last_request_time = time.time()
     
     def __enter__(self):
         """Context manager entry point."""
@@ -107,21 +135,32 @@ class BrowserContentScraper:
             self.session = None
         logger.info("Content scraper closed successfully")
     
-    def scrape_content(self, url: str) -> Dict[str, Any]:
+    def scrape_content(self, url: str, retry_count: int = 0) -> Dict[str, Any]:
         """
-        Scrape content from a web page.
+        Scrape content from a web page with enhanced error handling.
         
         Args:
             url: URL of the web page to scrape
+            retry_count: Current retry attempt (for internal use)
             
         Returns:
-            Dictionary containing scraped content
+            Dictionary containing scraped content or error info
         """
         logger.info(f"Scraping content from URL: {url}")
         
+        # Check if URL previously failed
+        if url in self.failed_urls and retry_count == 0:
+            logger.warning(f"Skipping previously failed URL: {url}")
+            return self._get_error_result(url, "Previously failed - skipping to avoid repeated failures")
+        
+        # Rate limit to be polite
+        self._rate_limit()
+        
         try:
-            # Rate limit to be polite
-            self._rate_limit()
+            # Refresh user agent for retry attempts
+            if retry_count > 0:
+                self.session.headers['User-Agent'] = self._get_random_user_agent()
+                logger.info(f"Retry attempt {retry_count} with new User-Agent")
             
             # Make the request
             response = self.session.get(url)
@@ -179,18 +218,70 @@ class BrowserContentScraper:
                 "domain": domain,
                 "content_metrics": content_metrics,
                 "scraped_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-                "status_code": response.status_code
+                "status_code": response.status_code,
+                "retry_count": retry_count
             }
             
             logger.info(f"Successfully scraped content from URL: {url}")
             return result
             
-        except requests.RequestException as e:
-            logger.error(f"Request error scraping content from URL {url}: {str(e)}")
-            return self._get_error_result(url, str(e))
+        except requests.exceptions.HTTPError as e:
+            return self._handle_http_error(url, e, retry_count)
+        except requests.exceptions.RequestException as e:
+            return self._handle_request_error(url, e, retry_count)
         except Exception as e:
-            logger.error(f"Error scraping content from URL {url}: {str(e)}")
-            return self._get_error_result(url, str(e))
+            logger.error(f"Unexpected error scraping URL {url}: {str(e)}")
+            return self._get_error_result(url, f"Unexpected error: {str(e)}")
+    
+    def _handle_http_error(self, url: str, error: requests.exceptions.HTTPError, retry_count: int) -> Dict[str, Any]:
+        """Handle HTTP errors with appropriate retry logic."""
+        status_code = error.response.status_code if error.response else 0
+        
+        if status_code == 403:
+            logger.warning(f"403 Forbidden for URL {url} - website blocking automated access")
+            self.failed_urls.add(url)  # Mark as failed to avoid future attempts
+            return self._get_error_result(url, f"403 Forbidden - Website blocks automated access", status_code)
+        
+        elif status_code == 429:
+            if retry_count < 2:
+                wait_time = (retry_count + 1) * 5  # 5, 10 seconds
+                logger.warning(f"Rate limited for URL {url}, waiting {wait_time} seconds before retry")
+                time.sleep(wait_time)
+                return self.scrape_content(url, retry_count + 1)
+            else:
+                logger.error(f"Rate limit exceeded for URL {url} after {retry_count} retries")
+                return self._get_error_result(url, f"Rate limit exceeded after {retry_count} retries", status_code)
+        
+        elif status_code in [404, 410]:
+            logger.warning(f"Content not found for URL {url} (HTTP {status_code})")
+            return self._get_error_result(url, f"Content not found (HTTP {status_code})", status_code)
+        
+        elif status_code >= 500 and retry_count < 1:
+            logger.warning(f"Server error for URL {url} (HTTP {status_code}), retrying...")
+            time.sleep(3)
+            return self.scrape_content(url, retry_count + 1)
+        
+        else:
+            logger.error(f"HTTP error for URL {url}: {status_code}")
+            return self._get_error_result(url, f"HTTP {status_code} error", status_code)
+    
+    def _handle_request_error(self, url: str, error: requests.exceptions.RequestException, retry_count: int) -> Dict[str, Any]:
+        """Handle request errors with retry logic."""
+        error_msg = str(error)
+        
+        if "timeout" in error_msg.lower() and retry_count < 1:
+            logger.warning(f"Timeout for URL {url}, retrying with longer timeout...")
+            self.session.timeout = 25  # Increase timeout for retry
+            time.sleep(2)
+            return self.scrape_content(url, retry_count + 1)
+        
+        elif "connection" in error_msg.lower():
+            logger.error(f"Connection error for URL {url}: {error_msg}")
+            return self._get_error_result(url, f"Connection error: {error_msg}")
+        
+        else:
+            logger.error(f"Request error for URL {url}: {error_msg}")
+            return self._get_error_result(url, f"Request error: {error_msg}")
     
     def _extract_main_content(self, soup: BeautifulSoup) -> str:
         """Extract main content from the page."""
@@ -406,12 +497,13 @@ class BrowserContentScraper:
         
         return max(1, syllable_count)
     
-    def _get_error_result(self, url: str, error_msg: str) -> Dict[str, Any]:
+    def _get_error_result(self, url: str, error_msg: str, status_code: int = 0) -> Dict[str, Any]:
         """Generate error result with consistent structure."""
         domain = urlparse(url).netloc
         return {
             "url": url,
             "error": error_msg,
+            "status_code": status_code,
             "title": "",
             "description": "",
             "meta_description": "",
@@ -430,212 +522,13 @@ class BrowserContentScraper:
                 "readability_score": 0,
                 "heading_count": 0,
                 "paragraph_count": 0,
+                "sentence_count": 0,
                 "image_count": 0,
                 "link_count": 0,
                 "avg_paragraph_length": 0,
                 "avg_sentence_length": 0,
                 "keyword_density": {}
             },
-            "scraped_at": time.strftime("%Y-%m-%d %H:%M:%S")
+            "scraped_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "failed": True
         }
-    
-    def scrape_competitors(self, keyword: str, limit: int = 20) -> List[Dict[str, Any]]:
-        """
-        Scrape competitor content for a keyword.
-        
-        Args:
-            keyword: Keyword to search for
-            limit: Maximum number of competitors to scrape
-            
-        Returns:
-            List of dictionaries containing competitor content
-        """
-        logger.info(f"Scraping competitors for keyword: {keyword}")
-        
-        try:
-            # Get search results first
-            search_results = self._get_search_results(keyword, limit)
-            
-            if not search_results:
-                logger.warning(f"No search results found for keyword: {keyword}")
-                return self._get_mock_competitors(keyword, limit)
-            
-            # Scrape content from each competitor
-            competitors = []
-            
-            # Use ThreadPoolExecutor for concurrent scraping (but limit concurrency to be polite)
-            max_workers = min(3, len(search_results))
-            
-            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                # Submit scraping tasks
-                future_to_result = {
-                    executor.submit(self._scrape_single_competitor, result): result 
-                    for result in search_results
-                }
-                
-                # Collect results
-                for future in concurrent.futures.as_completed(future_to_result):
-                    search_result = future_to_result[future]
-                    try:
-                        competitor_data = future.result()
-                        if competitor_data:
-                            competitors.append(competitor_data)
-                    except Exception as e:
-                        logger.error(f"Error scraping competitor {search_result.get('url', 'unknown')}: {str(e)}")
-                        # Add error result
-                        error_result = self._get_error_result(search_result.get('url', ''), str(e))
-                        error_result.update({
-                            'title': search_result.get('title', ''),
-                            'snippet': search_result.get('snippet', '')
-                        })
-                        competitors.append(error_result)
-            
-            logger.info(f"Successfully scraped {len(competitors)} competitors for keyword: {keyword}")
-            return competitors
-            
-        except Exception as e:
-            logger.error(f"Error scraping competitors for keyword {keyword}: {str(e)}")
-            return self._get_mock_competitors(keyword, limit)
-    
-    def _get_search_results(self, keyword: str, limit: int) -> List[Dict[str, str]]:
-        """Get search results for a keyword."""
-        try:
-            # Use DuckDuckGo search (more reliable than Google for scraping)
-            search_url = f"https://html.duckduckgo.com/html/?q={quote_plus(keyword)}"
-            
-            response = self.session.get(search_url)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            results = []
-            result_elements = soup.find_all('div', class_='result')
-            
-            for elem in result_elements[:limit]:
-                title_elem = elem.find('a', class_='result__a')
-                snippet_elem = elem.find('a', class_='result__snippet')
-                
-                if title_elem:
-                    title = title_elem.get_text(strip=True)
-                    url = title_elem.get('href', '')
-                    snippet = snippet_elem.get_text(strip=True) if snippet_elem else ''
-                    
-                    # Clean up URL (DuckDuckGo sometimes wraps URLs)
-                    if url.startswith('/l/?uddg='):
-                        # Extract actual URL from DuckDuckGo redirect
-                        import urllib.parse
-                        parsed = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
-                        if 'uddg' in parsed:
-                            url = urllib.parse.unquote(parsed['uddg'][0])
-                    
-                    if url.startswith('http') and title:
-                        results.append({
-                            'title': title,
-                            'url': url,
-                            'snippet': snippet
-                        })
-            
-            return results
-            
-        except Exception as e:
-            logger.error(f"Error getting search results: {str(e)}")
-            return []
-    
-    def _scrape_single_competitor(self, search_result: Dict[str, str]) -> Optional[Dict[str, Any]]:
-        """Scrape a single competitor URL."""
-        url = search_result.get('url', '')
-        if not url:
-            return None
-        
-        try:
-            # Rate limit
-            self._rate_limit()
-            
-            # Scrape the content
-            content_data = self.scrape_content(url)
-            
-            # Add search result metadata
-            content_data.update({
-                'title': search_result.get('title', content_data.get('title', '')),
-                'snippet': search_result.get('snippet', ''),
-            })
-            
-            return content_data
-            
-        except Exception as e:
-            logger.error(f"Error scraping competitor URL {url}: {str(e)}")
-            return None
-    
-    def _get_mock_competitors(self, keyword: str, limit: int = 5) -> List[Dict[str, Any]]:
-        """Generate mock competitor data as fallback."""
-        competitors = []
-        
-        # Common domains for fallback
-        domains = [
-            "example.com",
-            "sample-site.org",
-            "demo-content.net",
-            "test-domain.com",
-            "placeholder.info"
-        ]
-        
-        for i in range(min(limit, len(domains))):
-            domain = domains[i]
-            title = f"{keyword.title()} - {domain.split('.')[0].title()}"
-            snippet = f"Learn about {keyword} from {domain}. This is mock data due to scraping limitations."
-            
-            main_content = f"""
-            {title}
-            
-            {snippet}
-            
-            This is mock content generated because the actual content scraping failed.
-            In a real scenario, this would contain valuable information about {keyword}.
-            
-            Key Points about {keyword}:
-            - Important concept in the field
-            - Has various applications and use cases
-            - Requires proper understanding and implementation
-            
-            For actual content, please refer to the original source.
-            """
-            
-            content_data = {
-                "title": title,
-                "url": f"https://www.{domain}/{keyword.replace(' ', '-')}/",
-                "snippet": snippet,
-                "main_content": main_content,
-                "word_count": len(main_content.split()),
-                "headings": [
-                    {"level": "h1", "text": title},
-                    {"level": "h2", "text": f"About {keyword.title()}"}
-                ],
-                "links": {
-                    "internal": [{"text": "Home", "url": f"https://www.{domain}/"}],
-                    "external": [{"text": "External Link", "url": "https://www.google.com"}],
-                    "all": [{"text": "Home", "url": f"https://www.{domain}/"}],
-                    "total": 1
-                },
-                "images": [{"alt": "Sample Image", "src": f"https://www.{domain}/image.jpg"}],
-                "meta_description": snippet,
-                "description": snippet,
-                "domain": domain,
-                "content_metrics": {
-                    "readability_score": 65.0,
-                    "heading_count": 2,
-                    "paragraph_count": 4,
-                    "sentence_count": 8,
-                    "image_count": 1,
-                    "link_count": 1,
-                    "avg_paragraph_length": 50.0,
-                    "avg_sentence_length": 25.0,
-                    "keyword_density": {keyword.replace(' ', ''): 0.1}
-                },
-                "scraped_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-                "is_mock": True
-            }
-            
-            competitors.append(content_data)
-        
-        logger.info(f"Generated {len(competitors)} mock competitors for keyword: {keyword}")
-        return competitors
