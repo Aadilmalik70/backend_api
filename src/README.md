@@ -1,6 +1,6 @@
 # Overview
 
-This tool is used by Will’s Widgets staff to manage and report on online ads for our own websites. It helps us:
+This tools is used by Will’s Widgets staff to manage and report on online ads for our own websites. It helps us:
 
 - See how our ads are performing.
 - Generate reports for our team and partners.
