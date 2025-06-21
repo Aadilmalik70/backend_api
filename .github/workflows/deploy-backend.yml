@@ -3,7 +3,7 @@ name: Deploy Flask Backend
 on:
   push:
     branches:
-      - main # Trigger on pushes to the main branch of this repository
+      - master # Trigger on pushes to the main branch of this repository
 
 jobs:
   deploy-backend:
