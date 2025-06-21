@@ -34,7 +34,7 @@ jobs:
         echo "Starting Flask backend deployment..."
         ssh ubuntu@144.24.104.158 "
           cd /var/www/projects/backend_api && \
-          git pull origin main && \
+          git pull origin master && \
           # Ensure the virtual environment is sourced for pip install and gunicorn restart
           source venv/bin/activate && \
           pip install -r requirements.txt && \
