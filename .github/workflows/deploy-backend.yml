@@ -1,0 +1,45 @@
+name: Deploy Flask Backend
+
+on:
+  push:
+    branches:
+      - main # Trigger on pushes to the main branch of this repository
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest # Use a GitHub-hosted runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up SSH Agent
+      # This action securely adds your SSH private key to the SSH agent on the runner
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} # Uses the secret from *this* repository
+
+    - name: Add Server to Known Hosts
+      # Prevents SSH from asking "Are you sure you want to continue connecting?"
+      run: |
+        mkdir -p ~/.ssh
+        # IMPORTANT: Replace 144.24.104.158 with your actual server IP or domain name
+        ssh-keyscan 144.24.104.158 >> ~/.ssh/known_hosts
+        chmod 600 ~/.ssh/known_hosts
+
+    - name: Deploy Backend to Server via SSH
+      # Connects to your server, pulls the latest backend code, installs dependencies, and restarts Gunicorn
+      # IMPORTANT: Replace 'ubuntu@144.24.104.158' with your actual SSH user and server IP/domain
+      run: |
+        echo "Starting Flask backend deployment..."
+        ssh ubuntu@144.24.104.158 "
+          cd /var/www/projects/backend_api && \
+          git pull origin main && \
+          # Ensure the virtual environment is sourced for pip install and gunicorn restart
+          source venv/bin/activate && \
+          pip install -r requirements.txt && \
+          sudo systemctl restart backend_api && \
+          # Restart Nginx too, in case your backend API routes/config change in a way Nginx needs to know
+          sudo systemctl restart nginx
+        "
+        echo "Flask backend deployment complete."
