@@ -1,0 +1,923 @@
+{
+  "keyword": "content strategy",
+  "competitor_analysis": {
+    "keyword": "content strategy",
+    "competitors": [
+      {
+        "url": "https://www.nngroup.com/articles/content-strategy/",
+        "title": "Content Strategy 101",
+        "position": 1,
+        "domain": "www.nngroup.com",
+        "content_length": 12291,
+        "keyword_usage": {
+          "count": 34,
+          "density": 1.85,
+          "in_title": true,
+          "in_meta": true,
+          "in_h1": true,
+          "title_count": 1,
+          "meta_count": 1,
+          "h1_count": 1
+        },
+        "content_structure": {
+          "heading_structure": {
+            "h1": 1,
+            "h2": 10,
+            "h3": 4,
+            "h4": 3
+          },
+          "paragraph_count": 1,
+          "avg_paragraph_length": 12291.0,
+          "list_count": 0,
+          "image_count": 6,
+          "internal_link_count": 32,
+          "external_link_count": 9
+        },
+        "readability": {
+          "flesch_score": 1.79,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 16.43,
+          "avg_word_length": 6.68,
+          "sentence_count": 112,
+          "word_count": 1840
+        },
+        "sentiment": {
+          "score": 0.3,
+          "magnitude": 4.8
+        },
+        "entities": [
+          {
+            "name": "Content Strategy",
+            "type": "OTHER",
+            "salience": 0.4737625
+          },
+          {
+            "name": "Anna Kaley",
+            "type": "PERSON",
+            "salience": 0.12520984
+          },
+          {
+            "name": "content",
+            "type": "OTHER",
+            "salience": 0.08519261
+          },
+          {
+            "name": "content strategy",
+            "type": "OTHER",
+            "salience": 0.05990263
+          },
+          {
+            "name": "tactics",
+            "type": "OTHER",
+            "salience": 0.029873636
+          },
+          {
+            "name": "information",
+            "type": "OTHER",
+            "salience": 0.027074242
+          },
+          {
+            "name": "Kristina Halvorson",
+            "type": "PERSON",
+            "salience": 0.017517859
+          },
+          {
+            "name": "users",
+            "type": "PERSON",
+            "salience": 0.016304666
+          },
+          {
+            "name": "planning",
+            "type": "OTHER",
+            "salience": 0.013487281
+          },
+          {
+            "name": "user experience",
+            "type": "OTHER",
+            "salience": 0.01209529
+          },
+          {
+            "name": "content inventory",
+            "type": "OTHER",
+            "salience": 0.011244866
+          },
+          {
+            "name": "digital product",
+            "type": "OTHER",
+            "salience": 0.010103981
+          },
+          {
+            "name": "editorial calendar",
+            "type": "OTHER",
+            "salience": 0.00853773
+          },
+          {
+            "name": "maintenance",
+            "type": "OTHER",
+            "salience": 0.00851006
+          },
+          {
+            "name": "content frames",
+            "type": "OTHER",
+            "salience": 0.007902039
+          },
+          {
+            "name": "asset map",
+            "type": "OTHER",
+            "salience": 0.007729557
+          },
+          {
+            "name": "maintenance checklist",
+            "type": "OTHER",
+            "salience": 0.007191241
+          },
+          {
+            "name": "content scorecard",
+            "type": "OTHER",
+            "salience": 0.0067853923
+          },
+          {
+            "name": "UX teams",
+            "type": "ORGANIZATION",
+            "salience": 0.006762635
+          },
+          {
+            "name": "UX initiative",
+            "type": "OTHER",
+            "salience": 0.006228364
+          }
+        ],
+        "meta": {
+          "description": "A content strategy is a high-level plan that guides the intentional creation and maintenance of information in a digital product.",
+          "title": "Content Strategy 101 - NN/g",
+          "h1": "Content Strategy 101"
+        },
+        "status": "success",
+        "scraped_at": "2025-06-25 16:37:42"
+      },
+      {
+        "url": "https://blog.marketmuse.com/what-is-content-strategy/",
+        "title": "What is Content Strategy? (With Examples)",
+        "position": 2,
+        "domain": "blog.marketmuse.com",
+        "content_length": 31072,
+        "keyword_usage": {
+          "count": 0,
+          "density": 0.0,
+          "in_title": false,
+          "in_meta": false,
+          "in_h1": false,
+          "title_count": 0,
+          "meta_count": 0,
+          "h1_count": 0
+        },
+        "content_structure": {
+          "heading_structure": {},
+          "paragraph_count": 121,
+          "avg_paragraph_length": 255.26,
+          "list_count": 2,
+          "image_count": 0,
+          "internal_link_count": 0,
+          "external_link_count": 0
+        },
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 3.39,
+          "avg_word_length": 25.2,
+          "sentence_count": 364,
+          "word_count": 1233
+        },
+        "sentiment": {
+          "score": 0.0,
+          "magnitude": 0.0
+        },
+        "entities": [],
+        "meta": {
+          "description": "",
+          "title": "",
+          "h1": ""
+        },
+        "status": "success",
+        "scraped_at": "2025-06-25 16:37:51"
+      },
+      {
+        "url": "https://www.reddit.com/r/SocialMediaMarketing/comments/1gx529g/what_does_content_strategy_really_mean/",
+        "title": "What does content strategy really mean?",
+        "position": 3,
+        "domain": "www.reddit.com",
+        "content_length": 1137,
+        "keyword_usage": {
+          "count": 3,
+          "density": 1.83,
+          "in_title": false,
+          "in_meta": false,
+          "in_h1": true,
+          "title_count": 0,
+          "meta_count": 0,
+          "h1_count": 1
+        },
+        "content_structure": {
+          "heading_structure": {
+            "h1": 1,
+            "h2": 1
+          },
+          "paragraph_count": 1,
+          "avg_paragraph_length": 1137.0,
+          "list_count": 0,
+          "image_count": 1,
+          "internal_link_count": 8,
+          "external_link_count": 3
+        },
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 23.43,
+          "avg_word_length": 6.93,
+          "sentence_count": 7,
+          "word_count": 164
+        },
+        "sentiment": {
+          "score": 0.2,
+          "magnitude": 1.8
+        },
+        "entities": [
+          {
+            "name": "SocialMediaMarketing",
+            "type": "OTHER",
+            "salience": 0.5683188
+          },
+          {
+            "name": "SMM professionals",
+            "type": "PERSON",
+            "salience": 0.11009264
+          },
+          {
+            "name": "SmythOSInfo",
+            "type": "PERSON",
+            "salience": 0.09068711
+          },
+          {
+            "name": "content strategy",
+            "type": "OTHER",
+            "salience": 0.06840189
+          },
+          {
+            "name": "transition",
+            "type": "EVENT",
+            "salience": 0.031417623
+          },
+          {
+            "name": "journalism",
+            "type": "OTHER",
+            "salience": 0.029202507
+          },
+          {
+            "name": "content marketing",
+            "type": "OTHER",
+            "salience": 0.02798818
+          },
+          {
+            "name": "journalism background",
+            "type": "OTHER",
+            "salience": 0.017987298
+          },
+          {
+            "name": "writing",
+            "type": "OTHER",
+            "salience": 0.015725784
+          },
+          {
+            "name": "research skills",
+            "type": "OTHER",
+            "salience": 0.014419411
+          },
+          {
+            "name": "content marketing",
+            "type": "OTHER",
+            "salience": 0.008969998
+          },
+          {
+            "name": "planning",
+            "type": "OTHER",
+            "salience": 0.008253663
+          },
+          {
+            "name": "business goals",
+            "type": "OTHER",
+            "salience": 0.004334644
+          },
+          {
+            "name": "valuable content",
+            "type": "OTHER",
+            "salience": 0.004200407
+          }
+        ],
+        "meta": {
+          "description": "",
+          "title": "Reddit - The heart of the internet",
+          "h1": "What does content strategy really mean?"
+        },
+        "status": "success",
+        "scraped_at": "2025-06-25 16:37:56"
+      },
+      {
+        "url": "https://blog.hubspot.com/marketing/content-marketing-plan",
+        "title": "How to Develop a Content Strategy in 7 Steps (From Start ...",
+        "position": 4,
+        "domain": "blog.hubspot.com",
+        "content_length": 45956,
+        "keyword_usage": {
+          "count": 50,
+          "density": 0.68,
+          "in_title": true,
+          "in_meta": true,
+          "in_h1": true,
+          "title_count": 1,
+          "meta_count": 1,
+          "h1_count": 1
+        },
+        "content_structure": {
+          "heading_structure": {
+            "h1": 1,
+            "h2": 19,
+            "h3": 64,
+            "h4": 26
+          },
+          "paragraph_count": 1,
+          "avg_paragraph_length": 45956.0,
+          "list_count": 0,
+          "image_count": 37,
+          "internal_link_count": 42,
+          "external_link_count": 98
+        },
+        "readability": {
+          "flesch_score": 15.63,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 15.13,
+          "avg_word_length": 6.24,
+          "sentence_count": 487,
+          "word_count": 7370
+        },
+        "sentiment": {
+          "score": 0.2,
+          "magnitude": 9.4
+        },
+        "entities": [
+          {
+            "name": "Content Strategy",
+            "type": "OTHER",
+            "salience": 0.34897995
+          },
+          {
+            "name": "Content Marketing",
+            "type": "OTHER",
+            "salience": 0.20352212
+          },
+          {
+            "name": "Content",
+            "type": "OTHER",
+            "salience": 0.06226387
+          },
+          {
+            "name": "Marketing",
+            "type": "OTHER",
+            "salience": 0.03431851
+          },
+          {
+            "name": "HubSpot",
+            "type": "ORGANIZATION",
+            "salience": 0.01954904
+          },
+          {
+            "name": "goals",
+            "type": "OTHER",
+            "salience": 0.017823996
+          },
+          {
+            "name": "audience",
+            "type": "PERSON",
+            "salience": 0.014333491
+          },
+          {
+            "name": "plan",
+            "type": "OTHER",
+            "salience": 0.013595506
+          },
+          {
+            "name": "brand",
+            "type": "ORGANIZATION",
+            "salience": 0.012910761
+          },
+          {
+            "name": "team",
+            "type": "ORGANIZATION",
+            "salience": 0.011948517
+          },
+          {
+            "name": "channels",
+            "type": "OTHER",
+            "salience": 0.010655852
+          },
+          {
+            "name": "Content Marketing Planning Templates",
+            "type": "OTHER",
+            "salience": 0.010362067
+          },
+          {
+            "name": "social media",
+            "type": "OTHER",
+            "salience": 0.010205623
+          },
+          {
+            "name": "business",
+            "type": "OTHER",
+            "salience": 0.00967768
+          },
+          {
+            "name": "editorial calendar",
+            "type": "OTHER",
+            "salience": 0.008802759
+          },
+          {
+            "name": "buyer persona",
+            "type": "PERSON",
+            "salience": 0.008516663
+          },
+          {
+            "name": "data",
+            "type": "OTHER",
+            "salience": 0.00819806
+          },
+          {
+            "name": "site",
+            "type": "LOCATION",
+            "salience": 0.008030839
+          },
+          {
+            "name": "BuzzSumo Source",
+            "type": "OTHER",
+            "salience": 0.00648171
+          },
+          {
+            "name": "Caroline Forsey",
+            "type": "PERSON",
+            "salience": 0.005270822
+          },
+          {
+            "name": "marketers",
+            "type": "PERSON",
+            "salience": 0.005153149
+          },
+          {
+            "name": "process",
+            "type": "OTHER",
+            "salience": 0.004851682
+          },
+          {
+            "name": "content audit",
+            "type": "OTHER",
+            "salience": 0.0047565913
+          },
+          {
+            "name": "SEO",
+            "type": "OTHER",
+            "salience": 0.004492131
+          },
+          {
+            "name": "Niche Influencer Strategies",
+            "type": "OTHER",
+            "salience": 0.004458549
+          },
+          {
+            "name": "Feedly Source",
+            "type": "OTHER",
+            "salience": 0.004299202
+          },
+          {
+            "name": "BlogAbout Source",
+            "type": "OTHER",
+            "salience": 0.004165768
+          },
+          {
+            "name": "CoSchedule Headline Analyzer Source",
+            "type": "OTHER",
+            "salience": 0.0037624123
+          },
+          {
+            "name": "HubSpot's Website Grader Source",
+            "type": "OTHER",
+            "salience": 0.003604465
+          },
+          {
+            "name": "sales rep",
+            "type": "PERSON",
+            "salience": 0.0034946974
+          },
+          {
+            "name": "interviews",
+            "type": "EVENT",
+            "salience": 0.0021344552
+          },
+          {
+            "name": "Google Analytics",
+            "type": "ORGANIZATION",
+            "salience": 0.0019129548
+          },
+          {
+            "name": "Campaign Assistant",
+            "type": "OTHER",
+            "salience": 0.0012928804
+          },
+          {
+            "name": "podcast",
+            "type": "OTHER",
+            "salience": 0.0011254443
+          },
+          {
+            "name": "content tactics",
+            "type": "OTHER",
+            "salience": 0.0010871343
+          }
+        ],
+        "meta": {
+          "description": "Want your content to attract and engage your target audience at every stage of the funnel? Discover the steps to develop a comprehensive content strategy.",
+          "title": "How to Develop a Content Strategy in 7 Steps (From Start to Finish)",
+          "h1": "How to Develop a Content Strategy in 7 Steps (From Start to Finish)"
+        },
+        "status": "success",
+        "scraped_at": "2025-06-25 16:38:03"
+      },
+      {
+        "url": "https://contentmarketinginstitute.com/developing-a-strategy/",
+        "title": "Developing a Content Marketing Strategy",
+        "position": 5,
+        "domain": "contentmarketinginstitute.com",
+        "content_length": 54144,
+        "keyword_usage": {
+          "count": 0,
+          "density": 0.0,
+          "in_title": false,
+          "in_meta": false,
+          "in_h1": false,
+          "title_count": 0,
+          "meta_count": 0,
+          "h1_count": 0
+        },
+        "content_structure": {
+          "heading_structure": {},
+          "paragraph_count": 206,
+          "avg_paragraph_length": 261.54,
+          "list_count": 4,
+          "image_count": 0,
+          "internal_link_count": 0,
+          "external_link_count": 0
+        },
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 3.34,
+          "avg_word_length": 24.72,
+          "sentence_count": 655,
+          "word_count": 2190
+        },
+        "sentiment": {
+          "score": 0.0,
+          "magnitude": 0.0
+        },
+        "entities": [],
+        "meta": {
+          "description": "",
+          "title": "",
+          "h1": ""
+        },
+        "status": "success",
+        "scraped_at": "2025-06-25 16:38:13"
+      }
+    ],
+    "insights": {
+      "content_length": {
+        "average": 28920.0,
+        "min": 1137,
+        "max": 54144,
+        "count": 5
+      },
+      "common_topics": [
+        "content strategy",
+        "content marketing",
+        "content",
+        "planning",
+        "editorial calendar"
+      ],
+      "sentiment_trend": "Positive",
+      "data_quality": {
+        "competitors_analyzed": 5,
+        "successful_competitors": 5,
+        "failed_competitors": 0,
+        "success_rate": 100.0,
+        "content_samples": 5,
+        "entities_extracted": 69,
+        "sentiment_samples": 5
+      }
+    }
+  },
+  "heading_structure": {
+    "h1": "Content Strategy: A Comprehensive Guide to Planning and Executing Effective Content",
+    "h2_sections": [
+      {
+        "title": "Understanding the Fundamentals of Content Strategy",
+        "h3_subsections": [
+          "What is Content Strategy?",
+          "Why is Content Strategy Important?",
+          "Key Components of a Successful Content Strategy"
+        ]
+      },
+      {
+        "title": "Defining Your Content Goals and Audience",
+        "h3_subsections": [
+          "Identifying Your Business Objectives",
+          "Understanding Your Target Audience",
+          "Creating Audience Personas"
+        ]
+      },
+      {
+        "title": "Developing Your Content Plan and Editorial Calendar",
+        "h3_subsections": [
+          "Brainstorming Content Ideas",
+          "Choosing the Right Content Formats",
+          "Building Your Editorial Calendar"
+        ]
+      },
+      {
+        "title": "Content Creation, Optimization, and Distribution",
+        "h3_subsections": [
+          "Creating High-Quality Content",
+          "Optimizing Content for Search Engines (SEO)",
+          "Distributing Your Content Across Channels"
+        ]
+      },
+      {
+        "title": "Measuring and Analyzing Content Performance",
+        "h3_subsections": [
+          "Key Content Metrics to Track",
+          "Using Analytics Tools for Content Insights",
+          "Adjusting Your Strategy Based on Data"
+        ]
+      },
+      {
+        "title": "Content Strategy Best Practices and Emerging Trends",
+        "h3_subsections": [
+          "Staying Up-to-Date with Industry Trends",
+          "Common Content Strategy Mistakes to Avoid",
+          "The Future of Content Strategy"
+        ]
+      }
+    ]
+  },
+  "topic_clusters": {
+    "primary_cluster": [
+      "Content Strategy Fundamentals",
+      "Content Planning & Creation",
+      "Content Distribution & Promotion",
+      "Content Measurement & Optimization"
+    ],
+    "secondary_clusters": {
+      "Content Strategy Fundamentals": [
+        "Defining Content Goals & Objectives",
+        "Audience Research & Persona Development",
+        "Competitive Analysis",
+        "Content Audit & Gap Analysis",
+        "Brand Voice & Tone Guidelines"
+      ],
+      "Content Planning & Creation": [
+        "Content Calendar Development",
+        "Topic Research & Keyword Research",
+        "Content Format Selection (Blog Posts, Videos, Infographics)",
+        "Content Creation Workflow & Processes",
+        "Content Briefs & Outlines"
+      ],
+      "Content Distribution & Promotion": [
+        "Social Media Marketing",
+        "Email Marketing",
+        "Search Engine Optimization (SEO)",
+        "Paid Advertising",
+        "Influencer Marketing",
+        "Content Syndication"
+      ],
+      "Content Measurement & Optimization": [
+        "Key Performance Indicators (KPIs)",
+        "Analytics Tracking & Reporting",
+        "A/B Testing",
+        "Content Performance Analysis",
+        "SEO Monitoring",
+        "ROI Analysis"
+      ]
+    },
+    "related_keywords": [
+      "content marketing",
+      "digital marketing",
+      "content calendar",
+      "SEO",
+      "social media",
+      "brand strategy",
+      "marketing strategy",
+      "content creation",
+      "audience analysis",
+      "keyword research"
+    ]
+  },
+  "serp_features": {
+    "keyword": "content strategy",
+    "serp_features": [
+      {
+        "name": "featured_snippets",
+        "presence": "none",
+        "data": {
+          "presence": "none"
+        }
+      },
+      {
+        "name": "people_also_ask",
+        "presence": "strong",
+        "data": {
+          "presence": "strong",
+          "data": [
+            {
+              "question": "What is a content strategy?",
+              "snippet": "Content strategy guides the creation, delivery, and governance of useful, usable content. Content strategy means getting the right content, to the right people, in the right place, at the right time. Content strategy is an integrated set of user-centered, goal-driven choices about content throughout its lifecycle.",
+              "title": "What Is Content Strategy? Connecting the Dots Between Disciplines",
+              "link": "https://www.braintraffic.com/blog/what-is-content-strategy#:~:text=Content%20strategy%20guides%20the%20creation,about%20content%20throughout%20its%20lifecycle.",
+              "displayed_link": "https://www.braintraffic.com › blog › what-is-content-str...",
+              "source_logo": "https://serpapi.com/searches/685bd7e971ff8c2bf3ff0200/images/38c6bbf54ea985aff913e9c0eefff385ceaa4eca40d31235f2c271b7646fbff6.png",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgaXMgYSBjb250ZW50IHN0cmF0ZWd5PyIsImxrIjoiR2hkM2FHRjBJR0VnWTI5dWRHVnVkQ0J6ZEhKaGRHVm5lUSIsImJzIjoiYy1PeTVwSU96MGdzVWNnc1ZraFVTTTdQSzBuTksxRW9MaWxLTEVsTnI3U1gyQjl0SkNrbFhnNVNnU25ORmNHbEFkYWNXSlNxa0ZxUm1GdVFrMXFza0otR3JqQXp0ZGhlb2xQR1NGTkt2Wnc0NVZ3RlhDWndrMHN5VWhYTWdaS3BCY1VLbVhrS3lVV3BpU1daZWVsWTNmdVR6OGhVeXJpY2RLMWN2bHlhS0RhYVFMVmh1ZzlvellzOEkxa3BhVHhLQkJnQiIsImlkIjoiZmNfNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVFfMSJ9",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgaXMgYSBjb250ZW50IHN0cmF0ZWd5PyIsImxrIjoiR2hkM2FHRjBJR0VnWTI5dWRHVnVkQ0J6ZEhKaGRHVm5lUSIsImJzIjoiYy1PeTVwSU96MGdzVWNnc1ZraFVTTTdQSzBuTksxRW9MaWxLTEVsTnI3U1gyQjl0SkNrbFhnNVNnU25ORmNHbEFkYWNXSlNxa0ZxUm1GdVFrMXFza0otR3JqQXp0ZGhlb2xQR1NGTkt2Wnc0NVZ3RlhDWndrMHN5VWhYTWdaS3BCY1VLbVhrS3lVV3BpU1daZWVsWTNmdVR6OGhVeXJpY2RLMWN2bHlhS0RhYVFMVmh1ZzlvellzOEkxa3BhVHhLQkJnQiIsImlkIjoiZmNfNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVFfMSJ9"
+            },
+            {
+              "question": "What are examples of content strategies?",
+              "snippet": "A common content strategy example is implementing blog design and hub best practices. Blog optimization is important so more people can find your site and boost overall traffic. It's also a great way to map out development ideas to improve the user experience.",
+              "title": "6 Content Strategy Examples To Boost Success - Siege Media",
+              "link": "https://www.siegemedia.com/creation/content-strategy-examples#:~:text=A%20common%20content%20strategy%20example,to%20improve%20the%20user%20experience.",
+              "displayed_link": "https://www.siegemedia.com › creation › content-strateg...",
+              "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWPD7w_KPvh8pqYlrX0ebLL11mLgiiAX11DgRp3g6A&s",
+              "source_logo": "https://serpapi.com/searches/685bd7e971ff8c2bf3ff0200/images/38c6bbf54ea985aff913e9c0eefff385ff1441466fe385963fba147c96717fdf.png",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgYXJlIGV4YW1wbGVzIG9mIGNvbnRlbnQgc3RyYXRlZ2llcz8iLCJsayI6IkdpZDNhR0YwSUdGeVpTQmxlR0Z0Y0d4bGN5QnZaaUJqYjI1MFpXNTBJSE4wY21GMFpXZHBaWE0iLCJicyI6ImMtT3k1cElPejBnc1VjZ3NWa2hVU003UEswbk5LMUVvTGlsS0xFbE5yN1NYMkI5dEpDa2xYZzVTZ1NuTkZjR2xBZGFjV0pTcWtGcVJtRnVRazFxc2tKLUdyakF6dGRoZW9sUEdTRk5Ldlp3NDVWd0ZYQ1p3azBzeVVoWE1nWktwQmNVS21Ya0t5VVdwaVNXWmVlbFkzZnVUejhoVXlyaWNkSzFjdmx5YUtEYWFRTFZodWc5b3pZczhJMWtwYVR4S0JCZ0IiLCJpZCI6ImZjXzZkZGJhTC1HTXJmazJyb1AtSWlmNkFRXzEifQ==",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgYXJlIGV4YW1wbGVzIG9mIGNvbnRlbnQgc3RyYXRlZ2llcz8iLCJsayI6IkdpZDNhR0YwSUdGeVpTQmxlR0Z0Y0d4bGN5QnZaaUJqYjI1MFpXNTBJSE4wY21GMFpXZHBaWE0iLCJicyI6ImMtT3k1cElPejBnc1VjZ3NWa2hVU003UEswbk5LMUVvTGlsS0xFbE5yN1NYMkI5dEpDa2xYZzVTZ1NuTkZjR2xBZGFjV0pTcWtGcVJtRnVRazFxc2tKLUdyakF6dGRoZW9sUEdTRk5Ldlp3NDVWd0ZYQ1p3azBzeVVoWE1nWktwQmNVS21Ya0t5VVdwaVNXWmVlbFkzZnVUejhoVXlyaWNkSzFjdmx5YUtEYWFRTFZodWc5b3pZczhJMWtwYVR4S0JCZ0IiLCJpZCI6ImZjXzZkZGJhTC1HTXJmazJyb1AtSWlmNkFRXzEifQ%3D%3D"
+            },
+            {
+              "question": "What are the 7 steps in creating a content strategy?",
+              "snippet": null,
+              "title": "7-step content development process: step-by-step guide",
+              "date": "Jun 17, 2024",
+              "link": "https://contentsnare.com/content-development-process/",
+              "list": [
+                "Step 1: Do your research. ... ",
+                "Step 2: Analyze the information. ... ",
+                "Step 3: Plan your strategy. ... ",
+                "Step 4: Write. ... ",
+                "Step 5: Editing, SEO and publishing. ... ",
+                "Step 6: Take to social media. ... ",
+                "Step 7: Analyze and begin again."
+              ],
+              "displayed_link": "https://contentsnare.com › content-development-process",
+              "source_logo": "https://serpapi.com/searches/685bd7e971ff8c2bf3ff0200/images/38c6bbf54ea985aff913e9c0eefff385b4731c47b9f873a8932fa836601e06cc.png",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgYXJlIHRoZSA3IHN0ZXBzIGluIGNyZWF0aW5nIGEgY29udGVudCBzdHJhdGVneT8iLCJsayI6IkdqTjNhR0YwSUdGeVpTQjBhR1VnTnlCemRHVndjeUJwYmlCamNtVmhkR2x1WnlCaElHTnZiblJsYm5RZ2MzUnlZWFJsWjNrIiwiYnMiOiJjLU95NXBJT3owZ3NVY2dzVmtoVVNNN1BLMG5OSzFFb0xpbEtMRWxOcjdTWDJCOXRKQ2tsWGc1U2dTbk5GY0dsQWRhY1dKU3FrRnFSbUZ1UWsxcXNrSi1HcmpBenRkaGVvbFBHU0ZOS3ZadzQ1VndGWENad2swc3lVaFhNZ1pLcEJjVUttWGtLeVVXcGlTV1plZWxZM2Z1VHo4aFV5cmljZEsxY3ZseWFLRGFhUUxWaHVnOW96WXM4STFrcGFUeEtCQmdCIiwiaWQiOiJmY182ZGRiYUwtR01yZmsycm9QLUlpZjZBUV8xIn0=",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgYXJlIHRoZSA3IHN0ZXBzIGluIGNyZWF0aW5nIGEgY29udGVudCBzdHJhdGVneT8iLCJsayI6IkdqTjNhR0YwSUdGeVpTQjBhR1VnTnlCemRHVndjeUJwYmlCamNtVmhkR2x1WnlCaElHTnZiblJsYm5RZ2MzUnlZWFJsWjNrIiwiYnMiOiJjLU95NXBJT3owZ3NVY2dzVmtoVVNNN1BLMG5OSzFFb0xpbEtMRWxOcjdTWDJCOXRKQ2tsWGc1U2dTbk5GY0dsQWRhY1dKU3FrRnFSbUZ1UWsxcXNrSi1HcmpBenRkaGVvbFBHU0ZOS3ZadzQ1VndGWENad2swc3lVaFhNZ1pLcEJjVUttWGtLeVVXcGlTV1plZWxZM2Z1VHo4aFV5cmljZEsxY3ZseWFLRGFhUUxWaHVnOW96WXM4STFrcGFUeEtCQmdCIiwiaWQiOiJmY182ZGRiYUwtR01yZmsycm9QLUlpZjZBUV8xIn0%3D"
+            },
+            {
+              "question": "What are the 4 steps of content strategy?",
+              "snippet": null,
+              "title": "A successful content strategy in 4 steps",
+              "link": "https://merkelijkheid.nl/en/online-marketing/content-marketing-strategy/",
+              "list": [
+                "The goal of content marketing and KPIs.",
+                "Determining the target audience and their content preferences.",
+                "Content ideas and topics.",
+                "Content distribution: distributing content."
+              ],
+              "displayed_link": "https://merkelijkheid.nl › online-marketing › content-ma...",
+              "source_logo": "https://serpapi.com/searches/685bd7e971ff8c2bf3ff0200/images/38c6bbf54ea985aff913e9c0eefff3850e1bbb13777866139918846c2e68bb72.png",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgYXJlIHRoZSA0IHN0ZXBzIG9mIGNvbnRlbnQgc3RyYXRlZ3k/IiwibGsiOiJHaHMwSUhOMFpYQnpJRzltSUdOdmJuUmxiblFnYzNSeVlYUmxaM2siLCJicyI6ImMtT3k1cElPejBnc1VjZ3NWa2hVU003UEswbk5LMUVvTGlsS0xFbE5yN1NYMkI5dEpDa2xYZzVTZ1NuTkZjR2xBZGFjV0pTcWtGcVJtRnVRazFxc2tKLUdyakF6dGRoZW9sUEdTRk5Ldlp3NDVWd0ZYQ1p3azBzeVVoWE1nWktwQmNVS21Ya0t5VVdwaVNXWmVlbFkzZnVUejhoVXlyaWNkSzFjdmx5YUtEYWFRTFZodWc5b3pZczhJMWtwYVR4S0JCZ0IiLCJpZCI6ImZjXzZkZGJhTC1HTXJmazJyb1AtSWlmNkFRXzEifQ==",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaR1prdEdXVzVaVmpoVVZTMXJNbTkxY25jNVRESmhORlZRTWtjMVRWUTVZa0ZVUjNWUE5EaGFZbmRxVjBKcGVtOVJNVUZuVjJFeWFuRlJVR00xV0RsNFZuZERkMjB4YjJvMFdYb3pSVFZVYTFWRFZGZzVORWswVEZreFVSSVhObVJrWW1GTUxVZE5jbVpyTW5KdlVDMUphV1kyUVZFYUlrRkdUVUZIUjNGd1prYzVkM1JJYldSdGFsRjZSRFppYlhjM1Z6SXhURjlzYkdjIiwiZmN2IjoiMyIsImVpIjoiNmRkYmFMLUdNcmZrMnJvUC1JaWY2QVEiLCJxYyI6IkNoQmpiMjUwWlc1MElITjBjbUYwWldkNUVBQjl6WmtvUHciLCJxdWVzdGlvbiI6IldoYXQgYXJlIHRoZSA0IHN0ZXBzIG9mIGNvbnRlbnQgc3RyYXRlZ3k%2FIiwibGsiOiJHaHMwSUhOMFpYQnpJRzltSUdOdmJuUmxiblFnYzNSeVlYUmxaM2siLCJicyI6ImMtT3k1cElPejBnc1VjZ3NWa2hVU003UEswbk5LMUVvTGlsS0xFbE5yN1NYMkI5dEpDa2xYZzVTZ1NuTkZjR2xBZGFjV0pTcWtGcVJtRnVRazFxc2tKLUdyakF6dGRoZW9sUEdTRk5Ldlp3NDVWd0ZYQ1p3azBzeVVoWE1nWktwQmNVS21Ya0t5VVdwaVNXWmVlbFkzZnVUejhoVXlyaWNkSzFjdmx5YUtEYWFRTFZodWc5b3pZczhJMWtwYVR4S0JCZ0IiLCJpZCI6ImZjXzZkZGJhTC1HTXJmazJyb1AtSWlmNkFRXzEifQ%3D%3D"
+            }
+          ],
+          "count": 4
+        }
+      },
+      {
+        "name": "knowledge_panels",
+        "presence": "strong",
+        "data": {
+          "presence": "strong",
+          "data": {
+            "title": "Content strategy",
+            "type": "Job title",
+            "entity_type": "kp3_verticals",
+            "kgmid": "/m/05sz2r8",
+            "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/m/05sz2r8&hl=en-US&q=Content+strategy",
+            "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en-US&kgmid=%2Fm%2F05sz2r8&location=United+States&q=Content+strategy",
+            "description": "Content strategy guides the planning, development, and management of content. It is a recognized field in user experience design, and it also draws from adjacent disciplines such as information architecture, content management, business analysis, digital marketing, and technical communication.",
+            "description_highlighted_words": [],
+            "source": {
+              "name": " Wikipedia",
+              "link": "https://en.wikipedia.org/wiki/Content_strategy"
+            }
+          }
+        }
+      },
+      {
+        "name": "image_packs",
+        "presence": "none",
+        "data": {
+          "presence": "none"
+        }
+      },
+      {
+        "name": "video_results",
+        "presence": "none",
+        "data": {
+          "presence": "none"
+        }
+      }
+    ],
+    "recommendations": [
+      {
+        "feature": "featured_snippets",
+        "status": "Not present in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Structure content with clear headings and concise paragraphs",
+          "Answer the query directly and succinctly at the beginning",
+          "Use lists, tables, or step-by-step formats where appropriate",
+          "Include the target keyword in the heading and first paragraph",
+          "Keep answers between 40-60 words for optimal snippet length"
+        ]
+      },
+      {
+        "feature": "people_also_ask",
+        "status": "Prominently featured in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Research related questions using the SerpAPI People Also Ask data",
+          "Create FAQ sections addressing these related questions",
+          "Structure answers in a concise, direct format",
+          "Use schema markup for FAQ content",
+          "Link to more detailed content for each question"
+        ]
+      },
+      {
+        "feature": "knowledge_panels",
+        "status": "Prominently featured in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Ensure consistent entity information across the web",
+          "Create or claim Google Business Profile if applicable",
+          "Use schema markup for organization or person entities",
+          "Provide clear 'about' information on your website",
+          "Build authoritative backlinks to strengthen entity recognition"
+        ]
+      },
+      {
+        "feature": "image_packs",
+        "status": "Not present in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Use high-quality, relevant images with descriptive filenames",
+          "Add comprehensive alt text including target keywords",
+          "Implement image schema markup",
+          "Ensure images are responsive and fast-loading",
+          "Place images near relevant text content"
+        ]
+      },
+      {
+        "feature": "video_results",
+        "status": "Not present in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Create video content addressing the search query",
+          "Optimize video titles and descriptions with target keywords",
+          "Add timestamps and transcripts to videos",
+          "Embed videos on relevant pages with supporting text",
+          "Use video schema markup"
+        ]
+      }
+    ]
+  },
+  "content_insights": {
+    "avg_word_count": 0,
+    "common_sections": [],
+    "content_gaps": [],
+    "structural_patterns": {},
+    "analysis_status": "no_competitors"
+  },
+  "generation_metadata": {
+    "created_at": "2025-06-25T11:08:27.579880",
+    "generation_time": 48,
+    "version": "1.0",
+    "components_used": [
+      "competitor_analysis",
+      "content_analysis",
+      "serp_optimization",
+      "ai_generation"
+    ]
+  }
+}
