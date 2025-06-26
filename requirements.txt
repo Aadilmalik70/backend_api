@@ -23,3 +23,10 @@ selenium>=4.0.0
 playwright>=1.40.0  # For browser automation
 google-generativeai>=0.3.0  # For Gemini API
 aiohttp>=3.8.0  # For async HTTP requests
+
+# Authentication and Security Dependencies
+PyJWT==2.8.0  # JWT token handling
+Werkzeug==3.0.1  # Password hashing and security utilities
+cryptography==41.0.7  # Additional cryptographic functions
+email-validator==2.1.0  # Email validation
+
