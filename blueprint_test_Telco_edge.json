@@ -1,0 +1,992 @@
+{
+  "keyword": "Telco edge",
+  "competitor_analysis": {
+    "keyword": "Telco edge",
+    "competitors": [
+      {
+        "url": "https://www.telco.com/solution-edge-computing/",
+        "title": "Solution | Edge Computing - BATM Networks",
+        "position": 1,
+        "domain": "www.telco.com",
+        "content_length": 8389,
+        "keyword_usage": {
+          "count": 0,
+          "density": 0.0,
+          "in_title": false,
+          "in_meta": false,
+          "in_h1": false,
+          "title_count": 0,
+          "meta_count": 0,
+          "h1_count": 0
+        },
+        "content_structure": {
+          "heading_structure": {
+            "h1": 3,
+            "h2": 6,
+            "h3": 6,
+            "h4": 8
+          },
+          "paragraph_count": 3,
+          "avg_paragraph_length": 2795.33,
+          "list_count": 0,
+          "image_count": 9,
+          "internal_link_count": 8,
+          "external_link_count": 6
+        },
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 19.47,
+          "avg_word_length": 7.43,
+          "sentence_count": 58,
+          "word_count": 1129
+        },
+        "sentiment": {
+          "score": 0.3,
+          "magnitude": 4.4
+        },
+        "entities": [
+          {
+            "name": "Edge Computing",
+            "type": "OTHER",
+            "salience": 0.21320188
+          },
+          {
+            "name": "Edgility",
+            "type": "OTHER",
+            "salience": 0.18562198
+          },
+          {
+            "name": "data",
+            "type": "OTHER",
+            "salience": 0.06296027
+          },
+          {
+            "name": "network",
+            "type": "OTHER",
+            "salience": 0.03564352
+          },
+          {
+            "name": "edge devices",
+            "type": "OTHER",
+            "salience": 0.03265653
+          },
+          {
+            "name": "insights",
+            "type": "OTHER",
+            "salience": 0.024489658
+          },
+          {
+            "name": "scale",
+            "type": "OTHER",
+            "salience": 0.021404222
+          },
+          {
+            "name": "security",
+            "type": "OTHER",
+            "salience": 0.020971084
+          },
+          {
+            "name": "bandwidth",
+            "type": "OTHER",
+            "salience": 0.019118594
+          },
+          {
+            "name": "Computer Vision",
+            "type": "OTHER",
+            "salience": 0.017273043
+          },
+          {
+            "name": "intelligence",
+            "type": "OTHER",
+            "salience": 0.013794369
+          },
+          {
+            "name": "cloud",
+            "type": "OTHER",
+            "salience": 0.01368949
+          },
+          {
+            "name": "IoT",
+            "type": "OTHER",
+            "salience": 0.01313307
+          },
+          {
+            "name": "operations",
+            "type": "OTHER",
+            "salience": 0.013053835
+          },
+          {
+            "name": "Demo",
+            "type": "OTHER",
+            "salience": 0.012699132
+          },
+          {
+            "name": "edge management",
+            "type": "OTHER",
+            "salience": 0.011638021
+          },
+          {
+            "name": "Edge Computing Challenge",
+            "type": "OTHER",
+            "salience": 0.011395233
+          },
+          {
+            "name": "Robust Security",
+            "type": "OTHER",
+            "salience": 0.010584679
+          },
+          {
+            "name": "data processing",
+            "type": "OTHER",
+            "salience": 0.009837596
+          },
+          {
+            "name": "applications",
+            "type": "OTHER",
+            "salience": 0.009819141
+          },
+          {
+            "name": "Real-Time Insights Hub",
+            "type": "OTHER",
+            "salience": 0.008999993
+          },
+          {
+            "name": "Telco Systems",
+            "type": "ORGANIZATION",
+            "salience": 0.008679807
+          },
+          {
+            "name": "vendor",
+            "type": "PERSON",
+            "salience": 0.008250194
+          },
+          {
+            "name": "operational efficiency",
+            "type": "OTHER",
+            "salience": 0.007691872
+          },
+          {
+            "name": "seamless Integration",
+            "type": "OTHER",
+            "salience": 0.007398237
+          },
+          {
+            "name": "device operations",
+            "type": "OTHER",
+            "salience": 0.007339079
+          },
+          {
+            "name": "data breaches",
+            "type": "OTHER",
+            "salience": 0.0068944264
+          },
+          {
+            "name": "risk",
+            "type": "OTHER",
+            "salience": 0.0068944264
+          },
+          {
+            "name": "potential hazards",
+            "type": "OTHER",
+            "salience": 0.0068944264
+          }
+        ],
+        "meta": {
+          "description": "Simplify deployment, operations, and management of complex AI, apps, network & security functions at large-scale edge with Edgility",
+          "title": "Solution | Edge Computing - BATM Networks",
+          "h1": "Unlock the Power of Edge Computing"
+        },
+        "status": "success",
+        "scraped_at": "2025-06-30 17:08:59"
+      },
+      {
+        "url": "https://www.nearbycomputing.com/solutions/telco-edge-cloud/",
+        "title": "Telco Edge Cloud",
+        "position": 2,
+        "domain": "www.nearbycomputing.com",
+        "content_length": 1658,
+        "keyword_usage": {
+          "count": 6,
+          "density": 2.26,
+          "in_title": true,
+          "in_meta": true,
+          "in_h1": true,
+          "title_count": 1,
+          "meta_count": 1,
+          "h1_count": 1
+        },
+        "content_structure": {
+          "heading_structure": {
+            "h1": 1,
+            "h2": 1
+          },
+          "paragraph_count": 1,
+          "avg_paragraph_length": 1658.0,
+          "list_count": 0,
+          "image_count": 20,
+          "internal_link_count": 9,
+          "external_link_count": 7
+        },
+        "readability": {
+          "flesch_score": 13.06,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 17.73,
+          "avg_word_length": 6.23,
+          "sentence_count": 15,
+          "word_count": 266
+        },
+        "sentiment": {
+          "score": 0.3,
+          "magnitude": 2.9
+        },
+        "entities": [
+          {
+            "name": "telco edge cloud",
+            "type": "OTHER",
+            "salience": 0.55570275
+          },
+          {
+            "name": "end user",
+            "type": "PERSON",
+            "salience": 0.07013381
+          },
+          {
+            "name": "service providers",
+            "type": "ORGANIZATION",
+            "salience": 0.06815211
+          },
+          {
+            "name": "bandwidth",
+            "type": "OTHER",
+            "salience": 0.03701327
+          },
+          {
+            "name": "edge",
+            "type": "OTHER",
+            "salience": 0.033773106
+          },
+          {
+            "name": "cloud services",
+            "type": "OTHER",
+            "salience": 0.030892138
+          },
+          {
+            "name": "control plane",
+            "type": "OTHER",
+            "salience": 0.027785167
+          },
+          {
+            "name": "core data center",
+            "type": "LOCATION",
+            "salience": 0.027785167
+          },
+          {
+            "name": "workloads",
+            "type": "OTHER",
+            "salience": 0.025769811
+          },
+          {
+            "name": "software applications",
+            "type": "OTHER",
+            "salience": 0.025769811
+          },
+          {
+            "name": "latency",
+            "type": "OTHER",
+            "salience": 0.024323713
+          },
+          {
+            "name": "network",
+            "type": "OTHER",
+            "salience": 0.016401492
+          },
+          {
+            "name": "end users",
+            "type": "PERSON",
+            "salience": 0.015323682
+          },
+          {
+            "name": "network utilization",
+            "type": "OTHER",
+            "salience": 0.012368344
+          },
+          {
+            "name": "traffic",
+            "type": "OTHER",
+            "salience": 0.012368344
+          },
+          {
+            "name": "IOT",
+            "type": "OTHER",
+            "salience": 0.011693527
+          },
+          {
+            "name": "AR/VR",
+            "type": "OTHER",
+            "salience": 0.011693527
+          },
+          {
+            "name": "CDN",
+            "type": "OTHER",
+            "salience": 0.011693527
+          },
+          {
+            "name": "Costs",
+            "type": "OTHER",
+            "salience": 0.010262512
+          },
+          {
+            "name": "data",
+            "type": "OTHER",
+            "salience": 0.010262512
+          },
+          {
+            "name": "public cloud",
+            "type": "OTHER",
+            "salience": 0.010262512
+          },
+          {
+            "name": "footprint",
+            "type": "OTHER",
+            "salience": 0.010262512
+          },
+          {
+            "name": "maintenance costs",
+            "type": "OTHER",
+            "salience": 0.008831475
+          },
+          {
+            "name": "edge computing",
+            "type": "OTHER",
+            "salience": 0.008831475
+          },
+          {
+            "name": "technology revolution",
+            "type": "EVENT",
+            "salience": 0.008831475
+          },
+          {
+            "name": "Journey partner",
+            "type": "OTHER",
+            "salience": 0.008831475
+          },
+          {
+            "name": "Journey partner",
+            "type": "OTHER",
+            "salience": 0.008831475
+          }
+        ],
+        "meta": {
+          "description": "Enhanced user experience with Telco Edge Cloud a Federated solution for high-bandwidth and low-latency services with a distributed deployment.",
+          "title": "Telco Edge Cloud",
+          "h1": "Telco Edge Cloud"
+        },
+        "status": "success",
+        "scraped_at": "2025-06-30 17:09:10"
+      },
+      {
+        "url": "https://stlpartners.com/articles/edge-computing/what-is-telco-federated-edge/",
+        "title": "What is telco federated edge?",
+        "position": 3,
+        "domain": "stlpartners.com",
+        "content_length": 24702,
+        "keyword_usage": {
+          "count": 0,
+          "density": 0.0,
+          "in_title": false,
+          "in_meta": false,
+          "in_h1": false,
+          "title_count": 0,
+          "meta_count": 0,
+          "h1_count": 0
+        },
+        "content_structure": {
+          "heading_structure": {},
+          "paragraph_count": 119,
+          "avg_paragraph_length": 206.18,
+          "list_count": 0,
+          "image_count": 0,
+          "internal_link_count": 0,
+          "external_link_count": 0
+        },
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 3.66,
+          "avg_word_length": 24.48,
+          "sentence_count": 276,
+          "word_count": 1009
+        },
+        "sentiment": {
+          "score": 0.0,
+          "magnitude": 0.0
+        },
+        "entities": [],
+        "meta": {
+          "description": "",
+          "title": "",
+          "h1": ""
+        },
+        "status": "success",
+        "scraped_at": "2025-06-30 17:09:19"
+      },
+      {
+        "url": "https://www.varnish-software.com/solutions/telco-edge/",
+        "title": "Telco Edge",
+        "position": 4,
+        "domain": "www.varnish-software.com",
+        "content_length": 7166,
+        "keyword_usage": {
+          "count": 2,
+          "density": 0.19,
+          "in_title": true,
+          "in_meta": false,
+          "in_h1": true,
+          "title_count": 1,
+          "meta_count": 0,
+          "h1_count": 1
+        },
+        "content_structure": {
+          "heading_structure": {
+            "h1": 1,
+            "h2": 15,
+            "h3": 28,
+            "h4": 3
+          },
+          "paragraph_count": 1,
+          "avg_paragraph_length": 7166.0,
+          "list_count": 0,
+          "image_count": 45,
+          "internal_link_count": 19,
+          "external_link_count": 3
+        },
+        "readability": {
+          "flesch_score": 0.52,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 16.67,
+          "avg_word_length": 6.72,
+          "sentence_count": 64,
+          "word_count": 1067
+        },
+        "sentiment": {
+          "score": 0.3,
+          "magnitude": 3.6
+        },
+        "entities": [
+          {
+            "name": "Telcos",
+            "type": "ORGANIZATION",
+            "salience": 0.20741472
+          },
+          {
+            "name": "Edge",
+            "type": "OTHER",
+            "salience": 0.15786476
+          },
+          {
+            "name": "Varnish Enterprise",
+            "type": "OTHER",
+            "salience": 0.1008842
+          },
+          {
+            "name": "content delivery software",
+            "type": "OTHER",
+            "salience": 0.047811422
+          },
+          {
+            "name": "application acceleration services",
+            "type": "OTHER",
+            "salience": 0.033892628
+          },
+          {
+            "name": "5G",
+            "type": "OTHER",
+            "salience": 0.032933593
+          },
+          {
+            "name": "Varnish",
+            "type": "OTHER",
+            "salience": 0.03222003
+          },
+          {
+            "name": "CD",
+            "type": "ORGANIZATION",
+            "salience": 0.023788145
+          },
+          {
+            "name": "HTTP transactions",
+            "type": "OTHER",
+            "salience": 0.019039048
+          },
+          {
+            "name": "platform",
+            "type": "OTHER",
+            "salience": 0.017907748
+          },
+          {
+            "name": "RTÉ",
+            "type": "ORGANIZATION",
+            "salience": 0.016420275
+          },
+          {
+            "name": "Michael Loftus Senior Technology Infrastructure Engineer",
+            "type": "PERSON",
+            "salience": 0.013777396
+          },
+          {
+            "name": "traffic routing",
+            "type": "OTHER",
+            "salience": 0.013735454
+          },
+          {
+            "name": "Tele2",
+            "type": "ORGANIZATION",
+            "salience": 0.013717077
+          },
+          {
+            "name": "SFR",
+            "type": "ORGANIZATION",
+            "salience": 0.013698703
+          },
+          {
+            "name": "Telia",
+            "type": "ORGANIZATION",
+            "salience": 0.013680328
+          },
+          {
+            "name": "origin health",
+            "type": "OTHER",
+            "salience": 0.012602144
+          },
+          {
+            "name": "Varnish Enterprise subscriptions",
+            "type": "OTHER",
+            "salience": 0.012235813
+          },
+          {
+            "name": "team",
+            "type": "OTHER",
+            "salience": 0.010250325
+          },
+          {
+            "name": "Support Team Flexible SLAs",
+            "type": "ORGANIZATION",
+            "salience": 0.00889168
+          },
+          {
+            "name": "knowledge",
+            "type": "OTHER",
+            "salience": 0.008211257
+          },
+          {
+            "name": "Ragnar Kåhre Solutions Architect",
+            "type": "PERSON",
+            "salience": 0.007999738
+          }
+        ],
+        "meta": {
+          "description": "Changing customer demands present challenges and opportunities for Telcos and Service Providers. Implement edge-enabled content delivery solutions to monetize network investments and capture revenue in high-growth areas.",
+          "title": "Varnish Software - Telco Edge",
+          "h1": "TELCO EDGE"
+        },
+        "status": "success",
+        "scraped_at": "2025-06-30 17:09:22"
+      },
+      {
+        "url": "https://news.lenovo.com/telco-enters-next-stage-of-evolution-edge-telefonica/",
+        "title": "Telco Enters the Next Stage of Evolution at the Edge",
+        "position": 5,
+        "domain": "news.lenovo.com",
+        "content_length": 18861,
+        "keyword_usage": {
+          "count": 0,
+          "density": 0.0,
+          "in_title": false,
+          "in_meta": false,
+          "in_h1": false,
+          "title_count": 0,
+          "meta_count": 0,
+          "h1_count": 0
+        },
+        "content_structure": {
+          "heading_structure": {},
+          "paragraph_count": 87,
+          "avg_paragraph_length": 215.32,
+          "list_count": 0,
+          "image_count": 0,
+          "internal_link_count": 0,
+          "external_link_count": 0
+        },
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Very Difficult",
+          "avg_sentence_length": 3.8,
+          "avg_word_length": 24.09,
+          "sentence_count": 206,
+          "word_count": 783
+        },
+        "sentiment": {
+          "score": 0.0,
+          "magnitude": 0.0
+        },
+        "entities": [],
+        "meta": {
+          "description": "",
+          "title": "",
+          "h1": ""
+        },
+        "status": "success",
+        "scraped_at": "2025-06-30 17:09:30"
+      }
+    ],
+    "insights": {
+      "content_length": {
+        "average": 12155.2,
+        "min": 1658,
+        "max": 24702,
+        "count": 5
+      },
+      "common_topics": [
+        "edge computing",
+        "data",
+        "network",
+        "bandwidth",
+        "iot",
+        "edge",
+        "journey partner"
+      ],
+      "sentiment_trend": "Positive",
+      "data_quality": {
+        "competitors_analyzed": 5,
+        "successful_competitors": 5,
+        "failed_competitors": 0,
+        "success_rate": 100.0,
+        "content_samples": 5,
+        "entities_extracted": 78,
+        "sentiment_samples": 5
+      }
+    }
+  },
+  "heading_structure": {
+    "h1": "Unlocking the Power of the Telco Edge: A Comprehensive Guide",
+    "h2_sections": [
+      {
+        "title": "What is Telco Edge Computing?",
+        "h3_subsections": [
+          "Defining Telco Edge and its Architecture",
+          "Key Benefits of Deploying Edge in Telco Networks",
+          "Telco Edge vs. Traditional Cloud Computing"
+        ]
+      },
+      {
+        "title": "Key Use Cases for Telco Edge",
+        "h3_subsections": [
+          "Enhanced Mobile Broadband (eMBB)",
+          "Ultra-Reliable Low Latency Communications (URLLC)",
+          "Massive Machine-Type Communications (mMTC)"
+        ]
+      },
+      {
+        "title": "Benefits of Telco Edge Computing",
+        "h3_subsections": [
+          "Reduced Latency and Improved Performance",
+          "Enhanced Security and Data Privacy",
+          "Optimized Network Resource Utilization"
+        ]
+      },
+      {
+        "title": "Challenges and Considerations for Telco Edge Deployment",
+        "h3_subsections": [
+          "Security Concerns and Mitigation Strategies",
+          "Scalability and Management of Distributed Edge Infrastructure",
+          "Interoperability and Standardization Challenges"
+        ]
+      },
+      {
+        "title": "Telco Edge Architecture and Technologies",
+        "h3_subsections": [
+          "Network Functions Virtualization (NFV) and Software-Defined Networking (SDN)",
+          "Containerization and Orchestration with Kubernetes",
+          "Hardware Acceleration and Edge Servers"
+        ]
+      },
+      {
+        "title": "The Future of Telco Edge",
+        "h3_subsections": [
+          "Emerging Trends and Innovations in Edge Computing",
+          "Telco Edge and the Metaverse",
+          "The Role of AI and Machine Learning at the Edge"
+        ]
+      }
+    ]
+  },
+  "topic_clusters": {
+    "primary_cluster": [
+      "Telco Edge Computing Applications",
+      "Telco Edge Architecture and Infrastructure",
+      "Benefits and Challenges of Telco Edge"
+    ],
+    "secondary_clusters": {
+      "Telco Edge Computing Applications": [
+        "5G Applications at the Edge",
+        "IoT and Telco Edge",
+        "AI and Machine Learning at the Telco Edge",
+        "AR/VR and Telco Edge Use Cases",
+        "Industry-Specific Telco Edge Solutions (Manufacturing, Healthcare, Retail)"
+      ],
+      "Telco Edge Architecture and Infrastructure": [
+        "MEC (Multi-access Edge Computing) Explained",
+        "Edge Servers and Hardware for Telcos",
+        "Network Slicing for Telco Edge",
+        "Telco Edge Security",
+        "Cloud-Native Architecture at the Edge",
+        "Open RAN and the Telco Edge",
+        "Private 5G and Telco Edge"
+      ],
+      "Benefits and Challenges of Telco Edge": [
+        "Reduced Latency with Telco Edge",
+        "Increased Bandwidth and Throughput",
+        "Enhanced Security and Privacy at the Edge",
+        "Cost Optimization with Telco Edge",
+        "Scalability and Flexibility of Telco Edge",
+        "Challenges of Telco Edge Deployment (Infrastructure, Security)",
+        "Telco Edge Security Challenges and Solutions",
+        "Telco Edge Management and Orchestration"
+      ]
+    },
+    "related_keywords": [
+      "MEC",
+      "Multi-access Edge Computing",
+      "5G Edge Computing",
+      "Edge Infrastructure",
+      "Edge Servers",
+      "Network Slicing",
+      "Cloud-Native Edge",
+      "Telco Cloud",
+      "Open RAN",
+      "Private 5G",
+      "Latency",
+      "Bandwidth",
+      "Security",
+      "Edge Orchestration",
+      "IoT Edge",
+      "AI Edge",
+      "AR/VR Edge",
+      "Edge AI",
+      "Edge Analytics"
+    ]
+  },
+  "serp_features": {
+    "keyword": "Telco edge",
+    "serp_features": [
+      {
+        "name": "featured_snippets",
+        "presence": "none",
+        "data": {
+          "presence": "none"
+        }
+      },
+      {
+        "name": "people_also_ask",
+        "presence": "strong",
+        "data": {
+          "presence": "strong",
+          "data": [
+            {
+              "question": "What is telco edge?",
+              "snippet": "We say telco edge is best thought of as distributed compute, managed by the operator, which may extend beyond the network edge and onto the customer edge. Telco edge cloud incorporates the benefits of cloud and local computing, and 'local' can be on-device or on-premises.",
+              "title": "What is Edge Computing? - STL Partners",
+              "link": "https://stlpartners.com/articles/edge-computing/what-is-edge-computing/#:~:text=We%20say%20telco%20edge%20is,%2Ddevice%20or%20on%2Dpremises.",
+              "displayed_link": "https://stlpartners.com › articles › what-is-edge-computi...",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIHRlbGNvIGVkZ2U/IiwibGsiOiJHaEozYUdGMElHbHpJSFJsYkdOdklHVmtaMlUiLCJicyI6ImMtUFM0eElPejBnc1VjZ3NWaWhKelVuT1YwaE5TVS0xbF9ndWJDUWlKVlNPSWNQbHlxVU9WNS1ScXBDYm1waVhtWmV1a0o4R2xsYkl6QU1wVGszT3o3V1hXQjFsSkM0bENoYUdLWVBLRlhPNWNNbkJqQUhKbFNna1ZTcmtwWmFVNXhkbFExMXdRODlJWGtxMkhKOGlyaUF1YldUSHBHU21wYVVXcGVZbHB5b2tBWldscHVZcG1Mb3JKT2FsUUkzY0xtMmtJQ1dIUlJYWWpTQjFwdWtDakFBIiwiaWQiOiJmY190M1ppYUpUWk92VFAwUEVQMEplN21BMF8xIn0=",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIHRlbGNvIGVkZ2U%2FIiwibGsiOiJHaEozYUdGMElHbHpJSFJsYkdOdklHVmtaMlUiLCJicyI6ImMtUFM0eElPejBnc1VjZ3NWaWhKelVuT1YwaE5TVS0xbF9ndWJDUWlKVlNPSWNQbHlxVU9WNS1ScXBDYm1waVhtWmV1a0o4R2xsYkl6QU1wVGszT3o3V1hXQjFsSkM0bENoYUdLWVBLRlhPNWNNbkJqQUhKbFNna1ZTcmtwWmFVNXhkbFExMXdRODlJWGtxMkhKOGlyaUF1YldUSHBHU21wYVVXcGVZbHB5b2tBWldscHVZcG1Mb3JKT2FsUUkzY0xtMmtJQ1dIUlJYWWpTQjFwdWtDakFBIiwiaWQiOiJmY190M1ppYUpUWk92VFAwUEVQMEplN21BMF8xIn0%3D"
+            },
+            {
+              "question": "What is the meaning of edge in telecom?",
+              "snippet": "Enhanced Data rates for GSM Evolution (EDGE), also known as 2.75G and under various other names, is a 2G digital mobile phone technology for packet switched data transmission.",
+              "title": "Enhanced Data rates for GSM Evolution",
+              "link": "https://en.wikipedia.org/wiki/EDGE_(telecommunication)#:~:text=Enhanced%20Data%20rates%20for%20GSM,for%20packet%20switched%20data%20transmission.",
+              "displayed_link": "https://en.wikipedia.org › wiki › EDGE_(telecommunicat...",
+              "source_logo": "https://serpapi.com/searches/686276b6f680d110fab91d3c/images/776ee6038cbe41788793219df525cd12a695cc44510df3a863914fa2da8f0d7d.png",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIHRoZSBtZWFuaW5nIG9mIGVkZ2UgaW4gdGVsZWNvbT8iLCJsayI6IkdoVmxaR2RsSUcxbFlXNXBibWNnZEdWc1pXTnZiWE0iLCJicyI6ImMtUFM0eElPejBnc1VjZ3NWaWhKelVuT1YwaE5TVS0xbF9ndWJDUWlKVlNPSWNQbHlxVU9WNS1ScXBDYm1waVhtWmV1a0o4R2xsYkl6QU1wVGszT3o3V1hXQjFsSkM0bENoYUdLWVBLRlhPNWNNbkJqQUhKbFNna1ZTcmtwWmFVNXhkbFExMXdRODlJWGtxMkhKOGlyaUF1YldUSHBHU21wYVVXcGVZbHB5b2tBWldscHVZcG1Mb3JKT2FsUUkzY0xtMmtJQ1dIUlJYWWpTQjFwdWtDakFBIiwiaWQiOiJmY190M1ppYUpUWk92VFAwUEVQMEplN21BMF8xIn0=",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIHRoZSBtZWFuaW5nIG9mIGVkZ2UgaW4gdGVsZWNvbT8iLCJsayI6IkdoVmxaR2RsSUcxbFlXNXBibWNnZEdWc1pXTnZiWE0iLCJicyI6ImMtUFM0eElPejBnc1VjZ3NWaWhKelVuT1YwaE5TVS0xbF9ndWJDUWlKVlNPSWNQbHlxVU9WNS1ScXBDYm1waVhtWmV1a0o4R2xsYkl6QU1wVGszT3o3V1hXQjFsSkM0bENoYUdLWVBLRlhPNWNNbkJqQUhKbFNna1ZTcmtwWmFVNXhkbFExMXdRODlJWGtxMkhKOGlyaUF1YldUSHBHU21wYVVXcGVZbHB5b2tBWldscHVZcG1Mb3JKT2FsUUkzY0xtMmtJQ1dIUlJYWWpTQjFwdWtDakFBIiwiaWQiOiJmY190M1ppYUpUWk92VFAwUEVQMEplN21BMF8xIn0%3D"
+            },
+            {
+              "question": "What is meant by network edge?",
+              "snippet": "The network edge the connection or interface between a device or local network and the internet. The edge is close to the devices it is communicating with and is the entry point to the network. The network edge is a crucial security boundary that network administrators must provide solutions for.",
+              "title": "What Is the Network Edge? - Fortinet",
+              "link": "https://www.fortinet.com/resources/cyberglossary/network-edge#:~:text=The%20network%20edge%20the%20connection,administrators%20must%20provide%20solutions%20for.",
+              "displayed_link": "https://www.fortinet.com › resources › cyberglossary › n...",
+              "source_logo": "https://serpapi.com/searches/686276b6f680d110fab91d3c/images/776ee6038cbe41788793219df525cd12bd52942c6f002434675adf2315232e41.png",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIG1lYW50IGJ5IG5ldHdvcmsgZWRnZT8iLCJsayI6IkdoMTNhR0YwSUdseklHMWxZVzUwSUdKNUlHNWxkSGR2Y21zZ1pXUm5aUSIsImJzIjoiYy1QUzR4SU96MGdzVWNnc1ZpaEp6VW5PVjBoTlNVLTFsX2d1YkNRaUpWU09JY1BseXFVT1Y1LVJxcENibXBpWG1aZXVrSjhHbGxiSXpBTXBUazNPejdXWFdCMWxKQzRsQ2hhR0tZUEtGWE81Y01uQmpBSEpsU2drVlNya3BaYVU1eGRsUTExd1E4OUlYa3EySEo4aXJpQXViV1RIcEdTbXBhVVdwZVlscHlva0FaV2xwdVlwbUxvckpPYWxRSTNjTG0ya0lDV0hSUlhZalNCMXB1a0NqQUEiLCJpZCI6ImZjX3QzWmlhSlRaT3ZUUDBQRVAwSmU3bUEwXzEifQ==",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIG1lYW50IGJ5IG5ldHdvcmsgZWRnZT8iLCJsayI6IkdoMTNhR0YwSUdseklHMWxZVzUwSUdKNUlHNWxkSGR2Y21zZ1pXUm5aUSIsImJzIjoiYy1QUzR4SU96MGdzVWNnc1ZpaEp6VW5PVjBoTlNVLTFsX2d1YkNRaUpWU09JY1BseXFVT1Y1LVJxcENibXBpWG1aZXVrSjhHbGxiSXpBTXBUazNPejdXWFdCMWxKQzRsQ2hhR0tZUEtGWE81Y01uQmpBSEpsU2drVlNya3BaYVU1eGRsUTExd1E4OUlYa3EySEo4aXJpQXViV1RIcEdTbXBhVVdwZVlscHlva0FaV2xwdVlwbUxvckpPYWxRSTNjTG0ya0lDV0hSUlhZalNCMXB1a0NqQUEiLCJpZCI6ImZjX3QzWmlhSlRaT3ZUUDBQRVAwSmU3bUEwXzEifQ%3D%3D"
+            },
+            {
+              "question": "What is the difference between 5G and edge?",
+              "snippet": "Edge computing and 5G serve different purposes, and which is better depends on the use case. Edge computing focuses on processing data locally for reduced latency and real-time applications, while 5G provides high-speed, low-latency connectivity to transfer data efficiently.",
+              "title": "What is Better: Edge or 5G? | Key Differences - IndMALL",
+              "link": "https://www.indmall.in/faq/what-is-better-edge-or-5g/#:~:text=Edge%20computing%20and%205G%20serve,connectivity%20to%20transfer%20data%20efficiently.",
+              "displayed_link": "https://www.indmall.in › faq › what-is-better-edge-or-5g",
+              "source_logo": "https://serpapi.com/searches/686276b6f680d110fab91d3c/images/776ee6038cbe41788793219df525cd12ece6dc2ff6d5926cf6ce04177678ab76.png",
+              "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIHRoZSBkaWZmZXJlbmNlIGJldHdlZW4gNUcgYW5kIGVkZ2U/IiwibGsiOiJHaDVrYVdabVpYSmxibU5sSUdKbGRIZGxaVzRnWldSblpTQmhibVFnTldjIiwiYnMiOiJjLVBTNHhJT3owZ3NVY2dzVmloSnpVbk9WMGhOU1UtMWxfZ3ViQ1FpSlZTT0ljUGx5cVVPVjUtUnFwQ2JtcGlYbVpldWtKOEdsbGJJekFNcFRrM096N1dYV0IxbEpDNGxDaGFHS1lQS0ZYTzVjTW5CakFISmxTZ2tWU3JrcFphVTV4ZGxRMTF3UTg5SVhrcTJISjhpcmlBdWJXVEhwR1NtcGFVV3BlWWxweW9rQVpXbHB1WXBtTG9ySk9hbFFJM2NMbTJrSUNXSFJSWFlqU0IxcHVrQ2pBQSIsImlkIjoiZmNfdDNaaWFKVFpPdlRQMFBFUDBKZTdtQTBfMSJ9",
+              "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSGVqTTNURVowY1VOTWREUm9kbGxsVWpGRE4zTmxjbFpXZGt4TldqaERSM3BOUmtaUk4yaGxkbWRxVkV4alJYaGljRGRXUTAwNFJuSTBMVEoxTm0xNWVGVTVPVU5LYTJ0dFFYcENka0ZYVEdkcFN6SmtkWGs0ZDI1SVFSSVhkRE5hYVdGS1ZGcFBkbFJRTUZCRlVEQktaVGR0UVRBYUlrRkdUVUZIUjI5U1ZqWXdVR0UyVld0MVFWcEdhM0JTTlU5aVJtaFZNMVJ5YUZFIiwiZmN2IjoiMyIsImVpIjoidDNaaWFKVFpPdlRQMFBFUDBKZTdtQTAiLCJxYyI6IkNncDBaV3hqYnlCbFpHZGxFQUI5aFNVelB3IiwicXVlc3Rpb24iOiJXaGF0IGlzIHRoZSBkaWZmZXJlbmNlIGJldHdlZW4gNUcgYW5kIGVkZ2U%2FIiwibGsiOiJHaDVrYVdabVpYSmxibU5sSUdKbGRIZGxaVzRnWldSblpTQmhibVFnTldjIiwiYnMiOiJjLVBTNHhJT3owZ3NVY2dzVmloSnpVbk9WMGhOU1UtMWxfZ3ViQ1FpSlZTT0ljUGx5cVVPVjUtUnFwQ2JtcGlYbVpldWtKOEdsbGJJekFNcFRrM096N1dYV0IxbEpDNGxDaGFHS1lQS0ZYTzVjTW5CakFISmxTZ2tWU3JrcFphVTV4ZGxRMTF3UTg5SVhrcTJISjhpcmlBdWJXVEhwR1NtcGFVV3BlWWxweW9rQVpXbHB1WXBtTG9ySk9hbFFJM2NMbTJrSUNXSFJSWFlqU0IxcHVrQ2pBQSIsImlkIjoiZmNfdDNaaWFKVFpPdlRQMFBFUDBKZTdtQTBfMSJ9"
+            }
+          ],
+          "count": 4
+        }
+      },
+      {
+        "name": "knowledge_panels",
+        "presence": "strong",
+        "data": {
+          "presence": "strong",
+          "data": {
+            "title": "TelcoEdge",
+            "entity_type": "shopping_merchant",
+            "kgmid": "/g/11vl0qc6v9",
+            "knowledge_graph_search_link": "https://www.google.com/search?kgmid=/g/11vl0qc6v9&hl=en-US&q=TelcoEdge",
+            "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=us&google_domain=google.com&hl=en-US&kgmid=%2Fg%2F11vl0qc6v9&location=United+States&q=TelcoEdge",
+            "image": "https://serpapi.com/searches/686276b6f680d110fab91d3c/images/24f37ba6f5bb78ec26148869b63e3e8caae942981a74c82a.jpeg",
+            "description": "IVR phone payment solutions that take your contact centre out of PCI scope instantly. Reduce complexity, time and cost. Instant phone payment solutions.",
+            "source": {
+              "name": " Summarized from the website",
+              "link": "https://support.google.com/merchants/answer/14113862"
+            },
+            "customer_service_email": "service@telcoedge.com.au",
+            "customer_service_email_links": [
+              {
+                "text": "service@telcoedge.com.au",
+                "link": "mailto:service@telcoedge.com.au"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "image_packs",
+        "presence": "none",
+        "data": {
+          "presence": "none"
+        }
+      },
+      {
+        "name": "video_results",
+        "presence": "strong",
+        "data": {
+          "presence": "strong",
+          "data": [
+            {
+              "position": 1,
+              "title": "Telco edge cloud defined",
+              "link": "https://www.youtube.com/watch?v=sZjIkx1ExOk",
+              "thumbnail": "https://serpapi.com/searches/686276b6f680d110fab91d3c/images/d6971f8ec4c81ae511796724d7516eff10bd91b4fa356ed4c8eee44323bfa842.jpeg",
+              "channel": "STL Partners",
+              "duration": "0:52",
+              "platform": "YouTube"
+            },
+            {
+              "position": 2,
+              "title": "Bringing Intelligence to the Telco Edge",
+              "link": "https://www.youtube.com/watch?v=e5h2iEz5iWE",
+              "thumbnail": "https://serpapi.com/searches/686276b6f680d110fab91d3c/images/d6971f8ec4c81ae57f1e57d54e76d998f7bb8bb5caf8ab6912b4cc4cdfcc9060.jpeg",
+              "channel": "Capgemini",
+              "duration": "2:22",
+              "platform": "YouTube"
+            },
+            {
+              "position": 3,
+              "title": "AWS brings its stack to the telco edge with Outposts",
+              "link": "https://www.youtube.com/watch?v=q_ofyCyMUrg",
+              "thumbnail": "https://serpapi.com/searches/686276b6f680d110fab91d3c/images/d6971f8ec4c81ae544ff056391a408e19d90ef04d79e1ae82e4809e68ed05ce6.jpeg",
+              "channel": "TelecomTV",
+              "duration": "8:35",
+              "platform": "YouTube"
+            }
+          ],
+          "count": 3
+        }
+      }
+    ],
+    "recommendations": [
+      {
+        "feature": "featured_snippets",
+        "status": "Not present in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Structure content with clear headings and concise paragraphs",
+          "Answer the query directly and succinctly at the beginning",
+          "Use lists, tables, or step-by-step formats where appropriate",
+          "Include the target keyword in the heading and first paragraph",
+          "Keep answers between 40-60 words for optimal snippet length"
+        ]
+      },
+      {
+        "feature": "people_also_ask",
+        "status": "Prominently featured in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Research related questions using the SerpAPI People Also Ask data",
+          "Create FAQ sections addressing these related questions",
+          "Structure answers in a concise, direct format",
+          "Use schema markup for FAQ content",
+          "Link to more detailed content for each question"
+        ]
+      },
+      {
+        "feature": "knowledge_panels",
+        "status": "Prominently featured in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Ensure consistent entity information across the web",
+          "Create or claim Google Business Profile if applicable",
+          "Use schema markup for organization or person entities",
+          "Provide clear 'about' information on your website",
+          "Build authoritative backlinks to strengthen entity recognition"
+        ]
+      },
+      {
+        "feature": "image_packs",
+        "status": "Not present in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Use high-quality, relevant images with descriptive filenames",
+          "Add comprehensive alt text including target keywords",
+          "Implement image schema markup",
+          "Ensure images are responsive and fast-loading",
+          "Place images near relevant text content"
+        ]
+      },
+      {
+        "feature": "video_results",
+        "status": "Prominently featured in current SERP",
+        "opportunity": "low",
+        "recommendations": [
+          "Create video content addressing the search query",
+          "Optimize video titles and descriptions with target keywords",
+          "Add timestamps and transcripts to videos",
+          "Embed videos on relevant pages with supporting text",
+          "Use video schema markup"
+        ]
+      }
+    ]
+  },
+  "content_insights": {
+    "avg_word_count": 0,
+    "common_sections": [],
+    "content_gaps": [],
+    "structural_patterns": {},
+    "analysis_status": "no_competitors"
+  },
+  "generation_metadata": {
+    "created_at": "2025-06-30T11:39:38.827492",
+    "generation_time": 41,
+    "version": "1.0",
+    "components_used": [
+      "competitor_analysis",
+      "content_analysis",
+      "serp_optimization",
+      "ai_generation"
+    ]
+  }
+}
