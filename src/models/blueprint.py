@@ -26,8 +26,8 @@ class Blueprint(Base):
     # Primary fields
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     keyword = Column(String(255), nullable=False, index=True)
-    user_id = Column(String(36), ForeignKey('users.id'), nullable=False, index=True)
-    project_id = Column(String(36), ForeignKey('projects.id'), nullable=True)
+    user_id = Column(String(36), nullable=False, index=True)  # Removed FK constraint temporarily
+    project_id = Column(String(36), nullable=True)  # Removed FK constraint temporarily
     
     # Blueprint content (stored as JSON)
     competitor_analysis = Column(JSON, nullable=True)
@@ -42,9 +42,9 @@ class Blueprint(Base):
     status = Column(String(50), default='generating')  # generating, completed, failed, exported
     generation_time = Column(Integer, nullable=True)  # Time taken to generate in seconds
     
-    # Relationships
-    user = relationship("User", back_populates="blueprints")
-    project = relationship("Project", back_populates="blueprints")
+    # Relationships - commented out until User model is properly integrated
+    # user = relationship("User", back_populates="blueprints")
+    # project = relationship("Project", back_populates="blueprints")
     
     def to_dict(self):
         """Convert blueprint to dictionary for API responses."""
@@ -87,15 +87,15 @@ class Project(Base):
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     name = Column(String(255), nullable=False)
     description = Column(Text, nullable=True)
-    user_id = Column(String(36), ForeignKey('users.id'), nullable=False, index=True)
+    user_id = Column(String(36), nullable=False, index=True)  # Removed FK constraint temporarily
     
     # Metadata
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    # Relationships
-    user = relationship("User", back_populates="projects")
-    blueprints = relationship("Blueprint", back_populates="project", cascade="all, delete-orphan")
+    # Relationships - commented out until User model is properly integrated
+    # user = relationship("User", back_populates="projects")
+    # blueprints = relationship("Blueprint", back_populates="project", cascade="all, delete-orphan")
     
     def to_dict(self):
         """Convert project to dictionary for API responses."""
@@ -106,7 +106,7 @@ class Project(Base):
             'user_id': self.user_id,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'updated_at': self.updated_at.isoformat() if self.updated_at else None,
-            'blueprint_count': len(self.blueprints) if self.blueprints else 0
+            'blueprint_count': 0  # Temporarily disabled due to relationship being commented out
         }
 
 # Helper functions for database operations

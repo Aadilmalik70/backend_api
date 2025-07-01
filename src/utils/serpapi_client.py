@@ -8,6 +8,11 @@ import logging
 import time
 from typing import Dict, Any, List, Optional
 
+try:
+    from serpapi import GoogleSearch
+except ImportError:
+    GoogleSearch = None
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -22,36 +27,18 @@ class SerpAPIClient:
     def __init__(self, api_key: Optional[str] = None):
         """
         Initialize the SerpAPI client.
-        
+
         Args:
             api_key: SerpAPI key
         """
         self.api_key = api_key
-        self.client = None
         self.last_request_time = 0
         self.min_request_interval = 3.0  # Increased to 3 seconds between requests
-        
-        # Try to initialize the client if API key is provided
-        if api_key:
-            try:
-                # Try new serpapi package first
-                try:
-                    import serpapi
-                    self.client = serpapi
-                    self.use_new_api = True
-                    logger.info("SerpAPI client initialized successfully (new API)")
-                except ImportError:
-                    # Fall back to old google-search-results package
-                    from serpapi import GoogleSearch
-                    self.client = GoogleSearch
-                    self.use_new_api = False
-                    logger.info("SerpAPI client initialized successfully (legacy API)")
-            except Exception as e:
-                logger.error(f"Error initializing SerpAPI client: {str(e)}")
-                logger.error("Please install either 'pip install serpapi' or 'pip install google-search-results'")
-                self.client = None
-        else:
+
+        if not api_key:
             logger.warning("SerpAPI client initialized without API key")
+        if GoogleSearch is None:
+            logger.error("GoogleSearch class not found. Please install 'serpapi' package.")
     
     def _rate_limit(self):
         """Implement aggressive rate limiting to avoid hitting API limits."""
@@ -81,13 +68,13 @@ class SerpAPIClient:
         """
         logger.info(f"Getting SERP data for query: {query}")
         
-        # Check if client is initialized and API key is provided
-        if not self.client or not self.api_key:
-            raise Exception("SerpAPI client not properly initialized. Please provide a valid API key.")
-        
+        # Check if GoogleSearch is available and API key is provided
+        if GoogleSearch is None or not self.api_key:
+            raise Exception("SerpAPI client not properly initialized. Please provide a valid API key and ensure 'serpapi' is installed.")
+
         # Apply rate limiting
         self._rate_limit()
-        
+
         try:
             # Set up search parameters
             params = {
@@ -98,16 +85,11 @@ class SerpAPIClient:
                 "google_domain": "google.com",
                 "api_key": self.api_key
             }
-            
-            # Execute search based on API version
-            if hasattr(self, 'use_new_api') and self.use_new_api:
-                # New API
-                results = self.client.search(params)
-            else:
-                # Legacy API
-                search = self.client(params)
-                results = search.get_dict()
-            
+
+            # Always use GoogleSearch
+            search = GoogleSearch(params)
+            results = search.get_dict()
+
             # Extract relevant data
             organic_results = results.get("organic_results", [])
             

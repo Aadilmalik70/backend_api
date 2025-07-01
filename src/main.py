@@ -43,9 +43,15 @@ def before_request():
     """Create database session before each request"""
     db_manager = app.config.get('DB_MANAGER')
     if db_manager:
-        g.db_session = db_manager.get_session()
-        # Also store in current_app for backward compatibility
-        app.db_session = g.db_session
+        try:
+            g.db_session = db_manager.get_session()
+            # Also store in current_app for backward compatibility
+            app.db_session = g.db_session
+            print(f"✅ Database session created successfully")
+        except Exception as e:
+            print(f"❌ Failed to create database session: {str(e)}")
+            g.db_session = None
+            app.db_session = None
     else:
         g.db_session = None
         app.db_session = None
@@ -55,7 +61,14 @@ def close_db_session(error):
     """Close database session after each request"""
     db_session = getattr(g, 'db_session', None)
     if db_session:
-        db_session.close()
+        try:
+            if error:
+                db_session.rollback()
+            else:
+                db_session.commit()
+            db_session.close()
+        except Exception as e:
+            print(f"⚠️ Database session cleanup error: {str(e)}")
     
     # Clean up app attribute
     if hasattr(app, 'db_session'):
