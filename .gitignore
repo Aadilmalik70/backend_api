@@ -32,4 +32,7 @@ Thumbs.db
 
 # Test output
 htmlcov/
-coverage.xml
+coverage.xmlcredentials/google-apis-credentials.json
+.env
+node_modules/
+*.log
