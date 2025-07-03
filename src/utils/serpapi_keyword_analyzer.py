@@ -19,8 +19,13 @@ class SerpAPIKeywordAnalyzer:
         self.last_request_time = 0
         self.min_request_interval = 3.0  # Increased to 3 seconds between requests
         
+        # Make SerpAPI optional - don't raise exception if not provided
+        self.available = bool(self.api_key)
+        
         if not self.api_key:
-            raise Exception("SerpAPI key not provided. Please set SERPAPI_KEY environment variable.")
+            logger.warning("SerpAPI key not provided. Keyword analysis will use fallback data.")
+        else:
+            logger.info("SerpAPI keyword analyzer initialized successfully")
 
     def _rate_limit(self):
         """Implement aggressive rate limiting to avoid hitting API limits."""
@@ -39,6 +44,10 @@ class SerpAPIKeywordAnalyzer:
         Get keyword metrics for a list of seed keywords.
         Returns a list of keyword metric dicts, one per keyword.
         """
+        if not self.available:
+            logger.warning("SerpAPI not available, returning fallback keyword metrics")
+            return self._get_fallback_metrics(seed_keywords)
+        
         metrics = []
         for kw in seed_keywords:
             try:
@@ -50,7 +59,8 @@ class SerpAPIKeywordAnalyzer:
                     raise Exception(f"No keyword metrics returned for '{kw}'")
             except Exception as e:
                 logger.error(f"Error getting metrics for keyword '{kw}': {str(e)}")
-                raise Exception(f"Failed to get metrics for keyword '{kw}': {str(e)}")
+                # Return fallback for this keyword
+                metrics.append(self._get_fallback_metrics([kw])[0])
         return metrics
 
     def get_keyword_ideas(self, seed_keywords: List[str]) -> Dict[str, Dict[str, Any]]:
@@ -58,6 +68,10 @@ class SerpAPIKeywordAnalyzer:
         Generate related keyword ideas for a list of seed keywords.
         Returns a dict mapping related keyword string to its metrics dict.
         """
+        if not self.available:
+            logger.warning("SerpAPI not available, returning fallback keyword ideas")
+            return self._get_fallback_keyword_ideas(seed_keywords)
+        
         related_keywords = {}
         for kw in seed_keywords:
             try:
@@ -391,3 +405,117 @@ class SerpAPIKeywordAnalyzer:
         final_cpc = base_cpc * variation
         
         return round(max(0.10, min(50.00, final_cpc)), 2)
+    
+    def _get_fallback_metrics(self, keywords: List[str]) -> List[Dict[str, Any]]:
+        """
+        Generate fallback keyword metrics when SerpAPI is not available
+        """
+        fallback_metrics = []
+        
+        for keyword in keywords:
+            # Generate realistic fallback data
+            search_volume = self._estimate_fallback_volume(keyword)
+            cpc = self._estimate_fallback_cpc(keyword)
+            competition = self._estimate_fallback_competition(keyword)
+            
+            metrics = {
+                'keyword': keyword,
+                'search_volume': search_volume,
+                'cpc': cpc,
+                'competition': competition,
+                'difficulty': min(100, max(1, int(competition * 100))),
+                'data_source': 'fallback',
+                'note': 'Estimated data - SerpAPI not available'
+            }
+            
+            fallback_metrics.append(metrics)
+        
+        return fallback_metrics
+    
+    def _estimate_fallback_volume(self, keyword: str) -> int:
+        """
+        Estimate search volume for fallback data
+        """
+        # Simple heuristic based on keyword characteristics
+        word_count = len(keyword.split())
+        
+        # Base volume decreases with word count (long tail)
+        if word_count == 1:
+            base_volume = random.randint(5000, 50000)
+        elif word_count == 2:
+            base_volume = random.randint(1000, 15000)
+        elif word_count == 3:
+            base_volume = random.randint(500, 5000)
+        else:
+            base_volume = random.randint(100, 1000)
+        
+        # Adjust for common keywords
+        high_volume_terms = ['seo', 'marketing', 'tools', 'software', 'api', 'guide']
+        if any(term in keyword.lower() for term in high_volume_terms):
+            base_volume = int(base_volume * 1.5)
+        
+        return base_volume
+    
+    def _estimate_fallback_cpc(self, keyword: str) -> float:
+        """
+        Estimate CPC for fallback data
+        """
+        # Base CPC
+        base_cpc = random.uniform(0.50, 3.00)
+        
+        # High CPC keywords
+        expensive_terms = ['insurance', 'loan', 'lawyer', 'finance', 'software']
+        if any(term in keyword.lower() for term in expensive_terms):
+            base_cpc *= random.uniform(2.0, 4.0)
+        
+        # Commercial intent
+        commercial_terms = ['buy', 'price', 'cost', 'cheap', 'best']
+        if any(term in keyword.lower() for term in commercial_terms):
+            base_cpc *= random.uniform(1.3, 2.0)
+        
+        return round(base_cpc, 2)
+    
+    def _estimate_fallback_competition(self, keyword: str) -> float:
+        """
+        Estimate competition level for fallback data
+        """
+        # Base competition
+        base_competition = random.uniform(0.2, 0.8)
+        
+        # High competition keywords
+        competitive_terms = ['marketing', 'seo', 'software', 'tools', 'best']
+        if any(term in keyword.lower() for term in competitive_terms):
+            base_competition = min(0.95, base_competition * 1.5)
+        
+        # Long tail tends to have lower competition
+        word_count = len(keyword.split())
+        if word_count >= 4:
+            base_competition *= 0.6
+        elif word_count >= 3:
+            base_competition *= 0.8
+        
+        return round(base_competition, 2)
+    
+    def _get_fallback_keyword_ideas(self, seed_keywords: List[str]) -> Dict[str, Dict[str, Any]]:
+        """
+        Generate fallback keyword ideas when SerpAPI is not available
+        """
+        related_keywords = {}
+        
+        for seed_kw in seed_keywords:
+            # Generate simple variations
+            variations = [
+                f"best {seed_kw}",
+                f"{seed_kw} tools",
+                f"{seed_kw} guide",
+                f"how to {seed_kw}",
+                f"{seed_kw} tips"
+            ]
+            
+            # Add 2-3 variations per seed keyword
+            for i, variation in enumerate(variations[:3]):
+                if variation not in related_keywords:
+                    metrics = self._get_fallback_metrics([variation])[0]
+                    related_keywords[variation] = metrics
+        
+        return related_keywords
