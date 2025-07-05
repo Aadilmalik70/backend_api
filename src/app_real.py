@@ -41,7 +41,7 @@ def create_app():
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
     
     # Enable CORS for frontend integration
-    CORS(app)
+    CORS(app, origins=["http://localhost:3000"])
     
     # Database setup
     database_url = os.getenv('DATABASE_URL', 'sqlite:///serp_strategist.db')

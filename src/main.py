@@ -19,7 +19,7 @@ from src.routes.blueprints import blueprint_routes
 from src.models.blueprint import DatabaseManager
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})  # Enable CORS for all API routes
+CORS(app, origins=["http://localhost:3000"])
 
 # Database setup for blueprints
 database_url = os.getenv('DATABASE_URL', 'sqlite:///serp_strategist.db')
