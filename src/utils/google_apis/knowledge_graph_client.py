@@ -79,11 +79,13 @@ class KnowledgeGraphClient:
             return {
                 'query': query,
                 'total_results': len(entities),
-                'entities': entities,
+                'itemListElement': data.get('itemListElement', []),  # Keep original format
+                'entities': entities,  # Also provide processed format
                 'search_metadata': {
                     'languages': languages or ['en'],
                     'limit': limit
-                }
+                },
+                'data_source': 'google_knowledge_graph'  # Mark as real data
             }
             
         except requests.RequestException as e:
@@ -339,10 +341,12 @@ class KnowledgeGraphClient:
         return {
             'query': query,
             'total_results': min(limit, len(mock_entities)),
-            'entities': mock_entities[:limit],
+            'itemListElement': [{'result': entity, 'resultScore': entity['score']} for entity in mock_entities[:limit]],  # Original format
+            'entities': mock_entities[:limit],  # Processed format
             'search_metadata': {
                 'languages': ['en'],
                 'limit': limit
             },
+            'data_source': 'mock',
             'note': 'Mock data - Configure Google API key for real Knowledge Graph data'
         }

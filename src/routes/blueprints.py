@@ -10,6 +10,8 @@ from flask import Blueprint, request, jsonify, current_app
 from functools import wraps
 import os
 import time
+import concurrent.futures
+from datetime import datetime
 
 # Import services
 from ..services.blueprint_generator import BlueprintGeneratorService
@@ -78,14 +80,38 @@ def generate_blueprint(user_id):
         serpapi_key = os.getenv('SERPAPI_KEY')
         gemini_key = os.getenv('GEMINI_API_KEY')
         
-        if not serpapi_key or not gemini_key:
-            return jsonify({'error': 'API configuration incomplete'}), 500
+        # Allow operation without API keys but with warning
+        if not serpapi_key:
+            logger.warning("SERPAPI_KEY not configured - using fallback data")
+        if not gemini_key:
+            logger.warning("GEMINI_API_KEY not configured - using fallback data")
+        
+        # If no API keys at all, return fallback immediately
+        if not serpapi_key and not gemini_key:
+            logger.warning("No API keys configured - using fallback blueprint generation")
+            return jsonify({
+                'blueprint_id': f"fallback-{int(time.time())}",
+                'keyword': keyword,
+                'status': 'completed',
+                'generation_time': 3,
+                'data': generate_quick_fallback_blueprint(keyword, user_id),
+                'note': 'Generated using fallback method - configure API keys for full functionality'
+            }), 201
         
         # Initialize blueprint generator
         generator = BlueprintGeneratorService(serpapi_key, gemini_key)
         
-        # Generate blueprint
-        blueprint_data = generator.generate_blueprint(keyword, user_id, project_id)
+        # Generate blueprint with timeout protection
+        try:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(generator.generate_blueprint, keyword, user_id, project_id)
+                blueprint_data = future.result(timeout=150)  # 2.5 minute timeout
+        except concurrent.futures.TimeoutError:
+            logger.warning(f"Blueprint generation timed out for keyword: {keyword}")
+            blueprint_data = generate_quick_fallback_blueprint(keyword, user_id)
+        except Exception as e:
+            logger.error(f"Blueprint generation failed: {str(e)}")
+            blueprint_data = generate_quick_fallback_blueprint(keyword, user_id)
         
         # Validate generated data
         if not generator.validate_blueprint_data(blueprint_data):
@@ -297,6 +323,57 @@ def update_blueprint_status(user_id, blueprint_id):
         logger.error(f"Error updating blueprint status: {str(e)}")
         return jsonify({'error': f'Failed to update status: {str(e)}'}), 500
 
+@blueprint_routes.route('/api/blueprints/generate-quick', methods=['POST'])
+@require_auth
+def generate_quick_blueprint(user_id):
+    """
+    Generate a quick blueprint without heavy processing - for immediate testing.
+    
+    This endpoint returns a blueprint in under 5 seconds.
+    """
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'Request body required'}), 400
+        
+        keyword = data.get('keyword', '').strip()
+        project_id = data.get('project_id')
+        
+        if not keyword:
+            return jsonify({'error': 'Keyword is required'}), 400
+        
+        logger.info(f"Generating quick blueprint for keyword: '{keyword}' (user: {user_id})")
+        
+        # Generate quick blueprint
+        blueprint_data = generate_quick_fallback_blueprint(keyword, user_id)
+        
+        # Generate a simple blueprint ID
+        blueprint_id = f"quick-{int(time.time())}-{hash(keyword + user_id) % 10000}"
+        
+        # Save to database if possible
+        try:
+            db_session = getattr(current_app, 'db_session', None)
+            if db_session:
+                storage = BlueprintStorageService(db_session)
+                blueprint_id = storage.save_blueprint(blueprint_data, user_id, project_id)
+        except Exception as e:
+            logger.warning(f"Failed to save quick blueprint to database: {e}")
+            # Continue with generated ID
+        
+        return jsonify({
+            'blueprint_id': blueprint_id,
+            'keyword': keyword,
+            'status': 'completed',
+            'generation_time': 3,
+            'created_at': blueprint_data['generation_metadata']['created_at'],
+            'data': blueprint_data,
+            'note': 'Quick blueprint generated for immediate testing'
+        }), 201
+        
+    except Exception as e:
+        logger.error(f"Error generating quick blueprint: {str(e)}")
+        return jsonify({'error': f'Quick blueprint generation failed: {str(e)}'}), 500
+
 @blueprint_routes.route('/api/user/stats', methods=['GET'])
 @require_auth
 def get_user_stats(user_id):
@@ -372,6 +449,110 @@ def health_check():
             'error': str(e),
             'timestamp': time.strftime('%Y-%m-%dT%H:%M:%S')
         }), 500
+
+def generate_quick_fallback_blueprint(keyword: str, user_id: str) -> dict:
+    """Generate a quick fallback blueprint when full generation fails or times out."""
+    return {
+        'keyword': keyword,
+        'competitor_analysis': {
+            'keyword': keyword,
+            'competitors': [],
+            'insights': {
+                'common_topics': keyword.split() + ['guide', 'tips', 'strategy', 'best practices'],
+                'content_length': {
+                    'average': 2500,
+                    'count': 0,
+                    'max': 4000,
+                    'min': 1000
+                },
+                'sentiment_trend': 'Positive',
+                'data_quality': {
+                    'competitors_analyzed': 0,
+                    'content_samples': 0,
+                    'entities_extracted': 0,
+                    'failed_competitors': 0,
+                    'sentiment_samples': 0,
+                    'success_rate': 0,
+                    'successful_competitors': 0
+                }
+            }
+        },
+        'heading_structure': {
+            'h1': f"Complete Guide to {keyword.title()}: Strategies, Tips, and Best Practices",
+            'h2_sections': [
+                {
+                    'title': f"What is {keyword.title()}?",
+                    'h3_subsections': ['Definition and Overview', 'Key Benefits and Importance']
+                },
+                {
+                    'title': f"How to Implement {keyword.title()}",
+                    'h3_subsections': ['Step-by-Step Process', 'Best Practices and Tips']
+                },
+                {
+                    'title': f"{keyword.title()} Strategies and Techniques",
+                    'h3_subsections': ['Advanced Methods', 'Common Mistakes to Avoid']
+                },
+                {
+                    'title': f"Measuring {keyword.title()} Success",
+                    'h3_subsections': ['Key Performance Indicators', 'Tools and Analytics']
+                }
+            ]
+        },
+        'topic_clusters': {
+            'primary_cluster': [keyword, f"{keyword} guide", f"{keyword} tips", f"best {keyword} practices"],
+            'related_keywords': [f"{keyword} strategy", f"how to {keyword}", f"{keyword} tutorial", f"{keyword} best practices"],
+            'secondary_clusters': {
+                'fundamentals': [f"{keyword} basics", f"{keyword} definition", f"introduction to {keyword}"],
+                'implementation': [f"how to {keyword}", f"{keyword} process", f"{keyword} steps"],
+                'advanced': [f"{keyword} strategies", f"advanced {keyword}", f"{keyword} optimization"],
+                'tools': [f"{keyword} tools", f"best {keyword} software", f"{keyword} resources"]
+            }
+        },
+        'serp_features': {
+            'keyword': keyword,
+            'recommendations': [
+                {
+                    'feature': 'featured_snippets',
+                    'opportunity': 'medium',
+                    'status': 'Target with structured content',
+                    'recommendations': [
+                        'Create clear, concise answers to common questions',
+                        'Use structured data markup',
+                        'Format content with headers and lists'
+                    ]
+                }
+            ],
+            'serp_features': [
+                {
+                    'name': 'people_also_ask',
+                    'presence': 'medium',
+                    'data': {
+                        'presence': 'medium',
+                        'count': 0,
+                        'data': []
+                    }
+                }
+            ]
+        },
+        'content_insights': {
+            'analysis_status': 'fallback',
+            'avg_word_count': 2500,
+            'common_sections': ['Introduction', 'Main Content', 'Best Practices', 'Conclusion'],
+            'content_gaps': ['Case studies', 'Real-world examples', 'Expert interviews'],
+            'structural_patterns': {
+                'heading_depth': '3_levels',
+                'list_usage': 'recommended',
+                'image_placement': 'strategic'
+            }
+        },
+        'generation_metadata': {
+            'created_at': datetime.utcnow().isoformat(),
+            'generation_time': 3,
+            'version': '1.0-fallback',
+            'components_used': ['fallback_generator'],
+            'note': 'Generated using fallback method due to timeout or API limitations'
+        }
+    }
 
 # Error handlers
 @blueprint_routes.errorhandler(404)

@@ -49,6 +49,42 @@ class GeminiClient:
         except Exception as e:
             logger.error(f"Failed to initialize Gemini client: {e}")
     
+    def generate_content(self, prompt: str, max_tokens: int = None) -> Dict[str, Any]:
+        """
+        Generate content using Gemini API
+        
+        Args:
+            prompt: Text prompt for content generation
+            max_tokens: Maximum tokens to generate (optional)
+            
+        Returns:
+            Generated content response
+        """
+        if not self.model:
+            return {
+                'content': f'Mock response to: {prompt[:100]}... Configure Gemini API for real generation.',
+                'data_source': 'mock',
+                'note': 'Mock data - Configure Gemini API for real content generation'
+            }
+        
+        try:
+            response = self.model.generate_content(prompt)
+            
+            return {
+                'content': response.text,
+                'prompt': prompt,
+                'data_source': 'google_gemini',
+                'model': 'gemini-1.5-flash'
+            }
+            
+        except Exception as e:
+            logger.error(f"Error generating content: {e}")
+            return {
+                'content': f'Error generating content: {str(e)}',
+                'data_source': 'error',
+                'error': str(e)
+            }
+    
     def optimize_for_ai_overview(self, content: str, query: str) -> Dict[str, Any]:
         """
         Optimize content for Google AI Overview appearances

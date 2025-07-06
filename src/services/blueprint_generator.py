@@ -9,18 +9,45 @@ import logging
 import time
 import json
 import re
+import signal
+import concurrent.futures
 from typing import Dict, Any, List, Optional
 from datetime import datetime
+from functools import wraps
 
 # Import existing analysis modules
 from ..competitor_analysis_real import CompetitorAnalysisReal
 from ..content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
 from ..serp_feature_optimizer_real import SerpFeatureOptimizerReal
 from ..utils.gemini_nlp_client import GeminiNLPClient
+from ..utils.quick_competitor_analyzer import QuickCompetitorAnalyzer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+def timeout_handler(signum, frame):
+    raise TimeoutError("Blueprint generation timed out")
+
+def with_timeout(timeout_seconds):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            # Set the timeout
+            signal.signal(signal.SIGALRM, timeout_handler)
+            signal.alarm(timeout_seconds)
+            
+            try:
+                result = func(*args, **kwargs)
+                return result
+            except TimeoutError:
+                logger.warning(f"Function {func.__name__} timed out after {timeout_seconds} seconds")
+                raise
+            finally:
+                # Clear the alarm
+                signal.alarm(0)
+        return wrapper
+    return decorator
 
 class BlueprintGeneratorService:
     """
@@ -41,6 +68,12 @@ class BlueprintGeneratorService:
         
         # Initialize analysis services
         try:
+            # Use quick analyzer to avoid hanging
+            self.quick_analyzer = QuickCompetitorAnalyzer(
+                serpapi_key=serpapi_key,
+                gemini_key=gemini_api_key
+            )
+            
             self.competitor_analyzer = CompetitorAnalysisReal(
                 gemini_api_key=gemini_api_key,
                 serpapi_key=serpapi_key
@@ -59,6 +92,7 @@ class BlueprintGeneratorService:
             logger.error(f"Failed to initialize blueprint generator: {str(e)}")
             raise Exception(f"Blueprint generator initialization failed: {str(e)}")
     
+    @with_timeout(120)  # 2 minute timeout
     def generate_blueprint(self, keyword: str, user_id: str, project_id: Optional[str] = None) -> Dict[str, Any]:
         """
         Generate a complete content blueprint for the given keyword.
@@ -118,18 +152,43 @@ class BlueprintGeneratorService:
             raise Exception(f"Blueprint generation failed: {str(e)}")
     
     def _analyze_competitors(self, keyword: str) -> Dict[str, Any]:
-        """Analyze competitors for the given keyword."""
+        """Analyze competitors for the given keyword with timeout protection."""
         try:
-            competitors = self.competitor_analyzer.analyze_competitors(keyword, num_competitors=5)
+            # Use quick analyzer first to avoid hanging
+            logger.info(f"Using quick competitor analysis for: {keyword}")
+            competitors = self.quick_analyzer.analyze_competitors_quick(keyword, max_competitors=3)
             logger.info(f"Successfully analyzed competitors for keyword: {keyword}")
             return competitors
         except Exception as e:
-            logger.warning(f"Competitor analysis failed for '{keyword}': {str(e)}")
-            return {
-                'top_competitors': [],
-                'analysis_status': 'fallback',
-                'error': str(e)
-            }
+            logger.warning(f"Quick competitor analysis failed for '{keyword}': {str(e)}")
+            return self._get_fallback_competitors(keyword)
+    
+    def _get_fallback_competitors(self, keyword: str) -> Dict[str, Any]:
+        """Get fallback competitor data when analysis fails."""
+        return {
+            'keyword': keyword,
+            'competitors': [],
+            'insights': {
+                'common_topics': keyword.split() + ['guide', 'tips', 'strategy'],
+                'content_length': {
+                    'average': 2500,
+                    'count': 0,
+                    'max': 0,
+                    'min': 0
+                },
+                'sentiment_trend': 'Positive',
+                'data_quality': {
+                    'competitors_analyzed': 0,
+                    'content_samples': 0,
+                    'entities_extracted': 0,
+                    'failed_competitors': 0,
+                    'sentiment_samples': 0,
+                    'success_rate': 0,
+                    'successful_competitors': 0
+                }
+            },
+            'analysis_status': 'fallback'
+        }
     
     def _analyze_serp_features(self, keyword: str) -> Dict[str, Any]:
         """Analyze SERP features for the given keyword."""

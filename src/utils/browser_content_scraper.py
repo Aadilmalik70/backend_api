@@ -77,8 +77,8 @@ class BrowserContentScraper:
             'Cache-Control': 'max-age=0',
         })
         
-        # Set longer timeout for better success rate
-        self.session.timeout = 15
+        # Set shorter timeout to prevent hanging
+        self.session.timeout = 10
     
     def _get_random_user_agent(self) -> str:
         """Get a random realistic user agent to avoid detection."""
