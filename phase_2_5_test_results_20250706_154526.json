@@ -1,0 +1,272 @@
+{
+  "test_suite": "Phase 2.5 Enhanced SERP Feature Optimizer",
+  "timestamp": "2025-07-06T15:44:33.482626",
+  "tests_run": 7,
+  "tests_passed": 6,
+  "tests_failed": 1,
+  "detailed_results": {
+    "google_apis_integration": {
+      "test_name": "Google APIs Integration",
+      "status": "passed",
+      "details": {
+        "google_apis_enabled": true,
+        "custom_search_available": true,
+        "knowledge_graph_available": true,
+        "gemini_available": true,
+        "custom_search_health": true,
+        "knowledge_graph_health": true,
+        "gemini_health": true
+      },
+      "errors": [],
+      "message": "Google APIs integration working correctly"
+    },
+    "enhanced_serp_detection": {
+      "test_name": "Enhanced SERP Feature Detection",
+      "status": "passed",
+      "details": {
+        "test_keyword": "how to optimize SEO",
+        "data_source": "google_custom_search",
+        "features_detected": [
+          "featured_snippets",
+          "people_also_ask",
+          "knowledge_panels",
+          "image_packs",
+          "video_results",
+          "local_pack",
+          "top_stories",
+          "data_source",
+          "analysis_metadata"
+        ],
+        "feature_count": 7,
+        "expected_features": [
+          "featured_snippets",
+          "people_also_ask",
+          "knowledge_panels",
+          "image_packs",
+          "video_results",
+          "local_pack",
+          "top_stories"
+        ],
+        "all_features_present": true,
+        "featured_snippets_structure": {
+          "has_presence": true,
+          "has_opportunity_score": true,
+          "opportunity_score": 0.7
+        },
+        "people_also_ask_structure": {
+          "has_presence": true,
+          "has_opportunity_score": true,
+          "opportunity_score": 0.8
+        },
+        "knowledge_panels_structure": {
+          "has_presence": true,
+          "has_opportunity_score": true,
+          "opportunity_score": 0.2
+        },
+        "image_packs_structure": {
+          "has_presence": true,
+          "has_opportunity_score": true,
+          "opportunity_score": 0.4
+        },
+        "video_results_structure": {
+          "has_presence": true,
+          "has_opportunity_score": true,
+          "opportunity_score": 0.9
+        },
+        "local_pack_structure": {
+          "has_presence": true,
+          "has_opportunity_score": true,
+          "opportunity_score": 0.1
+        },
+        "top_stories_structure": {
+          "has_presence": true,
+          "has_opportunity_score": true,
+          "opportunity_score": 0.2
+        }
+      },
+      "errors": [],
+      "message": "Enhanced SERP detection working - 7 features analyzed"
+    },
+    "knowledge_panel_optimization": {
+      "test_name": "Knowledge Panel Optimization",
+      "status": "passed",
+      "details": {
+        "entity_detection": true,
+        "entity_name": "Google",
+        "data_source": "google_knowledge_graph",
+        "entity_verification": {
+          "found_in_kg": true,
+          "authority_score": 0.9,
+          "authority_level": "high",
+          "kg_entities": [
+            {
+              "id": "kg:/m/045c7b",
+              "name": "Google",
+              "description": "IT corporation",
+              "types": [
+                "Corporation",
+                "Thing",
+                "Organization"
+              ],
+              "score": 140213.03125,
+              "url": null,
+              "detailed_description": {
+                "url": "https://en.wikipedia.org/wiki/Google",
+                "articleBody": "Google LLC is an American multinational corporation and technology company focusing on online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, consumer electronics, and artificial intelligence. ",
+                "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+              },
+              "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSA6xeoqtQcudXUieRkMQgiB48BrQP5tZQ6K3wenlV7FNsccVWA"
+            },
+            {
+              "id": "kg:/m/02q_bk",
+              "name": "Gmail",
+              "description": "Web site",
+              "types": [
+                "WebSite",
+                "Thing"
+              ],
+              "score": 10805.9775390625,
+              "url": null,
+              "detailed_description": {
+                "articleBody": "Gmail is a mailbox provider by Google. It is the largest email service worldwide, with 1.8 billion users. It is accessible via a web browser, mobile app, or through third-party email clients via the POP and IMAP protocols. ",
+                "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License",
+                "url": "https://en.wikipedia.org/wiki/Gmail"
+              },
+              "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR3y5TxkbyvDt0Do48pgUxzaE1qRGhp5bWn8YWxzdSfBr3B0sYw"
+            },
+            {
+              "id": "kg:/m/055t58",
+              "name": "Google Maps",
+              "description": "Web site",
+              "types": [
+                "WebSite",
+                "Thing",
+                "SoftwareApplication"
+              ],
+              "score": 10634.7333984375,
+              "url": null,
+              "detailed_description": {
+                "url": "https://en.wikipedia.org/wiki/Google_Maps",
+                "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License",
+                "articleBody": "Google Maps is a web mapping platform and consumer application developed by Google. It offers satellite imagery, aerial photography, street maps, 360\u00b0 interactive panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bike, air and public transportation. "
+              },
+              "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTo29NFru80AtGWqRuPJ0y7_zvwa5jkfnNK1BKncKIBSA6uu6YY"
+            }
+          ]
+        },
+        "optimization_recommendations": 4,
+        "implementation_roadmap": 3
+      },
+      "errors": [],
+      "message": "Knowledge Panel optimization working for entity: Google"
+    },
+    "ai_powered_recommendations": {
+      "test_name": "AI-Powered Recommendations",
+      "status": "passed",
+      "details": {
+        "query": "content marketing strategy",
+        "data_source": "fallback",
+        "confidence_score": 0.5,
+        "has_ai_analysis": true,
+        "has_optimization_priorities": true,
+        "has_implementation_roadmap": true,
+        "ai_analysis_components": {
+          "key_insights": 4,
+          "priority_actions": 4,
+          "content_improvements": 4,
+          "competitive_advantages": 3
+        }
+      },
+      "errors": [],
+      "message": "AI recommendations generated successfully - source: fallback"
+    },
+    "fallback_mechanism": {
+      "test_name": "Fallback Mechanism",
+      "status": "failed",
+      "details": {},
+      "errors": [
+        "Failed to get SERP features for query 'digital marketing tools': SerpAPI client not properly initialized. Please provide a valid API key and ensure 'serpapi' is installed."
+      ],
+      "message": "Fallback mechanism failed: Failed to get SERP features for query 'digital marketing tools': SerpAPI client not properly initialized. Please provide a valid API key and ensure 'serpapi' is installed."
+    },
+    "enhanced_recommendations": {
+      "test_name": "Enhanced Recommendations Generation",
+      "status": "passed",
+      "details": {
+        "keyword": "best SEO tools 2024",
+        "data_source": "google_custom_search",
+        "google_apis_enabled": true,
+        "analysis_timestamp": "2025-07-06T15:44:57.278022",
+        "enhanced_structure": true,
+        "recommendations_count": 7,
+        "enhanced_recommendation_structure": {
+          "has_feature": true,
+          "has_status": true,
+          "has_opportunity": true,
+          "has_implementation_priority": true,
+          "has_expected_impact": true,
+          "has_optimization_complexity": true
+        },
+        "optimization_summary": {
+          "total_opportunities": 1,
+          "critical_priorities": 0,
+          "quick_wins": 0,
+          "optimization_score": 20
+        },
+        "ai_insights_available": true,
+        "ai_insights_source": "fallback",
+        "entity_optimization_available": false
+      },
+      "errors": [],
+      "message": "Enhanced recommendations generated successfully - 7 features analyzed"
+    },
+    "performance_benchmarks": {
+      "test_name": "Performance Benchmarks",
+      "status": "passed",
+      "details": {
+        "average_response_time": 9.693012952804565,
+        "min_response_time": 7.883272886276245,
+        "max_response_time": 12.389522790908813,
+        "total_tests": 3,
+        "data_source_distribution": {
+          "google_custom_search": 3
+        },
+        "average_features": 7.0,
+        "average_recommendations": 7.0,
+        "performance_rating": "acceptable",
+        "performance_data": {
+          "test_keywords": [
+            "how to optimize SEO",
+            "best digital marketing tools 2024",
+            "Google search ranking factors"
+          ],
+          "response_times": [
+            7.883272886276245,
+            8.806243181228638,
+            12.389522790908813
+          ],
+          "data_sources": [
+            "google_custom_search",
+            "google_custom_search",
+            "google_custom_search"
+          ],
+          "feature_counts": [
+            7,
+            7,
+            7
+          ],
+          "recommendation_counts": [
+            7,
+            7,
+            7
+          ]
+        }
+      },
+      "errors": [],
+      "message": "Performance benchmarks completed - avg response time: 9.69s (acceptable)"
+    }
+  },
+  "performance_metrics": {},
+  "google_apis_status": {},
+  "success_rate": 85.71428571428571
+}

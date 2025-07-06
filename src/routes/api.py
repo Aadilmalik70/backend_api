@@ -124,6 +124,36 @@ def process_with_google_apis(input_text, domain, migration_manager):
             print(f"⚠️  Entity analysis failed: {e}")
             results["entity_analysis"] = {"error": str(e)}
         
+        # Competitor Analysis using Google APIs
+        try:
+            competitor_analysis = migration_manager.get_competitors_analysis(input_text)
+            results["competitor_analysis"] = competitor_analysis
+            print("✅ Competitor analysis completed with Google APIs")
+        except Exception as e:
+            print(f"⚠️  Competitor analysis failed: {e}")
+            results["competitor_analysis"] = {"error": str(e)}
+        
+        # SERP Feature Optimization using Google APIs
+        try:
+            serp_optimization = migration_manager.optimize_serp_features(input_text)
+            results["serp_optimization"] = serp_optimization
+            print("✅ SERP optimization completed with Google APIs")
+        except Exception as e:
+            print(f"⚠️  SERP optimization failed: {e}")
+            results["serp_optimization"] = {"error": str(e)}
+        
+        # Content Blueprint Generation using Google APIs
+        try:
+            content_blueprint = migration_manager.generate_content_blueprint(
+                input_text, 
+                results.get("competitor_analysis", {})
+            )
+            results["content_blueprint"] = content_blueprint  
+            print("✅ Content blueprint completed with Google APIs")
+        except Exception as e:
+            print(f"⚠️  Content blueprint failed: {e}")
+            results["content_blueprint"] = {"error": str(e)}
+        
         # Keyword Processing (keep existing Google Ads integration)
         try:
             keyword_data = keyword_processor.process_keywords(input_text)
