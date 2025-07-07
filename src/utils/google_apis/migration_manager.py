@@ -187,7 +187,7 @@ class MigrationManager:
 
     def get_competitors_analysis(self, query: str, num_competitors: int = 10) -> Dict[str, Any]:
         """
-        Get comprehensive competitor analysis using Google APIs
+        Get comprehensive competitor analysis using enhanced detection algorithms
         
         Args:
             query: Search query to find competitors for
@@ -205,68 +205,40 @@ class MigrationManager:
             try:
                 logger.info(f"Using Google APIs for competitor analysis: {query}")
                 
-                # Get search results from Google Custom Search
-                custom_search = self.google_clients['custom_search']
-                search_results = custom_search.search(query, num_results=num_competitors)
+                # Import and use our enhanced competitor analysis
+                import sys
+                import os
                 
-                competitors = []
-                analyzed_domains = set()
+                # Add src to path to import CompetitorAnalysisReal
+                src_path = os.path.join(os.path.dirname(os.path.dirname(__file__)))
+                if src_path not in sys.path:
+                    sys.path.append(src_path)
                 
-                for result in search_results.get('results', [])[:num_competitors]:
-                    try:
-                        # Extract domain from URL
-                        from urllib.parse import urlparse
-                        domain = urlparse(result.get('link', '')).netloc
-                        
-                        if domain and domain not in analyzed_domains:
-                            analyzed_domains.add(domain)
-                            
-                            # Basic competitor data
-                            competitor_data = {
-                                'domain': domain,
-                                'title': result.get('title', ''),
-                                'url': result.get('link', ''),
-                                'snippet': result.get('snippet', ''),
-                                'position': len(competitors) + 1
-                            }
-                            
-                            # Enhanced analysis with Knowledge Graph
-                            try:
-                                kg_client = self.google_clients['knowledge_graph']
-                                entity_search = kg_client.search_entities(domain.replace('www.', ''))
-                                
-                                if entity_search.get('entities'):
-                                    entity = entity_search['entities'][0]
-                                    competitor_data['entity_data'] = {
-                                        'name': entity.get('name', domain),
-                                        'description': entity.get('description', ''),
-                                        'types': entity.get('types', []),
-                                        'authority_score': min(entity.get('score', 0) / 1000, 1.0)
-                                    }
-                            except Exception as kg_error:
-                                logger.warning(f"Knowledge Graph lookup failed for {domain}: {kg_error}")
-                                competitor_data['entity_data'] = None
-                            
-                            competitors.append(competitor_data)
-                            
-                    except Exception as comp_error:
-                        logger.warning(f"Error analyzing competitor result: {comp_error}")
-                        continue
+                from competitor_analysis_real import CompetitorAnalysisReal
                 
-                # Generate insights and recommendations
-                insights = self._generate_competitor_insights(competitors, query)
+                # Initialize enhanced competitor analyzer
+                competitor_analyzer = CompetitorAnalysisReal()
                 
+                # Use the enhanced analysis
+                result = competitor_analyzer.analyze_competitors(
+                    keyword=query,
+                    limit=num_competitors
+                )
+                
+                # Convert to migration manager format
                 return {
                     'query': query,
-                    'competitors': competitors,
-                    'insights': insights,
-                    'data_source': 'google_apis',
+                    'competitors': result.get('competitors', []),
+                    'insights': result.get('insights', {}),
+                    'data_source': 'enhanced_google_apis',
                     'analysis_timestamp': datetime.now().isoformat(),
-                    'total_analyzed': len(competitors)
+                    'total_analyzed': len(result.get('competitors', [])),
+                    'detection_methods': result.get('detection_methods', {}),
+                    'detection_quality': result.get('detection_quality', 'unknown')
                 }
                 
             except Exception as e:
-                logger.error(f"Google APIs competitor analysis failed: {e}")
+                logger.error(f"Enhanced competitor analysis failed: {e}")
                 return self._fallback_competitor_analysis(query, num_competitors)
         else:
             logger.info(f"Using fallback for competitor analysis: {query}")
