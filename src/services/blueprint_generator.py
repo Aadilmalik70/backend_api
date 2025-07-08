@@ -16,11 +16,11 @@ from datetime import datetime
 from functools import wraps
 
 # Import existing analysis modules
-from ..competitor_analysis_real import CompetitorAnalysisReal
-from ..content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
-from ..serp_feature_optimizer_real import SerpFeatureOptimizerReal
-from ..utils.gemini_nlp_client import GeminiNLPClient
-from ..utils.quick_competitor_analyzer import QuickCompetitorAnalyzer
+from src.competitor_analysis_real import CompetitorAnalysisReal
+from src.content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
+from src.serp_feature_optimizer_real import SerpFeatureOptimizerReal
+from src.utils.gemini_nlp_client import GeminiNLPClient
+from src.utils.quick_competitor_analyzer import QuickCompetitorAnalyzer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
