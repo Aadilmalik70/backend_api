@@ -414,7 +414,7 @@ class KeywordProcessorEnhancedReal:
             try:
                 # Get entity data from Knowledge Graph
                 entities = self.knowledge_graph.search_entities(keyword, limit=3)
-                
+                print("entities", entities)
                 # Add entity information to keyword data
                 keyword_data['entities'] = entities.get('itemListElement', [])
                 keyword_data['entity_score'] = self._calculate_entity_relevance(entities)

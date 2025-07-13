@@ -229,3 +229,151 @@ class NaturalLanguageClient:
         except Exception as e:
             logger.error(f"Text classification error: {str(e)}")
             return {}
+    
+    def analyze_content_quality(self, text: str) -> Dict[str, Any]:
+        """
+        Analyze content quality using various metrics
+        
+        Args:
+            text: Text to analyze for quality
+            
+        Returns:
+            Dictionary containing quality metrics
+        """
+        try:
+            if not text or not text.strip():
+                return {
+                    "quality_score": 0.0,
+                    "readability_score": 0.0,
+                    "sentiment_score": 0.0,
+                    "entity_count": 0,
+                    "word_count": 0,
+                    "error": "Empty text provided"
+                }
+            
+            # Get basic metrics
+            word_count = len(text.split())
+            sentence_count = len([s for s in text.split('.') if s.strip()])
+            
+            # Calculate readability (simple metric)
+            readability = self._calculate_readability(text, word_count, sentence_count)
+            
+            # Get sentiment analysis
+            sentiment_result = self.analyze_sentiment(text)
+            sentiment_score = sentiment_result.get('score', 0.0)
+            
+            # Get entities
+            entities = self.extract_entities(text)
+            entity_count = len(entities)
+            
+            # Calculate overall quality score
+            quality_score = self._calculate_quality_score(
+                readability, sentiment_score, entity_count, word_count
+            )
+            
+            return {
+                "quality_score": quality_score,
+                "readability_score": readability,
+                "sentiment_score": sentiment_score,
+                "entity_count": entity_count,
+                "word_count": word_count,
+                "sentence_count": sentence_count,
+                "avg_words_per_sentence": word_count / max(sentence_count, 1),
+                "entities": entities[:5],  # Return top 5 entities
+                "method": "hybrid_analysis"
+            }
+            
+        except Exception as e:
+            logger.error(f"Content quality analysis error: {str(e)}")
+            return {
+                "quality_score": 0.0,
+                "readability_score": 0.0,
+                "sentiment_score": 0.0,
+                "entity_count": 0,
+                "word_count": 0,
+                "error": str(e)
+            }
+    
+    def _calculate_readability(self, text: str, word_count: int, sentence_count: int) -> float:
+        """
+        Calculate a simple readability score
+        
+        Args:
+            text: The text to analyze
+            word_count: Number of words
+            sentence_count: Number of sentences
+            
+        Returns:
+            Readability score (0.0 to 1.0)
+        """
+        if sentence_count == 0:
+            return 0.0
+        
+        # Average words per sentence (ideal range: 15-20)
+        avg_words_per_sentence = word_count / sentence_count
+        
+        # Calculate based on sentence length (closer to ideal = higher score)
+        if 15 <= avg_words_per_sentence <= 20:
+            sentence_score = 1.0
+        elif 10 <= avg_words_per_sentence <= 25:
+            sentence_score = 0.8
+        elif 8 <= avg_words_per_sentence <= 30:
+            sentence_score = 0.6
+        else:
+            sentence_score = 0.4
+        
+        # Check for variety in sentence structure
+        sentences = [s.strip() for s in text.split('.') if s.strip()]
+        sentence_lengths = [len(s.split()) for s in sentences]
+        
+        # Calculate variety score
+        if len(set(sentence_lengths)) > len(sentence_lengths) * 0.7:
+            variety_score = 1.0
+        elif len(set(sentence_lengths)) > len(sentence_lengths) * 0.5:
+            variety_score = 0.8
+        else:
+            variety_score = 0.6
+        
+        # Combined readability score
+        readability = (sentence_score * 0.7) + (variety_score * 0.3)
+        return min(1.0, readability)
+    
+    def _calculate_quality_score(self, readability: float, sentiment: float, 
+                               entity_count: int, word_count: int) -> float:
+        """
+        Calculate overall content quality score
+        
+        Args:
+            readability: Readability score (0.0 to 1.0)
+            sentiment: Sentiment score (-1.0 to 1.0)
+            entity_count: Number of entities found
+            word_count: Total word count
+            
+        Returns:
+            Quality score (0.0 to 1.0)
+        """
+        # Normalize sentiment to 0-1 scale (neutral to positive is good)
+        sentiment_normalized = max(0.0, sentiment + 1.0) / 2.0
+        
+        # Entity density (more entities = more informative content)
+        entity_density = min(1.0, entity_count / max(word_count / 100, 1))  # Entities per 100 words
+        
+        # Word count factor (moderate length is preferred)
+        if 50 <= word_count <= 500:
+            length_score = 1.0
+        elif 20 <= word_count <= 1000:
+            length_score = 0.8
+        elif word_count >= 10:
+            length_score = 0.6
+        else:
+            length_score = 0.3
+        
+        # Weighted quality score
+        quality = (
+            readability * 0.3 +
+            sentiment_normalized * 0.2 +
+            entity_density * 0.2 +
+            length_score * 0.3
+        )
+        
+        return min(1.0, quality)

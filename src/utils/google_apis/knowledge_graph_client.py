@@ -88,7 +88,7 @@ class KnowledgeGraphClient:
         
         return "business_services"
     
-    def search_entities(self, query: str, limit: int = 10) -> List[Dict[str, Any]]:
+    def search_entities(self, query: str, limit: int = 10) -> Dict[str, Any]:
         """
         Search for entities in Knowledge Graph
         
@@ -97,15 +97,62 @@ class KnowledgeGraphClient:
             limit: Maximum number of results
             
         Returns:
-            List of entities
+            Dictionary with 'itemListElement' containing list of entities
         """
         try:
             if not self.available:
-                return []
+                return {'itemListElement': []}
             
-            # Placeholder implementation
-            return [self.get_entity_info(query)]
+            if not query or not query.strip():
+                return {'itemListElement': []}
+            
+            # Get entity information
+            entity_info = self.get_entity_info(query)
+            
+            if entity_info:
+                # Format as Knowledge Graph API response
+                entity_item = {
+                    'result': entity_info,
+                    'resultScore': self._calculate_result_score(entity_info)
+                }
+                return {
+                    'itemListElement': [entity_item],
+                    '@context': {
+                        '@vocab': 'http://schema.org/',
+                        'goog': 'http://schema.googleapis.com/',
+                        'resultScore': 'goog:resultScore',
+                        'detailedDescription': 'goog:detailedDescription',
+                        'EntitySearchResult': 'goog:EntitySearchResult',
+                        'kg': 'http://g.co/kg'
+                    }
+                }
+            else:
+                return {'itemListElement': []}
             
         except Exception as e:
             logger.error(f"Entity search error: {str(e)}")
-            return []
+            return {'itemListElement': []}
+    
+    def _calculate_result_score(self, entity_info: Dict[str, Any]) -> float:
+        """
+        Calculate a result score for the entity based on available information
+        
+        Args:
+            entity_info: Entity information dictionary
+            
+        Returns:
+            Score between 0 and 1000 (typical Knowledge Graph range)
+        """
+        score = 100.0  # Base score
+        
+        # Increase score if we have more information
+        if entity_info.get('description'):
+            score += 200
+        if entity_info.get('url'):
+            score += 150
+        if entity_info.get('industry'):
+            score += 100
+        if entity_info.get('@type'):
+            score += 50
+        
+        return min(score, 1000.0)
