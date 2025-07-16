@@ -571,12 +571,24 @@ class SerpFeatureOptimizerReal:
             # Get AI recommendations
             ai_response = self.gemini_client.generate_content(prompt)
             
-            if ai_response.get('data_source') == 'mock':
+            # Handle both string and dict responses
+            if isinstance(ai_response, str):
+                ai_content = ai_response
+                data_source = 'gemini_text'
+            elif isinstance(ai_response, dict):
+                ai_content = ai_response.get('content', ai_response.get('text', str(ai_response)))
+                data_source = ai_response.get('data_source', 'gemini_dict')
+            else:
+                ai_content = str(ai_response)
+                data_source = 'gemini_fallback'
+            
+            # If it's mock data, use fallback
+            if data_source == 'mock' or not ai_content:
                 return self._get_fallback_ai_recommendations(query, serp_features)
             
             # Process and structure the recommendations
             structured_recommendations = self._process_ai_recommendations(
-                ai_response.get('content', ''), serp_features, query
+                ai_content, serp_features, query
             )
             
             return {
@@ -584,9 +596,9 @@ class SerpFeatureOptimizerReal:
                 'ai_analysis': structured_recommendations,
                 'optimization_priorities': self._prioritize_ai_recommendations(structured_recommendations),
                 'implementation_roadmap': self._create_ai_implementation_roadmap(structured_recommendations),
-                'competitive_insights': self._extract_competitive_insights(ai_response.get('content', '')),
-                'content_optimization': self._extract_content_optimization_tips(ai_response.get('content', '')),
-                'data_source': 'google_gemini',
+                'competitive_insights': self._extract_competitive_insights(ai_content),
+                'content_optimization': self._extract_content_optimization_tips(ai_content),
+                'data_source': data_source,
                 'confidence_score': 0.85  # High confidence for Gemini recommendations
             }
             

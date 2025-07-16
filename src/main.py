@@ -96,7 +96,7 @@ def initialize_google_apis():
         # Initialize Gemini Client
         try:
             gemini_client = GeminiClient()
-            if gemini_client.model:
+            if gemini_client:
                 google_apis_clients['gemini'] = gemini_client
                 print("✅ Gemini API initialized")
             else:

@@ -7,47 +7,18 @@ content structuring to generate comprehensive content blueprints.
 
 import logging
 import time
-import json
-import re
-import signal
-import concurrent.futures
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, Optional
 from datetime import datetime
-from functools import wraps
 
-# Import existing analysis modules
-from src.competitor_analysis_real import CompetitorAnalysisReal
-from src.content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
-from src.serp_feature_optimizer_real import SerpFeatureOptimizerReal
-from src.utils.gemini_nlp_client import GeminiNLPClient
-from src.utils.quick_competitor_analyzer import QuickCompetitorAnalyzer
+# Import refactored modules
+from .blueprint_analyzer import BlueprintAnalyzer
+from .blueprint_ai_generator import BlueprintAIGenerator
+from .blueprint_utils import validate_blueprint_data, is_google_apis_enabled
+from src.utils.google_apis.migration_manager import MigrationManager as get_migration_manager
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-def timeout_handler(signum, frame):
-    raise TimeoutError("Blueprint generation timed out")
-
-def with_timeout(timeout_seconds):
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            # Set the timeout
-            signal.signal(signal.SIGALRM, timeout_handler)
-            signal.alarm(timeout_seconds)
-            
-            try:
-                result = func(*args, **kwargs)
-                return result
-            except TimeoutError:
-                logger.warning(f"Function {func.__name__} timed out after {timeout_seconds} seconds")
-                raise
-            finally:
-                # Clear the alarm
-                signal.alarm(0)
-        return wrapper
-    return decorator
 
 class BlueprintGeneratorService:
     """
@@ -66,25 +37,16 @@ class BlueprintGeneratorService:
         self.serpapi_key = serpapi_key
         self.gemini_api_key = gemini_api_key
         
-        # Initialize analysis services
+        # Initialize components
         try:
-            # Use quick analyzer to avoid hanging
-            self.quick_analyzer = QuickCompetitorAnalyzer(
+            self.analyzer = BlueprintAnalyzer(
                 serpapi_key=serpapi_key,
-                gemini_key=gemini_api_key
-            )
-            
-            self.competitor_analyzer = CompetitorAnalysisReal(
-                gemini_api_key=gemini_api_key,
-                serpapi_key=serpapi_key
-            )
-            self.content_analyzer = ContentAnalyzerEnhancedReal(
                 gemini_api_key=gemini_api_key
             )
-            self.serp_optimizer = SerpFeatureOptimizerReal(
-                serpapi_key=serpapi_key
+            
+            self.ai_generator = BlueprintAIGenerator(
+                gemini_api_key=gemini_api_key
             )
-            self.gemini_client = GeminiNLPClient(api_key=gemini_api_key)
             
             logger.info("Blueprint generator services initialized successfully")
             
@@ -92,8 +54,8 @@ class BlueprintGeneratorService:
             logger.error(f"Failed to initialize blueprint generator: {str(e)}")
             raise Exception(f"Blueprint generator initialization failed: {str(e)}")
     
-    @with_timeout(120)  # 2 minute timeout
-    def generate_blueprint(self, keyword: str, user_id: str, project_id: Optional[str] = None) -> Dict[str, Any]:
+    def generate_blueprint(self, keyword: str, user_id: str, 
+                          project_id: Optional[str] = None) -> Dict[str, Any]:
         """
         Generate a complete content blueprint for the given keyword.
         
@@ -109,376 +71,161 @@ class BlueprintGeneratorService:
         logger.info(f"Starting blueprint generation for keyword: '{keyword}' (user: {user_id})")
         
         try:
-            # Step 1: Analyze competitors and SERP features
-            logger.info("Step 1: Analyzing competitors and SERP features")
-            competitors = self._analyze_competitors(keyword)
-            serp_features = self._analyze_serp_features(keyword)
+            # Step 1: Comprehensive analysis
+            logger.info("Step 1: Performing comprehensive analysis")
+            analysis_data = self.analyzer.get_comprehensive_analysis(keyword)
             
-            # Step 2: Analyze competitor content structure
-            logger.info("Step 2: Analyzing competitor content structure")
-            content_insights = self._analyze_competitor_content(competitors)
+            # Extract components from analysis
+            competitors = analysis_data.get('competitors', {})
+            serp_features = analysis_data.get('serp_features', {})
+            content_insights = analysis_data.get('content_insights', {})
+            content_gaps = analysis_data.get('content_gaps', {})
             
-            # Step 3: Generate heading structure using AI
-            logger.info("Step 3: Generating AI-powered heading structure")
-            heading_structure = self._generate_heading_structure(keyword, competitors, content_insights)
+            # Step 2: Generate AI-powered content structure
+            logger.info("Step 2: Generating AI-powered content structure")
+            heading_structure = self.ai_generator.generate_heading_structure(
+                keyword, competitors, content_insights
+            )
             
-            # Step 4: Generate topic clusters
-            logger.info("Step 4: Generating topic clusters")
-            topic_clusters = self._generate_topic_clusters(keyword, competitors, serp_features)
+            # Step 3: Generate topic clusters
+            logger.info("Step 3: Generating topic clusters")
+            topic_clusters = self.ai_generator.generate_topic_clusters(
+                keyword, competitors, serp_features
+            )
             
-            # Step 5: Compile final blueprint
+            # Step 4: Generate detailed content outline
+            logger.info("Step 4: Generating detailed content outline")
+            content_outline = self.ai_generator.generate_content_outline(
+                keyword, heading_structure, topic_clusters
+            )
+            
+            # Step 5: Generate SEO recommendations
+            logger.info("Step 5: Generating SEO recommendations")
+            seo_recommendations = self.ai_generator.generate_seo_recommendations(
+                keyword, competitors, serp_features
+            )
+            
+            # Step 6: Compile final blueprint with Google APIs status
             generation_time = int(time.time() - start_time)
+            google_apis_enabled = is_google_apis_enabled()
+            migration_manager = get_migration_manager()
             
             blueprint_data = {
                 'keyword': keyword,
                 'competitor_analysis': competitors,
                 'heading_structure': heading_structure,
                 'topic_clusters': topic_clusters,
-                'serp_features': serp_features,
+                'content_outline': content_outline,
+                'seo_recommendations': seo_recommendations,
                 'content_insights': content_insights,
+                'content_gaps': content_gaps,
+                'serp_features': serp_features,
                 'generation_metadata': {
                     'created_at': datetime.utcnow().isoformat(),
                     'generation_time': generation_time,
-                    'version': '1.0',
-                    'components_used': ['competitor_analysis', 'content_analysis', 'serp_optimization', 'ai_generation']
+                    'user_id': user_id,
+                    'project_id': project_id,
+                    'version': '2.0',
+                    'components_used': [
+                        'competitor_analysis', 'content_analysis', 'serp_optimization',
+                        'ai_generation', 'gap_analysis', 'seo_recommendations'
+                    ],
+                    'analysis_quality': analysis_data.get('analysis_metadata', {}).get('analysis_quality', 'medium')
+                },
+                'google_apis_status': {
+                    'enabled': google_apis_enabled,
+                    'migration_manager_available': bool(migration_manager),
+                    'apis_used': [
+                        'Custom Search API' if google_apis_enabled else 'SerpAPI',
+                        'Knowledge Graph API' if google_apis_enabled else 'Fallback Analysis',
+                        'Natural Language API' if google_apis_enabled else 'Gemini API',
+                        'Gemini API'  # Always used for AI generation
+                    ],
+                    'fallback_available': bool(self.serpapi_key),
+                    'processing_method': 'google_apis' if google_apis_enabled and migration_manager else 'fallback_apis'
                 }
             }
             
-            logger.info(f"Blueprint generation completed for keyword: '{keyword}' in {generation_time}s")
-            return blueprint_data
+            # Validate the blueprint
+            if self.validate_blueprint_data(blueprint_data):
+                logger.info(f"Blueprint generation completed for keyword: '{keyword}' in {generation_time}s")
+                return blueprint_data
+            else:
+                raise Exception("Generated blueprint failed validation")
             
         except Exception as e:
             logger.error(f"Error generating blueprint for keyword '{keyword}': {str(e)}")
             raise Exception(f"Blueprint generation failed: {str(e)}")
     
-    def _analyze_competitors(self, keyword: str) -> Dict[str, Any]:
-        """Analyze competitors for the given keyword with timeout protection."""
+    def generate_quick_blueprint(self, keyword: str, user_id: str) -> Dict[str, Any]:
+        """
+        Generate a quick blueprint with essential components only.
+        
+        Args:
+            keyword: Target keyword for content optimization
+            user_id: ID of the user requesting the blueprint
+            
+        Returns:
+            Dictionary containing the quick blueprint data
+        """
+        start_time = time.time()
+        logger.info(f"Starting quick blueprint generation for keyword: '{keyword}' (user: {user_id})")
+        
         try:
-            # Use quick analyzer first to avoid hanging
-            logger.info(f"Using quick competitor analysis for: {keyword}")
-            competitors = self.quick_analyzer.analyze_competitors_quick(keyword, max_competitors=3)
-            logger.info(f"Successfully analyzed competitors for keyword: {keyword}")
-            return competitors
-        except Exception as e:
-            logger.warning(f"Quick competitor analysis failed for '{keyword}': {str(e)}")
-            return self._get_fallback_competitors(keyword)
-    
-    def _get_fallback_competitors(self, keyword: str) -> Dict[str, Any]:
-        """Get fallback competitor data when analysis fails."""
-        return {
-            'keyword': keyword,
-            'competitors': [],
-            'insights': {
-                'common_topics': keyword.split() + ['guide', 'tips', 'strategy'],
-                'content_length': {
-                    'average': 2500,
-                    'count': 0,
-                    'max': 0,
-                    'min': 0
+            # Quick competitor analysis
+            competitors = self.analyzer.analyze_competitors(keyword)
+            
+            # Quick SERP analysis
+            serp_features = self.analyzer.analyze_serp_features(keyword)
+            
+            # Basic content insights
+            content_insights = self.analyzer.analyze_competitor_content(competitors)
+            
+            # Generate basic heading structure
+            heading_structure = self.ai_generator.generate_heading_structure(
+                keyword, competitors, content_insights
+            )
+            
+            # Generate basic topic clusters
+            topic_clusters = self.ai_generator.generate_topic_clusters(
+                keyword, competitors, serp_features
+            )
+            
+            generation_time = int(time.time() - start_time)
+            google_apis_enabled = is_google_apis_enabled()
+            migration_manager = get_migration_manager()
+            
+            quick_blueprint = {
+                'keyword': keyword,
+                'competitor_analysis': competitors,
+                'heading_structure': heading_structure,
+                'topic_clusters': topic_clusters,
+                'content_insights': content_insights,
+                'serp_features': serp_features,
+                'generation_metadata': {
+                    'created_at': datetime.utcnow().isoformat(),
+                    'generation_time': generation_time,
+                    'user_id': user_id,
+                    'version': '2.0-quick',
+                    'components_used': [
+                        'competitor_analysis', 'content_analysis', 'serp_optimization', 'ai_generation'
+                    ],
+                    'blueprint_type': 'quick'
                 },
-                'sentiment_trend': 'Positive',
-                'data_quality': {
-                    'competitors_analyzed': 0,
-                    'content_samples': 0,
-                    'entities_extracted': 0,
-                    'failed_competitors': 0,
-                    'sentiment_samples': 0,
-                    'success_rate': 0,
-                    'successful_competitors': 0
+                'google_apis_status': {
+                    'enabled': google_apis_enabled,
+                    'migration_manager_available': bool(migration_manager),
+                    'processing_method': 'google_apis' if google_apis_enabled and migration_manager else 'fallback_apis',
+                    'blueprint_type': 'quick'
                 }
-            },
-            'analysis_status': 'fallback'
-        }
-    
-    def _analyze_serp_features(self, keyword: str) -> Dict[str, Any]:
-        """Analyze SERP features for the given keyword."""
-        try:
-            serp_features = self.serp_optimizer.generate_recommendations(keyword)
-            logger.info(f"Successfully analyzed SERP features for keyword: {keyword}")
-            return serp_features
-        except Exception as e:
-            logger.warning(f"SERP feature analysis failed for '{keyword}': {str(e)}")
-            return {
-                'serp_features': {},
-                'recommendations': [],
-                'analysis_status': 'fallback',
-                'error': str(e)
             }
-    
-    def _analyze_competitor_content(self, competitors: Dict[str, Any]) -> Dict[str, Any]:
-        """Analyze the content structure of top competitors."""
-        content_insights = {
-            'avg_word_count': 0,
-            'common_sections': [],
-            'content_gaps': [],
-            'structural_patterns': {},
-            'analysis_status': 'completed'
-        }
-        
-        if 'top_competitors' not in competitors or not competitors['top_competitors']:
-            content_insights['analysis_status'] = 'no_competitors'
-            return content_insights
-        
-        try:
-            word_counts = []
-            all_sections = []
             
-            for competitor in competitors['top_competitors'][:3]:  # Analyze top 3
-                try:
-                    url = competitor.get('url', '')
-                    if url:
-                        analysis = self.content_analyzer.analyze_url(url)
-                        
-                        # Extract word count and sections
-                        if 'content_analysis' in analysis:
-                            content_data = analysis['content_analysis']
-                            word_counts.append(content_data.get('word_count', 0))
-                            
-                            # Extract headings/sections
-                            headings = content_data.get('headings', [])
-                            all_sections.extend(headings)
-                
-                except Exception as e:
-                    logger.warning(f"Failed to analyze competitor URL {url}: {str(e)}")
-                    continue
-            
-            # Calculate insights
-            if word_counts:
-                content_insights['avg_word_count'] = sum(word_counts) // len(word_counts)
-            
-            # Find common sections
-            if all_sections:
-                section_counts = {}
-                for section in all_sections:
-                    section_lower = section.lower().strip()
-                    section_counts[section_lower] = section_counts.get(section_lower, 0) + 1
-                
-                # Get sections mentioned by multiple competitors
-                content_insights['common_sections'] = [
-                    section for section, count in section_counts.items() 
-                    if count >= 2
-                ][:10]  # Top 10 common sections
-            
-            logger.info("Competitor content analysis completed successfully")
+            logger.info(f"Quick blueprint generation completed for keyword: '{keyword}' in {generation_time}s")
+            return quick_blueprint
             
         except Exception as e:
-            logger.warning(f"Content insights analysis failed: {str(e)}")
-            content_insights['analysis_status'] = 'failed'
-            content_insights['error'] = str(e)
-        
-        return content_insights
-    
-    def _parse_json_response(self, response: str) -> Optional[Dict[str, Any]]:
-        """Parse JSON from AI response with multiple fallback strategies."""
-        if not response:
-            return None
-        
-        try:
-            # Try direct JSON parsing first
-            return json.loads(response)
-        except:
-            pass
-        
-        try:
-            # Try to extract JSON from markdown code blocks
-            json_match = re.search(r'```json\s*(.*?)\s*```', response, re.DOTALL)
-            if json_match:
-                return json.loads(json_match.group(1).strip())
-        except:
-            pass
-        
-        try:
-            # Try to find JSON object between first { and last }
-            first_brace = response.find('{')
-            last_brace = response.rfind('}')
-            if first_brace != -1 and last_brace != -1 and last_brace > first_brace:
-                json_str = response[first_brace:last_brace + 1]
-                return json.loads(json_str)
-        except:
-            pass
-        
-        return None
-    
-    def _extract_paa_questions(self, serp_features: Dict[str, Any]) -> List[str]:
-        """Extract People Also Ask questions from SERP features."""
-        paa_questions = []
-        
-        try:
-            if 'serp_features' in serp_features:
-                serp_data = serp_features['serp_features']
-                if 'people_also_ask' in serp_data:
-                    paa_data = serp_data['people_also_ask']
-                    if isinstance(paa_data, dict) and 'data' in paa_data:
-                        paa_questions = [q.get('question', '') for q in paa_data['data'][:5]]
-        except Exception as e:
-            logger.warning(f"Failed to extract PAA questions: {str(e)}")
-        
-        return [q for q in paa_questions if q.strip()]
-    
-    def _generate_heading_structure(self, keyword: str, competitors: Dict[str, Any], content_insights: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate recommended heading structure using AI."""
-        
-        try:
-            # Prepare context for AI
-            competitor_info = ""
-            if 'top_competitors' in competitors and competitors['top_competitors']:
-                for i, comp in enumerate(competitors['top_competitors'][:3], 1):
-                    competitor_info += f"\n{i}. {comp.get('title', 'N/A')}"
-            
-            common_sections = content_insights.get('common_sections', [])
-            
-            prompt = f"""
-            Create a content heading structure for the keyword "{keyword}".
-            
-            Top competitor titles:
-            {competitor_info}
-            
-            Common sections found in competitors:
-            {', '.join(common_sections[:5]) if common_sections else 'None found'}
-            
-            Generate a comprehensive heading structure with:
-            1. One H1 title
-            2. 4-6 H2 main sections
-            3. 2-3 H3 subsections under each H2
-            
-            Return ONLY a JSON object with this structure:
-            {{
-                "h1": "Main title here",
-                "h2_sections": [
-                    {{
-                        "title": "H2 title",
-                        "h3_subsections": ["H3 title 1", "H3 title 2"]
-                    }}
-                ]
-            }}
-            """
-            
-            ai_response = self.gemini_client.generate_content(prompt)
-            heading_data = self._parse_json_response(ai_response)
-            
-            if heading_data and 'h1' in heading_data:
-                logger.info("AI heading structure generated successfully")
-                return heading_data
-            else:
-                logger.warning("AI response parsing failed, using fallback")
-                return self._generate_fallback_heading_structure(keyword, common_sections)
-                
-        except Exception as e:
-            logger.warning(f"AI heading generation failed: {str(e)}, using fallback")
-            return self._generate_fallback_heading_structure(keyword, common_sections)
-    
-    def _generate_topic_clusters(self, keyword: str, competitors: Dict[str, Any], serp_features: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate topic clusters based on competitor analysis and SERP features."""
-        
-        try:
-            # Extract People Also Ask questions
-            paa_questions = self._extract_paa_questions(serp_features)
-            
-            # Extract competitor titles
-            competitor_titles = []
-            if 'top_competitors' in competitors and competitors['top_competitors']:
-                competitor_titles = [comp.get('title', '') for comp in competitors['top_competitors'][:5]]
-            
-            prompt = f"""
-            Based on the keyword "{keyword}", create topic clusters for content planning.
-            
-            People Also Ask questions:
-            {chr(10).join(paa_questions[:5]) if paa_questions else 'None found'}
-            
-            Competitor titles:
-            {chr(10).join(competitor_titles[:5]) if competitor_titles else 'None found'}
-            
-            Generate topic clusters with:
-            1. Primary cluster (main topics)
-            2. Secondary clusters (supporting topics)
-            3. Related keywords for each cluster
-            
-            Return ONLY a JSON object:
-            {{
-                "primary_cluster": ["topic1", "topic2", "topic3"],
-                "secondary_clusters": {{
-                    "cluster_name_1": ["subtopic1", "subtopic2"],
-                    "cluster_name_2": ["subtopic1", "subtopic2"]
-                }},
-                "related_keywords": ["keyword1", "keyword2", "keyword3"]
-            }}
-            """
-            
-            ai_response = self.gemini_client.generate_content(prompt)
-            topic_data = self._parse_json_response(ai_response)
-            
-            if topic_data and 'primary_cluster' in topic_data:
-                logger.info("AI topic clustering generated successfully")
-                return topic_data
-            else:
-                logger.warning("AI topic clustering parsing failed, using fallback")
-                return self._generate_fallback_topic_clusters(keyword, paa_questions)
-                
-        except Exception as e:
-            logger.warning(f"AI topic clustering failed: {str(e)}, using fallback")
-            return self._generate_fallback_topic_clusters(keyword, [])
-    
-    def _generate_fallback_heading_structure(self, keyword: str, common_sections: List[str]) -> Dict[str, Any]:
-        """Generate a basic heading structure when AI fails."""
-        keyword_title = keyword.title()
-        
-        h2_sections = [
-            {
-                "title": f"What is {keyword_title}?",
-                "h3_subsections": ["Definition and Overview", "Key Benefits and Importance"]
-            },
-            {
-                "title": f"How to Implement {keyword_title}",
-                "h3_subsections": ["Step-by-Step Process", "Best Practices and Tips"]
-            },
-            {
-                "title": f"{keyword_title} Strategies and Techniques",
-                "h3_subsections": ["Advanced Methods", "Common Mistakes to Avoid"]
-            },
-            {
-                "title": f"Measuring {keyword_title} Success",
-                "h3_subsections": ["Key Performance Indicators", "Tools and Analytics"]
-            }
-        ]
-        
-        # Include common sections if available
-        if common_sections:
-            for section in common_sections[:2]:  # Add up to 2 common sections
-                h2_sections.append({
-                    "title": section.title(),
-                    "h3_subsections": ["Key Concepts", "Implementation Guide"]
-                })
-        
-        return {
-            "h1": f"Complete Guide to {keyword_title}: Strategies, Tips, and Best Practices",
-            "h2_sections": h2_sections[:6]  # Limit to 6 sections
-        }
-    
-    def _generate_fallback_topic_clusters(self, keyword: str, paa_questions: List[str]) -> Dict[str, Any]:
-        """Generate basic topic clusters when AI fails."""
-        primary_cluster = [keyword, f"{keyword} guide", f"{keyword} tips", f"best {keyword} practices"]
-        
-        secondary_clusters = {
-            "fundamentals": [f"{keyword} basics", f"{keyword} definition", f"introduction to {keyword}"],
-            "implementation": [f"how to {keyword}", f"{keyword} process", f"{keyword} steps"],
-            "advanced": [f"{keyword} strategies", f"advanced {keyword}", f"{keyword} optimization"],
-            "tools": [f"{keyword} tools", f"best {keyword} software", f"{keyword} resources"]
-        }
-        
-        # Add PAA-based clusters if available
-        if paa_questions:
-            secondary_clusters["common_questions"] = paa_questions[:3]
-        
-        related_keywords = [
-            f"{keyword} guide", f"best {keyword}", f"{keyword} tips",
-            f"{keyword} strategies", f"how to {keyword}", f"{keyword} best practices"
-        ]
-        
-        return {
-            "primary_cluster": primary_cluster,
-            "secondary_clusters": secondary_clusters,
-            "related_keywords": related_keywords
-        }
+            logger.error(f"Error generating quick blueprint for keyword '{keyword}': {str(e)}")
+            raise Exception(f"Quick blueprint generation failed: {str(e)}")
     
     def validate_blueprint_data(self, blueprint_data: Dict[str, Any]) -> bool:
         """
@@ -490,23 +237,63 @@ class BlueprintGeneratorService:
         Returns:
             True if valid, False otherwise
         """
-        required_fields = ['keyword', 'competitor_analysis', 'heading_structure', 'topic_clusters']
+        return validate_blueprint_data(blueprint_data)
+    
+    def get_service_status(self) -> Dict[str, Any]:
+        """
+        Get the current status of the blueprint generator service.
         
-        for field in required_fields:
-            if field not in blueprint_data:
-                logger.error(f"Missing required field: {field}")
-                return False
-        
-        # Validate heading structure
-        heading_structure = blueprint_data['heading_structure']
-        if not isinstance(heading_structure, dict) or 'h1' not in heading_structure:
-            logger.error("Invalid heading structure format")
-            return False
-        
-        # Validate topic clusters
-        topic_clusters = blueprint_data['topic_clusters']
-        if not isinstance(topic_clusters, dict) or 'primary_cluster' not in topic_clusters:
-            logger.error("Invalid topic clusters format")
-            return False
-        
-        return True
+        Returns:
+            Service status information
+        """
+        try:
+            google_apis_enabled = is_google_apis_enabled()
+            migration_manager = get_migration_manager()
+            
+            status = {
+                'service_name': 'BlueprintGeneratorService',
+                'version': '2.0',
+                'status': 'operational',
+                'components': {
+                    'analyzer': 'initialized' if hasattr(self, 'analyzer') else 'not_initialized',
+                    'ai_generator': 'initialized' if hasattr(self, 'ai_generator') else 'not_initialized'
+                },
+                'api_keys': {
+                    'serpapi_configured': bool(self.serpapi_key),
+                    'gemini_configured': bool(self.gemini_api_key)
+                },
+                'google_apis': {
+                    'enabled': google_apis_enabled,
+                    'migration_manager_available': bool(migration_manager),
+                    'processing_method': 'google_apis' if google_apis_enabled and migration_manager else 'fallback_apis'
+                },
+                'capabilities': [
+                    'competitor_analysis',
+                    'content_analysis', 
+                    'serp_optimization',
+                    'ai_content_generation',
+                    'blueprint_validation'
+                ],
+                'timestamp': datetime.utcnow().isoformat()
+            }
+            
+            # Check if all components are ready
+            if (status['components']['analyzer'] == 'initialized' and 
+                status['components']['ai_generator'] == 'initialized' and
+                (google_apis_enabled or (status['api_keys']['serpapi_configured'] and 
+                status['api_keys']['gemini_configured']))):
+                status['overall_status'] = 'fully_operational'
+            else:
+                status['overall_status'] = 'limited_functionality'
+                status['status'] = 'degraded'
+            
+            return status
+            
+        except Exception as e:
+            logger.error(f"Error getting service status: {str(e)}")
+            return {
+                'service_name': 'BlueprintGeneratorService',
+                'status': 'error',
+                'error': str(e),
+                'timestamp': datetime.utcnow().isoformat()
+            }
