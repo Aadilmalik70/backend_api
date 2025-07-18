@@ -54,8 +54,9 @@ class BlueprintGeneratorService:
             logger.error(f"Failed to initialize blueprint generator: {str(e)}")
             raise Exception(f"Blueprint generator initialization failed: {str(e)}")
     
-    def generate_blueprint(self, keyword: str, user_id: str, 
-                          project_id: Optional[str] = None) -> Dict[str, Any]:
+    def generate_blueprint(self, keyword: str, user_id: str,
+                          project_id: Optional[str] = None,
+                          competitors: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Generate a complete content blueprint for the given keyword.
         
@@ -63,6 +64,7 @@ class BlueprintGeneratorService:
             keyword: Target keyword for content optimization
             user_id: ID of the user requesting the blueprint
             project_id: Optional project ID to associate the blueprint with
+            competitors: (Optional) Precomputed competitor analysis data
             
         Returns:
             Dictionary containing the complete blueprint data
@@ -73,10 +75,14 @@ class BlueprintGeneratorService:
         try:
             # Step 1: Comprehensive analysis
             logger.info("Step 1: Performing comprehensive analysis")
-            analysis_data = self.analyzer.get_comprehensive_analysis(keyword)
+            if competitors is not None:
+                # Use provided competitors, avoid redundant analysis
+                analysis_data = self.analyzer.get_comprehensive_analysis(keyword, competitors=competitors)
+            else:
+                analysis_data = self.analyzer.get_comprehensive_analysis(keyword)
             
             # Extract components from analysis
-            competitors = analysis_data.get('competitors', {})
+            competitors_data = analysis_data.get('competitors', {})
             serp_features = analysis_data.get('serp_features', {})
             content_insights = analysis_data.get('content_insights', {})
             content_gaps = analysis_data.get('content_gaps', {})
@@ -84,13 +90,13 @@ class BlueprintGeneratorService:
             # Step 2: Generate AI-powered content structure
             logger.info("Step 2: Generating AI-powered content structure")
             heading_structure = self.ai_generator.generate_heading_structure(
-                keyword, competitors, content_insights
+                keyword, competitors_data, content_insights
             )
             
             # Step 3: Generate topic clusters
             logger.info("Step 3: Generating topic clusters")
             topic_clusters = self.ai_generator.generate_topic_clusters(
-                keyword, competitors, serp_features
+                keyword, competitors_data, serp_features
             )
             
             # Step 4: Generate detailed content outline
@@ -102,7 +108,7 @@ class BlueprintGeneratorService:
             # Step 5: Generate SEO recommendations
             logger.info("Step 5: Generating SEO recommendations")
             seo_recommendations = self.ai_generator.generate_seo_recommendations(
-                keyword, competitors, serp_features
+                keyword, competitors_data, serp_features
             )
             
             # Step 6: Compile final blueprint with Google APIs status

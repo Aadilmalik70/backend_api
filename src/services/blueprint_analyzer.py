@@ -264,14 +264,17 @@ class BlueprintAnalyzer:
                 'error': str(e)
             }
     
-    def get_comprehensive_analysis(self, keyword: str) -> Dict[str, Any]:
-        """Get comprehensive analysis combining all analysis methods."""
+    def get_comprehensive_analysis(self, keyword: str, competitors: dict = None) -> Dict[str, Any]:
+        """Get comprehensive analysis combining all analysis methods.
+        If competitors is provided, use it instead of running competitor analysis.
+        """
         logger.info(f"Starting comprehensive analysis for keyword: {keyword}")
         
         try:
             # Step 1: Competitor Analysis
             logger.info("Step 1: Analyzing competitors")
-            competitors = self.analyze_competitors(keyword)
+            if competitors is None:
+                competitors = self.analyze_competitors(keyword)
             
             # Step 2: SERP Features Analysis
             logger.info("Step 2: Analyzing SERP features")

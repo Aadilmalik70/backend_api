@@ -11,6 +11,7 @@ from keyword_processor_enhanced_real import KeywordProcessorEnhancedReal as Keyw
 from serp_feature_optimizer_real import SerpFeatureOptimizerReal as SerpFeatureOptimizer
 from content_performance_predictor import ContentPerformancePredictor
 from export_integration import ExportIntegration
+from services.blueprint_generator import BlueprintGeneratorService
 
 # Import Google APIs Migration Manager
 try:
@@ -144,12 +145,21 @@ def process_with_google_apis(input_text, domain, migration_manager):
         
         # Content Blueprint Generation using Google APIs
         try:
-            content_blueprint = migration_manager.generate_content_blueprint(
-                input_text, 
-                results.get("competitor_analysis", {})
+            # Use BlueprintGeneratorService for content blueprint generation
+            blueprint_service = BlueprintGeneratorService(
+                serpapi_key=serpapi_key,
+                gemini_api_key=gemini_api_key
             )
-            results["content_blueprint"] = content_blueprint  
-            print("✅ Content blueprint completed with Google APIs")
+            # Use a fallback user_id if not available
+            user_id = "unknown_user"
+            competitors = results.get("competitor_analysis")
+            content_blueprint = blueprint_service.generate_blueprint(
+                keyword=input_text,
+                user_id=user_id,
+                competitors=competitors if competitors and not competitors.get("error") else None
+            )
+            results["content_blueprint"] = content_blueprint
+            print("✅ Content blueprint completed with BlueprintGeneratorService")
         except Exception as e:
             print(f"⚠️  Content blueprint failed: {e}")
             results["content_blueprint"] = {"error": str(e)}
