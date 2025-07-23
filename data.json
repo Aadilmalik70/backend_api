@@ -1,0 +1,3556 @@
+{
+  "competitor_analysis": {
+    "analysis_timestamp": "2025-07-22T13:39:42.271192",
+    "competitors": [
+      {
+        "confidence_score": 0.95,
+        "content_length": 25980,
+        "content_similarity": 0.501,
+        "content_structure": {
+          "average_paragraph_length": 25980.0,
+          "content_organization_score": 0.7,
+          "external_links": 73,
+          "heading_hierarchy": {
+            "h1": 1,
+            "h2": 12,
+            "h3": 37,
+            "h4": 2
+          },
+          "image_count": 33,
+          "internal_links": 9,
+          "list_count": 0,
+          "paragraph_count": 1,
+          "total_headings": 52
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "blog.hubspot.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "SEO",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "SEARCH",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "GRADER",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Home Marketing",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Erica Santiago",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Grade Your Brand",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Contents How Marketers",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Powered Tools",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Top Features",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Search Grader See",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "How Marketers Use",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Smarter Content Strategy",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Automating Repetitive Tasks",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.51,
+          "h1_usage": {
+            "count": 1,
+            "h1_text": "14 best AI SEO tools & how to use AI in 2025 [new data]",
+            "present": true
+          },
+          "headings_usage": {
+            "count": 5,
+            "present": true,
+            "total_headings": 52
+          },
+          "meta_description_usage": {
+            "count": 1,
+            "meta_text": "Whether you're a freelancer, in-house marketer, or consultant, here are the top AI SEO tools you should try.",
+            "present": true
+          },
+          "optimization_score": 1.0,
+          "title_usage": {
+            "count": 1,
+            "present": true,
+            "title_text": "14 best AI SEO tools & how to use AI in 2025 [new data]"
+          },
+          "total_count": 21
+        },
+        "position": 1,
+        "readability": {
+          "avg_sentence_length": 17.4,
+          "avg_syllables_per_word": 1.7,
+          "flesch_score": 43.9,
+          "reading_level": "Difficult",
+          "sentence_count": 235,
+          "syllable_count": 7032,
+          "word_count": 4096
+        },
+        "relevance_score": 0.933,
+        "scraped_at": "2025-07-22 13:39:22",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.09673518742442563
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 108,
+            "optimized": false,
+            "text": "Whether you're a freelancer, in-house marketer, or consultant, here are the top AI SEO tools you should try."
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 55,
+            "optimized": true,
+            "text": "14 best AI SEO tools & how to use AI in 2025 [new data]"
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "14 best AI SEO tools & how to use AI in 2025 [new data]",
+        "topics": [
+          "seo",
+          "your brand",
+          "search engines",
+          "tools",
+          "home marketing",
+          "erica santiago",
+          "search grader",
+          "visible your",
+          "powered search",
+          "grade your",
+          "powered tools",
+          "search engine",
+          "digital",
+          "learn",
+          "marketing best"
+        ],
+        "url": "https://blog.hubspot.com/marketing/ai-seo",
+        "word_count": 4096
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 74121,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 264.3,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 3,
+          "paragraph_count": 278,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "backlinko.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "MTN",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "PHWG",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "WMX",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "MOK",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "BKJA",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "CVQ",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 2,
+        "readability": {
+          "avg_sentence_length": 3.1,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 65.3,
+          "reading_level": "Standard",
+          "sentence_count": 929,
+          "syllable_count": 4745,
+          "word_count": 2901
+        },
+        "relevance_score": 1.0,
+        "scraped_at": "2025-07-22 13:39:23",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "6 AI SEO Tools We Absolutely Love Using in 2025",
+        "topics": [],
+        "url": "https://backlinko.com/ai-seo-tools",
+        "word_count": 2901
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 64830,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 248.4,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 1,
+          "paragraph_count": 259,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "whatagraph.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "TOC",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "ZGZ",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "VKE",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "UTJ",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 3,
+        "readability": {
+          "avg_sentence_length": 3.3,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 64.9,
+          "reading_level": "Standard",
+          "sentence_count": 794,
+          "syllable_count": 4263,
+          "word_count": 2602
+        },
+        "relevance_score": 1.0,
+        "scraped_at": "2025-07-22 13:39:26",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "We Tested the 11 Best (& Underrated) AI SEO Tools in 2025 ...",
+        "topics": [],
+        "url": "https://whatagraph.com/blog/articles/ai-seo-tools",
+        "word_count": 2602
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 26771,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 244.7,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 2,
+          "paragraph_count": 108,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.semrush.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "QJS",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "QTH",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "ULX",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "SUU",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "HEA",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 4,
+        "readability": {
+          "avg_sentence_length": 3.4,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 67.0,
+          "reading_level": "Standard",
+          "sentence_count": 327,
+          "syllable_count": 1802,
+          "word_count": 1118
+        },
+        "relevance_score": 1.0,
+        "scraped_at": "2025-07-22 13:39:28",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "8 Best AI SEO Tools for 2025 (Tested Firsthand)",
+        "topics": [],
+        "url": "https://www.semrush.com/blog/best-ai-seo-tools/",
+        "word_count": 1118
+      },
+      {
+        "confidence_score": 0.95,
+        "content_length": 32180,
+        "content_similarity": 0.501,
+        "content_structure": {
+          "average_paragraph_length": 32180.0,
+          "content_organization_score": 0.7,
+          "external_links": 24,
+          "heading_hierarchy": {
+            "h1": 1,
+            "h2": 6,
+            "h3": 26,
+            "h4": 5,
+            "h5": 5
+          },
+          "image_count": 35,
+          "internal_links": 32,
+          "list_count": 0,
+          "paragraph_count": 1,
+          "total_headings": 43
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.seo.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "SEO",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "PDF",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "INK",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "SERP",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Matthew Gibbons Last",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Updated June",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Tool Best",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Custom Surfer",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Semrush Content",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Ahrefs Content",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Free Jasper Content",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Content Harmony Search",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Gap Analyzer",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Pictory Video",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Link Whisper Internal",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.44,
+          "h1_usage": {
+            "count": 1,
+            "h1_text": "25 Best AI SEO Tools (SEO AI Tools for 2025)",
+            "present": true
+          },
+          "headings_usage": {
+            "count": 7,
+            "present": true,
+            "total_headings": 43
+          },
+          "meta_description_usage": {
+            "count": 1,
+            "meta_text": "AI for SEO is the use of artificial intelligence in search engine optimization. Learn how to use AI for SEO (and the best AI SEO tools to use) now!",
+            "present": true
+          },
+          "optimization_score": 0.9,
+          "title_usage": {
+            "count": 1,
+            "present": true,
+            "title_text": "25 Best AI SEO Tools (+ How to Use AI for SEO in 2025)"
+          },
+          "total_count": 23
+        },
+        "position": 5,
+        "readability": {
+          "avg_sentence_length": 16.4,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 52.3,
+          "reading_level": "Fairly Difficult",
+          "sentence_count": 321,
+          "syllable_count": 8601,
+          "word_count": 5280
+        },
+        "relevance_score": 0.9,
+        "scraped_at": "2025-07-22 13:39:32",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.03525264394829612,
+          "method": "fallback_analysis",
+          "score": 0.1410105757931845
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 147,
+            "optimized": false,
+            "text": "AI for SEO is the use of artificial intelligence in search engine optimization. Learn how to use AI for SEO (and the best AI SEO tools to use) now!"
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 54,
+            "optimized": true,
+            "text": "25 Best AI SEO Tools (+ How to Use AI for SEO in 2025)"
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "25 Best AI SEO Tools (+ How to Use AI for SEO in 2025)",
+        "topics": [
+          "seo",
+          "tools",
+          "semrush content",
+          "content",
+          "free",
+          "keyword",
+          "artificial intelligence",
+          "tool best",
+          "custom surfer",
+          "ahrefs content",
+          "content optimization",
+          "keyword research",
+          "pictory video",
+          "internal linking",
+          "outranking internal"
+        ],
+        "url": "https://www.seo.com/tools/ai/",
+        "word_count": 5280
+      },
+      {
+        "confidence_score": 0.65,
+        "content_length": 57,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 57.0,
+          "content_organization_score": 0.7,
+          "external_links": 52,
+          "heading_hierarchy": {
+            "h1": 1,
+            "h2": 9,
+            "h3": 20
+          },
+          "image_count": 47,
+          "internal_links": 53,
+          "list_count": 0,
+          "paragraph_count": 1,
+          "total_headings": 30
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "selfmademillennials.com",
+        "entities": [
+          {
+            "method": "capitalization_pattern",
+            "name": "Ahrefs Alternatives",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "What Works",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 1,
+            "h1_text": "I’ve Tried 12 AI SEO Tools (Paid & Free). Here’s What Works",
+            "present": true
+          },
+          "headings_usage": {
+            "count": 3,
+            "present": true,
+            "total_headings": 30
+          },
+          "meta_description_usage": {
+            "count": 1,
+            "meta_text": "Learn about affordable and best AI SEO tools from a content writer & SEO expert. I also show how AI-generated content performs in search results.",
+            "present": true
+          },
+          "optimization_score": 0.8,
+          "title_usage": {
+            "count": 1,
+            "present": true,
+            "title_text": "I Tried 12 AI SEO Tools (Paid & Free). Here’s What Works"
+          },
+          "total_count": 0
+        },
+        "position": 6,
+        "readability": {
+          "avg_sentence_length": 5.0,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 66.4,
+          "reading_level": "Standard",
+          "sentence_count": 2,
+          "syllable_count": 16,
+          "word_count": 10
+        },
+        "relevance_score": 0.95,
+        "scraped_at": "2025-07-22 13:39:34",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 145,
+            "optimized": false,
+            "text": "Learn about affordable and best AI SEO tools from a content writer & SEO expert. I also show how AI-generated content performs in search results."
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 56,
+            "optimized": true,
+            "text": "I Tried 12 AI SEO Tools (Paid & Free). Here’s What Works"
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "I Tried 12 AI SEO Tools (Paid & Free). Here's What Works",
+        "topics": [
+          "ahrefs alternatives",
+          "used ahrefs",
+          "alternatives paid",
+          "paid free",
+          "what works"
+        ],
+        "url": "https://selfmademillennials.com/ai-seo-tools/",
+        "word_count": 10
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 71564,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 268.7,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 4,
+          "paragraph_count": 264,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.shopify.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "GHT",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 7,
+        "readability": {
+          "avg_sentence_length": 3.4,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 70.2,
+          "reading_level": "Fairly Easy",
+          "sentence_count": 889,
+          "syllable_count": 4709,
+          "word_count": 2990
+        },
+        "relevance_score": 0.817,
+        "scraped_at": "2025-07-22 13:39:37",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Top AI SEO Tools: Use AI for Search Engine Optimization (2024 ...",
+        "topics": [],
+        "url": "https://www.shopify.com/blog/ai-seo-tools",
+        "word_count": 2990
+      },
+      {
+        "confidence_score": 0,
+        "content_length": 0,
+        "content_similarity": 0,
+        "content_structure": {
+          "image_count": 0,
+          "list_count": 0,
+          "paragraph_count": 0,
+          "total_headings": 0
+        },
+        "domain": "seo.ai",
+        "entities": [],
+        "error": "Insufficient content extracted",
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0,
+          "optimization_score": 0,
+          "total_count": 0
+        },
+        "position": 8,
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Unknown"
+        },
+        "relevance_score": 0.55,
+        "scraped_at": "2025-07-22T13:39:38.220233",
+        "sentiment": {
+          "error": "Analysis failed",
+          "score": 0
+        },
+        "source": "hybrid_analysis",
+        "status": "failed",
+        "title": "SEO.AI: The #1 AI SEO tool for Ecommerce SEO teams",
+        "topics": [],
+        "url": "https://seo.ai/",
+        "word_count": 0
+      },
+      {
+        "confidence_score": 0,
+        "content_length": 0,
+        "content_similarity": 0,
+        "content_structure": {
+          "image_count": 0,
+          "list_count": 0,
+          "paragraph_count": 0,
+          "total_headings": 0
+        },
+        "domain": "searchengineland.com",
+        "entities": [],
+        "error": "HTTP 0 error",
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0,
+          "optimization_score": 0,
+          "total_count": 0
+        },
+        "position": 9,
+        "readability": {
+          "flesch_score": 0,
+          "reading_level": "Unknown"
+        },
+        "relevance_score": 0.95,
+        "scraped_at": "2025-07-22T13:39:39.586032",
+        "sentiment": {
+          "error": "Analysis failed",
+          "score": 0
+        },
+        "source": "hybrid_analysis",
+        "status": "failed",
+        "title": "15 AI tools you should use for SEO",
+        "topics": [],
+        "url": "https://searchengineland.com/15-ai-tools-you-should-use-for-seo-446982",
+        "word_count": 0
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 117612,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 277.7,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 3,
+          "paragraph_count": 420,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "searchatlas.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "LQQ",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "IVS",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "SZJ",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "SEK",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 12,
+        "readability": {
+          "avg_sentence_length": 3.2,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 68.0,
+          "reading_level": "Standard",
+          "sentence_count": 1474,
+          "syllable_count": 7604,
+          "word_count": 4746
+        },
+        "relevance_score": 0.467,
+        "scraped_at": "2025-07-22 13:39:42",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Search Atlas: The #1 AI SEO Automation Platform for Agencies and ...",
+        "topics": [],
+        "url": "https://searchatlas.com/",
+        "word_count": 4746
+      }
+    ],
+    "data_source": "enhanced_google_apis",
+    "detection_methods": {},
+    "detection_quality": "unknown",
+    "insights": {
+      "common_topics": [
+        "seo",
+        "tools"
+      ],
+      "content_analysis": {
+        "average_content_length": 51639.0,
+        "average_word_count": 2968.0,
+        "content_length_range": {
+          "max": 117612,
+          "min": 57
+        },
+        "top_performers": [
+          {
+            "domain": "searchatlas.com",
+            "url": "https://searchatlas.com/",
+            "value": 117612
+          },
+          {
+            "domain": "backlinko.com",
+            "url": "https://backlinko.com/ai-seo-tools",
+            "value": 74121
+          },
+          {
+            "domain": "www.shopify.com",
+            "url": "https://www.shopify.com/blog/ai-seo-tools",
+            "value": 71564
+          }
+        ]
+      },
+      "content_structure": {
+        "average_headings_count": 15.6,
+        "average_paragraph_count": 166.5,
+        "heading_hierarchy_usage": {
+          "h1": 3,
+          "h2": 27,
+          "h3": 83,
+          "h4": 7,
+          "h5": 5
+        },
+        "image_usage_rate": 37.5,
+        "list_usage_rate": 62.5
+      },
+      "data_quality": {
+        "average_confidence_score": 0.506,
+        "failed_analyses": 2,
+        "success_rate": 80.0,
+        "successful_analyses": 8,
+        "total_competitors_analyzed": 10
+      },
+      "entity_analysis": [
+        "seo"
+      ],
+      "industry_distribution": {
+        "organization": 8
+      },
+      "readability_analysis": {
+        "average_flesch_score": 62.2,
+        "average_sentence_length": 6.9,
+        "average_word_complexity": 1.6,
+        "reading_level_distribution": {
+          "Difficult": 1,
+          "Fairly Difficult": 1,
+          "Fairly Easy": 1,
+          "Standard": 5
+        }
+      },
+      "seo_analysis": {
+        "average_keyword_density": 0.12,
+        "h1_optimization_rate": 37.5,
+        "keyword_optimization_scores": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9,
+          0.8,
+          0.0,
+          0.0
+        ],
+        "meta_description_rate": 37.5,
+        "title_optimization_rate": 37.5
+      }
+    },
+    "query": "ai seo tools",
+    "total_analyzed": 10
+  },
+  "content_analysis": {
+    "ai_optimization": {
+      "note": "Gemini API not available"
+    },
+    "avg_words_per_sentence": 7.0,
+    "data_source": "google_nlp",
+    "entities": [],
+    "entity_count": 0,
+    "method": "hybrid_analysis",
+    "quality_score": 0.364,
+    "readability_score": 0.58,
+    "sentence_count": 1,
+    "sentiment_score": 0.0,
+    "word_count": 7
+  },
+  "content_blueprint": {
+    "competitor_analysis": {
+      "analysis_timestamp": "2025-07-22T13:39:42.271192",
+      "competitors": [
+        {
+          "confidence_score": 0.95,
+          "content_length": 25980,
+          "content_similarity": 0.501,
+          "content_structure": {
+            "average_paragraph_length": 25980.0,
+            "content_organization_score": 0.7,
+            "external_links": 73,
+            "heading_hierarchy": {
+              "h1": 1,
+              "h2": 12,
+              "h3": 37,
+              "h4": 2
+            },
+            "image_count": 33,
+            "internal_links": 9,
+            "list_count": 0,
+            "paragraph_count": 1,
+            "total_headings": 52
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "blog.hubspot.com",
+          "entities": [
+            {
+              "method": "tech_pattern",
+              "name": "SEO",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "SEARCH",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "GRADER",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Home Marketing",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Erica Santiago",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Grade Your Brand",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Contents How Marketers",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Powered Tools",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Top Features",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Search Grader See",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "How Marketers Use",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Smarter Content Strategy",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Automating Repetitive Tasks",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.51,
+            "h1_usage": {
+              "count": 1,
+              "h1_text": "14 best AI SEO tools & how to use AI in 2025 [new data]",
+              "present": true
+            },
+            "headings_usage": {
+              "count": 5,
+              "present": true,
+              "total_headings": 52
+            },
+            "meta_description_usage": {
+              "count": 1,
+              "meta_text": "Whether you're a freelancer, in-house marketer, or consultant, here are the top AI SEO tools you should try.",
+              "present": true
+            },
+            "optimization_score": 1.0,
+            "title_usage": {
+              "count": 1,
+              "present": true,
+              "title_text": "14 best AI SEO tools & how to use AI in 2025 [new data]"
+            },
+            "total_count": 21
+          },
+          "position": 1,
+          "readability": {
+            "avg_sentence_length": 17.4,
+            "avg_syllables_per_word": 1.7,
+            "flesch_score": 43.9,
+            "reading_level": "Difficult",
+            "sentence_count": 235,
+            "syllable_count": 7032,
+            "word_count": 4096
+          },
+          "relevance_score": 0.933,
+          "scraped_at": "2025-07-22 13:39:22",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.0,
+            "method": "fallback_analysis",
+            "score": 0.09673518742442563
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 108,
+              "optimized": false,
+              "text": "Whether you're a freelancer, in-house marketer, or consultant, here are the top AI SEO tools you should try."
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 55,
+              "optimized": true,
+              "text": "14 best AI SEO tools & how to use AI in 2025 [new data]"
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "14 best AI SEO tools & how to use AI in 2025 [new data]",
+          "topics": [
+            "seo",
+            "your brand",
+            "search engines",
+            "tools",
+            "home marketing",
+            "erica santiago",
+            "search grader",
+            "visible your",
+            "powered search",
+            "grade your",
+            "powered tools",
+            "search engine",
+            "digital",
+            "learn",
+            "marketing best"
+          ],
+          "url": "https://blog.hubspot.com/marketing/ai-seo",
+          "word_count": 4096
+        },
+        {
+          "confidence_score": 0.3,
+          "content_length": 74121,
+          "content_similarity": 0.0,
+          "content_structure": {
+            "average_paragraph_length": 264.3,
+            "content_organization_score": 0.3,
+            "external_links": 0,
+            "heading_hierarchy": {},
+            "image_count": 0,
+            "internal_links": 0,
+            "list_count": 3,
+            "paragraph_count": 278,
+            "total_headings": 0
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "backlinko.com",
+          "entities": [
+            {
+              "method": "tech_pattern",
+              "name": "MTN",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "PHWG",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "WMX",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "MOK",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "BKJA",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "CVQ",
+              "salience": 0.6,
+              "type": "OTHER"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.0,
+            "h1_usage": {
+              "count": 0,
+              "h1_text": "",
+              "present": false
+            },
+            "headings_usage": {
+              "count": 0,
+              "present": false,
+              "total_headings": 0
+            },
+            "meta_description_usage": {
+              "count": 0,
+              "meta_text": "",
+              "present": false
+            },
+            "optimization_score": 0.0,
+            "title_usage": {
+              "count": 0,
+              "present": false,
+              "title_text": ""
+            },
+            "total_count": 0
+          },
+          "position": 2,
+          "readability": {
+            "avg_sentence_length": 3.1,
+            "avg_syllables_per_word": 1.6,
+            "flesch_score": 65.3,
+            "reading_level": "Standard",
+            "sentence_count": 929,
+            "syllable_count": 4745,
+            "word_count": 2901
+          },
+          "relevance_score": 1.0,
+          "scraped_at": "2025-07-22 13:39:23",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.0,
+            "method": "fallback_analysis",
+            "score": 0.0
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "6 AI SEO Tools We Absolutely Love Using in 2025",
+          "topics": [],
+          "url": "https://backlinko.com/ai-seo-tools",
+          "word_count": 2901
+        },
+        {
+          "confidence_score": 0.3,
+          "content_length": 64830,
+          "content_similarity": 0.0,
+          "content_structure": {
+            "average_paragraph_length": 248.4,
+            "content_organization_score": 0.3,
+            "external_links": 0,
+            "heading_hierarchy": {},
+            "image_count": 0,
+            "internal_links": 0,
+            "list_count": 1,
+            "paragraph_count": 259,
+            "total_headings": 0
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "whatagraph.com",
+          "entities": [
+            {
+              "method": "tech_pattern",
+              "name": "TOC",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "ZGZ",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "VKE",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "UTJ",
+              "salience": 0.6,
+              "type": "OTHER"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.0,
+            "h1_usage": {
+              "count": 0,
+              "h1_text": "",
+              "present": false
+            },
+            "headings_usage": {
+              "count": 0,
+              "present": false,
+              "total_headings": 0
+            },
+            "meta_description_usage": {
+              "count": 0,
+              "meta_text": "",
+              "present": false
+            },
+            "optimization_score": 0.0,
+            "title_usage": {
+              "count": 0,
+              "present": false,
+              "title_text": ""
+            },
+            "total_count": 0
+          },
+          "position": 3,
+          "readability": {
+            "avg_sentence_length": 3.3,
+            "avg_syllables_per_word": 1.6,
+            "flesch_score": 64.9,
+            "reading_level": "Standard",
+            "sentence_count": 794,
+            "syllable_count": 4263,
+            "word_count": 2602
+          },
+          "relevance_score": 1.0,
+          "scraped_at": "2025-07-22 13:39:26",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.0,
+            "method": "fallback_analysis",
+            "score": 0.0
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "We Tested the 11 Best (& Underrated) AI SEO Tools in 2025 ...",
+          "topics": [],
+          "url": "https://whatagraph.com/blog/articles/ai-seo-tools",
+          "word_count": 2602
+        },
+        {
+          "confidence_score": 0.3,
+          "content_length": 26771,
+          "content_similarity": 0.0,
+          "content_structure": {
+            "average_paragraph_length": 244.7,
+            "content_organization_score": 0.3,
+            "external_links": 0,
+            "heading_hierarchy": {},
+            "image_count": 0,
+            "internal_links": 0,
+            "list_count": 2,
+            "paragraph_count": 108,
+            "total_headings": 0
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "www.semrush.com",
+          "entities": [
+            {
+              "method": "tech_pattern",
+              "name": "QJS",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "QTH",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "ULX",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "SUU",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "HEA",
+              "salience": 0.6,
+              "type": "OTHER"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.0,
+            "h1_usage": {
+              "count": 0,
+              "h1_text": "",
+              "present": false
+            },
+            "headings_usage": {
+              "count": 0,
+              "present": false,
+              "total_headings": 0
+            },
+            "meta_description_usage": {
+              "count": 0,
+              "meta_text": "",
+              "present": false
+            },
+            "optimization_score": 0.0,
+            "title_usage": {
+              "count": 0,
+              "present": false,
+              "title_text": ""
+            },
+            "total_count": 0
+          },
+          "position": 4,
+          "readability": {
+            "avg_sentence_length": 3.4,
+            "avg_syllables_per_word": 1.6,
+            "flesch_score": 67.0,
+            "reading_level": "Standard",
+            "sentence_count": 327,
+            "syllable_count": 1802,
+            "word_count": 1118
+          },
+          "relevance_score": 1.0,
+          "scraped_at": "2025-07-22 13:39:28",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.0,
+            "method": "fallback_analysis",
+            "score": 0.0
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "8 Best AI SEO Tools for 2025 (Tested Firsthand)",
+          "topics": [],
+          "url": "https://www.semrush.com/blog/best-ai-seo-tools/",
+          "word_count": 1118
+        },
+        {
+          "confidence_score": 0.95,
+          "content_length": 32180,
+          "content_similarity": 0.501,
+          "content_structure": {
+            "average_paragraph_length": 32180.0,
+            "content_organization_score": 0.7,
+            "external_links": 24,
+            "heading_hierarchy": {
+              "h1": 1,
+              "h2": 6,
+              "h3": 26,
+              "h4": 5,
+              "h5": 5
+            },
+            "image_count": 35,
+            "internal_links": 32,
+            "list_count": 0,
+            "paragraph_count": 1,
+            "total_headings": 43
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "www.seo.com",
+          "entities": [
+            {
+              "method": "tech_pattern",
+              "name": "SEO",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "PDF",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "INK",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "SERP",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Matthew Gibbons Last",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Updated June",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Tool Best",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Custom Surfer",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Semrush Content",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Ahrefs Content",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Free Jasper Content",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Content Harmony Search",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Gap Analyzer",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Pictory Video",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "Link Whisper Internal",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.44,
+            "h1_usage": {
+              "count": 1,
+              "h1_text": "25 Best AI SEO Tools (SEO AI Tools for 2025)",
+              "present": true
+            },
+            "headings_usage": {
+              "count": 7,
+              "present": true,
+              "total_headings": 43
+            },
+            "meta_description_usage": {
+              "count": 1,
+              "meta_text": "AI for SEO is the use of artificial intelligence in search engine optimization. Learn how to use AI for SEO (and the best AI SEO tools to use) now!",
+              "present": true
+            },
+            "optimization_score": 0.9,
+            "title_usage": {
+              "count": 1,
+              "present": true,
+              "title_text": "25 Best AI SEO Tools (+ How to Use AI for SEO in 2025)"
+            },
+            "total_count": 23
+          },
+          "position": 5,
+          "readability": {
+            "avg_sentence_length": 16.4,
+            "avg_syllables_per_word": 1.6,
+            "flesch_score": 52.3,
+            "reading_level": "Fairly Difficult",
+            "sentence_count": 321,
+            "syllable_count": 8601,
+            "word_count": 5280
+          },
+          "relevance_score": 0.9,
+          "scraped_at": "2025-07-22 13:39:32",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.03525264394829612,
+            "method": "fallback_analysis",
+            "score": 0.1410105757931845
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 147,
+              "optimized": false,
+              "text": "AI for SEO is the use of artificial intelligence in search engine optimization. Learn how to use AI for SEO (and the best AI SEO tools to use) now!"
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 54,
+              "optimized": true,
+              "text": "25 Best AI SEO Tools (+ How to Use AI for SEO in 2025)"
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "25 Best AI SEO Tools (+ How to Use AI for SEO in 2025)",
+          "topics": [
+            "seo",
+            "tools",
+            "semrush content",
+            "content",
+            "free",
+            "keyword",
+            "artificial intelligence",
+            "tool best",
+            "custom surfer",
+            "ahrefs content",
+            "content optimization",
+            "keyword research",
+            "pictory video",
+            "internal linking",
+            "outranking internal"
+          ],
+          "url": "https://www.seo.com/tools/ai/",
+          "word_count": 5280
+        },
+        {
+          "confidence_score": 0.65,
+          "content_length": 57,
+          "content_similarity": 0.0,
+          "content_structure": {
+            "average_paragraph_length": 57.0,
+            "content_organization_score": 0.7,
+            "external_links": 52,
+            "heading_hierarchy": {
+              "h1": 1,
+              "h2": 9,
+              "h3": 20
+            },
+            "image_count": 47,
+            "internal_links": 53,
+            "list_count": 0,
+            "paragraph_count": 1,
+            "total_headings": 30
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "selfmademillennials.com",
+          "entities": [
+            {
+              "method": "capitalization_pattern",
+              "name": "Ahrefs Alternatives",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            },
+            {
+              "method": "capitalization_pattern",
+              "name": "What Works",
+              "salience": 0.4,
+              "type": "CONSUMER_GOOD"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.0,
+            "h1_usage": {
+              "count": 1,
+              "h1_text": "I’ve Tried 12 AI SEO Tools (Paid & Free). Here’s What Works",
+              "present": true
+            },
+            "headings_usage": {
+              "count": 3,
+              "present": true,
+              "total_headings": 30
+            },
+            "meta_description_usage": {
+              "count": 1,
+              "meta_text": "Learn about affordable and best AI SEO tools from a content writer & SEO expert. I also show how AI-generated content performs in search results.",
+              "present": true
+            },
+            "optimization_score": 0.8,
+            "title_usage": {
+              "count": 1,
+              "present": true,
+              "title_text": "I Tried 12 AI SEO Tools (Paid & Free). Here’s What Works"
+            },
+            "total_count": 0
+          },
+          "position": 6,
+          "readability": {
+            "avg_sentence_length": 5.0,
+            "avg_syllables_per_word": 1.6,
+            "flesch_score": 66.4,
+            "reading_level": "Standard",
+            "sentence_count": 2,
+            "syllable_count": 16,
+            "word_count": 10
+          },
+          "relevance_score": 0.95,
+          "scraped_at": "2025-07-22 13:39:34",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.0,
+            "method": "fallback_analysis",
+            "score": 0.0
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 145,
+              "optimized": false,
+              "text": "Learn about affordable and best AI SEO tools from a content writer & SEO expert. I also show how AI-generated content performs in search results."
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 56,
+              "optimized": true,
+              "text": "I Tried 12 AI SEO Tools (Paid & Free). Here’s What Works"
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "I Tried 12 AI SEO Tools (Paid & Free). Here's What Works",
+          "topics": [
+            "ahrefs alternatives",
+            "used ahrefs",
+            "alternatives paid",
+            "paid free",
+            "what works"
+          ],
+          "url": "https://selfmademillennials.com/ai-seo-tools/",
+          "word_count": 10
+        },
+        {
+          "confidence_score": 0.3,
+          "content_length": 71564,
+          "content_similarity": 0.0,
+          "content_structure": {
+            "average_paragraph_length": 268.7,
+            "content_organization_score": 0.3,
+            "external_links": 0,
+            "heading_hierarchy": {},
+            "image_count": 0,
+            "internal_links": 0,
+            "list_count": 4,
+            "paragraph_count": 264,
+            "total_headings": 0
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "www.shopify.com",
+          "entities": [
+            {
+              "method": "tech_pattern",
+              "name": "GHT",
+              "salience": 0.6,
+              "type": "OTHER"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.0,
+            "h1_usage": {
+              "count": 0,
+              "h1_text": "",
+              "present": false
+            },
+            "headings_usage": {
+              "count": 0,
+              "present": false,
+              "total_headings": 0
+            },
+            "meta_description_usage": {
+              "count": 0,
+              "meta_text": "",
+              "present": false
+            },
+            "optimization_score": 0.0,
+            "title_usage": {
+              "count": 0,
+              "present": false,
+              "title_text": ""
+            },
+            "total_count": 0
+          },
+          "position": 7,
+          "readability": {
+            "avg_sentence_length": 3.4,
+            "avg_syllables_per_word": 1.6,
+            "flesch_score": 70.2,
+            "reading_level": "Fairly Easy",
+            "sentence_count": 889,
+            "syllable_count": 4709,
+            "word_count": 2990
+          },
+          "relevance_score": 0.817,
+          "scraped_at": "2025-07-22 13:39:37",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.0,
+            "method": "fallback_analysis",
+            "score": 0.0
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "Top AI SEO Tools: Use AI for Search Engine Optimization (2024 ...",
+          "topics": [],
+          "url": "https://www.shopify.com/blog/ai-seo-tools",
+          "word_count": 2990
+        },
+        {
+          "confidence_score": 0,
+          "content_length": 0,
+          "content_similarity": 0,
+          "content_structure": {
+            "image_count": 0,
+            "list_count": 0,
+            "paragraph_count": 0,
+            "total_headings": 0
+          },
+          "domain": "seo.ai",
+          "entities": [],
+          "error": "Insufficient content extracted",
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0,
+            "optimization_score": 0,
+            "total_count": 0
+          },
+          "position": 8,
+          "readability": {
+            "flesch_score": 0,
+            "reading_level": "Unknown"
+          },
+          "relevance_score": 0.55,
+          "scraped_at": "2025-07-22T13:39:38.220233",
+          "sentiment": {
+            "error": "Analysis failed",
+            "score": 0
+          },
+          "source": "hybrid_analysis",
+          "status": "failed",
+          "title": "SEO.AI: The #1 AI SEO tool for Ecommerce SEO teams",
+          "topics": [],
+          "url": "https://seo.ai/",
+          "word_count": 0
+        },
+        {
+          "confidence_score": 0,
+          "content_length": 0,
+          "content_similarity": 0,
+          "content_structure": {
+            "image_count": 0,
+            "list_count": 0,
+            "paragraph_count": 0,
+            "total_headings": 0
+          },
+          "domain": "searchengineland.com",
+          "entities": [],
+          "error": "HTTP 0 error",
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0,
+            "optimization_score": 0,
+            "total_count": 0
+          },
+          "position": 9,
+          "readability": {
+            "flesch_score": 0,
+            "reading_level": "Unknown"
+          },
+          "relevance_score": 0.95,
+          "scraped_at": "2025-07-22T13:39:39.586032",
+          "sentiment": {
+            "error": "Analysis failed",
+            "score": 0
+          },
+          "source": "hybrid_analysis",
+          "status": "failed",
+          "title": "15 AI tools you should use for SEO",
+          "topics": [],
+          "url": "https://searchengineland.com/15-ai-tools-you-should-use-for-seo-446982",
+          "word_count": 0
+        },
+        {
+          "confidence_score": 0.3,
+          "content_length": 117612,
+          "content_similarity": 0.0,
+          "content_structure": {
+            "average_paragraph_length": 277.7,
+            "content_organization_score": 0.3,
+            "external_links": 0,
+            "heading_hierarchy": {},
+            "image_count": 0,
+            "internal_links": 0,
+            "list_count": 3,
+            "paragraph_count": 420,
+            "total_headings": 0
+          },
+          "detection_method": "hybrid_google_playwright",
+          "domain": "searchatlas.com",
+          "entities": [
+            {
+              "method": "tech_pattern",
+              "name": "LQQ",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "IVS",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "SZJ",
+              "salience": 0.6,
+              "type": "OTHER"
+            },
+            {
+              "method": "tech_pattern",
+              "name": "SEK",
+              "salience": 0.6,
+              "type": "OTHER"
+            }
+          ],
+          "industry_category": "organization",
+          "keyword_usage": {
+            "density_percentage": 0.0,
+            "h1_usage": {
+              "count": 0,
+              "h1_text": "",
+              "present": false
+            },
+            "headings_usage": {
+              "count": 0,
+              "present": false,
+              "total_headings": 0
+            },
+            "meta_description_usage": {
+              "count": 0,
+              "meta_text": "",
+              "present": false
+            },
+            "optimization_score": 0.0,
+            "title_usage": {
+              "count": 0,
+              "present": false,
+              "title_text": ""
+            },
+            "total_count": 0
+          },
+          "position": 12,
+          "readability": {
+            "avg_sentence_length": 3.2,
+            "avg_syllables_per_word": 1.6,
+            "flesch_score": 68.0,
+            "reading_level": "Standard",
+            "sentence_count": 1474,
+            "syllable_count": 7604,
+            "word_count": 4746
+          },
+          "relevance_score": 0.467,
+          "scraped_at": "2025-07-22 13:39:42",
+          "sentiment": {
+            "language": "en",
+            "magnitude": 0.0,
+            "method": "fallback_analysis",
+            "score": 0.0
+          },
+          "seo_elements": {
+            "canonical_url": "",
+            "has_canonical": false,
+            "meta_description": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "open_graph": {},
+            "schema_markup": {},
+            "title_tag": {
+              "length": 0,
+              "optimized": false,
+              "text": ""
+            },
+            "twitter_cards": {}
+          },
+          "source": "hybrid_analysis",
+          "status": "success",
+          "title": "Search Atlas: The #1 AI SEO Automation Platform for Agencies and ...",
+          "topics": [],
+          "url": "https://searchatlas.com/",
+          "word_count": 4746
+        }
+      ],
+      "data_source": "enhanced_google_apis",
+      "detection_methods": {},
+      "detection_quality": "unknown",
+      "insights": {
+        "common_topics": [
+          "seo",
+          "tools"
+        ],
+        "content_analysis": {
+          "average_content_length": 51639.0,
+          "average_word_count": 2968.0,
+          "content_length_range": {
+            "max": 117612,
+            "min": 57
+          },
+          "top_performers": [
+            {
+              "domain": "searchatlas.com",
+              "url": "https://searchatlas.com/",
+              "value": 117612
+            },
+            {
+              "domain": "backlinko.com",
+              "url": "https://backlinko.com/ai-seo-tools",
+              "value": 74121
+            },
+            {
+              "domain": "www.shopify.com",
+              "url": "https://www.shopify.com/blog/ai-seo-tools",
+              "value": 71564
+            }
+          ]
+        },
+        "content_structure": {
+          "average_headings_count": 15.6,
+          "average_paragraph_count": 166.5,
+          "heading_hierarchy_usage": {
+            "h1": 3,
+            "h2": 27,
+            "h3": 83,
+            "h4": 7,
+            "h5": 5
+          },
+          "image_usage_rate": 37.5,
+          "list_usage_rate": 62.5
+        },
+        "data_quality": {
+          "average_confidence_score": 0.506,
+          "failed_analyses": 2,
+          "success_rate": 80.0,
+          "successful_analyses": 8,
+          "total_competitors_analyzed": 10
+        },
+        "entity_analysis": [
+          "seo"
+        ],
+        "industry_distribution": {
+          "organization": 8
+        },
+        "readability_analysis": {
+          "average_flesch_score": 62.2,
+          "average_sentence_length": 6.9,
+          "average_word_complexity": 1.6,
+          "reading_level_distribution": {
+            "Difficult": 1,
+            "Fairly Difficult": 1,
+            "Fairly Easy": 1,
+            "Standard": 5
+          }
+        },
+        "seo_analysis": {
+          "average_keyword_density": 0.12,
+          "h1_optimization_rate": 37.5,
+          "keyword_optimization_scores": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.9,
+            0.8,
+            0.0,
+            0.0
+          ],
+          "meta_description_rate": 37.5,
+          "title_optimization_rate": 37.5
+        }
+      },
+      "query": "ai seo tools",
+      "total_analyzed": 10
+    },
+    "content_gaps": {
+      "analysis_status": "completed",
+      "content_opportunities": [
+        "Comprehensive ai seo tools beginner guide",
+        "Advanced ai seo tools techniques",
+        "ai seo tools troubleshooting guide",
+        "ai seo tools industry trends and updates"
+      ],
+      "format_gaps": [
+        "Interactive tools or calculators",
+        "Video tutorials",
+        "Downloadable templates",
+        "Case studies",
+        "Comparison charts",
+        "FAQ sections"
+      ],
+      "missing_topics": [],
+      "underserved_keywords": []
+    },
+    "content_insights": {
+      "analysis_status": "no_competitors",
+      "avg_word_count": 0,
+      "common_sections": [],
+      "content_gaps": [],
+      "structural_patterns": {}
+    },
+    "content_outline": {
+      "cta_suggestions": [
+        "Start your free trial of [Recommended AI SEO Tool] today to experience the benefits of AI-powered SEO firsthand.",
+        "Download our comprehensive guide to AI SEO to learn more about how to leverage artificial intelligence for improved search engine rankings.",
+        "Contact us for a personalized SEO consultation to discuss how AI can help you achieve your business goals.",
+        "Read customer success stories about how AI SEO tools have boosted rankings and traffic."
+      ],
+      "introduction": "In today's rapidly evolving digital landscape, Search Engine Optimization (SEO) is more crucial than ever for businesses seeking online visibility. Artificial Intelligence (AI) is revolutionizing how SEO is conducted, offering powerful tools to analyze data, automate tasks, and optimize content with unprecedented precision. This guide delves into the world of AI SEO tools, exploring their benefits, key features, implementation strategies, and the future of SEO powered by artificial intelligence.",
+      "key_takeaways": [
+        "AI SEO tools offer significant advantages over traditional SEO methods, including improved keyword research, enhanced content optimization, and automated task management.",
+        "Selecting the right AI SEO tool depends on your specific needs and budget, considering features such as keyword research, content optimization, and technical SEO audit capabilities.",
+        "Effective implementation of AI SEO tools requires setting clear goals, integrating the tools into your existing workflow, and continuously monitoring and analyzing results.",
+        "The future of SEO is heavily reliant on AI, with emerging trends such as voice search optimization and improved user experience driving innovation."
+      ],
+      "section_outlines": [
+        {
+          "content_points": [
+            "Defining AI SEO Tools: An overview of tools that leverage artificial intelligence and machine learning to improve search engine rankings.",
+            "Traditional SEO vs. AI SEO: Comparing conventional SEO techniques with AI-driven approaches, highlighting the advantages of AI.",
+            "Benefits of Using AI SEO Tools:",
+            "    - Improved Keyword Research: Identifying high-potential keywords and long-tail phrases.",
+            "    - Enhanced Content Optimization: Creating more engaging and relevant content that resonates with both users and search engines.",
+            "    - Automated Task Management: Streamlining repetitive SEO tasks, such as link building and technical audits.",
+            "    - Data-Driven Insights: Gaining deeper understanding of website performance and user behavior through advanced analytics.",
+            "    - Competitive Analysis: Analyzing competitor strategies and identifying opportunities for improvement.",
+            "Reduced Time and Costs: How AI SEO tools can save time and money on SEO efforts.",
+            "Who Can Benefit from AI SEO Tools? Covering a wide range of users, from small business owners to enterprise-level marketing teams."
+          ],
+          "section_title": "What are AI SEO Tools and Why Use Them?",
+          "word_count_estimate": 600
+        },
+        {
+          "content_points": [
+            "Overview of Top AI SEO Tools:",
+            "    - Surfer SEO: Content optimization and keyword research.",
+            "    - Semrush: Comprehensive SEO platform with AI-powered features.",
+            "    - Ahrefs: Robust backlink analysis and keyword research tool.",
+            "    - Jasper.ai (formerly Jarvis): AI writing assistant for content creation.",
+            "    - Scalenut: AI content creation and SEO platform.",
+            "    - Frase.io: AI-powered content research and writing.",
+            "    - MarketMuse: Content intelligence and optimization platform.",
+            "    - Rytr: AI writing assistant for various content formats.",
+            "Detailed Descriptions of Each Tool: Including key features, pricing, and use cases.",
+            "Comparison Table: A side-by-side comparison of the tools based on key features and pricing.",
+            "User Reviews and Ratings: Summarizing user feedback from various sources to provide a balanced perspective.",
+            "Best AI SEO Tools for Different Needs: Categorizing tools based on specific requirements (e.g., keyword research, content creation, technical SEO)."
+          ],
+          "section_title": "Top AI SEO Tools to Consider in 2024",
+          "word_count_estimate": 800
+        },
+        {
+          "content_points": [
+            "AI-Powered Keyword Research: Identifying relevant keywords and understanding user intent.",
+            "Content Optimization: Analyzing content quality and providing recommendations for improvement (e.g., readability, keyword density, semantic relevance).",
+            "Automated Content Generation: Creating high-quality content using AI writing assistants.",
+            "Link Building Assistance: Identifying link opportunities and automating outreach efforts.",
+            "Technical SEO Audits: Detecting and resolving technical issues that may hinder search engine rankings.",
+            "Rank Tracking: Monitoring keyword rankings and tracking progress over time.",
+            "Competitive Analysis: Analyzing competitor strategies and identifying opportunities.",
+            "Natural Language Processing (NLP): Understanding the nuances of language and improving content relevance.",
+            "Machine Learning (ML): Learning from data and continuously improving performance."
+          ],
+          "section_title": "Key Features to Look For in an AI SEO Tool",
+          "word_count_estimate": 500
+        },
+        {
+          "content_points": [
+            "Setting Clear Goals: Defining specific SEO objectives and aligning AI tool implementation with those goals.",
+            "Integrating AI Tools into Existing SEO Workflow: Seamlessly integrating AI tools into current processes.",
+            "Keyword Research Strategy:",
+            "    - Using AI to identify long-tail keywords.",
+            "    - Analyzing keyword difficulty and search volume.",
+            "Content Creation Strategy:",
+            "    - Using AI to generate content outlines.",
+            "    - Optimizing content for readability and relevance.",
+            "Link Building Strategy:",
+            "    - Identifying link opportunities with AI.",
+            "    - Automating outreach efforts.",
+            "Technical SEO Audit:",
+            "    - Regularly conducting technical SEO audits with AI tools.",
+            "    - Addressing identified issues promptly.",
+            "Monitoring and Analysis: Tracking key metrics and making data-driven adjustments."
+          ],
+          "section_title": "How to Implement AI SEO Tools Effectively",
+          "word_count_estimate": 600
+        },
+        {
+          "content_points": [
+            "Predictions for the Future of AI in SEO: Emerging trends and potential advancements.",
+            "The Role of AI in Voice Search Optimization: Optimizing content for voice-activated devices.",
+            "The Impact of AI on User Experience (UX): Improving website usability and engagement with AI.",
+            "Ethical Considerations of Using AI in SEO: Addressing potential biases and ensuring transparency.",
+            "The Importance of Human Expertise: Combining AI tools with human creativity and strategic thinking.",
+            "Adapting to the Changing SEO Landscape: Staying updated with the latest AI developments and adapting strategies accordingly."
+          ],
+          "section_title": "The Future of SEO with Artificial Intelligence",
+          "word_count_estimate": 500
+        }
+      ]
+    },
+    "generation_metadata": {
+      "analysis_quality": "medium",
+      "components_used": [
+        "competitor_analysis",
+        "content_analysis",
+        "serp_optimization",
+        "ai_generation",
+        "gap_analysis",
+        "seo_recommendations"
+      ],
+      "created_at": "2025-07-22T08:10:09.386187",
+      "generation_time": 24,
+      "project_id": null,
+      "user_id": "unknown_user",
+      "version": "2.0"
+    },
+    "google_apis_status": {
+      "apis_used": [
+        "Custom Search API",
+        "Knowledge Graph API",
+        "Natural Language API",
+        "Gemini API"
+      ],
+      "enabled": true,
+      "fallback_available": true,
+      "migration_manager_available": true,
+      "processing_method": "google_apis"
+    },
+    "heading_structure": {
+      "h1": "AI SEO Tools: Boost Your Rankings with Artificial Intelligence",
+      "h2_sections": [
+        {
+          "h3_subsections": [
+            "Defining AI in the Context of SEO",
+            "The Benefits of Implementing AI SEO Tools",
+            "Common SEO Tasks Enhanced by AI"
+          ],
+          "title": "What are AI SEO Tools and Why Use Them?"
+        },
+        {
+          "h3_subsections": [
+            "AI-Powered Keyword Research Tools",
+            "AI Content Optimization & Generation Tools",
+            "AI-Driven Link Building and Analysis"
+          ],
+          "title": "Top AI SEO Tools to Consider in 2024"
+        },
+        {
+          "h3_subsections": [
+            "Accuracy and Reliability of AI Algorithms",
+            "Integration with Existing SEO Workflows",
+            "Data Privacy and Security Considerations"
+          ],
+          "title": "Key Features to Look For in an AI SEO Tool"
+        },
+        {
+          "h3_subsections": [
+            "Setting Clear SEO Goals for AI Implementation",
+            "Training Your Team on Using AI Tools",
+            "Monitoring and Analyzing AI-Driven Results"
+          ],
+          "title": "How to Implement AI SEO Tools Effectively"
+        },
+        {
+          "h3_subsections": [
+            "Emerging Trends in AI SEO",
+            "Ethical Considerations of AI in SEO",
+            "Preparing for the AI-Powered SEO Landscape"
+          ],
+          "title": "The Future of SEO with Artificial Intelligence"
+        },
+        {
+          "h3_subsections": [
+            "Assessing Your Current SEO Strategy",
+            "Budget Considerations for AI SEO Tools",
+            "Comparing and Contrasting Different AI SEO Platforms"
+          ],
+          "title": "Choosing the Right AI SEO Tools for Your Needs"
+        }
+      ]
+    },
+    "keyword": "ai seo tools",
+    "seo_recommendations": {
+      "content_optimization": {
+        "content_focus": [
+          "Focus on providing valuable, actionable information about AI SEO tools, catering to both beginners and experienced SEO professionals.",
+          "Address common questions and concerns about using AI in SEO, such as data privacy, accuracy, and potential risks.",
+          "Offer unbiased reviews and comparisons of different AI SEO tools, highlighting their strengths and weaknesses.",
+          "Keep the content up-to-date with the latest advancements and trends in AI SEO technology."
+        ],
+        "content_structure": [
+          "Use clear and descriptive H2 and H3 subheadings to organize content around specific AI SEO tool categories (e.g., keyword research, content generation, rank tracking, technical SEO auditing).",
+          "Incorporate bulleted or numbered lists to present AI SEO tool features, benefits, and comparisons in an easily digestible format.",
+          "Include a detailed explanation of how AI is used in SEO and the advantages and disadvantages of using AI-powered tools.",
+          "Provide real-world examples and case studies demonstrating the effectiveness of different AI SEO tools.",
+          "Offer a comparison table highlighting the key features, pricing, and user reviews of various AI SEO tools."
+        ],
+        "keyword_integration": [
+          "Naturally integrate 'ai seo tools' and related keywords (e.g., 'artificial intelligence seo', 'seo ai', 'ai powered seo', 'best ai seo tools', 'free ai seo tools') throughout the content, including headings, body text, image alt text, and meta descriptions.",
+          "Conduct thorough keyword research to identify long-tail keywords and related search queries to incorporate into the content to capture a wider audience.",
+          "Use Latent Semantic Indexing (LSI) keywords that are semantically related to 'ai seo tools' to provide context and improve search engine understanding."
+        ],
+        "readability_level": "intermediate",
+        "target_word_count": 2500
+      },
+      "ranking_factors": [
+        "High-quality, informative, and engaging content that provides value to the user.",
+        "Strong domain authority and backlinks from reputable websites.",
+        "User engagement metrics, such as time on page, bounce rate, and social shares.",
+        "Optimized on-page SEO elements, including title tags, meta descriptions, and headings.",
+        "Technical SEO best practices, such as page speed, mobile-friendliness, and schema markup."
+      ],
+      "serp_optimization": [
+        "Optimize for featured snippets by providing concise and informative answers to common questions about AI SEO tools in the form of paragraphs, lists, or tables.",
+        "Target the 'People Also Ask' section by including relevant questions and answers in the content.",
+        "Consider creating a video tutorial or demonstration of how to use AI SEO tools to improve rankings.",
+        "Add a table comparing different AI SEO tools with their features and pricing to potentially trigger a comparison snippet.",
+        "Ensure the website has a high level of E-A-T (Expertise, Authoritativeness, Trustworthiness) to improve its chances of ranking higher in search results."
+      ],
+      "technical_seo": {
+        "internal_linking": "Implement a strong internal linking strategy, linking to relevant pages within the website to improve navigation and distribute link juice.",
+        "meta_description": "Discover the best AI SEO tools to improve your website's ranking, automate tasks, and gain a competitive edge. Learn how AI is revolutionizing SEO!",
+        "mobile_friendliness": "Ensure the website is mobile-friendly and responsive to provide a seamless user experience across all devices.",
+        "page_speed": "Optimize page speed by compressing images, leveraging browser caching, and minimizing HTTP requests.",
+        "schema_markup": [
+          "Article schema to identify the content as a blog post or article.",
+          "FAQPage schema to highlight frequently asked questions about AI SEO tools and their answers.",
+          "Product schema for individual AI SEO tool reviews (if applicable).",
+          "HowTo schema if the content includes step-by-step guides on using AI SEO tools."
+        ],
+        "title_tag": "AI SEO Tools: Boost Your Rankings with Artificial Intelligence",
+        "url_structure": "Create a concise and keyword-rich URL (e.g., example.com/ai-seo-tools)."
+      }
+    },
+    "serp_features": {
+      "analysis_timestamp": "2025-07-22T13:39:46.082844",
+      "data_source": "google_apis",
+      "query": "ai seo tools",
+      "recommendations": [],
+      "total_recommendations": 0
+    },
+    "topic_clusters": {
+      "primary_cluster": [
+        "AI SEO Tools Overview & Benefits",
+        "AI SEO Tools by Functionality",
+        "Choosing the Right AI SEO Tools"
+      ],
+      "related_keywords": [
+        "artificial intelligence SEO",
+        "machine learning SEO",
+        "AI powered SEO",
+        "best AI SEO software",
+        "free AI SEO tools",
+        "AI SEO platform",
+        "SEO automation",
+        "AI content generator",
+        "AI keyword generator",
+        "AI link analysis"
+      ],
+      "secondary_clusters": {
+        "AI SEO Tools Overview & Benefits": [
+          "What is AI SEO?",
+          "Benefits of using AI in SEO",
+          "Limitations of AI SEO",
+          "Future of AI in SEO"
+        ],
+        "AI SEO Tools by Functionality": [
+          "AI Keyword Research Tools",
+          "AI Content Optimization Tools",
+          "AI Link Building Tools",
+          "AI Rank Tracking Tools",
+          "AI Technical SEO Tools",
+          "AI Competitor Analysis Tools"
+        ],
+        "Choosing the Right AI SEO Tools": [
+          "Factors to consider when choosing AI SEO tools",
+          "Cost of AI SEO tools",
+          "AI SEO tools for beginners",
+          "AI SEO tools for enterprise",
+          "Integration with existing SEO workflow"
+        ]
+      }
+    }
+  },
+  "domain": "",
+  "entity_analysis": {
+    "data_source": "google_knowledge_graph",
+    "entities": [
+      {
+        "data": {
+          "@context": {
+            "@vocab": "http://schema.org/",
+            "EntitySearchResult": "goog:EntitySearchResult",
+            "detailedDescription": "goog:detailedDescription",
+            "goog": "http://schema.googleapis.com/",
+            "kg": "http://g.co/kg",
+            "resultScore": "goog:resultScore"
+          },
+          "itemListElement": [
+            {
+              "result": {
+                "@type": [
+                  "Organization",
+                  "Corporation"
+                ],
+                "description": "Business entity: ai seo tools",
+                "industry": "business_services",
+                "name": "ai seo tools",
+                "url": "https://ai seo tools"
+              },
+              "resultScore": 600.0
+            }
+          ]
+        },
+        "entity": "ai seo tools",
+        "verified": false
+      }
+    ],
+    "total_verified": 0
+  },
+  "export_options": {
+    "cms_platforms": [
+      {
+        "description": "Publish directly to your WordPress site",
+        "icon": "wordpress-icon.svg",
+        "id": "wordpress",
+        "name": "WordPress"
+      },
+      {
+        "description": "Export to your Webflow CMS",
+        "icon": "webflow-icon.svg",
+        "id": "webflow",
+        "name": "Webflow"
+      },
+      {
+        "description": "Publish to your Contentful workspace",
+        "icon": "contentful-icon.svg",
+        "id": "contentful",
+        "name": "Contentful"
+      },
+      {
+        "description": "Export to your Shopify blog",
+        "icon": "shopify-icon.svg",
+        "id": "shopify",
+        "name": "Shopify"
+      },
+      {
+        "description": "Publish to your HubSpot CMS",
+        "icon": "hubspot-icon.svg",
+        "id": "hubspot",
+        "name": "HubSpot"
+      }
+    ],
+    "formats": [
+      {
+        "description": "Export as a professionally formatted PDF document",
+        "extension": "PDF",
+        "id": "pdf",
+        "name": "PDF Document"
+      },
+      {
+        "description": "Export as an editable Microsoft Word document",
+        "extension": "DOCX",
+        "id": "docx",
+        "name": "Word Document"
+      },
+      {
+        "description": "Export as an HTML document ready for web publishing",
+        "extension": "HTML",
+        "id": "html",
+        "name": "HTML Document"
+      },
+      {
+        "description": "Export as a Markdown file for easy editing",
+        "extension": "MD",
+        "id": "md",
+        "name": "Markdown"
+      },
+      {
+        "description": "Export data as a CSV spreadsheet",
+        "extension": "CSV",
+        "id": "csv",
+        "name": "CSV Spreadsheet"
+      },
+      {
+        "description": "Export raw data in JSON format",
+        "extension": "JSON",
+        "id": "json",
+        "name": "JSON Data"
+      }
+    ]
+  },
+  "google_apis_status": {
+    "apis_used": [
+      "Custom Search API",
+      "Knowledge Graph API",
+      "Natural Language API",
+      "Google Ads API"
+    ],
+    "enabled": true,
+    "fallback_available": true
+  },
+  "input": "ai seo tools",
+  "keyword_data": {
+    "keyword_metrics": [
+      {
+        "competition": 0.62,
+        "cpc": 1.16,
+        "data_source": "fallback",
+        "difficulty": 41,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: ai seo tools",
+              "industry": "business_services",
+              "name": "ai seo tools",
+              "url": "https://ai seo tools"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "ai seo tools",
+        "note": "Estimated data - SerpAPI not available",
+        "opportunity": 50,
+        "search_volume": 4902
+      }
+    ],
+    "related_keywords": [
+      {
+        "competition": 0.5996488019727805,
+        "cpc": 1.48,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: recommendations tools specifically",
+              "industry": "business_services",
+              "name": "recommendations tools specifically",
+              "url": "https://recommendations tools specifically"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "recommendations tools specifically",
+        "relevance": 0.3333333333333333,
+        "search_volume": 375,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.47721066791955913,
+        "cpc": 1.38,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: tools specifically designed",
+              "industry": "business_services",
+              "name": "tools specifically designed",
+              "url": "https://tools specifically designed"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "tools specifically designed",
+        "relevance": 0.3333333333333333,
+        "search_volume": 338,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4903688555042578,
+        "cpc": 2.77,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: commerce websites please",
+              "industry": "business_services",
+              "name": "commerce websites please",
+              "url": "https://commerce websites please"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "commerce websites please",
+        "relevance": 0.0,
+        "search_volume": 956,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5743268602784004,
+        "cpc": 2.71,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: websites please suggest",
+              "industry": "business_services",
+              "name": "websites please suggest",
+              "url": "https://websites please suggest"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "websites please suggest",
+        "relevance": 0.0,
+        "search_volume": 422,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4031370415743921,
+        "cpc": 2.44,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: recommendations tools",
+              "industry": "business_services",
+              "name": "recommendations tools",
+              "url": "https://recommendations tools"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "recommendations tools",
+        "relevance": 0.3333333333333333,
+        "search_volume": 846,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5551452455344544,
+        "cpc": 1.95,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: specifically designed",
+              "industry": "business_services",
+              "name": "specifically designed",
+              "url": "https://specifically designed"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "specifically designed",
+        "relevance": 0.0,
+        "search_volume": 914,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.7913367884202995,
+        "cpc": 3.51,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: please suggest best",
+              "industry": "business_services",
+              "name": "please suggest best",
+              "url": "https://please suggest best"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "please suggest best",
+        "relevance": 0.0,
+        "search_volume": 1916,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5363242913549322,
+        "cpc": 2.78,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: tools specifically",
+              "industry": "business_services",
+              "name": "tools specifically",
+              "url": "https://tools specifically"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "tools specifically",
+        "relevance": 0.3333333333333333,
+        "search_volume": 1851,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.6969460998570236,
+        "cpc": 5.19,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: suggest best tools",
+              "industry": "business_services",
+              "name": "suggest best tools",
+              "url": "https://suggest best tools"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "suggest best tools",
+        "relevance": 0.3333333333333333,
+        "search_volume": 966,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5338160975149351,
+        "cpc": 1.34,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: commerce websites",
+              "industry": "business_services",
+              "name": "commerce websites",
+              "url": "https://commerce websites"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "commerce websites",
+        "relevance": 0.0,
+        "search_volume": 1728,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.487873712179628,
+        "cpc": 1.75,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: recommendations",
+              "industry": "business_services",
+              "name": "recommendations",
+              "url": "https://recommendations"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "recommendations",
+        "relevance": 0.0,
+        "search_volume": 1572,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4589354747341816,
+        "cpc": 0.72,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: websites please",
+              "industry": "business_services",
+              "name": "websites please",
+              "url": "https://websites please"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "websites please",
+        "relevance": 0.0,
+        "search_volume": 701,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.41590013373582857,
+        "cpc": 1.88,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: well free tools",
+              "industry": "business_services",
+              "name": "well free tools",
+              "url": "https://well free tools"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "well free tools",
+        "relevance": 0.3333333333333333,
+        "search_volume": 758,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5580800954587326,
+        "cpc": 2.67,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: please suggest",
+              "industry": "business_services",
+              "name": "please suggest",
+              "url": "https://please suggest"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "please suggest",
+        "relevance": 0.0,
+        "search_volume": 1976,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.42753114637152956,
+        "cpc": 0.82,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: paid well free",
+              "industry": "business_services",
+              "name": "paid well free",
+              "url": "https://paid well free"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "paid well free",
+        "relevance": 0.0,
+        "search_volume": 875,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4614582259633974,
+        "cpc": 2.24,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: grader paige merchynt",
+              "industry": "business_services",
+              "name": "grader paige merchynt",
+              "url": "https://grader paige merchynt"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "grader paige merchynt",
+        "relevance": 0.0,
+        "search_volume": 372,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4850127564556637,
+        "cpc": 1.66,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: paige merchynt alliai",
+              "industry": "business_services",
+              "name": "paige merchynt alliai",
+              "url": "https://paige merchynt alliai"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "paige merchynt alliai",
+        "relevance": 0.0,
+        "search_volume": 367,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.6797792049882908,
+        "cpc": 3.4,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: merchynt alliai price",
+              "industry": "business_services",
+              "name": "merchynt alliai price",
+              "url": "https://merchynt alliai price"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "merchynt alliai price",
+        "relevance": 0.0,
+        "search_volume": 414,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4342220903096353,
+        "cpc": 2.68,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: hubspot tools search",
+              "industry": "business_services",
+              "name": "hubspot tools search",
+              "url": "https://hubspot tools search"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "hubspot tools search",
+        "relevance": 0.3333333333333333,
+        "search_volume": 1366,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.495099074293345,
+        "cpc": 1.43,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: tools hubspot tools",
+              "industry": "business_services",
+              "name": "tools hubspot tools",
+              "url": "https://tools hubspot tools"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "tools hubspot tools",
+        "relevance": 0.3333333333333333,
+        "search_volume": 1263,
+        "source": "google_search"
+      }
+    ],
+    "seed_keywords": [
+      "ai seo tools"
+    ],
+    "trend_analysis": {
+      "ai seo tools": {
+        "seasonal_pattern": "steady",
+        "trend_direction": "stable",
+        "trend_strength": "moderate",
+        "year_over_year_change": "0%"
+      }
+    }
+  },
+  "performance_prediction": {
+    "confidence_score": 79,
+    "estimated_ctr": 0.5,
+    "estimated_serp_position": 10.7,
+    "estimated_traffic": 15,
+    "improvement_suggestions": [
+      {
+        "area": "Topical Authority",
+        "effort": "High",
+        "impact": "High",
+        "suggestion": "Develop additional supporting content to establish stronger topical authority in this subject area."
+      },
+      {
+        "area": "User Intent Match",
+        "effort": "Medium",
+        "impact": "Medium",
+        "suggestion": "Improve this area to enhance overall performance."
+      },
+      {
+        "area": "Semantic Depth",
+        "effort": "Medium",
+        "impact": "High",
+        "suggestion": "Enhance semantic depth by expanding coverage of related concepts and entities."
+      },
+      {
+        "area": "Content Structure",
+        "effort": "Low",
+        "impact": "Medium",
+        "suggestion": "Improve content structure with more logical heading hierarchy and better section organization."
+      },
+      {
+        "area": "Mobile Optimization",
+        "effort": "Medium",
+        "impact": "High",
+        "suggestion": "Further optimize for mobile experience, focusing on Core Web Vitals metrics."
+      },
+      {
+        "area": "Schema Markup",
+        "effort": "Low",
+        "impact": "Medium",
+        "suggestion": "Implement additional schema markup types to enhance SERP appearance and click-through rates."
+      }
+    ],
+    "ranking_factors": [
+      {
+        "description": "Your content covers the topic thoroughly with appropriate depth and breadth.",
+        "details": "Content includes all major subtopics and addresses key questions identified in SERPs.",
+        "factor_name": "Content Comprehensiveness",
+        "score": 0.86
+      },
+      {
+        "description": "Content is optimized for relevant SERP features.",
+        "details": "Structured for featured snippets and includes FAQ sections for People Also Ask boxes.",
+        "factor_name": "SERP Feature Optimization",
+        "score": 0.88
+      },
+      {
+        "description": "Content is well-optimized for target keywords without over-optimization.",
+        "details": "Primary and secondary keywords are naturally distributed throughout the content.",
+        "factor_name": "Keyword Optimization",
+        "score": 0.77
+      },
+      {
+        "description": "Content is well-structured with appropriate headings and organization.",
+        "details": "Logical hierarchy of H1-H4 tags that helps both users and search engines navigate the content.",
+        "factor_name": "Content Structure",
+        "score": 0.7
+      },
+      {
+        "description": "Content aligns well with the primary user intent for target queries.",
+        "details": "Addresses informational, navigational, or transactional needs as appropriate.",
+        "factor_name": "User Intent Match",
+        "score": 0.75
+      }
+    ],
+    "ranking_probability": 0.49
+  },
+  "processing_method": "google_apis",
+  "serp_analysis": {
+    "data_source": "google_apis",
+    "features": {
+      "featured_snippets": {
+        "presence": "medium"
+      },
+      "image_packs": {
+        "presence": "weak"
+      },
+      "knowledge_panels": {
+        "presence": "none"
+      },
+      "local_pack": {
+        "presence": "none"
+      },
+      "people_also_ask": {
+        "presence": "medium"
+      },
+      "rich_results": {
+        "presence": "detected",
+        "types": [
+          "article",
+          "product"
+        ]
+      },
+      "video_results": {
+        "presence": "medium"
+      }
+    },
+    "google_api_enhanced": true,
+    "migration_status": "google_apis_primary",
+    "organic_results": [],
+    "pagination": {
+      "current": 1,
+      "next": 2
+    },
+    "query": "ai seo tools",
+    "search_information": {
+      "formatted_search_time": "0.46",
+      "formatted_total_results": "142,000,000",
+      "search_time": 0.45894,
+      "total_results": 142000000
+    },
+    "total_results": 142000000
+  },
+  "serp_optimization": {
+    "analysis_timestamp": "2025-07-22T13:39:43.438217",
+    "data_source": "google_apis",
+    "query": "ai seo tools",
+    "recommendations": [],
+    "total_recommendations": 0
+  },
+  "timestamp": "2025-07-22T13:39:11.244590"
+}
