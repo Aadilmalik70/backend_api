@@ -13,9 +13,14 @@ import time
 import concurrent.futures
 from datetime import datetime
 
-# Import services
-from ..services.blueprint_generator import BlueprintGeneratorService
-from ..services.blueprint_storage import BlueprintStorageService, ProjectStorageService
+# Import services (fixed for consolidated app)
+try:
+    from services.blueprint_generator import BlueprintGeneratorService
+    from services.blueprint_storage import BlueprintStorageService, ProjectStorageService
+except ImportError:
+    # Fallback to relative imports if absolute fails
+    from ..services.blueprint_generator import BlueprintGeneratorService
+    from ..services.blueprint_storage import BlueprintStorageService, ProjectStorageService
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

@@ -14,7 +14,7 @@ from datetime import datetime
 from .blueprint_analyzer import BlueprintAnalyzer
 from .blueprint_ai_generator import BlueprintAIGenerator
 from .blueprint_utils import validate_blueprint_data, is_google_apis_enabled
-from src.utils.google_apis.migration_manager import MigrationManager as get_migration_manager
+from utils.google_apis.migration_manager import MigrationManager as get_migration_manager
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

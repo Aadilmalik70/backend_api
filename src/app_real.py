@@ -14,20 +14,34 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# Import existing modules
-from .keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
-from .serp_feature_optimizer_real import SerpFeatureOptimizerReal
-from .content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
-from .competitor_analysis_real import CompetitorAnalysisReal
-from .export_integration import ExportIntegration
-
-# Import new blueprint modules
-from .models.blueprint import DatabaseManager
-from .routes.blueprints import blueprint_routes
-
-# Configure logging
+# Configure logging first
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Import existing modules (absolute imports for main.py compatibility)
+try:
+    from keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
+    from serp_feature_optimizer_real import SerpFeatureOptimizerReal
+    from content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
+    from competitor_analysis_real import CompetitorAnalysisReal
+    from export_integration import ExportIntegration
+    from models.blueprint import DatabaseManager
+    from routes.blueprints import blueprint_routes
+    logger.info("Successfully imported all modules with absolute imports")
+except ImportError as e:
+    logger.warning(f"Absolute imports failed: {e}. Attempting relative imports...")
+    try:
+        from .keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
+        from .serp_feature_optimizer_real import SerpFeatureOptimizerReal
+        from .content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
+        from .competitor_analysis_real import CompetitorAnalysisReal
+        from .export_integration import ExportIntegration
+        from .models.blueprint import DatabaseManager
+        from .routes.blueprints import blueprint_routes
+        logger.info("Successfully imported all modules with relative imports")
+    except ImportError as rel_e:
+        logger.error(f"Both absolute and relative imports failed. Absolute: {e}, Relative: {rel_e}")
+        raise ImportError(f"Could not import required modules. Check module paths and dependencies.")
 
 def create_app():
     """

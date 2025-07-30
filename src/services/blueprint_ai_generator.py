@@ -7,7 +7,7 @@ and content recommendations using Gemini API.
 
 import logging
 from typing import Dict, Any, List
-from src.utils.gemini_nlp_client import GeminiNLPClient
+from utils.gemini_nlp_client import GeminiNLPClient
 from .blueprint_utils import (
     parse_json_response, 
     generate_fallback_heading_structure,

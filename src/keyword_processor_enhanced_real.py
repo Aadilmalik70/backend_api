@@ -10,20 +10,21 @@ import re
 import random
 from typing import Dict, Any, List, Optional
 
-from src.utils.keyword_planner_api import KeywordPlannerAPI
-from src.utils.serpapi_keyword_analyzer import SerpAPIKeywordAnalyzer
+# Configure logging first
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+from utils.keyword_planner_api import KeywordPlannerAPI
+from utils.serpapi_keyword_analyzer import SerpAPIKeywordAnalyzer
 
 # Google APIs Integration
 try:
-    from src.utils.google_apis.custom_search_client import CustomSearchClient
-    from src.utils.google_apis.knowledge_graph_client import KnowledgeGraphClient
+    from utils.google_apis.custom_search_client import CustomSearchClient
+    from utils.google_apis.knowledge_graph_client import KnowledgeGraphClient
     GOOGLE_APIS_AVAILABLE = True
 except ImportError:
     GOOGLE_APIS_AVAILABLE = False
     logger.warning("Google APIs not available, using SerpAPI fallback")
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 class KeywordProcessorEnhancedReal:
     """

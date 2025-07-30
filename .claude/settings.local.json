@@ -1,0 +1,2390 @@
+{
+  "competitor_analysis": {
+    "analysis_timestamp": "2025-07-16T14:08:57.798748",
+    "competitors": [
+      {
+        "confidence_score": 0.3,
+        "content_length": 26205,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 248.2,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 2,
+          "paragraph_count": 105,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.practicepanther.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "ZRW",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "DAE",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "QLM",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "UBF",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "JKP",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "ZFN",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 1,
+        "readability": {
+          "avg_sentence_length": 3.5,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 67.2,
+          "reading_level": "Standard",
+          "sentence_count": 303,
+          "syllable_count": 1714,
+          "word_count": 1066
+        },
+        "relevance_score": 0.9,
+        "scraped_at": "2025-07-16 14:08:32",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Legal Billing Software | PracticePanther",
+        "topics": [],
+        "url": "https://www.practicepanther.com/legal-billing/",
+        "word_count": 1066
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 27488,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 210.5,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 4,
+          "paragraph_count": 129,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.collaboratemd.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "VAIC",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "SGP",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "EWB",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "FZP",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "JPV",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "GVZ",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "GTF",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Dr\tIg",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 2,
+        "readability": {
+          "avg_sentence_length": 3.3,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 64.0,
+          "reading_level": "Standard",
+          "sentence_count": 327,
+          "syllable_count": 1795,
+          "word_count": 1089
+        },
+        "relevance_score": 1.0,
+        "scraped_at": "2025-07-16 14:08:35",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Medical Billing Software for Practices and Billing Companies",
+        "topics": [],
+        "url": "https://www.collaboratemd.com/solutions/medical-billing-software/",
+        "word_count": 1089
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 30110,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 221.0,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 2,
+          "paragraph_count": 135,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.tabs3.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "LIB",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "PRC",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "IYF",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "ETV",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 3,
+        "readability": {
+          "avg_sentence_length": 3.7,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 68.5,
+          "reading_level": "Standard",
+          "sentence_count": 348,
+          "syllable_count": 2032,
+          "word_count": 1277
+        },
+        "relevance_score": 0.85,
+        "scraped_at": "2025-07-16 14:08:39",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Legal Billing Software for Attorneys & Law Firms | Tabs3",
+        "topics": [],
+        "url": "https://www.tabs3.com/legal-billing-software.html",
+        "word_count": 1277
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 23524,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 265.5,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 1,
+          "paragraph_count": 88,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.cms.gov",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "ERI",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 4,
+        "readability": {
+          "avg_sentence_length": 3.4,
+          "avg_syllables_per_word": 1.5,
+          "flesch_score": 72.4,
+          "reading_level": "Fairly Easy",
+          "sentence_count": 294,
+          "syllable_count": 1553,
+          "word_count": 1003
+        },
+        "relevance_score": 0.7,
+        "scraped_at": "2025-07-16 14:08:41",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Software | CMS",
+        "topics": [],
+        "url": "https://www.cms.gov/medicare/payment/prospective-payment-systems/inpatient-rehabilitation/software",
+        "word_count": 1003
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 86874,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 257.0,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 2,
+          "paragraph_count": 335,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.freshbooks.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "LDF",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 5,
+        "readability": {
+          "avg_sentence_length": 3.2,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 68.0,
+          "reading_level": "Standard",
+          "sentence_count": 1073,
+          "syllable_count": 5574,
+          "word_count": 3479
+        },
+        "relevance_score": 0.3,
+        "scraped_at": "2025-07-16 14:08:43",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "FreshBooks: Invoice and Accounting Software for Small Businesses",
+        "topics": [],
+        "url": "https://www.freshbooks.com/",
+        "word_count": 3479
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 13060,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 263.1,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 1,
+          "paragraph_count": 49,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.aim-system.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "YMJ",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "WWZ",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 6,
+        "readability": {
+          "avg_sentence_length": 3.6,
+          "avg_syllables_per_word": 1.5,
+          "flesch_score": 72.7,
+          "reading_level": "Fairly Easy",
+          "sentence_count": 154,
+          "syllable_count": 862,
+          "word_count": 559
+        },
+        "relevance_score": 0.95,
+        "scraped_at": "2025-07-16 14:08:46",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "EMS Billing Software | AIM",
+        "topics": [],
+        "url": "https://www.aim-system.com/ems-billing-software",
+        "word_count": 559
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 15454,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 249.7,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 2,
+          "paragraph_count": 61,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.adsc.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "QXX",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 7,
+        "readability": {
+          "avg_sentence_length": 3.2,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 69.7,
+          "reading_level": "Standard",
+          "sentence_count": 196,
+          "syllable_count": 1008,
+          "word_count": 637
+        },
+        "relevance_score": 0.95,
+        "scraped_at": "2025-07-16 14:08:48",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Medical Billing Software for Medical Billing Companies | ADS",
+        "topics": [],
+        "url": "https://www.adsc.com/medical-billing-software",
+        "word_count": 637
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 38842,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 264.0,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 3,
+          "paragraph_count": 146,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.aderant.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "HLW",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "LOZ",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "PPG",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 8,
+        "readability": {
+          "avg_sentence_length": 3.3,
+          "avg_syllables_per_word": 1.7,
+          "flesch_score": 63.8,
+          "reading_level": "Standard",
+          "sentence_count": 467,
+          "syllable_count": 2556,
+          "word_count": 1548
+        },
+        "relevance_score": 0.75,
+        "scraped_at": "2025-07-16 14:08:50",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Aderant: It Starts with the \"A\" - Legal Billing Software",
+        "topics": [],
+        "url": "https://www.aderant.com/",
+        "word_count": 1548
+      },
+      {
+        "confidence_score": 0.3,
+        "content_length": 36946,
+        "content_similarity": 0.0,
+        "content_structure": {
+          "average_paragraph_length": 254.6,
+          "content_organization_score": 0.3,
+          "external_links": 0,
+          "heading_hierarchy": {},
+          "image_count": 0,
+          "internal_links": 0,
+          "list_count": 2,
+          "paragraph_count": 144,
+          "total_headings": 0
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "billingplatform.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "JME",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "DDD",
+            "salience": 0.6,
+            "type": "OTHER"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.0,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 0
+          },
+          "meta_description_usage": {
+            "count": 0,
+            "meta_text": "",
+            "present": false
+          },
+          "optimization_score": 0.0,
+          "title_usage": {
+            "count": 0,
+            "present": false,
+            "title_text": ""
+          },
+          "total_count": 0
+        },
+        "position": 11,
+        "readability": {
+          "avg_sentence_length": 3.4,
+          "avg_syllables_per_word": 1.6,
+          "flesch_score": 64.6,
+          "reading_level": "Standard",
+          "sentence_count": 439,
+          "syllable_count": 2448,
+          "word_count": 1492
+        },
+        "relevance_score": 0.15,
+        "scraped_at": "2025-07-16 14:08:54",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.0,
+          "method": "fallback_analysis",
+          "score": 0.0
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 0,
+            "optimized": false,
+            "text": ""
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "BillingPlatform | The Enterprise Monetization Platform",
+        "topics": [],
+        "url": "https://billingplatform.com/",
+        "word_count": 1492
+      },
+      {
+        "confidence_score": 0.95,
+        "content_length": 2645,
+        "content_similarity": 0.253,
+        "content_structure": {
+          "average_paragraph_length": 63.5,
+          "content_organization_score": 0.9,
+          "external_links": 9,
+          "heading_hierarchy": {
+            "h1": 3,
+            "h2": 12,
+            "h3": 2,
+            "h4": 6
+          },
+          "image_count": 20,
+          "internal_links": 49,
+          "list_count": 0,
+          "paragraph_count": 24,
+          "total_headings": 23
+        },
+        "detection_method": "hybrid_google_playwright",
+        "domain": "www.bill4time.com",
+        "entities": [
+          {
+            "method": "tech_pattern",
+            "name": "LLP",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "tech_pattern",
+            "name": "EDP",
+            "salience": 0.6,
+            "type": "OTHER"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Customer Stories Environmental",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Design\n                                                Partnership",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Read More Laurel",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Eliminate Paper",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Maximize Billable\n                                                Hours",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Read More",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Read More How",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Virtual Law Firm",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Read More Feel",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Like You",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Only Productive",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Great Associate Pay",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          },
+          {
+            "method": "capitalization_pattern",
+            "name": "Read More Time",
+            "salience": 0.4,
+            "type": "CONSUMER_GOOD"
+          }
+        ],
+        "industry_category": "organization",
+        "keyword_usage": {
+          "density_percentage": 0.38,
+          "h1_usage": {
+            "count": 0,
+            "h1_text": "Smart firms of all sizes use Bill4Time",
+            "present": false
+          },
+          "headings_usage": {
+            "count": 0,
+            "present": false,
+            "total_headings": 23
+          },
+          "meta_description_usage": {
+            "count": 1,
+            "meta_text": "Time Billing Software by Bill4time. The simple & accurate solution to track time online. Simplify your billing, invoicing, recover lost revenue & track time from anywhere.",
+            "present": true
+          },
+          "optimization_score": 0.6,
+          "title_usage": {
+            "count": 1,
+            "present": true,
+            "title_text": "Time Billing Software | Bill4Time"
+          },
+          "total_count": 1
+        },
+        "position": 12,
+        "readability": {
+          "avg_sentence_length": 12.4,
+          "avg_syllables_per_word": 1.5,
+          "flesch_score": 65.1,
+          "reading_level": "Standard",
+          "sentence_count": 21,
+          "syllable_count": 397,
+          "word_count": 260
+        },
+        "relevance_score": 0.55,
+        "scraped_at": "2025-07-16 14:08:57",
+        "sentiment": {
+          "language": "en",
+          "magnitude": 0.03759398496240601,
+          "method": "fallback_analysis",
+          "score": 0.03759398496240601
+        },
+        "seo_elements": {
+          "canonical_url": "",
+          "has_canonical": false,
+          "meta_description": {
+            "length": 171,
+            "optimized": false,
+            "text": "Time Billing Software by Bill4time. The simple & accurate solution to track time online. Simplify your billing, invoicing, recover lost revenue & track time from anywhere."
+          },
+          "open_graph": {},
+          "schema_markup": {},
+          "title_tag": {
+            "length": 33,
+            "optimized": true,
+            "text": "Time Billing Software | Bill4Time"
+          },
+          "twitter_cards": {}
+        },
+        "source": "hybrid_analysis",
+        "status": "success",
+        "title": "Bill4Time: Time Billing Software",
+        "topics": [
+          "read more",
+          "time tracking",
+          "eliminate paper",
+          "only productive",
+          "your practice",
+          "accountability your",
+          "billing",
+          "customer stories",
+          "stories environmental",
+          "environmental design",
+          "design partnership",
+          "adopting time",
+          "billing software",
+          "always simply",
+          "simply about"
+        ],
+        "url": "https://www.bill4time.com/",
+        "word_count": 260
+      }
+    ],
+    "data_source": "enhanced_google_apis",
+    "detection_methods": {},
+    "detection_quality": "unknown",
+    "insights": {
+      "common_topics": [],
+      "content_analysis": {
+        "average_content_length": 30115.0,
+        "average_word_count": 1241.0,
+        "content_length_range": {
+          "max": 86874,
+          "min": 2645
+        },
+        "top_performers": [
+          {
+            "domain": "www.freshbooks.com",
+            "url": "https://www.freshbooks.com/",
+            "value": 86874
+          },
+          {
+            "domain": "www.aderant.com",
+            "url": "https://www.aderant.com/",
+            "value": 38842
+          },
+          {
+            "domain": "billingplatform.com",
+            "url": "https://billingplatform.com/",
+            "value": 36946
+          }
+        ]
+      },
+      "content_structure": {
+        "average_headings_count": 2.3,
+        "average_paragraph_count": 121.6,
+        "heading_hierarchy_usage": {
+          "h1": 3,
+          "h2": 12,
+          "h3": 2,
+          "h4": 6
+        },
+        "image_usage_rate": 10.0,
+        "list_usage_rate": 90.0
+      },
+      "data_quality": {
+        "average_confidence_score": 0.365,
+        "failed_analyses": 0,
+        "success_rate": 100.0,
+        "successful_analyses": 10,
+        "total_competitors_analyzed": 10
+      },
+      "entity_analysis": [],
+      "industry_distribution": {
+        "organization": 10
+      },
+      "readability_analysis": {
+        "average_flesch_score": 67.6,
+        "average_sentence_length": 4.3,
+        "average_word_complexity": 1.6,
+        "reading_level_distribution": {
+          "Fairly Easy": 2,
+          "Standard": 8
+        }
+      },
+      "seo_analysis": {
+        "average_keyword_density": 0.04,
+        "h1_optimization_rate": 0.0,
+        "keyword_optimization_scores": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6
+        ],
+        "meta_description_rate": 10.0,
+        "title_optimization_rate": 10.0
+      }
+    },
+    "query": "Billing software",
+    "total_analyzed": 10
+  },
+  "content_analysis": {
+    "ai_optimization": {
+      "note": "Gemini API not available"
+    },
+    "avg_words_per_sentence": 6.0,
+    "data_source": "google_nlp",
+    "entities": [],
+    "entity_count": 0,
+    "method": "hybrid_analysis",
+    "quality_score": 0.364,
+    "readability_score": 0.58,
+    "sentence_count": 1,
+    "sentiment_score": 0.0,
+    "word_count": 6
+  },
+  "content_blueprint": {
+    "content_gaps": {
+      "analysis_status": "completed",
+      "content_opportunities": [
+        "Comprehensive Billing software beginner guide",
+        "Advanced Billing software techniques",
+        "Billing software troubleshooting guide",
+        "Billing software industry trends and updates"
+      ],
+      "format_gaps": [
+        "Interactive tools or calculators",
+        "Video tutorials",
+        "Downloadable templates",
+        "Case studies",
+        "Comparison charts",
+        "FAQ sections"
+      ],
+      "missing_topics": [
+        "Billing software guide",
+        "Billing software tutorial",
+        "Billing software tips",
+        "Billing software best practices",
+        "how to Billing software",
+        "Billing software examples",
+        "Billing software tools",
+        "Billing software strategy"
+      ],
+      "underserved_keywords": []
+    },
+    "content_insights": {
+      "analysis_status": "no_competitors",
+      "avg_word_count": 0,
+      "common_sections": [],
+      "content_gaps": [],
+      "structural_patterns": {}
+    },
+    "content_outline": {
+      "cta_suggestions": [
+        "Start a free trial of [Recommended Billing Software] today!",
+        "Download our free checklist for choosing the right billing software.",
+        "Schedule a demo with our billing software experts.",
+        "Read our case study on how [Company Name] improved their billing process with billing software."
+      ],
+      "introduction": "In today's fast-paced business environment, efficient billing is crucial for maintaining healthy cash flow and ensuring customer satisfaction. Billing software automates and simplifies the invoicing and payment collection process, saving time, reducing errors, and providing valuable insights into your business finances. This guide will explore the benefits of billing software, key features to consider, how to choose the right solution for your business, popular options, and a step-by-step implementation guide.",
+      "key_takeaways": [
+        "Billing software streamlines invoicing and payment collection, leading to increased efficiency and improved cash flow.",
+        "Choosing the right billing software depends on your specific business needs, budget, and scalability requirements.",
+        "Proper implementation and training are essential for maximizing the benefits of billing software."
+      ],
+      "section_outlines": [
+        {
+          "content_points": [
+            "Definition of billing software: An overview of what billing software is and its primary function.",
+            "Manual billing vs. automated billing: Highlighting the inefficiencies and drawbacks of manual billing processes.",
+            "Benefits of using billing software:",
+            "   - Increased efficiency and time savings",
+            "   - Reduced errors and improved accuracy",
+            "   - Enhanced cash flow management",
+            "   - Improved customer satisfaction through professional invoices and easy payment options",
+            "   - Better reporting and insights into financial data",
+            "Who can benefit from billing software? Identifying different types of businesses (freelancers, small businesses, enterprises) that can benefit from using billing software.",
+            "The importance of timely and accurate billing for business success."
+          ],
+          "section_title": "What is Billing Software and Why Do You Need It?",
+          "word_count_estimate": 500
+        },
+        {
+          "content_points": [
+            "Invoice creation and customization:",
+            "   - Customizable invoice templates with company branding",
+            "   - Recurring billing options for subscription-based businesses",
+            "   - Support for multiple currencies and tax rates",
+            "Payment processing:",
+            "   - Integration with various payment gateways (e.g., Stripe, PayPal)",
+            "   - Options for accepting credit cards, ACH transfers, and other payment methods",
+            "   - Automated payment reminders and late fee calculations",
+            "Customer management:",
+            "   - Client database with contact information and billing history",
+            "   - Ability to track customer balances and outstanding invoices",
+            "Reporting and analytics:",
+            "   - Real-time dashboards for tracking key metrics (e.g., revenue, outstanding invoices)",
+            "   - Customizable reports for analyzing sales trends and customer behavior",
+            "Integration with other business tools:",
+            "   - Accounting software (e.g., QuickBooks, Xero)",
+            "   - CRM systems (e.g., Salesforce, HubSpot)",
+            "   - Project management tools",
+            "Security and compliance:",
+            "   - Data encryption and secure storage",
+            "   - Compliance with industry regulations (e.g., PCI DSS)"
+          ],
+          "section_title": "Key Features to Look for in Billing Software",
+          "word_count_estimate": 600
+        },
+        {
+          "content_points": [
+            "Assess your business needs and requirements:",
+            "   - Identify the specific billing challenges you face",
+            "   - Determine the features you need based on your business model and size",
+            "Consider your budget and pricing options:",
+            "   - Free vs. paid billing software",
+            "   - Subscription-based pricing models",
+            "   - One-time purchase options",
+            "Research and compare different billing software options:",
+            "   - Read online reviews and testimonials",
+            "   - Request demos or free trials",
+            "   - Compare features and pricing",
+            "Evaluate ease of use and user interface:",
+            "   - Choose a software that is intuitive and easy to navigate",
+            "   - Consider the learning curve for your team",
+            "Check for scalability and future growth:",
+            "   - Ensure the software can accommodate your business as it grows",
+            "   - Look for features that support multiple users and locations"
+          ],
+          "section_title": "Choosing the Right Billing Software for Your Business",
+          "word_count_estimate": 500
+        },
+        {
+          "content_points": [
+            "Overview of popular billing software options (e.g., FreshBooks, Zoho Invoice, Xero, QuickBooks Online, Wave Accounting, Bill.com)",
+            "Detailed comparison of features, pricing, and user reviews for each option.",
+            "Pros and cons of each software based on different business needs.",
+            "Case studies or examples of businesses successfully using each software.",
+            "Specialized billing software options for specific industries (e.g., legal, healthcare, construction)."
+          ],
+          "section_title": "Top Billing Software Options: A Comprehensive Comparison",
+          "word_count_estimate": 700
+        },
+        {
+          "content_points": [
+            "Planning and preparation:",
+            "   - Define your billing process and workflow",
+            "   - Gather all necessary data (customer information, product/service details)",
+            "Software setup and configuration:",
+            "   - Create an account and configure your company settings",
+            "   - Customize invoice templates and payment options",
+            "Data migration and import:",
+            "   - Import existing customer data from spreadsheets or other systems",
+            "   - Verify the accuracy of imported data",
+            "Training and onboarding:",
+            "   - Train your team on how to use the software effectively",
+            "   - Create documentation and tutorials",
+            "Testing and validation:",
+            "   - Test the billing process with sample invoices and payments",
+            "   - Ensure accuracy and functionality",
+            "Go-live and monitoring:",
+            "   - Launch the billing software and monitor performance",
+            "   - Track key metrics and identify areas for improvement"
+          ],
+          "section_title": "Implementing Billing Software: A Step-by-Step Guide",
+          "word_count_estimate": 400
+        }
+      ]
+    },
+    "generation_metadata": {
+      "analysis_quality": "medium",
+      "components_used": [
+        "competitor_analysis",
+        "content_analysis",
+        "serp_optimization",
+        "ai_generation",
+        "gap_analysis",
+        "seo_recommendations"
+      ],
+      "created_at": "2025-07-16T08:39:33.255662",
+      "generation_time": 29,
+      "project_id": null,
+      "user_id": "unknown_user",
+      "version": "2.0"
+    },
+    "google_apis_status": {
+      "apis_used": [
+        "Custom Search API",
+        "Knowledge Graph API",
+        "Natural Language API",
+        "Gemini API"
+      ],
+      "enabled": true,
+      "fallback_available": true,
+      "migration_manager_available": true,
+      "processing_method": "google_apis"
+    },
+    "heading_structure": {
+      "h1": "Billing Software: Streamline Your Invoicing and Payments",
+      "h2_sections": [
+        {
+          "h3_subsections": [
+            "Understanding the Core Functionality of Billing Software",
+            "Benefits of Automating Your Billing Process",
+            "Who Can Benefit From Using Billing Software?"
+          ],
+          "title": "What is Billing Software and Why Do You Need It?"
+        },
+        {
+          "h3_subsections": [
+            "Invoice Generation and Customization",
+            "Payment Processing and Integration",
+            "Reporting and Analytics Capabilities"
+          ],
+          "title": "Key Features to Look for in Billing Software"
+        },
+        {
+          "h3_subsections": [
+            "Assessing Your Business Needs and Requirements",
+            "Comparing Different Types of Billing Software",
+            "Considering Scalability and Integration Options"
+          ],
+          "title": "Choosing the Right Billing Software for Your Business"
+        },
+        {
+          "h3_subsections": [
+            "Reviewing Popular Billing Software Providers",
+            "Comparing Pricing Plans and Features",
+            "Highlighting Pros and Cons of Each Software"
+          ],
+          "title": "Top Billing Software Options: A Comprehensive Comparison"
+        },
+        {
+          "h3_subsections": [
+            "Setting Up Your Account and Configuring Settings",
+            "Importing Customer Data and Products/Services",
+            "Training Your Team on How to Use the Software"
+          ],
+          "title": "Implementing Billing Software: A Step-by-Step Guide"
+        },
+        {
+          "h3_subsections": [
+            "Automating Recurring Billing and Subscriptions",
+            "Sending Payment Reminders and Notifications",
+            "Tracking Invoices and Payments Effectively"
+          ],
+          "title": "Tips for Optimizing Your Billing Process with Software"
+        }
+      ]
+    },
+    "keyword": "Billing software",
+    "seo_recommendations": {
+      "content_optimization": {
+        "content_structure": [
+          "Comprehensive guide format covering various aspects of billing software.",
+          "Use clear and descriptive subheadings (H2, H3) to break down information.",
+          "Incorporate bullet points and numbered lists to improve readability and scannability, especially when comparing features or listing benefits.",
+          "Include real-world examples and use cases demonstrating how different billing software solutions address specific business needs.",
+          "Address common pain points and questions related to billing processes and software selection.",
+          "Consider a glossary of terms related to billing and accounting.",
+          "Provide in-depth comparisons of different billing software options, highlighting pros and cons.",
+          "Integrate relevant visuals such as screenshots, charts, and infographics to enhance understanding."
+        ],
+        "readability_level": "Intermediate",
+        "target_word_count": 2500
+      },
+      "ranking_factors": [
+        "High-quality, in-depth content that provides comprehensive information on billing software.",
+        "Strong user engagement metrics, such as time on page and bounce rate.",
+        "Relevant backlinks from authoritative websites in the business and technology sectors.",
+        "Mobile-friendliness and page speed optimization.",
+        "Keyword optimization in title tags, meta descriptions, headings, and throughout the content.",
+        "E-A-T (Expertise, Authoritativeness, Trustworthiness): Demonstrate expertise through well-researched and accurate information; build authoritativeness through citations and links to reputable sources; ensure trustworthiness by providing clear and transparent information about pricing and security."
+      ],
+      "serp_optimization": [
+        "Target 'People Also Ask' questions and address them directly within the content using FAQ schema.",
+        "Optimize for Featured Snippets by providing concise and direct answers to common questions about billing software.",
+        "If applicable, target review-based keywords and optimize for review snippets.",
+        "If targeting a local audience, include location-based keywords and optimize for local pack results (if applicable)."
+      ],
+      "technical_seo": {
+        "meta_description": "Find the best billing software for your business. Compare features, pricing, and benefits to streamline your invoicing and payment processes.",
+        "schema_markup": [
+          "SoftwareApplication",
+          "FAQPage",
+          "HowTo",
+          "Organization (if representing a software company)",
+          "Product (if focusing on a specific software product)",
+          "Review (if including user reviews)"
+        ],
+        "title_tag": "Billing Software: Choose the Best Solution for Your Business [Year]",
+        "url_slug": "billing-software"
+      }
+    },
+    "serp_features": {
+      "analysis_timestamp": "2025-07-16T14:09:06.189905",
+      "data_source": "google_apis",
+      "query": "Billing software",
+      "recommendations": [],
+      "total_recommendations": 0
+    },
+    "topic_clusters": {
+      "primary_cluster": [
+        "Billing Software Features and Benefits",
+        "Choosing the Right Billing Software",
+        "Implementing and Using Billing Software"
+      ],
+      "related_keywords": [
+        "invoice software",
+        "accounting software",
+        "payment gateway",
+        "recurring billing",
+        "subscription billing",
+        "online invoicing",
+        "invoice generator",
+        "small business billing software",
+        "enterprise billing software",
+        "cloud billing software"
+      ],
+      "secondary_clusters": {
+        "Billing Software Features and Benefits": [
+          "Automated Invoicing",
+          "Payment Processing Integration",
+          "Subscription Management",
+          "Reporting and Analytics",
+          "Customer Management",
+          "Recurring Billing",
+          "Invoice Templates",
+          "Tax Calculation",
+          "Multi-Currency Support",
+          "Data Security and Compliance"
+        ],
+        "Choosing the Right Billing Software": [
+          "Software Types (Cloud-based, On-premise)",
+          "Pricing Models (Subscription, One-time Purchase)",
+          "Integration Capabilities",
+          "Scalability",
+          "Ease of Use",
+          "Customer Support",
+          "Industry-Specific Solutions",
+          "Free Trials and Demos",
+          "Reviews and Ratings"
+        ],
+        "Implementing and Using Billing Software": [
+          "Data Migration",
+          "Software Setup and Configuration",
+          "User Training",
+          "Workflow Automation",
+          "Security Best Practices",
+          "Troubleshooting",
+          "Billing Best Practices",
+          "Invoice Customization",
+          "Reporting Customization",
+          "Integration with Accounting Software"
+        ]
+      }
+    }
+  },
+  "domain": "",
+  "entity_analysis": {
+    "data_source": "google_knowledge_graph",
+    "entities": [
+      {
+        "data": {
+          "@context": {
+            "@vocab": "http://schema.org/",
+            "EntitySearchResult": "goog:EntitySearchResult",
+            "detailedDescription": "goog:detailedDescription",
+            "goog": "http://schema.googleapis.com/",
+            "kg": "http://g.co/kg",
+            "resultScore": "goog:resultScore"
+          },
+          "itemListElement": [
+            {
+              "result": {
+                "@type": [
+                  "Organization",
+                  "Corporation"
+                ],
+                "description": "Business entity: Billing software",
+                "industry": "technology",
+                "name": "Billing software",
+                "url": "https://Billing software"
+              },
+              "resultScore": 600.0
+            }
+          ]
+        },
+        "entity": "Billing software",
+        "verified": false
+      }
+    ],
+    "total_verified": 0
+  },
+  "export_options": {
+    "cms_platforms": [
+      {
+        "description": "Publish directly to your WordPress site",
+        "icon": "wordpress-icon.svg",
+        "id": "wordpress",
+        "name": "WordPress"
+      },
+      {
+        "description": "Export to your Webflow CMS",
+        "icon": "webflow-icon.svg",
+        "id": "webflow",
+        "name": "Webflow"
+      },
+      {
+        "description": "Publish to your Contentful workspace",
+        "icon": "contentful-icon.svg",
+        "id": "contentful",
+        "name": "Contentful"
+      },
+      {
+        "description": "Export to your Shopify blog",
+        "icon": "shopify-icon.svg",
+        "id": "shopify",
+        "name": "Shopify"
+      },
+      {
+        "description": "Publish to your HubSpot CMS",
+        "icon": "hubspot-icon.svg",
+        "id": "hubspot",
+        "name": "HubSpot"
+      }
+    ],
+    "formats": [
+      {
+        "description": "Export as a professionally formatted PDF document",
+        "extension": "PDF",
+        "id": "pdf",
+        "name": "PDF Document"
+      },
+      {
+        "description": "Export as an editable Microsoft Word document",
+        "extension": "DOCX",
+        "id": "docx",
+        "name": "Word Document"
+      },
+      {
+        "description": "Export as an HTML document ready for web publishing",
+        "extension": "HTML",
+        "id": "html",
+        "name": "HTML Document"
+      },
+      {
+        "description": "Export as a Markdown file for easy editing",
+        "extension": "MD",
+        "id": "md",
+        "name": "Markdown"
+      },
+      {
+        "description": "Export data as a CSV spreadsheet",
+        "extension": "CSV",
+        "id": "csv",
+        "name": "CSV Spreadsheet"
+      },
+      {
+        "description": "Export raw data in JSON format",
+        "extension": "JSON",
+        "id": "json",
+        "name": "JSON Data"
+      }
+    ]
+  },
+  "google_apis_status": {
+    "apis_used": [
+      "Custom Search API",
+      "Knowledge Graph API",
+      "Natural Language API",
+      "Google Ads API"
+    ],
+    "enabled": true,
+    "fallback_available": true
+  },
+  "input": "Billing software",
+  "keyword_data": {
+    "keyword_metrics": [
+      {
+        "competition": 0.53,
+        "cpc": 2.1,
+        "data_source": "fallback",
+        "difficulty": 55,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: Billing software",
+              "industry": "technology",
+              "name": "Billing software",
+              "url": "https://Billing software"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "Billing software",
+        "note": "Estimated data - SerpAPI not available",
+        "opportunity": 68,
+        "search_volume": 18430
+      }
+    ],
+    "related_keywords": [
+      {
+        "competition": 0.598775875423352,
+        "cpc": 2.6,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: billing software practicepanther",
+              "industry": "technology",
+              "name": "billing software practicepanther",
+              "url": "https://billing software practicepanther"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "billing software practicepanther",
+        "relevance": 1.0,
+        "search_volume": 304,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4246265155458939,
+        "cpc": 2.1,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: practicepanther billing software",
+              "industry": "technology",
+              "name": "practicepanther billing software",
+              "url": "https://practicepanther billing software"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "practicepanther billing software",
+        "relevance": 1.0,
+        "search_volume": 402,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.42753187683402705,
+        "cpc": 1.27,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: software practicepanther easily",
+              "industry": "technology",
+              "name": "software practicepanther easily",
+              "url": "https://software practicepanther easily"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "software practicepanther easily",
+        "relevance": 0.5,
+        "search_volume": 748,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.48399243683307114,
+        "cpc": 2.24,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: practicepanther easily track",
+              "industry": "business_services",
+              "name": "practicepanther easily track",
+              "url": "https://practicepanther easily track"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "practicepanther easily track",
+        "relevance": 0.0,
+        "search_volume": 436,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4273243515869327,
+        "cpc": 1.71,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: software practicepanther",
+              "industry": "technology",
+              "name": "software practicepanther",
+              "url": "https://software practicepanther"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "software practicepanther",
+        "relevance": 0.5,
+        "search_volume": 887,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.49897219668796744,
+        "cpc": 2.36,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: practicepanther billing",
+              "industry": "business_services",
+              "name": "practicepanther billing",
+              "url": "https://practicepanther billing"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "practicepanther billing",
+        "relevance": 0.5,
+        "search_volume": 850,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5706144869235794,
+        "cpc": 2.05,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: practicepanther easily",
+              "industry": "business_services",
+              "name": "practicepanther easily",
+              "url": "https://practicepanther easily"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "practicepanther easily",
+        "relevance": 0.0,
+        "search_volume": 890,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5795778659968269,
+        "cpc": 1.13,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: comprehensive insights",
+              "industry": "research",
+              "name": "comprehensive insights",
+              "url": "https://comprehensive insights"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "comprehensive insights",
+        "relevance": 0.0,
+        "search_volume": 264,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5041712514101159,
+        "cpc": 2.97,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: legal billing software",
+              "industry": "technology",
+              "name": "legal billing software",
+              "url": "https://legal billing software"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "legal billing software",
+        "relevance": 1.0,
+        "search_volume": 499,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4079817308039917,
+        "cpc": 1.22,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: expenses build custom",
+              "industry": "business_services",
+              "name": "expenses build custom",
+              "url": "https://expenses build custom"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "expenses build custom",
+        "relevance": 0.0,
+        "search_volume": 936,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.43652455416265623,
+        "cpc": 1.6,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: build custom invoices",
+              "industry": "business_services",
+              "name": "build custom invoices",
+              "url": "https://build custom invoices"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "build custom invoices",
+        "relevance": 0.0,
+        "search_volume": 802,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.46862928770681367,
+        "cpc": 2.28,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: track time expenses",
+              "industry": "business_services",
+              "name": "track time expenses",
+              "url": "https://track time expenses"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "track time expenses",
+        "relevance": 0.0,
+        "search_volume": 933,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5935311311129917,
+        "cpc": 0.69,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: time expenses build",
+              "industry": "business_services",
+              "name": "time expenses build",
+              "url": "https://time expenses build"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "time expenses build",
+        "relevance": 0.0,
+        "search_volume": 652,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5155875916441844,
+        "cpc": 1.35,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: easily track time",
+              "industry": "business_services",
+              "name": "easily track time",
+              "url": "https://easily track time"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "easily track time",
+        "relevance": 0.0,
+        "search_volume": 1881,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.494958814718797,
+        "cpc": 1.85,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: billing software",
+              "industry": "technology",
+              "name": "billing software",
+              "url": "https://billing software"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "billing software",
+        "relevance": 1.0,
+        "search_volume": 1468,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4090816101799865,
+        "cpc": 1.62,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: provides transparent reporting",
+              "industry": "business_services",
+              "name": "provides transparent reporting",
+              "url": "https://provides transparent reporting"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "provides transparent reporting",
+        "relevance": 0.0,
+        "search_volume": 944,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.47214367887159014,
+        "cpc": 1.49,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: simplifies billing processes",
+              "industry": "business_services",
+              "name": "simplifies billing processes",
+              "url": "https://simplifies billing processes"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "simplifies billing processes",
+        "relevance": 0.5,
+        "search_volume": 801,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.41934809371185267,
+        "cpc": 2.41,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: processes avoids complicated",
+              "industry": "business_services",
+              "name": "processes avoids complicated",
+              "url": "https://processes avoids complicated"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "processes avoids complicated",
+        "relevance": 0.0,
+        "search_volume": 985,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.4790339784336853,
+        "cpc": 0.7,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: avoids complicated workflows",
+              "industry": "business_services",
+              "name": "avoids complicated workflows",
+              "url": "https://avoids complicated workflows"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "avoids complicated workflows",
+        "relevance": 0.0,
+        "search_volume": 519,
+        "source": "google_search"
+      },
+      {
+        "competition": 0.5084649206711711,
+        "cpc": 2.95,
+        "entities": [
+          {
+            "result": {
+              "@type": [
+                "Organization",
+                "Corporation"
+              ],
+              "description": "Business entity: billing software simplifies",
+              "industry": "technology",
+              "name": "billing software simplifies",
+              "url": "https://billing software simplifies"
+            },
+            "resultScore": 600.0
+          }
+        ],
+        "entity_score": 0.6,
+        "has_knowledge_panel": true,
+        "keyword": "billing software simplifies",
+        "relevance": 1.0,
+        "search_volume": 919,
+        "source": "google_search"
+      }
+    ],
+    "seed_keywords": [
+      "Billing software"
+    ],
+    "trend_analysis": {
+      "Billing software": {
+        "seasonal_pattern": "steady",
+        "trend_direction": "stable",
+        "trend_strength": "moderate",
+        "year_over_year_change": "0%"
+      }
+    }
+  },
+  "performance_prediction": {
+    "confidence_score": 82,
+    "estimated_ctr": 0.5,
+    "estimated_serp_position": 11.7,
+    "estimated_traffic": 15,
+    "improvement_suggestions": [
+      {
+        "area": "E-A-T Signals",
+        "effort": "Medium",
+        "impact": "High",
+        "suggestion": "Strengthen expertise, authoritativeness, and trustworthiness signals through author credentials and references."
+      },
+      {
+        "area": "User Experience",
+        "effort": "Medium",
+        "impact": "High",
+        "suggestion": "Improve page load speed and interactive elements to reduce bounce rate and increase engagement."
+      },
+      {
+        "area": "Mobile Optimization",
+        "effort": "Medium",
+        "impact": "High",
+        "suggestion": "Further optimize for mobile experience, focusing on Core Web Vitals metrics."
+      },
+      {
+        "area": "Topical Authority",
+        "effort": "High",
+        "impact": "High",
+        "suggestion": "Develop additional supporting content to establish stronger topical authority in this subject area."
+      },
+      {
+        "area": "SERP Feature Optimization",
+        "effort": "Medium",
+        "impact": "High",
+        "suggestion": "Restructure content to better target featured snippets and other SERP features."
+      },
+      {
+        "area": "Semantic Relevance",
+        "effort": "Medium",
+        "impact": "Medium",
+        "suggestion": "Improve this area to enhance overall performance."
+      }
+    ],
+    "ranking_factors": [
+      {
+        "description": "Content demonstrates strong semantic relevance to the topic.",
+        "details": "Uses related terms, entities, and concepts that establish topical authority.",
+        "factor_name": "Semantic Relevance",
+        "score": 0.73
+      },
+      {
+        "description": "Content is readable and accessible to the target audience.",
+        "details": "Reading level is appropriate, with clear language and well-structured paragraphs.",
+        "factor_name": "Readability",
+        "score": 0.93
+      },
+      {
+        "description": "Content is optimized for relevant SERP features.",
+        "details": "Structured for featured snippets and includes FAQ sections for People Also Ask boxes.",
+        "factor_name": "SERP Feature Optimization",
+        "score": 0.71
+      },
+      {
+        "description": "Content covers important entities related to the topic.",
+        "details": "Includes definitions, explanations, and relationships between key entities.",
+        "factor_name": "Entity Coverage",
+        "score": 0.79
+      },
+      {
+        "description": "Content appears fresh and up-to-date.",
+        "details": "Includes recent information, statistics, and references to current trends.",
+        "factor_name": "Content Freshness",
+        "score": 0.94
+      }
+    ],
+    "ranking_probability": 0.42
+  },
+  "processing_method": "google_apis",
+  "serp_analysis": {
+    "data_source": "google_apis",
+    "features": {
+      "featured_snippets": {
+        "presence": "medium"
+      },
+      "image_packs": {
+        "presence": "weak"
+      },
+      "knowledge_panels": {
+        "presence": "none"
+      },
+      "local_pack": {
+        "presence": "none"
+      },
+      "people_also_ask": {
+        "presence": "medium"
+      },
+      "rich_results": {
+        "presence": "detected",
+        "types": [
+          "article",
+          "product"
+        ]
+      },
+      "video_results": {
+        "presence": "medium"
+      }
+    },
+    "google_api_enhanced": true,
+    "migration_status": "google_apis_primary",
+    "organic_results": [],
+    "pagination": {
+      "current": 1,
+      "next": 2
+    },
+    "query": "Billing software",
+    "search_information": {
+      "formatted_search_time": "0.12",
+      "formatted_total_results": "244,000,000",
+      "search_time": 0.121691,
+      "total_results": 244000000
+    },
+    "total_results": 244000000
+  },
+  "serp_optimization": {
+    "analysis_timestamp": "2025-07-16T14:08:59.865735",
+    "data_source": "google_apis",
+    "query": "Billing software",
+    "recommendations": [],
+    "total_recommendations": 0
+  },
+  "timestamp": "2025-07-16T14:08:20.057457"
+}

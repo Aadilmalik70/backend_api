@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from datetime import datetime, timedelta
 
-from src.models.blueprint import Blueprint, Project, validate_blueprint_data, sanitize_keyword
+from models.blueprint import Blueprint, Project, validate_blueprint_data, sanitize_keyword
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
