@@ -13,14 +13,40 @@ import time
 import concurrent.futures
 from datetime import datetime
 
-# Import services (fixed for consolidated app)
+# Import services with multiple fallback strategies
 try:
-    from services.blueprint_generator import BlueprintGeneratorService
-    from services.blueprint_storage import BlueprintStorageService, ProjectStorageService
+    from src.services.blueprint_generator import BlueprintGeneratorService
+    from src.services.blueprint_storage import BlueprintStorageService, ProjectStorageService
 except ImportError:
-    # Fallback to relative imports if absolute fails
-    from ..services.blueprint_generator import BlueprintGeneratorService
-    from ..services.blueprint_storage import BlueprintStorageService, ProjectStorageService
+    try:
+        from services.blueprint_generator import BlueprintGeneratorService
+        from services.blueprint_storage import BlueprintStorageService, ProjectStorageService
+    except ImportError:
+        try:
+            from ..services.blueprint_generator import BlueprintGeneratorService
+            from ..services.blueprint_storage import BlueprintStorageService, ProjectStorageService
+        except ImportError:
+            # Create stub classes if services unavailable
+            logger.warning("Blueprint services unavailable - creating stub implementations")
+            class BlueprintGeneratorService:
+                def __init__(self, *args, **kwargs):
+                    pass
+                def generate_blueprint(self, *args, **kwargs):
+                    return {"error": "Blueprint generation service unavailable"}
+            
+            class BlueprintStorageService:
+                def __init__(self, *args, **kwargs):
+                    pass
+                def save_blueprint(self, *args, **kwargs):
+                    return None
+                def get_blueprint(self, *args, **kwargs):
+                    return None
+                def list_blueprints(self, *args, **kwargs):
+                    return []
+                    
+            class ProjectStorageService:
+                def __init__(self, *args, **kwargs):
+                    pass
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

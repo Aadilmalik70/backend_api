@@ -6,7 +6,9 @@ capabilities using real data sources and AI-powered content structuring.
 """
 
 import os
+import sys
 import logging
+from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -14,34 +16,83 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Add the project root and src directory to Python path for imports
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+src_dir = os.path.dirname(os.path.abspath(__file__))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+
 # Configure logging first
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Import existing modules (absolute imports for main.py compatibility)
+# Import existing modules with fallback strategy
 try:
-    from keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
-    from serp_feature_optimizer_real import SerpFeatureOptimizerReal
-    from content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
-    from competitor_analysis_real import CompetitorAnalysisReal
-    from export_integration import ExportIntegration
-    from models.blueprint import DatabaseManager
-    from routes.blueprints import blueprint_routes
-    logger.info("Successfully imported all modules with absolute imports")
+    # Try absolute imports from project root
+    from src.keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
+    from src.serp_feature_optimizer_real import SerpFeatureOptimizerReal
+    from src.content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
+    from src.competitor_analysis_real import CompetitorAnalysisReal
+    from src.export_integration import ExportIntegration
+    from src.models.blueprint import DatabaseManager
+    from src.routes.blueprints import blueprint_routes
+    logger.info("Successfully imported all modules with src.* imports")
 except ImportError as e:
-    logger.warning(f"Absolute imports failed: {e}. Attempting relative imports...")
+    logger.warning(f"src.* imports failed: {e}. Attempting local imports...")
     try:
-        from .keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
-        from .serp_feature_optimizer_real import SerpFeatureOptimizerReal
-        from .content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
-        from .competitor_analysis_real import CompetitorAnalysisReal
-        from .export_integration import ExportIntegration
-        from .models.blueprint import DatabaseManager
-        from .routes.blueprints import blueprint_routes
-        logger.info("Successfully imported all modules with relative imports")
-    except ImportError as rel_e:
-        logger.error(f"Both absolute and relative imports failed. Absolute: {e}, Relative: {rel_e}")
-        raise ImportError(f"Could not import required modules. Check module paths and dependencies.")
+        # Try local imports (when run from src/ directory)
+        from keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
+        from serp_feature_optimizer_real import SerpFeatureOptimizerReal
+        from content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
+        from competitor_analysis_real import CompetitorAnalysisReal
+        from export_integration import ExportIntegration
+        from models.blueprint import DatabaseManager
+        from routes.blueprints import blueprint_routes
+        logger.info("Successfully imported all modules with local imports")
+    except ImportError as local_e:
+        logger.warning(f"Local imports failed: {local_e}. Attempting relative imports...")
+        try:
+            # Try relative imports (when imported as module)
+            from .keyword_processor_enhanced_real import KeywordProcessorEnhancedReal
+            from .serp_feature_optimizer_real import SerpFeatureOptimizerReal
+            from .content_analyzer_enhanced_real import ContentAnalyzerEnhancedReal
+            from .competitor_analysis_real import CompetitorAnalysisReal
+            from .export_integration import ExportIntegration
+            from .models.blueprint import DatabaseManager
+            from .routes.blueprints import blueprint_routes
+            logger.info("Successfully imported all modules with relative imports")
+        except ImportError as rel_e:
+            logger.error(f"All import strategies failed:")
+            logger.error(f"  - src.* imports: {e}")
+            logger.error(f"  - Local imports: {local_e}")
+            logger.error(f"  - Relative imports: {rel_e}")
+            logger.error("Creating minimal application without enhanced features...")
+            
+            # Import minimal components only
+            try:
+                from models.blueprint import DatabaseManager
+                from routes.blueprints import blueprint_routes
+                logger.warning("Using minimal application mode with limited features")
+                KeywordProcessorEnhancedReal = None
+                SerpFeatureOptimizerReal = None
+                ContentAnalyzerEnhancedReal = None
+                CompetitorAnalysisReal = None
+                ExportIntegration = None
+            except ImportError as minimal_e:
+                logger.error(f"Even minimal imports failed: {minimal_e}")
+                # Create stub classes to prevent application crash
+                class StubClass:
+                    def __init__(self, *args, **kwargs):
+                        pass
+                KeywordProcessorEnhancedReal = StubClass
+                SerpFeatureOptimizerReal = StubClass
+                ContentAnalyzerEnhancedReal = StubClass
+                CompetitorAnalysisReal = StubClass
+                ExportIntegration = StubClass
+                DatabaseManager = None
+                blueprint_routes = None
 
 def create_app():
     """
@@ -57,48 +108,76 @@ def create_app():
     # Enable CORS for frontend integration
     CORS(app)
     
-    # Database setup
-    database_url = os.getenv('DATABASE_URL', 'sqlite:///serp_strategist.db')
-    db_manager = DatabaseManager(database_url)
+    # Database setup (only if DatabaseManager is available)
+    if DatabaseManager is not None:
+        try:
+            database_url = os.getenv('DATABASE_URL', 'sqlite:///serp_strategist.db')
+            db_manager = DatabaseManager(database_url)
+            db_manager.init_tables()
+            app.db_session = db_manager.get_session()
+            logger.info("Database tables initialized successfully")
+        except Exception as e:
+            logger.error(f"Database initialization failed: {str(e)}")
+            app.db_session = None
+    else:
+        logger.warning("DatabaseManager not available, skipping database setup")
+        app.db_session = None
     
-    try:
-        db_manager.init_tables()
-        logger.info("Database tables initialized successfully")
-    except Exception as e:
-        logger.error(f"Database initialization failed: {str(e)}")
-    
-    # Add database session to app context
-    app.db_session = db_manager.get_session()
-    
-    # Register blueprint routes
-    app.register_blueprint(blueprint_routes)
+    # Register blueprint routes (only if available)
+    if blueprint_routes is not None:
+        try:
+            app.register_blueprint(blueprint_routes)
+            logger.info("Blueprint routes registered successfully")
+        except Exception as e:
+            logger.error(f"Blueprint registration failed: {str(e)}")
+    else:
+        logger.warning("Blueprint routes not available, skipping registration")
     
     # Get API keys from environment variables
     serpapi_key = os.getenv('SERPAPI_KEY')
     gemini_api_key = os.getenv('GEMINI_API_KEY')
     
     # Initialize legacy modules (for backward compatibility)
-    try:
-        keyword_processor = KeywordProcessorEnhancedReal()
-        serp_optimizer = SerpFeatureOptimizerReal(serpapi_key=serpapi_key)
-        content_analyzer = ContentAnalyzerEnhancedReal(gemini_api_key=gemini_api_key)
-        competitor_analyzer = CompetitorAnalysisReal(
-            gemini_api_key=gemini_api_key,
-            serpapi_key=serpapi_key
-        )
-        export_integration = ExportIntegration()
-        
-        # Store in app context for legacy routes
-        app.keyword_processor = keyword_processor
-        app.serp_optimizer = serp_optimizer
-        app.content_analyzer = content_analyzer
-        app.competitor_analyzer = competitor_analyzer
-        app.export_integration = export_integration
-        
-        logger.info("Legacy modules initialized successfully")
-        
-    except Exception as e:
-        logger.error(f"Legacy module initialization failed: {str(e)}")
+    modules_available = all([
+        KeywordProcessorEnhancedReal is not None,
+        SerpFeatureOptimizerReal is not None,
+        ContentAnalyzerEnhancedReal is not None,
+        CompetitorAnalysisReal is not None,
+        ExportIntegration is not None
+    ])
+    
+    if modules_available:
+        try:
+            keyword_processor = KeywordProcessorEnhancedReal()
+            serp_optimizer = SerpFeatureOptimizerReal(serpapi_key=serpapi_key)
+            content_analyzer = ContentAnalyzerEnhancedReal(gemini_api_key=gemini_api_key)
+            competitor_analyzer = CompetitorAnalysisReal(
+                gemini_api_key=gemini_api_key,
+                serpapi_key=serpapi_key
+            )
+            export_integration = ExportIntegration()
+            
+            # Store in app context for legacy routes
+            app.keyword_processor = keyword_processor
+            app.serp_optimizer = serp_optimizer
+            app.content_analyzer = content_analyzer
+            app.competitor_analyzer = competitor_analyzer
+            app.export_integration = export_integration
+            app.enhanced_features_available = True
+            
+            logger.info("✅ Legacy modules initialized successfully - Enhanced features available")
+            
+        except Exception as e:
+            logger.error(f"Legacy module initialization failed: {str(e)}")
+            app.enhanced_features_available = False
+    else:
+        logger.warning("⚠️ Some modules unavailable - Running in limited mode")
+        app.keyword_processor = None
+        app.serp_optimizer = None
+        app.content_analyzer = None
+        app.competitor_analyzer = None
+        app.export_integration = None
+        app.enhanced_features_available = False
     
     # Legacy API routes (maintained for backward compatibility)
     @app.route('/api/process', methods=['POST'])
@@ -121,6 +200,14 @@ def create_app():
         }
         """
         try:
+            # Check if enhanced features are available
+            if not getattr(app, 'enhanced_features_available', False):
+                return jsonify({
+                    "error": "Enhanced features not available",
+                    "message": "Application is running in limited mode due to import issues",
+                    "suggestion": "Check logs for import errors and ensure all dependencies are installed"
+                }), 503
+            
             # Get request data
             data = request.get_json()
             keyword = data.get('keyword')
@@ -268,6 +355,54 @@ def create_app():
             "deprecated": True,
             "new_endpoint": "/api/health",
             "message": "Use /api/health for the enhanced health check"
+        })
+    
+    # Main health check endpoint
+    @app.route('/api/health', methods=['GET'])
+    def health_check():
+        """
+        Main health check endpoint.
+        
+        Returns:
+        {
+            "status": "ok|degraded|error",
+            "version": "2.0.0",
+            "features": {...},
+            "services": {...}
+        }
+        """
+        # Determine overall status
+        enhanced_available = getattr(app, 'enhanced_features_available', False)
+        db_available = app.db_session is not None
+        
+        if enhanced_available and db_available:
+            status = "ok"
+        elif enhanced_available or db_available:
+            status = "degraded"
+        else:
+            status = "error"
+        
+        return jsonify({
+            "status": status,
+            "version": "2.0.0",
+            "timestamp": datetime.now().isoformat(),
+            "features": {
+                "enhanced_processing": enhanced_available,
+                "database": db_available,
+                "blueprint_routes": blueprint_routes is not None
+            },
+            "services": {
+                "keyword_processor": app.keyword_processor is not None,
+                "serp_optimizer": app.serp_optimizer is not None,
+                "content_analyzer": app.content_analyzer is not None,
+                "competitor_analyzer": app.competitor_analyzer is not None,
+                "export_integration": app.export_integration is not None
+            },
+            "api_keys": {
+                "serpapi": serpapi_key is not None,
+                "gemini": gemini_api_key is not None,
+                "google_api": os.getenv('GOOGLE_API_KEY') is not None
+            }
         })
     
     # Enhanced root endpoint with API information

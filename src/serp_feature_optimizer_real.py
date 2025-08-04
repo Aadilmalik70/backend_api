@@ -15,13 +15,23 @@ import re
 from typing import Dict, Any, List, Optional
 from datetime import datetime
 
-# Core dependencies
-from utils.serpapi_client import SerpAPIClient
-
-# Google APIs Integration (Phase 2.5)
-from utils.google_apis.custom_search_client import CustomSearchClient
-from utils.google_apis.knowledge_graph_client import KnowledgeGraphClient
-from utils.google_apis.gemini_client import GeminiClient
+# Core dependencies with import fallbacks
+try:
+    from src.utils.serpapi_client import SerpAPIClient
+    from src.utils.google_apis.custom_search_client import CustomSearchClient
+    from src.utils.google_apis.knowledge_graph_client import KnowledgeGraphClient
+    from src.utils.google_apis.gemini_client import GeminiClient
+except ImportError:
+    try:
+        from utils.serpapi_client import SerpAPIClient
+        from utils.google_apis.custom_search_client import CustomSearchClient
+        from utils.google_apis.knowledge_graph_client import KnowledgeGraphClient
+        from utils.google_apis.gemini_client import GeminiClient
+    except ImportError:
+        from .utils.serpapi_client import SerpAPIClient
+        from .utils.google_apis.custom_search_client import CustomSearchClient
+        from .utils.google_apis.knowledge_graph_client import KnowledgeGraphClient
+        from .utils.google_apis.gemini_client import GeminiClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
