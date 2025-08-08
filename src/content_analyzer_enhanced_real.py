@@ -18,10 +18,22 @@ import re
 from typing import Dict, Any, List, Optional
 from urllib.parse import urlparse
 
-from utils.browser_content_scraper import BrowserContentScraper
-from utils.google_apis.natural_language_client import NaturalLanguageClient
-from utils.google_apis.gemini_client import GeminiClient
-from utils.gemini_nlp_client import GeminiNLPClient
+try:
+    from src.utils.browser_content_scraper import BrowserContentScraper
+    from src.utils.google_apis.natural_language_client import NaturalLanguageClient
+    from src.utils.google_apis.gemini_client import GeminiClient
+    from src.utils.gemini_nlp_client import GeminiNLPClient
+except ImportError:
+    try:
+        from utils.browser_content_scraper import BrowserContentScraper
+        from utils.google_apis.natural_language_client import NaturalLanguageClient
+        from utils.google_apis.gemini_client import GeminiClient
+        from utils.gemini_nlp_client import GeminiNLPClient
+    except ImportError:
+        from .utils.browser_content_scraper import BrowserContentScraper
+        from .utils.google_apis.natural_language_client import NaturalLanguageClient
+        from .utils.google_apis.gemini_client import GeminiClient
+        from .utils.gemini_nlp_client import GeminiNLPClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-Main Application Entry Point - SERP Strategist API
+Main Application Entry Point - SERP Strategist API with WebSocket Support
 
-Single entry point for the consolidated Flask application.
-Uses the production-ready app_real.py factory pattern as the foundation.
+Single entry point for the consolidated Flask application with optional WebSocket support.
+Uses the production-ready app_real.py as fallback and app_realtime.py for full features.
 
 This replaces the previous fragmented architecture:
 - app.py (legacy, non-functional)
 - app_enhanced.py (enhanced features, non-functional)  
-- app_real.py (production, functional) -> NOW INTEGRATED
+- app_real.py (production, functional) -> INTEGRATED
+- app_realtime.py (with WebSocket support) -> NEW
 
-Author: Code Consolidation Workflow
-Version: 2.0.0
+Author: Code Consolidation Workflow + WebSocket Integration
+Version: 2.1.0
 """
 
 import os
@@ -23,21 +24,31 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Import the working application factory
-# First try the full app_real.py, fallback to minimal version
+# First try the full realtime app, fallback to regular app
 try:
-    from app_real import create_app
-    print("Successfully imported full application factory from app_real.py")
-    APP_MODE = "full"
+    from app_realtime import create_realtime_app, create_app as create_realtime_app_compat
+    print("Successfully imported realtime application factory from app_realtime.py")
+    APP_MODE = "realtime"
+    create_app = create_realtime_app_compat  # Compatibility wrapper
+    create_full_app = create_realtime_app    # Full app with socketio
 except ImportError as e:
-    print(f"Full app import failed ({e}), using minimal application...")
+    print(f"Realtime app import failed ({e}), trying regular app...")
     try:
-        from app_minimal import create_minimal_app as create_app
-        print("Successfully imported minimal application factory")
-        APP_MODE = "minimal"
-    except ImportError as minimal_e:
-        print(f"Both full and minimal app imports failed: {e}, {minimal_e}")
-        print("Ensure application files are available and dependencies are installed")
-        sys.exit(1)
+        from app_real import create_app
+        print("Successfully imported regular application factory from app_real.py")
+        APP_MODE = "regular"
+        create_full_app = lambda: (create_app(), None)  # No socketio
+    except ImportError as regular_e:
+        print(f"Regular app import failed ({regular_e}), using minimal application...")
+        try:
+            from app_minimal import create_minimal_app as create_app
+            print("Successfully imported minimal application factory")
+            APP_MODE = "minimal"
+            create_full_app = lambda: (create_app(), None)  # No socketio
+        except ImportError as minimal_e:
+            print(f"All app imports failed: realtime={e}, regular={regular_e}, minimal={minimal_e}")
+            print("Ensure application files are available and dependencies are installed")
+            sys.exit(1)
 
 # Configure logging for main entry point
 def setup_main_logging():
@@ -72,27 +83,44 @@ def validate_environment():
         'GEMINI_API_KEY': 'Google Gemini API key for AI features'
     }
     
-    missing_vars = []
+    optional_vars = {
+        'SERPAPI_KEY': 'SerpAPI key for fallback search functionality'
+    }
+    
+    missing_required = []
+    missing_optional = []
+    
     for var, description in required_vars.items():
         if not os.getenv(var):
-            missing_vars.append(f"{var} ({description})")
+            missing_required.append(f"{var} ({description})")
     
-    if missing_vars:
-        logger.warning("Missing environment variables:")
-        for var in missing_vars:
+    for var, description in optional_vars.items():
+        if not os.getenv(var):
+            missing_optional.append(f"{var} ({description})")
+    
+    if missing_required:
+        logger.warning("Missing required environment variables:")
+        for var in missing_required:
             logger.warning(f"  - {var}")
         logger.warning("Application may have limited functionality")
-        return False
     
-    logger.info("✅ All required environment variables are configured")
-    return True
+    if missing_optional:
+        logger.info("Missing optional environment variables:")
+        for var in missing_optional:
+            logger.info(f"  - {var}")
+    
+    if not missing_required:
+        logger.info("✅ All required environment variables are configured")
+        return True
+    
+    return False
 
 def create_application():
     """
-    Create and configure the Flask application.
+    Create and configure the Flask application with optional WebSocket support.
     
     Returns:
-        Flask: Configured Flask application instance
+        Tuple: (Flask app, SocketIO instance or None)
     """
     logger = logging.getLogger(__name__)
     
@@ -101,21 +129,35 @@ def create_application():
     
     try:
         # Create the application using the factory pattern
-        app = create_app()
+        if APP_MODE == "realtime":
+            app, socketio = create_full_app()
+            logger.info(f"✅ Flask application with WebSocket support created successfully")
+        else:
+            app, socketio = create_full_app()
+            logger.info(f"✅ Flask application created successfully (mode: {APP_MODE})")
         
-        logger.info(f"✅ Flask application created successfully (mode: {APP_MODE})")
         logger.info("🚀 SERP Strategist API is ready to serve requests")
         
         # Log available endpoints based on mode
         logger.info("📋 Available API endpoints:")
-        if APP_MODE == "full":
+        if APP_MODE == "realtime":
+            logger.info("  Realtime Blueprint Generation:")
+            logger.info("    POST /api/blueprints/generate-realtime - Generate with WebSocket updates")
+            logger.info("    POST /api/blueprints/generate-quick-realtime - Quick generation with updates")
+            logger.info("    GET  /api/blueprints/{id}/status - Real-time status checking")
+            logger.info("    GET  /api/websocket/active-sessions - User's active sessions")
+            logger.info("  Standard Blueprint Generation:")
+            logger.info("    POST /api/blueprints/generate - Standard blueprint generation")
+            logger.info("    GET  /api/blueprints/{id} - Retrieve specific blueprint")
+            logger.info("    GET  /api/blueprints - List user blueprints")
+            logger.info("  WebSocket Support:")
+            logger.info("    WS   /socket.io/ - WebSocket connection endpoint")
+            logger.info("    GET  /api/websocket/status - WebSocket service status")
+        elif APP_MODE == "regular":
             logger.info("  Blueprint Generation:")
             logger.info("    POST /api/blueprints/generate - Generate content blueprint")
             logger.info("    GET  /api/blueprints/{id} - Retrieve specific blueprint")
             logger.info("    GET  /api/blueprints - List user blueprints")
-            logger.info("  Enhanced Features (v3):")
-            logger.info("    POST /api/v3/blueprints/generate - Next-generation blueprint")
-            logger.info("    POST /api/v3/blueprints/batch - Batch processing")
         elif APP_MODE == "minimal":
             logger.info("  Minimal Implementation:")
             logger.info("    POST /api/blueprints/test - Test blueprint generation")
@@ -126,11 +168,21 @@ def create_application():
         logger.info("    GET  /api/status - System status")
         logger.info("    GET  / - API information and documentation")
         
+        if APP_MODE == "realtime":
+            logger.info("  WebSocket Events:")
+            logger.info("    connect/disconnect - Connection management")
+            logger.info("    join_blueprint_room - Join blueprint progress room")
+            logger.info("    leave_blueprint_room - Leave blueprint progress room")
+            logger.info("    progress_update - Real-time progress notifications")
+            logger.info("    step_completed - Step completion notifications")
+            logger.info("    generation_complete - Blueprint completion notifications")
+            logger.info("    generation_failed - Blueprint failure notifications")
+        
         if not env_valid:
             logger.warning("⚠️  Application started with missing environment variables")
             logger.warning("   Some features may not work correctly")
         
-        return app
+        return app, socketio
         
     except Exception as e:
         logger.error(f"❌ Failed to create Flask application: {str(e)}")
@@ -141,11 +193,11 @@ if __name__ == '__main__':
     # Setup logging
     logger = setup_main_logging()
     logger.info("🚀 Starting SERP Strategist API server...")
-    logger.info("📦 Consolidated Application Architecture v2.0.0")
+    logger.info(f"📦 Consolidated Application Architecture v2.1.0 (mode: {APP_MODE})")
     
     try:
         # Create the application
-        app = create_application()
+        app, socketio = create_application()
         
         # Get configuration from environment
         host = os.getenv('FLASK_HOST', '0.0.0.0')
@@ -154,14 +206,26 @@ if __name__ == '__main__':
         
         logger.info(f"🌐 Server starting on {host}:{port}")
         logger.info(f"🔧 Debug mode: {'enabled' if debug else 'disabled'}")
+        logger.info(f"🔌 WebSocket support: {'enabled' if APP_MODE == 'realtime' else 'disabled'}")
         
         # Start the server
-        app.run(
-            host=host,
-            port=port,
-            debug=debug,
-            threaded=True
-        )
+        if APP_MODE == "realtime" and socketio:
+            logger.info("🔄 Starting server with WebSocket support...")
+            socketio.run(
+                app,
+                host=host,
+                port=port,
+                debug=debug,
+                allow_unsafe_werkzeug=debug  # Only allow in debug mode
+            )
+        else:
+            logger.info("🔄 Starting standard Flask server...")
+            app.run(
+                host=host,
+                port=port,
+                debug=debug,
+                threaded=True
+            )
         
     except KeyboardInterrupt:
         logger.info("🛑 Server shutdown requested by user")

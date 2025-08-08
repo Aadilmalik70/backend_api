@@ -14,16 +14,32 @@ from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime
 
-# Google APIs
-from utils.google_apis.custom_search_client import CustomSearchClient
-from utils.google_apis.knowledge_graph_client import KnowledgeGraphClient  
-from utils.google_apis.natural_language_client import NaturalLanguageClient
-from utils.google_apis.gemini_client import GeminiClient
-
-# Playwright & SerpAPI
-from utils.browser_content_scraper import BrowserContentScraper
-from utils.serpapi_client import SerpAPIClient
-from utils.gemini_nlp_client import GeminiNLPClient
+# Google APIs with import fallbacks
+try:
+    from src.utils.google_apis.custom_search_client import CustomSearchClient
+    from src.utils.google_apis.knowledge_graph_client import KnowledgeGraphClient  
+    from src.utils.google_apis.natural_language_client import NaturalLanguageClient
+    from src.utils.google_apis.gemini_client import GeminiClient
+    from src.utils.browser_content_scraper import BrowserContentScraper
+    from src.utils.serpapi_client import SerpAPIClient
+    from src.utils.gemini_nlp_client import GeminiNLPClient
+except ImportError:
+    try:
+        from utils.google_apis.custom_search_client import CustomSearchClient
+        from utils.google_apis.knowledge_graph_client import KnowledgeGraphClient  
+        from utils.google_apis.natural_language_client import NaturalLanguageClient
+        from utils.google_apis.gemini_client import GeminiClient
+        from utils.browser_content_scraper import BrowserContentScraper
+        from utils.serpapi_client import SerpAPIClient
+        from utils.gemini_nlp_client import GeminiNLPClient
+    except ImportError:
+        from .utils.google_apis.custom_search_client import CustomSearchClient
+        from .utils.google_apis.knowledge_graph_client import KnowledgeGraphClient  
+        from .utils.google_apis.natural_language_client import NaturalLanguageClient
+        from .utils.google_apis.gemini_client import GeminiClient
+        from .utils.browser_content_scraper import BrowserContentScraper
+        from .utils.serpapi_client import SerpAPIClient
+        from .utils.gemini_nlp_client import GeminiNLPClient
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
