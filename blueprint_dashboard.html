@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint Generation Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        error: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-gray-900">Blueprint Generator</h1>
+                    <span class="ml-3 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">v2.0</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div id="apiStatus" class="flex items-center">
+                        <div class="w-2 h-2 bg-gray-400 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-600">Checking...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Input Form -->
+        <div class="bg-white rounded-lg shadow-sm border mb-8">
+            <div class="p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Generate Content Blueprint</h2>
+                <form id="blueprintForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="keyword" class="block text-sm font-medium text-gray-700 mb-2">
+                                Target Keyword *
+                            </label>
+                            <input 
+                                type="text" 
+                                id="keyword" 
+                                name="keyword" 
+                                required
+                                placeholder="e.g., python machine learning tutorial"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                        </div>
+                        <div>
+                            <label for="competitors" class="block text-sm font-medium text-gray-700 mb-2">
+                                Competitors to Analyze
+                            </label>
+                            <select 
+                                id="competitors" 
+                                name="competitors"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                                <option value="3">3 Competitors</option>
+                                <option value="5" selected>5 Competitors</option>
+                                <option value="10">10 Competitors</option>
+                                <option value="15">15 Competitors</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="userId" class="block text-sm font-medium text-gray-700 mb-2">
+                            User ID
+                        </label>
+                        <input 
+                            type="text" 
+                            id="userId" 
+                            name="userId" 
+                            value="dashboard-user"
+                            placeholder="Enter your user ID"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                    </div>
+                    <div class="flex justify-end">
+                        <button 
+                            type="submit" 
+                            id="generateBtn"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Generate Blueprint
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="hidden bg-white rounded-lg shadow-sm border mb-8">
+            <div class="p-6 text-center">
+                <div class="inline-flex items-center">
+                    <svg class="animate-spin -ml-1 mr-3 h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span class="text-lg text-gray-700">Generating blueprint...</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">This may take 30-60 seconds</p>
+                <div class="mt-4">
+                    <div class="bg-gray-200 rounded-full h-2">
+                        <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Dashboard -->
+        <div id="resultsSection" class="hidden">
+            <!-- Blueprint Overview -->
+            <div class="bg-white rounded-lg shadow-sm border mb-6">
+                <div class="p-6 border-b">
+                    <h2 class="text-xl font-semibold text-gray-900">Blueprint Overview</h2>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="text-2xl font-bold text-blue-600" id="sectionsCount">-</div>
+                            <div class="text-sm text-gray-600">Content Sections</div>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4">
+                            <div class="text-2xl font-bold text-green-600" id="wordCount">-</div>
+                            <div class="text-sm text-gray-600">Est. Word Count</div>
+                        </div>
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <div class="text-2xl font-bold text-purple-600" id="keywordsCount">-</div>
+                            <div class="text-sm text-gray-600">Related Keywords</div>
+                        </div>
+                        <div class="bg-orange-50 rounded-lg p-4">
+                            <div class="text-2xl font-bold text-orange-600" id="generationTime">-</div>
+                            <div class="text-sm text-gray-600">Generation Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Outline -->
+            <div class="bg-white rounded-lg shadow-sm border mb-6">
+                <div class="p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-900">Content Outline</h3>
+                </div>
+                <div class="p-6">
+                    <div id="contentOutline" class="space-y-4">
+                        <!-- Content will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Recommendations -->
+            <div class="bg-white rounded-lg shadow-sm border mb-6">
+                <div class="p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-900">SEO Recommendations</h3>
+                </div>
+                <div class="p-6">
+                    <div id="seoRecommendations" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- SEO content will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic Clusters -->
+            <div class="bg-white rounded-lg shadow-sm border mb-6">
+                <div class="p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-900">Topic Clusters</h3>
+                </div>
+                <div class="p-6">
+                    <div id="topicClusters">
+                        <!-- Topic clusters will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw Data (Collapsible) -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-6 border-b">
+                    <button 
+                        id="toggleRawData" 
+                        class="flex items-center justify-between w-full text-left"
+                    >
+                        <h3 class="text-lg font-semibold text-gray-900">Raw API Response</h3>
+                        <svg class="w-5 h-5 transform transition-transform" id="rawDataIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="rawDataSection" class="hidden p-6">
+                    <pre id="rawData" class="bg-gray-50 p-4 rounded-lg text-sm overflow-x-auto max-h-96 overflow-y-auto"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="errorSection" class="hidden bg-red-50 border border-red-200 rounded-lg p-4">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-medium text-red-800">Error</h3>
+                    <div id="errorMessage" class="mt-2 text-sm text-red-700"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000';
+        let currentRequest = null;
+
+        // DOM Elements
+        const form = document.getElementById('blueprintForm');
+        const loadingState = document.getElementById('loadingState');
+        const resultsSection = document.getElementById('resultsSection');
+        const errorSection = document.getElementById('errorSection');
+        const generateBtn = document.getElementById('generateBtn');
+        const progressBar = document.getElementById('progressBar');
+        const apiStatus = document.getElementById('apiStatus');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            checkApiHealth();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            form.addEventListener('submit', handleFormSubmit);
+            document.getElementById('toggleRawData').addEventListener('click', toggleRawData);
+        }
+
+        async function checkApiHealth() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/health`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    updateApiStatus('online', data.status);
+                } else {
+                    updateApiStatus('error', 'API Error');
+                }
+            } catch (error) {
+                updateApiStatus('offline', 'Offline');
+            }
+        }
+
+        function updateApiStatus(status, message) {
+            const statusElement = apiStatus.querySelector('div');
+            const textElement = apiStatus.querySelector('span');
+            
+            statusElement.className = `w-2 h-2 rounded-full mr-2 ${
+                status === 'online' ? 'bg-green-400' : 
+                status === 'error' ? 'bg-yellow-400' : 'bg-red-400'
+            }`;
+            textElement.textContent = message;
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const keyword = formData.get('keyword').trim();
+            const competitors = parseInt(formData.get('competitors'));
+            const userId = formData.get('userId').trim() || 'dashboard-user';
+
+            if (!keyword) {
+                showError('Please enter a keyword');
+                return;
+            }
+
+            showLoading();
+            startProgressSimulation();
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/blueprints/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-User-ID': userId
+                    },
+                    body: JSON.stringify({
+                        keyword: keyword,
+                        num_competitors: competitors
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    stopProgressSimulation();
+                    displayResults(data);
+                } else {
+                    throw new Error(data.error || `API returned ${response.status}`);
+                }
+            } catch (error) {
+                stopProgressSimulation();
+                showError(`Failed to generate blueprint: ${error.message}`);
+            }
+        }
+
+        function showLoading() {
+            hideAllSections();
+            loadingState.classList.remove('hidden');
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'Generating...';
+        }
+
+        function hideLoading() {
+            loadingState.classList.add('hidden');
+            generateBtn.disabled = false;
+            generateBtn.textContent = 'Generate Blueprint';
+        }
+
+        function hideAllSections() {
+            resultsSection.classList.add('hidden');
+            errorSection.classList.add('hidden');
+        }
+
+        function showError(message) {
+            hideLoading();
+            hideAllSections();
+            document.getElementById('errorMessage').textContent = message;
+            errorSection.classList.remove('hidden');
+        }
+
+        function startProgressSimulation() {
+            let progress = 0;
+            progressBar.style.width = '0%';
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 90) progress = 90;
+                progressBar.style.width = progress + '%';
+            }, 2000);
+
+            currentRequest = interval;
+        }
+
+        function stopProgressSimulation() {
+            if (currentRequest) {
+                clearInterval(currentRequest);
+                currentRequest = null;
+            }
+            progressBar.style.width = '100%';
+            setTimeout(hideLoading, 500);
+        }
+
+        function displayResults(data) {
+            hideAllSections();
+            
+            // Update overview stats
+            const outline = data.data?.content_outline?.section_outlines || [];
+            const totalWords = outline.reduce((sum, section) => sum + (section.word_count_estimate || 0), 0);
+            const relatedKeywords = data.data?.topic_clusters?.related_keywords?.length || 0;
+            
+            document.getElementById('sectionsCount').textContent = outline.length;
+            document.getElementById('wordCount').textContent = totalWords.toLocaleString();
+            document.getElementById('keywordsCount').textContent = relatedKeywords;
+            document.getElementById('generationTime').textContent = `${data.generation_time || 0}s`;
+
+            // Display content outline
+            displayContentOutline(data.data?.content_outline);
+            
+            // Display SEO recommendations
+            displaySeoRecommendations(data.data?.seo_recommendations);
+            
+            // Display topic clusters
+            displayTopicClusters(data.data?.topic_clusters);
+            
+            // Store raw data
+            document.getElementById('rawData').textContent = JSON.stringify(data, null, 2);
+            
+            resultsSection.classList.remove('hidden');
+        }
+
+        function displayContentOutline(outline) {
+            const container = document.getElementById('contentOutline');
+            container.innerHTML = '';
+
+            if (!outline) {
+                container.innerHTML = '<p class="text-gray-500">No content outline available</p>';
+                return;
+            }
+
+            // Main title
+            if (outline.h1 || outline.introduction) {
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'mb-6';
+                titleDiv.innerHTML = `
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">${outline.h1 || 'Content Title'}</h4>
+                    ${outline.introduction ? `<p class="text-gray-600">${outline.introduction}</p>` : ''}
+                `;
+                container.appendChild(titleDiv);
+            }
+
+            // Sections
+            if (outline.section_outlines) {
+                outline.section_outlines.forEach((section, index) => {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.className = 'border-l-4 border-blue-200 pl-4 mb-4';
+                    
+                    const contentPoints = section.content_points ? 
+                        section.content_points.map(point => `<li class="text-sm text-gray-600">${point}</li>`).join('') : '';
+                    
+                    sectionDiv.innerHTML = `
+                        <h5 class="font-medium text-gray-900 mb-2">${section.section_title}</h5>
+                        <div class="text-xs text-gray-500 mb-2">~${section.word_count_estimate || 0} words</div>
+                        ${contentPoints ? `<ul class="list-disc list-inside space-y-1 ml-4">${contentPoints}</ul>` : ''}
+                    `;
+                    container.appendChild(sectionDiv);
+                });
+            }
+        }
+
+        function displaySeoRecommendations(seo) {
+            const container = document.getElementById('seoRecommendations');
+            container.innerHTML = '';
+
+            if (!seo) {
+                container.innerHTML = '<p class="text-gray-500 col-span-2">No SEO recommendations available</p>';
+                return;
+            }
+
+            // Technical SEO
+            if (seo.technical_seo) {
+                const techDiv = document.createElement('div');
+                techDiv.innerHTML = `
+                    <h4 class="font-medium text-gray-900 mb-3">Technical SEO</h4>
+                    <div class="space-y-2 text-sm">
+                        ${seo.technical_seo.title_tag ? `<div><strong>Title:</strong> ${seo.technical_seo.title_tag}</div>` : ''}
+                        ${seo.technical_seo.meta_description ? `<div><strong>Meta:</strong> ${seo.technical_seo.meta_description}</div>` : ''}
+                        ${seo.technical_seo.url_slug ? `<div><strong>URL:</strong> /${seo.technical_seo.url_slug}</div>` : ''}
+                    </div>
+                `;
+                container.appendChild(techDiv);
+            }
+
+            // Content Optimization
+            if (seo.content_optimization) {
+                const contentDiv = document.createElement('div');
+                contentDiv.innerHTML = `
+                    <h4 class="font-medium text-gray-900 mb-3">Content Optimization</h4>
+                    <div class="space-y-2 text-sm">
+                        <div><strong>Target Words:</strong> ${seo.content_optimization.target_word_count || 'N/A'}</div>
+                        <div><strong>Reading Level:</strong> ${seo.content_optimization.readability_level || 'N/A'}</div>
+                        ${seo.content_optimization.content_structure ? 
+                            `<div><strong>Structure:</strong> ${seo.content_optimization.content_structure.length} recommendations</div>` : ''}
+                    </div>
+                `;
+                container.appendChild(contentDiv);
+            }
+        }
+
+        function displayTopicClusters(clusters) {
+            const container = document.getElementById('topicClusters');
+            container.innerHTML = '';
+
+            if (!clusters) {
+                container.innerHTML = '<p class="text-gray-500">No topic clusters available</p>';
+                return;
+            }
+
+            // Primary cluster
+            if (clusters.primary_cluster) {
+                const primaryDiv = document.createElement('div');
+                primaryDiv.className = 'mb-4';
+                primaryDiv.innerHTML = `
+                    <h4 class="font-medium text-gray-900 mb-2">Primary Topics</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${clusters.primary_cluster.map(topic => 
+                            `<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">${topic}</span>`
+                        ).join('')}
+                    </div>
+                `;
+                container.appendChild(primaryDiv);
+            }
+
+            // Related keywords
+            if (clusters.related_keywords) {
+                const keywordsDiv = document.createElement('div');
+                keywordsDiv.innerHTML = `
+                    <h4 class="font-medium text-gray-900 mb-2">Related Keywords</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${clusters.related_keywords.slice(0, 10).map(keyword => 
+                            `<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">${keyword}</span>`
+                        ).join('')}
+                        ${clusters.related_keywords.length > 10 ? 
+                            `<span class="text-gray-500 text-sm">+${clusters.related_keywords.length - 10} more</span>` : ''}
+                    </div>
+                `;
+                container.appendChild(keywordsDiv);
+            }
+        }
+
+        function toggleRawData() {
+            const section = document.getElementById('rawDataSection');
+            const icon = document.getElementById('rawDataIcon');
+            
+            if (section.classList.contains('hidden')) {
+                section.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                section.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
