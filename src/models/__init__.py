@@ -20,6 +20,10 @@ Base = declarative_base()
 # Import all models to ensure they're registered
 from .user import User
 from .blueprint import Blueprint, Project, DatabaseManager
+from .subscription import (
+    SubscriptionPlan, UserSubscription, PaymentTransaction, 
+    UsageEvent, SubscriptionTier, SubscriptionStatus, PaymentStatus
+)
 
 def init_database(app=None, database_url=None):
     """
@@ -42,6 +46,10 @@ def init_database(app=None, database_url=None):
         
         with app.app_context():
             db.create_all()
+            
+            # Create default subscription plans if they don't exist
+            from ..services.payment_service import create_default_subscription_plans
+            create_default_subscription_plans()
         
         return db
     else:
@@ -116,6 +124,86 @@ class DatabaseUtils:
         
         session.commit()
         return count
+    
+    @staticmethod
+    def cleanup_old_usage_events(session, days_old=90):
+        """Clean up old usage event data."""
+        from datetime import datetime, timedelta
+        
+        cutoff_date = datetime.utcnow() - timedelta(days=days_old)
+        
+        old_events = session.query(UsageEvent).filter(
+            UsageEvent.created_at < cutoff_date
+        ).all()
+        
+        count = len(old_events)
+        
+        for event in old_events:
+            session.delete(event)
+        
+        session.commit()
+        return count
+    
+    @staticmethod
+    def get_subscription_analytics(session, user_id=None):
+        """Get subscription and usage analytics."""
+        from sqlalchemy import func
+        from datetime import datetime, timedelta
+        
+        thirty_days_ago = datetime.utcnow() - timedelta(days=30)
+        
+        # Base query
+        query = session.query(UserSubscription)
+        if user_id:
+            query = query.filter(UserSubscription.user_id == user_id)
+        
+        # Active subscriptions
+        active_subscriptions = query.filter(
+            UserSubscription.status == SubscriptionStatus.ACTIVE
+        ).count()
+        
+        # Usage analytics
+        usage_query = session.query(UsageEvent)
+        if user_id:
+            usage_query = usage_query.filter(UsageEvent.user_id == user_id)
+        
+        usage_stats = usage_query.filter(
+            UsageEvent.created_at >= thirty_days_ago
+        ).with_entities(
+            UsageEvent.event_type,
+            func.count(UsageEvent.id).label('count'),
+            func.sum(UsageEvent.quantity).label('total_quantity')
+        ).group_by(UsageEvent.event_type).all()
+        
+        # Payment analytics
+        payment_query = session.query(PaymentTransaction)
+        if user_id:
+            payment_query = payment_query.filter(PaymentTransaction.user_id == user_id)
+        
+        successful_payments = payment_query.filter(
+            PaymentTransaction.status == PaymentStatus.SUCCESS,
+            PaymentTransaction.created_at >= thirty_days_ago
+        ).count()
+        
+        total_revenue = payment_query.filter(
+            PaymentTransaction.status == PaymentStatus.SUCCESS,
+            PaymentTransaction.created_at >= thirty_days_ago
+        ).with_entities(func.sum(PaymentTransaction.amount)).scalar() or 0
+        
+        return {
+            'active_subscriptions': active_subscriptions,
+            'usage_stats': [
+                {
+                    'event_type': stat.event_type,
+                    'count': stat.count,
+                    'total_quantity': stat.total_quantity
+                }
+                for stat in usage_stats
+            ],
+            'successful_payments': successful_payments,
+            'total_revenue': float(total_revenue),
+            'period_days': 30
+        }
 
 # Health check function
 def check_database_health(session):
@@ -129,14 +217,23 @@ def check_database_health(session):
         Dictionary with health status
     """
     try:
-        # Try a simple query
+        # Try simple queries for each model
         from .blueprint import Blueprint
-        count = session.query(Blueprint).count()
+        
+        blueprint_count = session.query(Blueprint).count()
+        user_count = session.query(User).count()
+        subscription_count = session.query(UserSubscription).count()
+        plan_count = session.query(SubscriptionPlan).count()
         
         return {
             'status': 'healthy',
-            'blueprint_count': count,
-            'connected': True
+            'connected': True,
+            'counts': {
+                'blueprints': blueprint_count,
+                'users': user_count,
+                'subscriptions': subscription_count,
+                'subscription_plans': plan_count
+            }
         }
     except Exception as e:
         return {
@@ -148,6 +245,8 @@ def check_database_health(session):
 # Export commonly used items
 __all__ = [
     'db', 'Base', 'User', 'Blueprint', 'Project', 
+    'SubscriptionPlan', 'UserSubscription', 'PaymentTransaction', 'UsageEvent',
+    'SubscriptionTier', 'SubscriptionStatus', 'PaymentStatus',
     'init_database', 'get_database_session', 
     'DatabaseManager', 'DatabaseUtils', 'check_database_health'
 ]

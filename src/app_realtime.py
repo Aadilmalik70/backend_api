@@ -3,6 +3,7 @@ Enhanced Flask application with WebSocket support for real-time blueprint genera
 
 This module extends the existing Flask application with Flask-SocketIO to provide
 real-time communication capabilities during blueprint generation processes.
+Includes payment integration and subscription management.
 """
 
 import os
@@ -33,27 +34,36 @@ logger = logging.getLogger(__name__)
 try:
     # Try absolute imports from project root
     from src.models.blueprint import DatabaseManager
+    from src.models import init_database
     from src.routes.blueprints import blueprint_routes
     from src.routes.realtime_blueprints import realtime_blueprint_routes
+    from src.routes.payment import payment_bp
     from src.services.websocket_service import init_websocket_service, get_websocket_service
+    from src.middleware import UsageMiddleware
     logger.info("Successfully imported all modules with src.* imports")
 except ImportError as e:
     logger.warning(f"src.* imports failed: {e}. Attempting local imports...")
     try:
         # Try local imports (when run from src/ directory)
         from models.blueprint import DatabaseManager
+        from models import init_database
         from routes.blueprints import blueprint_routes
         from routes.realtime_blueprints import realtime_blueprint_routes
+        from routes.payment import payment_bp
         from services.websocket_service import init_websocket_service, get_websocket_service
+        from middleware import UsageMiddleware
         logger.info("Successfully imported all modules with local imports")
     except ImportError as local_e:
         logger.warning(f"Local imports failed: {local_e}. Attempting relative imports...")
         try:
             # Try relative imports (when imported as module)
             from .models.blueprint import DatabaseManager
+            from .models import init_database
             from .routes.blueprints import blueprint_routes
             from .routes.realtime_blueprints import realtime_blueprint_routes
+            from .routes.payment import payment_bp
             from .services.websocket_service import init_websocket_service, get_websocket_service
+            from .middleware import UsageMiddleware
             logger.info("Successfully imported all modules with relative imports")
         except ImportError as rel_e:
             logger.error(f"All import strategies failed:")
@@ -68,10 +78,13 @@ except ImportError as e:
                     pass
             
             DatabaseManager = None
+            init_database = None
             blueprint_routes = None
             realtime_blueprint_routes = None
+            payment_bp = None
             init_websocket_service = None
             get_websocket_service = lambda: None
+            UsageMiddleware = None
 
 def create_realtime_app():
     """
@@ -105,20 +118,43 @@ def create_realtime_app():
         logger.warning("WebSocket service initialization not available")
         app.websocket_service = None
     
-    # Database setup (only if DatabaseManager is available)
-    if DatabaseManager is not None:
+    # Database setup with Flask-SQLAlchemy (includes subscription models)
+    if init_database is not None:
         try:
-            database_url = os.getenv('DATABASE_URL', 'sqlite:///serp_strategist.db')
-            db_manager = DatabaseManager(database_url)
-            db_manager.init_tables()
-            app.db_session = db_manager.get_session()
-            logger.info("Database tables initialized successfully")
+            db = init_database(app)
+            app.db = db
+            logger.info("Database initialized successfully with payment models")
         except Exception as e:
             logger.error(f"Database initialization failed: {str(e)}")
-            app.db_session = None
+            app.db = None
     else:
-        logger.warning("DatabaseManager not available, skipping database setup")
-        app.db_session = None
+        # Fallback to old DatabaseManager if init_database not available
+        if DatabaseManager is not None:
+            try:
+                # Create database manager instance
+                db_url = os.getenv('DATABASE_URL', 'sqlite:///serp_strategist.db')
+                db_manager = DatabaseManager(db_url)
+                db_manager.init_tables()
+                app.db_manager = db_manager
+                app.db_session = db_manager.get_session()
+                logger.info("Database manager setup completed successfully (fallback mode)")
+            except Exception as e:
+                logger.error(f"Database manager setup failed: {str(e)}")
+                app.db_manager = None
+                app.db_session = None
+        else:
+            logger.warning("DatabaseManager not available, skipping database setup")
+            app.db_session = None
+    
+    # Initialize usage tracking middleware
+    if UsageMiddleware is not None:
+        try:
+            usage_middleware = UsageMiddleware(app)
+            logger.info("Usage tracking middleware initialized successfully")
+        except Exception as e:
+            logger.error(f"Usage middleware initialization failed: {str(e)}")
+    else:
+        logger.warning("Usage middleware not available, skipping initialization")
     
     # Register blueprint routes (only if available)
     if blueprint_routes is not None:
@@ -140,304 +176,279 @@ def create_realtime_app():
     else:
         logger.warning("Realtime blueprint routes not available, skipping registration")
     
-    # Enhanced health check endpoint with WebSocket status
+    # Register payment routes (only if available)
+    if payment_bp is not None:
+        try:
+            app.register_blueprint(payment_bp)
+            logger.info("Payment routes registered successfully")
+        except Exception as e:
+            logger.error(f"Payment routes registration failed: {str(e)}")
+    else:
+        logger.warning("Payment routes not available, skipping registration")
+    
+    # Enhanced health check endpoint with WebSocket and payment status
     @app.route('/api/health', methods=['GET'])
     def health_check():
         """
-        Enhanced health check endpoint with WebSocket status.
+        Enhanced health check endpoint with WebSocket and payment status.
         
         Returns:
-        {
-            "status": "ok|degraded|error",
-            "version": "2.0.0-realtime",
-            "features": {...},
-            "services": {...},
-            "websocket": {...}
-        }
+            JSON response with comprehensive health status
         """
-        # Check basic services
-        db_available = app.db_session is not None
-        websocket_available = app.websocket_service is not None
-        
-        # Check API configuration
-        serpapi_available = bool(os.getenv('SERPAPI_KEY'))
-        gemini_available = bool(os.getenv('GEMINI_API_KEY'))
-        google_api_available = bool(os.getenv('GOOGLE_API_KEY'))
-        
-        # Determine overall status
-        essential_services = [db_available, websocket_available]
-        api_services = [serpapi_available or google_api_available, gemini_available]
-        
-        if all(essential_services) and any(api_services):
-            status = "ok"
-        elif any(essential_services) and any(api_services):
-            status = "degraded"
-        else:
-            status = "error"
-        
-        # Get WebSocket service status
-        websocket_status = {}
-        if websocket_available:
-            active_sessions = app.websocket_service.get_active_sessions()
-            websocket_status = {
-                'enabled': True,
-                'active_sessions': len(active_sessions),
-                'session_ids': list(active_sessions.keys()) if len(active_sessions) <= 5 else list(active_sessions.keys())[:5]
+        try:
+            # Basic health info
+            health_info = {
+                'status': 'healthy',
+                'timestamp': datetime.utcnow().isoformat(),
+                'version': '2.1.0',
+                'mode': 'realtime',
+                'features': {
+                    'websocket_support': app.websocket_service is not None,
+                    'database_available': hasattr(app, 'db') and app.db is not None,
+                    'blueprint_generation': blueprint_routes is not None,
+                    'realtime_generation': realtime_blueprint_routes is not None,
+                    'payment_processing': payment_bp is not None,
+                    'usage_tracking': UsageMiddleware is not None
+                }
             }
-        else:
-            websocket_status = {'enabled': False, 'active_sessions': 0}
-        
-        return jsonify({
-            "status": status,
-            "version": "2.0.0-realtime",
-            "timestamp": datetime.now().isoformat(),
-            "features": {
-                "blueprint_generation": True,
-                "realtime_updates": websocket_available,
-                "database": db_available,
-                "blueprint_routes": blueprint_routes is not None,
-                "realtime_routes": realtime_blueprint_routes is not None,
-                "websocket_communication": websocket_available
-            },
-            "services": {
-                "database_connected": db_available,
-                "websocket_service": websocket_available
-            },
-            "api_keys": {
-                "serpapi": serpapi_available,
-                "gemini": gemini_available,
-                "google_api": google_api_available
-            },
-            "websocket": websocket_status
-        })
+            
+            # WebSocket service status
+            if app.websocket_service:
+                ws_service = get_websocket_service()
+                if ws_service:
+                    health_info['websocket'] = {
+                        'status': 'active',
+                        'active_sessions': len(ws_service.active_sessions),
+                        'total_connections': ws_service.connection_count
+                    }
+                else:
+                    health_info['websocket'] = {'status': 'unavailable'}
+            else:
+                health_info['websocket'] = {'status': 'disabled'}
+            
+            # Database health check
+            if hasattr(app, 'db') and app.db is not None:
+                try:
+                    from .models import check_database_health
+                    db_health = check_database_health(app.db.session)
+                    health_info['database'] = db_health
+                except Exception as db_e:
+                    health_info['database'] = {
+                        'status': 'unhealthy',
+                        'error': str(db_e)
+                    }
+            elif hasattr(app, 'db_session') and app.db_session:
+                try:
+                    # Test basic database connectivity
+                    from .models.blueprint import Blueprint
+                    count = app.db_session.query(Blueprint).count()
+                    health_info['database'] = {
+                        'status': 'healthy',
+                        'blueprint_count': count,
+                        'mode': 'legacy'
+                    }
+                except Exception as db_e:
+                    health_info['database'] = {
+                        'status': 'unhealthy',
+                        'error': str(db_e),
+                        'mode': 'legacy'
+                    }
+            else:
+                health_info['database'] = {'status': 'unavailable'}
+            
+            # Payment service health check
+            if payment_bp is not None:
+                try:
+                    from .services.payment_service import PaymentService
+                    payment_service = PaymentService()
+                    health_info['payment'] = {
+                        'status': 'available' if payment_service.is_available() else 'configured_but_unavailable',
+                        'razorpay_configured': payment_service.razorpay_key_id is not None,
+                        'supported_currencies': ['INR']
+                    }
+                except Exception as pay_e:
+                    health_info['payment'] = {
+                        'status': 'error',
+                        'error': str(pay_e)
+                    }
+            else:
+                health_info['payment'] = {'status': 'unavailable'}
+            
+            # Environment checks
+            health_info['environment'] = {
+                'google_api_configured': bool(os.getenv('GOOGLE_API_KEY')),
+                'gemini_api_configured': bool(os.getenv('GEMINI_API_KEY')),
+                'search_engine_configured': bool(os.getenv('GOOGLE_CUSTOM_SEARCH_ENGINE_ID')),
+                'razorpay_configured': bool(os.getenv('RAZORPAY_KEY_ID')),
+                'database_url': bool(os.getenv('DATABASE_URL'))
+            }
+            
+            return jsonify(health_info), 200
+            
+        except Exception as e:
+            logger.error(f"Health check failed: {str(e)}")
+            return jsonify({
+                'status': 'error',
+                'timestamp': datetime.utcnow().isoformat(),
+                'error': str(e),
+                'version': '2.1.0',
+                'mode': 'realtime'
+            }), 500
     
-    # WebSocket status endpoint
+    # WebSocket connection status endpoint
     @app.route('/api/websocket/status', methods=['GET'])
     def websocket_status():
         """
-        Get detailed WebSocket service status.
+        Get WebSocket service status and active connections.
         
         Returns:
-        {
-            "enabled": true,
-            "active_sessions": 3,
-            "sessions": [...],
-            "service_info": {...}
-        }
+            JSON response with WebSocket status
         """
-        if not app.websocket_service:
-            return jsonify({
-                "enabled": False,
-                "message": "WebSocket service not available"
-            }), 503
-        
-        active_sessions = app.websocket_service.get_active_sessions()
-        
-        # Create session summaries (without sensitive data)
-        session_summaries = []
-        for blueprint_id, session in active_sessions.items():
-            session_summaries.append({
-                "blueprint_id": blueprint_id,
-                "user_id": session.get('user_id', 'unknown'),
-                "status": session.get('status', 'unknown'),
-                "progress": session.get('progress', 0),
-                "current_step": session.get('current_step', 0),
-                "total_steps": session.get('total_steps', 0),
-                "started_at": session.get('started_at'),
-                "last_updated": session.get('last_updated')
-            })
-        
-        return jsonify({
-            "enabled": True,
-            "active_sessions": len(active_sessions),
-            "sessions": session_summaries,
-            "service_info": {
-                "service_name": "WebSocketService",
-                "version": "1.0",
-                "capabilities": [
-                    "real_time_progress",
-                    "session_management", 
-                    "room_based_communication",
-                    "automatic_cleanup"
-                ]
-            }
-        })
-    
-    # WebSocket session cleanup endpoint
-    @app.route('/api/websocket/cleanup', methods=['POST'])
-    def cleanup_websocket_sessions():
-        """
-        Manually trigger cleanup of stale WebSocket sessions.
-        
-        Request JSON:
-        {
-            "max_age_hours": 24  // optional, defaults to 24
-        }
-        """
-        if not app.websocket_service:
-            return jsonify({"error": "WebSocket service not available"}), 503
-        
-        data = request.get_json() or {}
-        max_age_hours = data.get('max_age_hours', 24)
-        
         try:
-            cleaned_count = app.websocket_service.cleanup_stale_sessions(max_age_hours)
+            if not app.websocket_service:
+                return jsonify({
+                    'status': 'disabled',
+                    'message': 'WebSocket service is not available'
+                }), 200
+            
+            ws_service = get_websocket_service()
+            if not ws_service:
+                return jsonify({
+                    'status': 'unavailable',
+                    'message': 'WebSocket service instance not found'
+                }), 200
+            
             return jsonify({
-                "message": f"Cleaned up {cleaned_count} stale sessions",
-                "cleaned_sessions": cleaned_count,
-                "max_age_hours": max_age_hours
-            })
+                'status': 'active',
+                'active_sessions': len(ws_service.active_sessions),
+                'total_connections': ws_service.connection_count,
+                'features': {
+                    'real_time_blueprints': True,
+                    'progress_tracking': True,
+                    'multi_user_support': True
+                }
+            }), 200
+            
         except Exception as e:
-            logger.error(f"Error cleaning up WebSocket sessions: {str(e)}")
-            return jsonify({"error": f"Cleanup failed: {str(e)}"}), 500
+            logger.error(f"WebSocket status check failed: {str(e)}")
+            return jsonify({
+                'status': 'error',
+                'error': str(e)
+            }), 500
     
-    # Enhanced root endpoint with WebSocket information
-    @app.route('/', methods=['GET'])
-    def root():
+    # User's active WebSocket sessions endpoint
+    @app.route('/api/websocket/active-sessions', methods=['GET'])
+    def active_sessions():
         """
-        Root endpoint with API information including WebSocket capabilities.
+        Get active WebSocket sessions for the authenticated user.
         
         Returns:
-        {
-            "name": "SERP Strategist API",
-            "version": "2.0.0-realtime",
-            "status": "active",
-            "endpoints": {...},
-            "websocket": {...}
-        }
+            JSON response with user's active sessions
         """
-        websocket_info = {}
-        if app.websocket_service:
-            websocket_info = {
-                "enabled": True,
-                "namespace": "/",
-                "events": [
-                    "connect", "disconnect", "join_blueprint_room", "leave_blueprint_room",
-                    "progress_update", "step_completed", "generation_complete", 
-                    "generation_failed", "ping"
-                ],
-                "room_format": "blueprint_{blueprint_id}",
-                "connection_url": f"ws://{request.host}/socket.io/"
-            }
-        else:
-            websocket_info = {"enabled": False}
-        
-        return jsonify({
-            "name": "SERP Strategist API",
-            "version": "2.0.0-realtime",
-            "status": "active",
-            "description": "AI-powered content blueprint generation platform with real-time updates",
-            "endpoints": {
-                "realtime_blueprint_generation": "/api/blueprints/generate-realtime",
-                "quick_realtime_generation": "/api/blueprints/generate-quick-realtime",
-                "blueprint_status": "/api/blueprints/{id}/status",
-                "active_sessions": "/api/websocket/active-sessions",
-                "standard_generation": "/api/blueprints/generate",
-                "blueprint_retrieval": "/api/blueprints/{id}",
-                "blueprint_listing": "/api/blueprints",
-                "health_check": "/api/health",
-                "websocket_status": "/api/websocket/status",
-                "user_statistics": "/api/user/stats"
-            },
-            "websocket": websocket_info,
-            "features": {
-                "realtime_updates": app.websocket_service is not None,
-                "progress_tracking": True,
-                "session_management": True,
-                "auto_reconnection": True,
-                "background_processing": True
-            },
-            "documentation": {
-                "api_guide": "See README.md for API usage examples",
-                "websocket_guide": "Connect to /socket.io/ for real-time updates",
-                "authentication": "Use X-User-ID header (temporary - JWT coming soon)",
-                "rate_limits": "Applied per user and API endpoint"
-            }
-        })
-    
-    # Global error handlers
-    @app.errorhandler(404)
-    def not_found(error):
-        return jsonify({
-            'error': 'Endpoint not found',
-            'available_endpoints': [
-                '/api/blueprints/generate-realtime',
-                '/api/blueprints/generate-quick-realtime',
-                '/api/blueprints/generate',
-                '/api/blueprints',
-                '/api/health',
-                '/api/websocket/status',
-                '/api/user/stats'
+        try:
+            user_id = request.headers.get('X-User-ID')
+            if not user_id:
+                return jsonify({
+                    'error': 'Authentication required',
+                    'message': 'X-User-ID header is required'
+                }), 401
+            
+            if not app.websocket_service:
+                return jsonify({
+                    'active_sessions': [],
+                    'count': 0,
+                    'message': 'WebSocket service is disabled'
+                }), 200
+            
+            ws_service = get_websocket_service()
+            if not ws_service:
+                return jsonify({
+                    'active_sessions': [],
+                    'count': 0,
+                    'message': 'WebSocket service unavailable'
+                }), 200
+            
+            # Get user's active sessions
+            user_sessions = [
+                session_info for session_id, session_info in ws_service.active_sessions.items()
+                if session_info.get('user_id') == user_id
             ]
-        }), 404
+            
+            return jsonify({
+                'active_sessions': user_sessions,
+                'count': len(user_sessions),
+                'user_id': user_id
+            }), 200
+            
+        except Exception as e:
+            logger.error(f"Active sessions check failed: {str(e)}")
+            return jsonify({
+                'error': 'Failed to get active sessions',
+                'message': str(e)
+            }), 500
     
-    @app.errorhandler(405)
-    def method_not_allowed(error):
-        return jsonify({'error': 'Method not allowed for this endpoint'}), 405
+    # Basic API information endpoint
+    @app.route('/', methods=['GET'])
+    def api_info():
+        """
+        Basic API information and available endpoints.
+        
+        Returns:
+            JSON response with API information
+        """
+        return jsonify({
+            'name': 'SERP Strategist API',
+            'version': '2.1.0',
+            'mode': 'realtime',
+            'description': 'AI-powered content blueprint generation with real-time WebSocket support and payment integration',
+            'features': {
+                'blueprint_generation': blueprint_routes is not None,
+                'realtime_generation': realtime_blueprint_routes is not None,
+                'websocket_support': app.websocket_service is not None,
+                'payment_processing': payment_bp is not None,
+                'usage_tracking': UsageMiddleware is not None
+            },
+            'endpoints': {
+                'health': '/api/health',
+                'websocket_status': '/api/websocket/status',
+                'active_sessions': '/api/websocket/active-sessions',
+                'blueprints': '/api/blueprints/*' if blueprint_routes else None,
+                'realtime_blueprints': '/api/blueprints/generate-realtime' if realtime_blueprint_routes else None,
+                'payment': '/api/payment/*' if payment_bp else None,
+                'websocket': '/socket.io/' if app.websocket_service else None
+            },
+            'documentation': 'https://docs.serpstrategist.com'
+        }), 200
     
-    @app.errorhandler(500)
-    def internal_error(error):
-        logger.error(f"Internal server error: {str(error)}")
-        return jsonify({'error': 'Internal server error occurred'}), 500
-    
-    # Cleanup on app teardown
-    @app.teardown_appcontext
-    def cleanup_db_session(error):
-        if hasattr(app, 'db_session') and app.db_session:
-            app.db_session.close()
-    
-    # Add cleanup task for WebSocket sessions
-    if app.websocket_service:
-        @socketio.on_error_default
-        def default_error_handler(e):
-            logger.error(f"WebSocket error: {str(e)}")
-    
-    logger.info("✅ Realtime Flask application created with WebSocket support")
     return app, socketio
 
+# Compatibility wrapper for existing code
 def create_app():
     """
-    Create the application (compatibility wrapper for existing imports).
+    Create Flask app without WebSocket support (compatibility wrapper).
     
     Returns:
         Flask application instance
     """
-    app, socketio = create_realtime_app()
-    # Store socketio instance in app for access
-    app.socketio = socketio
+    app, _ = create_realtime_app()
     return app
 
-# Create the application instances
-app, socketio_instance = create_realtime_app()
-
 if __name__ == '__main__':
-    logger.info("Starting SERP Strategist API server with WebSocket support...")
-    logger.info("Enhanced blueprint generation endpoints available:")
-    logger.info("  POST /api/blueprints/generate-realtime - Generate new blueprint with real-time updates")
-    logger.info("  POST /api/blueprints/generate-quick-realtime - Quick generation with real-time updates")
-    logger.info("  GET  /api/blueprints/{id}/status - Real-time status checking")
-    logger.info("  GET  /api/websocket/active-sessions - User's active WebSocket sessions")
-    logger.info("  POST /api/blueprints/generate - Standard blueprint generation")
-    logger.info("  GET  /api/blueprints/{id} - Get specific blueprint")
-    logger.info("  GET  /api/blueprints - List user blueprints")
-    logger.info("  GET  /api/health - API health check with WebSocket status")
-    logger.info("  GET  /api/websocket/status - WebSocket service status")
-    logger.info("  GET  /api/user/stats - User statistics")
-    logger.info("")
-    logger.info("WebSocket endpoints:")
-    logger.info("  connect/disconnect - Connection management")
-    logger.info("  join_blueprint_room - Join blueprint progress room")
-    logger.info("  leave_blueprint_room - Leave blueprint progress room")
-    logger.info("  progress_update - Real-time progress notifications")
-    logger.info("  step_completed - Step completion notifications")
-    logger.info("  generation_complete - Blueprint completion notifications")
-    logger.info("  generation_failed - Blueprint failure notifications")
+    # This allows the file to be run directly for testing
+    app, socketio = create_realtime_app()
     
-    # Run with SocketIO
-    socketio_instance.run(
+    host = os.getenv('FLASK_HOST', '0.0.0.0')
+    port = int(os.getenv('FLASK_PORT', 5000))
+    debug = os.getenv('FLASK_DEBUG', 'False').lower() == 'true'
+    
+    logger.info(f"Starting SERP Strategist API server on {host}:{port}")
+    logger.info(f"Debug mode: {'enabled' if debug else 'disabled'}")
+    logger.info("WebSocket support: enabled")
+    
+    socketio.run(
         app,
-        host='0.0.0.0',
-        port=5000,
-        debug=True,
-        allow_unsafe_werkzeug=True  # For development only
+        host=host,
+        port=port,
+        debug=debug,
+        allow_unsafe_werkzeug=debug  # Only allow in debug mode
     )
