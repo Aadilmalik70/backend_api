@@ -1,0 +1,305 @@
+{
+  "blueprint_id": "6395e24b-a7ae-463b-a696-6bce0bd2a20a",
+  "created_at": "2025-07-31T10:02:16.417640",
+  "data": {
+    "competitor_analysis": null,
+    "content_gaps": {
+      "analysis_status": "completed",
+      "content_opportunities": [
+        "Comprehensive python machine learning tutorial beginner guide",
+        "Advanced python machine learning tutorial techniques",
+        "python machine learning tutorial troubleshooting guide",
+        "python machine learning tutorial industry trends and updates"
+      ],
+      "format_gaps": [
+        "Interactive tools or calculators",
+        "Video tutorials",
+        "Downloadable templates",
+        "Case studies",
+        "Comparison charts",
+        "FAQ sections"
+      ],
+      "missing_topics": [],
+      "underserved_keywords": []
+    },
+    "content_insights": {
+      "analysis_status": "no_competitors",
+      "avg_word_count": 0,
+      "common_sections": [],
+      "content_gaps": [],
+      "structural_patterns": {}
+    },
+    "content_outline": {
+      "cta_suggestions": [
+        "Download the code samples and datasets used in this tutorial.",
+        "Enroll in our advanced machine learning course for a deeper dive.",
+        "Try implementing the algorithms on your own datasets.",
+        "Share this tutorial with your friends and colleagues.",
+        "Leave a comment with your questions and feedback."
+      ],
+      "introduction": "Welcome to the comprehensive Python Machine Learning Tutorial! This guide is designed to take you from beginner to proficient in applying machine learning techniques using Python. We'll cover everything from setting up your environment and understanding core concepts to implementing popular algorithms and evaluating model performance. Get ready to unlock the power of data with Python!",
+      "key_takeaways": [
+        "You will learn how to set up a Python environment for machine learning.",
+        "You will understand the core concepts and workflow of machine learning.",
+        "You will be able to implement and evaluate various supervised and unsupervised learning algorithms.",
+        "You will gain practical skills in data preprocessing, model selection, hyperparameter tuning, and model evaluation.",
+        "You will be equipped to tackle real-world machine learning problems."
+      ],
+      "section_outlines": [
+        {
+          "content_points": [
+            "Setting up your Python Environment (Anaconda, pip)",
+            "Installing essential Machine Learning Libraries (NumPy, Pandas, Scikit-learn, Matplotlib, Seaborn)",
+            "Introduction to NumPy: Working with Arrays and Matrices",
+            "Introduction to Pandas: Data Manipulation and Analysis with DataFrames",
+            "Basic Data Exploration and Visualization using Pandas and Matplotlib/Seaborn",
+            "Writing your first Python code for Machine Learning"
+          ],
+          "section_title": "Getting Started with Python for Machine Learning",
+          "word_count_estimate": 1200
+        },
+        {
+          "content_points": [
+            "What is Machine Learning? (Definition, Types, and Applications)",
+            "Key Machine Learning Concepts (Features, Labels, Training Data, Testing Data)",
+            "Bias-Variance Tradeoff",
+            "Overfitting and Underfitting",
+            "Different Types of Machine Learning Algorithms (Supervised, Unsupervised, Reinforcement)",
+            "The Machine Learning Workflow (Data Collection, Preprocessing, Model Selection, Training, Evaluation, Deployment)"
+          ],
+          "section_title": "Understanding Machine Learning Fundamentals",
+          "word_count_estimate": 800
+        },
+        {
+          "content_points": [
+            "Introduction to Supervised Learning (Regression and Classification)",
+            "Linear Regression: Implementation and Evaluation",
+            "Logistic Regression: Implementation and Evaluation",
+            "K-Nearest Neighbors (KNN): Implementation and Evaluation",
+            "Support Vector Machines (SVM): Implementation and Evaluation",
+            "Decision Trees: Implementation and Evaluation",
+            "Random Forests: Implementation and Evaluation",
+            "Model Selection and Hyperparameter Tuning using GridSearchCV",
+            "Case Study: Building a Classification Model for a Real-World Dataset"
+          ],
+          "section_title": "Supervised Learning Algorithms in Python",
+          "word_count_estimate": 1500
+        },
+        {
+          "content_points": [
+            "Introduction to Unsupervised Learning (Clustering and Dimensionality Reduction)",
+            "K-Means Clustering: Implementation and Evaluation",
+            "Hierarchical Clustering: Implementation and Evaluation",
+            "Principal Component Analysis (PCA): Implementation and Application",
+            "Anomaly Detection Techniques",
+            "Case Study: Customer Segmentation using Clustering"
+          ],
+          "section_title": "Unsupervised Learning Algorithms in Python",
+          "word_count_estimate": 1000
+        },
+        {
+          "content_points": [
+            "Evaluation Metrics for Regression (MSE, RMSE, MAE, R-squared)",
+            "Evaluation Metrics for Classification (Accuracy, Precision, Recall, F1-Score, ROC AUC)",
+            "Cross-Validation Techniques (K-Fold Cross-Validation)",
+            "Hyperparameter Tuning (Grid Search, Random Search)",
+            "Feature Engineering: Improving Model Performance through Feature Selection and Transformation",
+            "Dealing with Imbalanced Datasets",
+            "Model Persistence (Saving and Loading Models)",
+            "Introduction to Model Deployment"
+          ],
+          "section_title": "Evaluating and Improving Your Machine Learning Models",
+          "word_count_estimate": 1000
+        }
+      ]
+    },
+    "generation_metadata": {
+      "analysis_quality": "medium",
+      "components_used": [
+        "competitor_analysis",
+        "content_analysis",
+        "serp_optimization",
+        "ai_generation",
+        "gap_analysis",
+        "seo_recommendations"
+      ],
+      "created_at": "2025-07-31T10:02:16.417640",
+      "generation_time": 46,
+      "project_id": null,
+      "user_id": "test-fix-user",
+      "version": "2.0"
+    },
+    "google_apis_status": {
+      "apis_used": [
+        "SerpAPI",
+        "Fallback Analysis",
+        "Gemini API",
+        "Gemini API"
+      ],
+      "enabled": false,
+      "fallback_available": false,
+      "migration_manager_available": true,
+      "processing_method": "fallback_apis"
+    },
+    "heading_structure": {
+      "h1": "Python Machine Learning Tutorial: A Comprehensive Guide for Beginners",
+      "h2_sections": [
+        {
+          "h3_subsections": [
+            "Installing Python and Essential Libraries (NumPy, Pandas, Scikit-learn)",
+            "Setting Up Your Machine Learning Environment (Anaconda, Jupyter Notebooks)",
+            "Basic Python Concepts for Machine Learning"
+          ],
+          "title": "Getting Started with Python for Machine Learning"
+        },
+        {
+          "h3_subsections": [
+            "What is Machine Learning? Different Types Explained",
+            "Supervised vs. Unsupervised Learning: Choosing the Right Approach",
+            "Key Machine Learning Concepts: Bias, Variance, Overfitting, and Underfitting"
+          ],
+          "title": "Understanding Machine Learning Fundamentals"
+        },
+        {
+          "h3_subsections": [
+            "Linear Regression: Predicting Continuous Values",
+            "Logistic Regression: Classification Problems Explained",
+            "Decision Trees and Random Forests: Powerful Algorithms for Complex Data"
+          ],
+          "title": "Supervised Learning Algorithms in Python"
+        },
+        {
+          "h3_subsections": [
+            "Clustering with K-Means: Grouping Similar Data Points",
+            "Dimensionality Reduction with PCA: Simplifying Your Data",
+            "Association Rule Mining: Discovering Relationships in Data"
+          ],
+          "title": "Unsupervised Learning Algorithms in Python"
+        },
+        {
+          "h3_subsections": [
+            "Model Evaluation Metrics: Accuracy, Precision, Recall, and F1-Score",
+            "Cross-Validation: Ensuring Reliable Model Performance",
+            "Hyperparameter Tuning: Optimizing Your Model's Settings"
+          ],
+          "title": "Evaluating and Improving Your Machine Learning Models"
+        },
+        {
+          "h3_subsections": [
+            "Building a Simple Spam Filter",
+            "Predicting Housing Prices with Linear Regression",
+            "Classifying Images with a Convolutional Neural Network (CNN) - Overview"
+          ],
+          "title": "Practical Machine Learning Projects in Python"
+        }
+      ]
+    },
+    "keyword": "python machine learning tutorial",
+    "seo_recommendations": {
+      "content_optimization": {
+        "content_structure": [
+          "Detailed Introduction to Python for Machine Learning (why Python, key libraries)",
+          "Step-by-step guide with practical code examples (cover basic ML algorithms like linear regression, logistic regression, decision trees, support vector machines)",
+          "Explanation of data preprocessing techniques (handling missing values, feature scaling)",
+          "Model evaluation and selection methods (cross-validation, hyperparameter tuning)",
+          "Advanced topics like neural networks and deep learning (optional, depending on target audience)",
+          "Case studies or real-world applications of Python in Machine Learning",
+          "Interactive code snippets using platforms like Jupyter Notebook or Google Colab",
+          "Clear explanations of mathematical concepts behind the algorithms",
+          "Tips for debugging common errors",
+          "Further learning resources (links to documentation, books, online courses)",
+          "Frequently Asked Questions (FAQ) section",
+          "Call to Action (encourage readers to practice, build projects, or share the tutorial)"
+        ],
+        "readability_level": "Intermediate (aim for readability scores like Flesch-Kincaid Grade Level 10-12)",
+        "target_word_count": 3000
+      },
+      "ranking_factors": [
+        "Content Relevancy and Depth: Thoroughly cover the topic, addressing different levels of expertise.",
+        "E-A-T (Expertise, Authoritativeness, Trustworthiness): Showcase your expertise by including author bio, credentials, and citations.",
+        "User Experience (UX): Design a user-friendly website with clear navigation, fast loading speed, and mobile responsiveness.",
+        "Backlinks: Build high-quality backlinks from reputable websites in the data science and machine learning space.",
+        "Freshness: Regularly update the tutorial with the latest information, libraries, and techniques."
+      ],
+      "serp_optimization": [
+        "Target the 'People Also Ask' section by including relevant questions and answers in your tutorial (and marking them with FAQ schema).",
+        "Create high-quality, original visuals (diagrams, charts, code screenshots) to enhance user engagement. Consider creating a YouTube video to accompany the tutorial.",
+        "Ensure fast page loading speed, mobile-friendliness, and a user-friendly design.",
+        "Structure the content with clear headings and subheadings, and use bullet points or numbered lists to improve readability.",
+        "Implement internal linking to other relevant content on your website."
+      ],
+      "technical_seo": {
+        "meta_description": "Learn Python for Machine Learning with this comprehensive tutorial. Covers essential concepts, algorithms, and techniques with practical examples and code snippets.",
+        "schema_markup": [
+          "Article",
+          "HowTo",
+          "FAQPage",
+          "Code"
+        ],
+        "title_tag": "Python Machine Learning Tutorial: A Comprehensive Guide for Beginners"
+      }
+    },
+    "serp_features": {
+      "analysis_timestamp": "2025-07-31T15:31:54.989765",
+      "data_source": "google_apis",
+      "query": "python machine learning tutorial",
+      "recommendations": [],
+      "total_recommendations": 0
+    },
+    "topic_clusters": {
+      "primary_cluster": [
+        "Introduction to Machine Learning with Python",
+        "Supervised Learning with Python",
+        "Unsupervised Learning with Python"
+      ],
+      "related_keywords": [
+        "scikit-learn tutorial",
+        "pandas tutorial",
+        "numpy tutorial",
+        "machine learning projects",
+        "machine learning algorithms",
+        "data science tutorial",
+        "python for data science",
+        "deep learning with python",
+        "artificial intelligence",
+        "data analysis with python",
+        "regression in python",
+        "classification in python",
+        "clustering in python",
+        "feature engineering",
+        "model evaluation"
+      ],
+      "secondary_clusters": {
+        "Introduction to Machine Learning with Python": [
+          "What is Machine Learning?",
+          "Types of Machine Learning (Supervised, Unsupervised, Reinforcement)",
+          "Machine Learning Workflow (Data Collection, Preprocessing, Modeling, Evaluation)",
+          "Essential Python Libraries for Machine Learning (NumPy, Pandas, Scikit-learn, Matplotlib, Seaborn)",
+          "Setting up Python Environment for Machine Learning (Anaconda, Jupyter Notebook)",
+          "Basic Python Syntax for Machine Learning"
+        ],
+        "Supervised Learning with Python": [
+          "Regression Algorithms (Linear Regression, Polynomial Regression, Support Vector Regression)",
+          "Classification Algorithms (Logistic Regression, K-Nearest Neighbors, Support Vector Machines, Decision Trees, Random Forests)",
+          "Model Evaluation Metrics for Regression (MSE, RMSE, R-squared)",
+          "Model Evaluation Metrics for Classification (Accuracy, Precision, Recall, F1-Score, AUC-ROC)",
+          "Overfitting and Underfitting",
+          "Cross-Validation Techniques",
+          "Feature Engineering for Supervised Learning",
+          "Hyperparameter Tuning (Grid Search, Random Search)"
+        ],
+        "Unsupervised Learning with Python": [
+          "Clustering Algorithms (K-Means, Hierarchical Clustering, DBSCAN)",
+          "Dimensionality Reduction (Principal Component Analysis (PCA), t-distributed Stochastic Neighbor Embedding (t-SNE))",
+          "Association Rule Mining (Apriori Algorithm)",
+          "Model Evaluation Metrics for Clustering (Silhouette Score, Davies-Bouldin Index)",
+          "Applications of Clustering",
+          "Applications of Dimensionality Reduction"
+        ]
+      }
+    }
+  },
+  "generation_time": 46,
+  "keyword": "python machine learning tutorial",
+  "status": "completed"
+}

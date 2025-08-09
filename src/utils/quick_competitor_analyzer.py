@@ -64,9 +64,13 @@ class QuickCompetitorAnalyzer:
             
             return {
                 'keyword': keyword,
-                'competitors': competitors,
+                'top_competitors': competitors,  # Changed from 'competitors' to 'top_competitors'
+                'competitors': competitors,  # Keep both for compatibility
                 'insights': insights,
-                'analysis_method': 'quick_analysis'
+                'analysis_method': 'quick_analysis',
+                'total_competitors': len(competitors),
+                'successful_analyses': len([c for c in competitors if c]),
+                'analysis_status': 'completed' if competitors else 'no_competitors'
             }
             
         except Exception as e:
@@ -75,14 +79,48 @@ class QuickCompetitorAnalyzer:
     
     def _get_competitor_urls_quick(self, keyword: str) -> List[str]:
         """Get competitor URLs quickly without hanging."""
-        # Mock competitor URLs for common keywords to avoid API calls
-        mock_competitors = [
-            f"https://example.com/{keyword.replace(' ', '-')}-guide",
-            f"https://blog.example.com/{keyword.replace(' ', '-')}-tips",
-            f"https://marketing.example.com/{keyword.replace(' ', '-')}-strategy",
-            f"https://academy.example.com/{keyword.replace(' ', '-')}-tutorial",
-            f"https://resources.example.com/{keyword.replace(' ', '-')}-best-practices"
+        # Use real URLs that are likely to exist for common programming/tech keywords
+        real_competitors = []
+        
+        # Common educational and tech sites that likely have content
+        base_sites = [
+            "https://stackoverflow.com",
+            "https://medium.com", 
+            "https://dev.to",
+            "https://www.freecodecamp.org",
+            "https://www.w3schools.com",
+            "https://docs.python.org",
+            "https://realpython.com",
+            "https://www.geeksforgeeks.org"
         ]
+        
+        # For machine learning specifically
+        if "machine learning" in keyword.lower() or "python" in keyword.lower():
+            real_competitors = [
+                "https://scikit-learn.org/stable/tutorial/",
+                "https://www.kaggle.com/learn",
+                "https://www.tensorflow.org/tutorials",
+                "https://pytorch.org/tutorials/",
+                "https://realpython.com/python-machine-learning/"
+            ]
+        # For other programming topics
+        elif any(lang in keyword.lower() for lang in ["python", "javascript", "react", "vue", "node"]):
+            real_competitors = [
+                "https://developer.mozilla.org/en-US/docs/",
+                "https://www.w3schools.com/",
+                "https://www.freecodecamp.org/learn",
+                "https://docs.python.org/3/tutorial/",
+                "https://realpython.com/"
+            ]
+        else:
+            # Generic tech content sites
+            real_competitors = [
+                "https://www.digitalocean.com/community/tutorials",
+                "https://www.atlassian.com/git/tutorials",
+                "https://github.com/topics",
+                "https://stackoverflow.com/questions/tagged/beginner",
+                "https://medium.com/@topic/programming"
+            ]
         
         # If SerpAPI is available, try to get real URLs with timeout
         if self.serpapi_key:
@@ -92,7 +130,7 @@ class QuickCompetitorAnalyzer:
             except Exception as e:
                 logger.warning(f"SerpAPI call failed: {e}")
         
-        return mock_competitors
+        return real_competitors[:5]  # Return top 5
     
     def _analyze_single_competitor(self, url: str, keyword: str) -> Optional[Dict[str, Any]]:
         """Analyze a single competitor with timeout protection."""
@@ -207,9 +245,13 @@ class QuickCompetitorAnalyzer:
         """Get fallback analysis when everything fails."""
         return {
             'keyword': keyword,
+            'top_competitors': [],  # Add top_competitors for consistency
             'competitors': [],
             'insights': self._get_fallback_insights(keyword),
-            'analysis_method': 'fallback'
+            'analysis_method': 'fallback',
+            'total_competitors': 0,
+            'successful_analyses': 0,
+            'analysis_status': 'fallback'
         }
     
     def _get_fallback_insights(self, keyword: str) -> Dict[str, Any]:

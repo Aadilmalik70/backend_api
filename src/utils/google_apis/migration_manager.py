@@ -525,13 +525,52 @@ class MigrationManager:
     # Fallback methods
     def _fallback_competitor_analysis(self, query: str, num_competitors: int) -> Dict[str, Any]:
         """Fallback competitor analysis when Google APIs are not available"""
-        return {
-            'query': query,
-            'competitors': [],
-            'insights': {'note': 'Competitor analysis unavailable - Enable Google APIs'},
-            'data_source': 'unavailable',
-            'total_analyzed': 0
-        }
+        try:
+            # Use QuickCompetitorAnalyzer as fallback
+            import sys
+            import os
+            
+            # Add utils to path to import QuickCompetitorAnalyzer
+            utils_path = os.path.dirname(__file__)
+            parent_path = os.path.dirname(utils_path)
+            if parent_path not in sys.path:
+                sys.path.append(parent_path)
+            
+            from utils.quick_competitor_analyzer import QuickCompetitorAnalyzer
+            
+            logger.info(f"Using QuickCompetitorAnalyzer fallback for: {query}")
+            
+            # Initialize quick analyzer
+            quick_analyzer = QuickCompetitorAnalyzer()
+            
+            # Get competitor analysis
+            result = quick_analyzer.analyze_competitors_quick(query, max_competitors=num_competitors)
+            
+            # Convert to migration manager format
+            competitors = result.get('top_competitors', []) or result.get('competitors', [])
+            
+            return {
+                'query': query,
+                'top_competitors': competitors,  # Add top_competitors for consistency
+                'competitors': competitors,
+                'insights': result.get('insights', {}),
+                'data_source': 'quick_analyzer_fallback',
+                'total_analyzed': len(competitors),
+                'analysis_status': result.get('analysis_status', 'completed'),
+                'analysis_method': result.get('analysis_method', 'fallback')
+            }
+            
+        except Exception as e:
+            logger.error(f"Fallback competitor analysis failed: {e}")
+            return {
+                'query': query,
+                'top_competitors': [],
+                'competitors': [],
+                'insights': {'note': f'Competitor analysis failed: {str(e)}'},
+                'data_source': 'unavailable',
+                'total_analyzed': 0,
+                'analysis_status': 'failed'
+            }
 
     def _fallback_serp_optimization(self, query: str) -> Dict[str, Any]:
         """Fallback SERP optimization when Google APIs unavailable"""

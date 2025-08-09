@@ -109,6 +109,7 @@ def get_fallback_competitors(keyword: str) -> Dict[str, Any]:
     """Get fallback competitor data when analysis fails."""
     return {
         'keyword': keyword,
+        'top_competitors': [],  # Add top_competitors for consistency
         'competitors': [],
         'insights': {
             'common_topics': keyword.split() + ['guide', 'tips', 'strategy'],
@@ -129,6 +130,8 @@ def get_fallback_competitors(keyword: str) -> Dict[str, Any]:
                 'successful_competitors': 0
             }
         },
+        'total_competitors': 0,
+        'successful_analyses': 0,
         'analysis_status': 'fallback'
     }
 

@@ -118,7 +118,7 @@ class BlueprintGeneratorService:
             
             blueprint_data = {
                 'keyword': keyword,
-                'competitor_analysis': competitors,
+                'competitor_analysis': competitors_data,  # Use the actual analysis data, not the input parameter
                 'heading_structure': heading_structure,
                 'topic_clusters': topic_clusters,
                 'content_outline': content_outline,
