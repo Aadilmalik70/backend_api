@@ -1,0 +1,51 @@
+# AI-Enhanced Requirements for SERP Strategist
+# Extends base requirements.txt with advanced AI/ML components
+
+# Import base requirements
+-r requirements.txt
+
+# ============================================================================
+# AI/ML INFRASTRUCTURE COMPONENTS
+# ============================================================================
+
+# spaCy for advanced NLP processing
+spacy>=3.7.0
+# Download model: python -m spacy download en_core_web_sm
+
+# NetworkX for content relationship mapping and graph analysis
+networkx>=3.1
+
+# Additional ML/AI dependencies for enhanced analysis
+transformers>=4.21.0
+torch>=2.0.0
+umap-learn>=0.5.3
+
+# Advanced text processing
+ftfy>=6.1.1
+contractions>=0.1.73
+
+# ============================================================================
+# PERFORMANCE AND CACHING ENHANCEMENTS
+# ============================================================================
+
+# Redis for intelligent caching
+redis>=4.6.0
+
+# Async processing
+asyncio-throttle>=1.0.2
+
+# ============================================================================
+# MODEL MANAGEMENT AND OPTIMIZATION
+# ============================================================================
+
+# Model compression and optimization
+optimum>=1.13.0
+
+# Memory management
+psutil>=5.9.0
+
+# Installation Notes:
+# 1. Install base requirements first: pip install -r requirements.txt
+# 2. Install AI enhancements: pip install -r requirements-ai-enhanced.txt
+# 3. Download spaCy model: python -m spacy download en_core_web_sm
+# 4. For production: Consider model caching and warming strategies

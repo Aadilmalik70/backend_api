@@ -1,0 +1,156 @@
+{
+  "test_suite": "Conversational Query Finder Performance Validation",
+  "timestamp": "2025-08-09T18:40:29.120287",
+  "system_info": {
+    "cpu_count": 12,
+    "memory_total_gb": 15.692092895507812,
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "win32",
+    "timestamp": "2025-08-09T18:40:29.125311"
+  },
+  "test_results": [
+    {
+      "test_name": "Single Query Performance",
+      "query_count": 50,
+      "processing_mode": "FAST",
+      "total_time": 0.03615307807922363,
+      "average_time": 0.7230615615844727,
+      "throughput_qps": 1383.0081048820539,
+      "success_rate": 1.0,
+      "memory_usage_mb": 0.0,
+      "cache_hit_rate": 0.0,
+      "target_met": true,
+      "target_time": 100,
+      "detailed_metrics": {
+        "min_time_ms": 0.0,
+        "max_time_ms": 7.002830505371094,
+        "median_time_ms": 0.49877166748046875,
+        "std_dev_ms": 1.14515597564298
+      }
+    },
+    {
+      "test_name": "Batch 500 Queries",
+      "query_count": 500,
+      "processing_mode": "standard",
+      "total_time": 0.009001970291137695,
+      "average_time": 0.016006946563720703,
+      "throughput_qps": 55543.39592658315,
+      "success_rate": 1.0,
+      "memory_usage_mb": 0.0,
+      "cache_hit_rate": 0.0,
+      "target_met": true,
+      "target_time": 20,
+      "detailed_metrics": {
+        "batch_processing_time": 0.008003473281860352,
+        "throughput_queries_per_second": 62472.87676129762,
+        "failed_queries": 0,
+        "quality_distribution": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "F": 0
+        },
+        "question_type_distribution": {
+          "unknown": 500
+        }
+      }
+    },
+    {
+      "test_name": "Batch 750 Queries",
+      "query_count": 750,
+      "processing_mode": "standard",
+      "total_time": 0.00510096549987793,
+      "average_time": 0.005478541056315104,
+      "throughput_qps": 147030.98854872634,
+      "success_rate": 1.0,
+      "memory_usage_mb": 0.0625,
+      "cache_hit_rate": 0.0,
+      "target_met": true,
+      "target_time": 25,
+      "detailed_metrics": {
+        "batch_processing_time": 0.004108905792236328,
+        "throughput_queries_per_second": 182530.3469885111,
+        "failed_queries": 0,
+        "quality_distribution": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "F": 0
+        },
+        "question_type_distribution": {
+          "unknown": 750
+        }
+      }
+    },
+    {
+      "test_name": "Batch 1000 Queries",
+      "query_count": 1000,
+      "processing_mode": "comprehensive",
+      "total_time": 0.007998466491699219,
+      "average_time": 0.0070171356201171875,
+      "throughput_qps": 125023.96566114224,
+      "success_rate": 1.0,
+      "memory_usage_mb": 0.203125,
+      "cache_hit_rate": 0.0,
+      "target_met": true,
+      "target_time": 30,
+      "detailed_metrics": {
+        "batch_processing_time": 0.0070171356201171875,
+        "throughput_queries_per_second": 142508.29029627616,
+        "failed_queries": 0,
+        "quality_distribution": {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "F": 0
+        },
+        "question_type_distribution": {
+          "unknown": 1000
+        }
+      }
+    },
+    {
+      "test_name": "Concurrent Load Test",
+      "query_count": 200,
+      "processing_mode": "STANDARD",
+      "total_time": 0.1205599308013916,
+      "average_time": 0.602799654006958,
+      "throughput_qps": 1658.9259687737929,
+      "success_rate": 1.0,
+      "memory_usage_mb": 0.00390625,
+      "cache_hit_rate": 0.476,
+      "target_met": true,
+      "target_time": 20,
+      "detailed_metrics": {
+        "concurrent_users": 10,
+        "queries_per_user": 20,
+        "total_queries": 200
+      }
+    }
+  ],
+  "summary": {
+    "overall_success": true,
+    "tests_passed": 5,
+    "total_tests": 5,
+    "pass_rate": 1.0,
+    "key_results": {
+      "single_query_target_met": true,
+      "batch_1000_target_met": true,
+      "single_query_avg_ms": 0.7230615615844727,
+      "batch_1000_time_s": 0.007998466491699219,
+      "max_throughput_qps": 147030.98854872634,
+      "avg_memory_usage_mb": 0.08984375,
+      "avg_cache_hit_rate": 0.476
+    }
+  },
+  "recommendations": [
+    "Consider increasing cache size or improving cache strategy",
+    "Consider increasing cache size or improving cache strategy",
+    "Consider increasing cache size or improving cache strategy",
+    "Consider increasing cache size or improving cache strategy",
+    "Consider increasing cache size or improving cache strategy"
+  ]
+}

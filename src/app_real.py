@@ -38,6 +38,7 @@ try:
     from src.export_integration import ExportIntegration
     from src.models.blueprint import DatabaseManager
     from src.routes.blueprints import blueprint_routes
+    from src.routes.conversational_query_routes import conversational_query_bp
     logger.info("Successfully imported all modules with src.* imports")
 except ImportError as e:
     logger.warning(f"src.* imports failed: {e}. Attempting local imports...")
@@ -50,6 +51,7 @@ except ImportError as e:
         from export_integration import ExportIntegration
         from models.blueprint import DatabaseManager
         from routes.blueprints import blueprint_routes
+        from routes.conversational_query_routes import conversational_query_bp
         logger.info("Successfully imported all modules with local imports")
     except ImportError as local_e:
         logger.warning(f"Local imports failed: {local_e}. Attempting relative imports...")
@@ -62,6 +64,7 @@ except ImportError as e:
             from .export_integration import ExportIntegration
             from .models.blueprint import DatabaseManager
             from .routes.blueprints import blueprint_routes
+            from .routes.conversational_query_routes import conversational_query_bp
             logger.info("Successfully imported all modules with relative imports")
         except ImportError as rel_e:
             logger.error(f"All import strategies failed:")
@@ -74,6 +77,10 @@ except ImportError as e:
             try:
                 from models.blueprint import DatabaseManager
                 from routes.blueprints import blueprint_routes
+                try:
+                    from routes.conversational_query_routes import conversational_query_bp
+                except ImportError:
+                    conversational_query_bp = None
                 logger.warning("Using minimal application mode with limited features")
                 KeywordProcessorEnhancedReal = None
                 SerpFeatureOptimizerReal = None
@@ -93,6 +100,7 @@ except ImportError as e:
                 ExportIntegration = StubClass
                 DatabaseManager = None
                 blueprint_routes = None
+                conversational_query_bp = None
 
 def create_app():
     """
@@ -130,6 +138,16 @@ def create_app():
             logger.info("Blueprint routes registered successfully")
         except Exception as e:
             logger.error(f"Blueprint registration failed: {str(e)}")
+    
+    # Register conversational query routes
+    try:
+        if 'conversational_query_bp' in globals() and conversational_query_bp is not None:
+            app.register_blueprint(conversational_query_bp)
+            logger.info("Conversational Query routes registered successfully")
+        else:
+            logger.warning("Conversational Query blueprint not available")
+    except Exception as e:
+        logger.error(f"Conversational Query blueprint registration failed: {str(e)}")
     else:
         logger.warning("Blueprint routes not available, skipping registration")
     
